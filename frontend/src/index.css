@@ -1,0 +1,278 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ITMC FenestrationOS design tokens (RGB triplets so Tailwind alpha modifiers work). */
+:root {
+  --bg: 15 18 22; /* #0f1216 app background */
+  --panel: 22 27 34; /* #161b22 panels */
+  --raised: 30 37 46; /* #1e252e raised controls */
+  --hover: 38 46 57;
+  --line: 41 49 60; /* 1px separators */
+  --line-strong: 58 68 82;
+  --fg: 226 231 237;
+  --muted: 151 162 176;
+  --faint: 104 115 130;
+  --accent: 34 211 238; /* electric cyan #22d3ee */
+  --accent-strong: 8 145 178;
+  --ok: 52 211 153;
+  --warn: 251 146 60;
+  --err: 248 113 113;
+  --prov: 245 180 40; /* provisional amber */
+  --info: 96 165 250;
+  --sheet: 246 248 250;
+  --ink: 24 38 56;
+
+  /* CAD canvas palette (dark theme default) */
+  --cad-bg: #0b0e12;
+  --cad-grid-minor: rgba(148, 163, 184, 0.06);
+  --cad-grid-major: rgba(148, 163, 184, 0.13);
+  --cad-member: #aeb8c5;
+  --cad-member-fill: #2a323d;
+  --cad-member-edge: #c9d2dc;
+  --cad-glass: rgba(56, 189, 248, 0.13);
+  --cad-glass-edge: rgba(125, 211, 252, 0.55);
+  --cad-glass-mark: rgba(186, 230, 253, 0.6);
+  --cad-spandrel: #3a414c;
+  --cad-hatch: rgba(203, 213, 225, 0.32);
+  --cad-panel: #59636f;
+  --cad-dim: #8fa1b5;
+  --cad-dim-text: #d5dde6;
+  --cad-text-bg: #0b0e12;
+  --cad-select: #22d3ee;
+  --cad-hover: rgba(34, 211, 238, 0.5);
+  --cad-error: #f87171;
+  --cad-label: #6b7685;
+
+  color-scheme: dark;
+}
+
+.cad-light {
+  --cad-bg: #f6f8fa;
+  --cad-grid-minor: rgba(30, 64, 110, 0.05);
+  --cad-grid-major: rgba(30, 64, 110, 0.11);
+  --cad-member: #1b2a3a;
+  --cad-member-fill: #d6dde5;
+  --cad-member-edge: #1b2a3a;
+  --cad-glass: rgba(14, 116, 180, 0.08);
+  --cad-glass-edge: rgba(14, 116, 180, 0.55);
+  --cad-glass-mark: rgba(14, 116, 180, 0.55);
+  --cad-spandrel: #c4ccd5;
+  --cad-hatch: rgba(27, 42, 58, 0.35);
+  --cad-panel: #8592a1;
+  --cad-dim: #3f5873;
+  --cad-dim-text: #182638;
+  --cad-text-bg: #f6f8fa;
+  --cad-select: #0891b2;
+  --cad-hover: rgba(8, 145, 178, 0.5);
+  --cad-error: #dc2626;
+  --cad-label: #64748b;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  @apply bg-bg font-sans text-base text-fg antialiased;
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  overflow: hidden;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(var(--line-strong)) transparent;
+}
+
+.num,
+.font-mono {
+  font-variant-numeric: tabular-nums;
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex h-7 select-none items-center gap-1.5 whitespace-nowrap rounded border border-line-strong bg-raised px-2.5 text-sm font-medium text-fg transition-colors;
+  }
+  .btn:hover:not(:disabled) {
+    @apply border-faint bg-hover;
+  }
+  .btn:focus-visible {
+    @apply shadow-focus outline-none;
+  }
+  .btn:disabled {
+    @apply cursor-not-allowed opacity-45;
+  }
+  .btn-primary {
+    @apply border-accent/70 bg-accent/15 text-accent;
+  }
+  .btn-primary:hover:not(:disabled) {
+    @apply border-accent bg-accent/25;
+  }
+  .btn-solid {
+    @apply border-transparent bg-accent text-[#04141a];
+  }
+  .btn-solid:hover:not(:disabled) {
+    @apply bg-[#5ee3f5];
+  }
+  .btn-ghost {
+    @apply border-transparent bg-transparent text-muted;
+  }
+  .btn-ghost:hover:not(:disabled) {
+    @apply border-transparent bg-hover text-fg;
+  }
+  .btn-danger {
+    @apply border-err/50 bg-err/10 text-err;
+  }
+  .btn-danger:hover:not(:disabled) {
+    @apply bg-err/20;
+  }
+  .btn-sm {
+    @apply h-6 px-2 text-xs;
+  }
+  .btn-icon {
+    @apply w-7 justify-center px-0;
+  }
+  .btn-icon.btn-sm {
+    @apply w-6;
+  }
+
+  .input {
+    @apply h-7 w-full rounded border border-line-strong bg-bg px-2 text-sm text-fg placeholder:text-faint;
+  }
+  .input:focus {
+    @apply border-accent/80 shadow-focus outline-none;
+  }
+  .input:disabled {
+    @apply opacity-50;
+  }
+  .input-num {
+    @apply font-mono text-right;
+    font-variant-numeric: tabular-nums;
+  }
+  .input.invalid {
+    @apply border-err/80;
+  }
+  select.input {
+    @apply pr-6;
+    appearance: none;
+    background-image: linear-gradient(45deg, transparent 50%, rgb(var(--muted)) 50%), linear-gradient(135deg, rgb(var(--muted)) 50%, transparent 50%);
+    background-position:
+      calc(100% - 11px) 50%,
+      calc(100% - 7px) 50%;
+    background-size: 4px 4px;
+    background-repeat: no-repeat;
+  }
+  .label {
+    @apply mb-1 block text-2xs font-medium uppercase tracking-[0.06em] text-muted;
+  }
+  .panel {
+    @apply rounded border border-line bg-panel;
+  }
+  .panel-head {
+    @apply flex h-9 items-center gap-2 border-b border-line px-3 text-sm font-semibold;
+  }
+  .section-title {
+    @apply text-2xs font-semibold uppercase tracking-[0.08em] text-faint;
+  }
+  .kbd {
+    @apply inline-flex h-[18px] min-w-[18px] items-center justify-center rounded-sm border border-line-strong bg-raised px-1 font-mono text-2xs text-muted;
+  }
+
+  table.dense {
+    @apply w-full border-collapse text-sm;
+  }
+  table.dense th {
+    @apply sticky top-0 z-[1] h-7 whitespace-nowrap border-b border-line bg-panel px-2.5 text-left text-2xs font-semibold uppercase tracking-[0.06em] text-faint;
+  }
+  table.dense td {
+    @apply h-7 whitespace-nowrap border-b border-line/60 px-2.5;
+  }
+  table.dense tbody tr:hover td {
+    @apply bg-hover/50;
+  }
+  table.dense tr.selected td {
+    @apply bg-accent/10;
+  }
+  table.dense td.num,
+  table.dense th.num {
+    @apply text-right font-mono;
+  }
+
+  .seg {
+    @apply inline-flex rounded border border-line-strong bg-bg p-0.5;
+  }
+  .seg > button {
+    @apply h-6 rounded-sm px-2 text-xs text-muted;
+  }
+  .seg > button[aria-pressed='true'] {
+    @apply bg-raised text-fg shadow-[inset_0_0_0_1px_rgb(var(--line-strong))];
+  }
+  .seg > button:hover:not([aria-pressed='true']):not(:disabled) {
+    @apply text-fg;
+  }
+  .seg > button:disabled {
+    @apply opacity-40;
+  }
+}
+
+/* CSS-only tooltips: <span data-tip="…"> */
+[data-tip] {
+  position: relative;
+}
+[data-tip]:hover::after,
+[data-tip]:focus-visible::after {
+  content: attr(data-tip);
+  position: absolute;
+  left: 50%;
+  top: calc(100% + 6px);
+  transform: translateX(-50%);
+  z-index: 60;
+  pointer-events: none;
+  white-space: pre;
+  max-width: 320px;
+  padding: 4px 7px;
+  border-radius: 3px;
+  font-size: 13px;
+  line-height: 17px;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+  color: rgb(var(--fg));
+  background: #0a0d10;
+  border: 1px solid rgb(var(--line-strong));
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
+}
+[data-tip-pos='right']:hover::after {
+  left: calc(100% + 8px);
+  top: 50%;
+  transform: translateY(-50%);
+}
+[data-tip-pos='top']:hover::after {
+  top: auto;
+  bottom: calc(100% + 6px);
+}
+[data-tip-pos='left']:hover::after {
+  left: auto;
+  right: 0;
+  transform: none;
+}
+
+.cad-canvas text {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+.provisional-stripe {
+  background-image: repeating-linear-gradient(135deg, rgb(var(--prov) / 0.14) 0 8px, rgb(var(--prov) / 0.06) 8px 16px);
+}
+
+/* knock-out halo behind drawing labels so they stay legible over hatch and glass */
+.cad-halo text,
+text.cad-halo {
+  paint-order: stroke;
+  stroke: var(--cad-bg);
+  stroke-width: 3px;
+  stroke-linejoin: round;
+}

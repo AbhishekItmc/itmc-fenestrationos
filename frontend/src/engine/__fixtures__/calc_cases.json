@@ -1,0 +1,2826 @@
+[
+ {
+  "name": "grid_3x2_cw50",
+  "elevation": {
+   "id": null,
+   "name": "Grid 3x2 CW50",
+   "units": "mm",
+   "width": 4500.0,
+   "height": 3600.0,
+   "mullions": [
+    0.0,
+    1500.0,
+    3000.0,
+    4500.0
+   ],
+   "bays": [
+    {
+     "transoms": [
+      1800.0
+     ],
+     "transom_profile_id": null
+    },
+    {
+     "transoms": [
+      1800.0
+     ],
+     "transom_profile_id": null
+    },
+    {
+     "transoms": [
+      1800.0
+     ],
+     "transom_profile_id": null
+    }
+   ],
+   "fills": {},
+   "top_shape": {
+    "type": "flat"
+   },
+   "system_id": "ser-cw50",
+   "mullion_profile_id": null,
+   "transom_profile_id": null,
+   "colour_id": "col-ral7016",
+   "default_glass_type_id": "gl-dgu-24",
+   "anchor_levels": [
+    0.0,
+    3600.0
+   ],
+   "quantity": 1
+  },
+  "result": {
+   "units": "mm",
+   "engine_version": "calc/0.1.0-demo",
+   "catalogue_version": "DEMO-2026.10-r1",
+   "rule_set_id": "rs-cw50-demo",
+   "rule_set_version": "0.1-demo",
+   "rule_set_approved": false,
+   "inputs_hash": "c34f3c2023da32d55749a797b2336d62bd3f96bbfb91eb04864fa3295a0345db",
+   "elevation": {
+    "id": null,
+    "name": "Grid 3x2 CW50",
+    "units": "mm",
+    "width": 4500.0,
+    "height": 3600.0,
+    "mullions": [
+     0.0,
+     1500.0,
+     3000.0,
+     4500.0
+    ],
+    "bays": [
+     {
+      "transoms": [
+       1800.0
+      ],
+      "transom_profile_id": null
+     },
+     {
+      "transoms": [
+       1800.0
+      ],
+      "transom_profile_id": null
+     },
+     {
+      "transoms": [
+       1800.0
+      ],
+      "transom_profile_id": null
+     }
+    ],
+    "fills": {},
+    "top_shape": {
+     "type": "flat"
+    },
+    "system_id": "ser-cw50",
+    "mullion_profile_id": null,
+    "transom_profile_id": null,
+    "colour_id": "col-ral7016",
+    "default_glass_type_id": "gl-dgu-24",
+    "anchor_levels": [
+     0.0,
+     3600.0
+    ],
+    "quantity": 1
+   },
+   "profile_cuts": [
+    {
+     "mark": "M1",
+     "role": "mullion",
+     "profile_id": "prf-cw50-m150",
+     "profile_code": "DEMO-CW50-M150",
+     "description": "Mullion DEMO-CW50-M150",
+     "length": 3700.0,
+     "angle_start": 90.0,
+     "angle_end": 90.0,
+     "quantity": 4,
+     "position": "x=0, x=1500, x=3000, x=4500",
+     "formula": "H + mullion_ext_top + mullion_ext_bottom = 3600 + 50 + 50 = 3700",
+     "rule_ids": [
+      "rs-cw50-demo:mullion_ext_top",
+      "rs-cw50-demo:mullion_ext_bottom"
+     ]
+    },
+    {
+     "mark": "S1",
+     "role": "sill",
+     "profile_id": "prf-cw50-t100",
+     "profile_code": "DEMO-CW50-T100",
+     "description": "Sill DEMO-CW50-T100",
+     "length": 1448.0,
+     "angle_start": 90.0,
+     "angle_end": 90.0,
+     "quantity": 3,
+     "position": "bay 1, y=0, bay 2, y=0, bay 3, y=0",
+     "formula": "bay axis width - mullion face/2 (left) - mullion face/2 (right) - 2 x transom_clearance = 1500 - 25 - 25 - 2 x 1 = 1448",
+     "rule_ids": [
+      "rs-cw50-demo:transom_clearance",
+      "profile:prf-cw50-m150:face_width"
+     ]
+    },
+    {
+     "mark": "T1",
+     "role": "transom",
+     "profile_id": "prf-cw50-t100",
+     "profile_code": "DEMO-CW50-T100",
+     "description": "Transom DEMO-CW50-T100",
+     "length": 1448.0,
+     "angle_start": 90.0,
+     "angle_end": 90.0,
+     "quantity": 3,
+     "position": "bay 1, y=1800, bay 2, y=1800, bay 3, y=1800",
+     "formula": "bay axis width - mullion face/2 (left) - mullion face/2 (right) - 2 x transom_clearance = 1500 - 25 - 25 - 2 x 1 = 1448",
+     "rule_ids": [
+      "rs-cw50-demo:transom_clearance",
+      "profile:prf-cw50-m150:face_width"
+     ]
+    },
+    {
+     "mark": "H1",
+     "role": "head",
+     "profile_id": "prf-cw50-t100",
+     "profile_code": "DEMO-CW50-T100",
+     "description": "Head DEMO-CW50-T100",
+     "length": 1448.0,
+     "angle_start": 90.0,
+     "angle_end": 90.0,
+     "quantity": 3,
+     "position": "bay 1, y=3600, bay 2, y=3600, bay 3, y=3600",
+     "formula": "bay axis width - mullion face/2 (left) - mullion face/2 (right) - 2 x transom_clearance = 1500 - 25 - 25 - 2 x 1 = 1448",
+     "rule_ids": [
+      "rs-cw50-demo:transom_clearance",
+      "profile:prf-cw50-m150:face_width"
+     ]
+    },
+    {
+     "mark": "PP1",
+     "role": "pressure_plate",
+     "profile_id": "prf-cw50-pp",
+     "profile_code": "DEMO-CW50-PP",
+     "description": "Pressure plate (vertical) DEMO-CW50-PP",
+     "length": 3600.0,
+     "angle_start": 90.0,
+     "angle_end": 90.0,
+     "quantity": 4,
+     "position": "vertical x=0, vertical x=1500, vertical x=3000, vertical x=4500",
+     "formula": "DEMO rule: vertical pressure_plate length = mullion axis run H = 3600",
+     "rule_ids": [
+      "demo:pressure_plate_axis_run"
+     ]
+    },
+    {
+     "mark": "PP2",
+     "role": "pressure_plate",
+     "profile_id": "prf-cw50-pp",
+     "profile_code": "DEMO-CW50-PP",
+     "description": "Pressure plate (horizontal) DEMO-CW50-PP",
+     "length": 1500.0,
+     "angle_start": 90.0,
+     "angle_end": 90.0,
+     "quantity": 9,
+     "position": "horizontal bay 1, y=0, horizontal bay 1, y=1800, horizontal bay 1, y=3600, horizontal bay 2, y=0, horizontal bay 2, y=1800, horizontal bay 2, y=3600, horizontal bay 3, y=0, horizontal bay 3, y=1800, horizontal bay 3, y=3600",
+     "formula": "DEMO rule: horizontal pressure_plate length = bay axis width = 1500",
+     "rule_ids": [
+      "demo:pressure_plate_axis_run"
+     ]
+    },
+    {
+     "mark": "CC1",
+     "role": "cover_cap",
+     "profile_id": "prf-cw50-cc",
+     "profile_code": "DEMO-CW50-CC",
+     "description": "Cover cap (vertical) DEMO-CW50-CC",
+     "length": 3600.0,
+     "angle_start": 90.0,
+     "angle_end": 90.0,
+     "quantity": 4,
+     "position": "vertical x=0, vertical x=1500, vertical x=3000, vertical x=4500",
+     "formula": "DEMO rule: vertical cover_cap length = mullion axis run H = 3600",
+     "rule_ids": [
+      "demo:cover_cap_axis_run"
+     ]
+    },
+    {
+     "mark": "CC2",
+     "role": "cover_cap",
+     "profile_id": "prf-cw50-cc",
+     "profile_code": "DEMO-CW50-CC",
+     "description": "Cover cap (horizontal) DEMO-CW50-CC",
+     "length": 1500.0,
+     "angle_start": 90.0,
+     "angle_end": 90.0,
+     "quantity": 9,
+     "position": "horizontal bay 1, y=0, horizontal bay 1, y=1800, horizontal bay 1, y=3600, horizontal bay 2, y=0, horizontal bay 2, y=1800, horizontal bay 2, y=3600, horizontal bay 3, y=0, horizontal bay 3, y=1800, horizontal bay 3, y=3600",
+     "formula": "DEMO rule: horizontal cover_cap length = bay axis width = 1500",
+     "rule_ids": [
+      "demo:cover_cap_axis_run"
+     ]
+    }
+   ],
+   "glass_items": [
+    {
+     "mark": "G1.1",
+     "field_key": "b0-f0",
+     "fill_type": "glass",
+     "glass_type_id": "gl-dgu-24",
+     "description": "Glass DEMO-GL-D24 - Demo DGU 6-12-6",
+     "width": 1480.0,
+     "height": 1780.0,
+     "area_m2": 2.6344,
+     "quantity": 1,
+     "formula": "W = axis width - glass_deduction_x = 1500 - 20 = 1480; H = axis height - glass_deduction_y = 1800 - 20 = 1780",
+     "rule_ids": [
+      "rs-cw50-demo:glass_deduction_x",
+      "rs-cw50-demo:glass_deduction_y"
+     ],
+     "panel_type_id": null
+    },
+    {
+     "mark": "G1.2",
+     "field_key": "b0-f1",
+     "fill_type": "glass",
+     "glass_type_id": "gl-dgu-24",
+     "description": "Glass DEMO-GL-D24 - Demo DGU 6-12-6",
+     "width": 1480.0,
+     "height": 1780.0,
+     "area_m2": 2.6344,
+     "quantity": 1,
+     "formula": "W = axis width - glass_deduction_x = 1500 - 20 = 1480; H = axis height - glass_deduction_y = 1800 - 20 = 1780",
+     "rule_ids": [
+      "rs-cw50-demo:glass_deduction_x",
+      "rs-cw50-demo:glass_deduction_y"
+     ],
+     "panel_type_id": null
+    },
+    {
+     "mark": "G2.1",
+     "field_key": "b1-f0",
+     "fill_type": "glass",
+     "glass_type_id": "gl-dgu-24",
+     "description": "Glass DEMO-GL-D24 - Demo DGU 6-12-6",
+     "width": 1480.0,
+     "height": 1780.0,
+     "area_m2": 2.6344,
+     "quantity": 1,
+     "formula": "W = axis width - glass_deduction_x = 1500 - 20 = 1480; H = axis height - glass_deduction_y = 1800 - 20 = 1780",
+     "rule_ids": [
+      "rs-cw50-demo:glass_deduction_x",
+      "rs-cw50-demo:glass_deduction_y"
+     ],
+     "panel_type_id": null
+    },
+    {
+     "mark": "G2.2",
+     "field_key": "b1-f1",
+     "fill_type": "glass",
+     "glass_type_id": "gl-dgu-24",
+     "description": "Glass DEMO-GL-D24 - Demo DGU 6-12-6",
+     "width": 1480.0,
+     "height": 1780.0,
+     "area_m2": 2.6344,
+     "quantity": 1,
+     "formula": "W = axis width - glass_deduction_x = 1500 - 20 = 1480; H = axis height - glass_deduction_y = 1800 - 20 = 1780",
+     "rule_ids": [
+      "rs-cw50-demo:glass_deduction_x",
+      "rs-cw50-demo:glass_deduction_y"
+     ],
+     "panel_type_id": null
+    },
+    {
+     "mark": "G3.1",
+     "field_key": "b2-f0",
+     "fill_type": "glass",
+     "glass_type_id": "gl-dgu-24",
+     "description": "Glass DEMO-GL-D24 - Demo DGU 6-12-6",
+     "width": 1480.0,
+     "height": 1780.0,
+     "area_m2": 2.6344,
+     "quantity": 1,
+     "formula": "W = axis width - glass_deduction_x = 1500 - 20 = 1480; H = axis height - glass_deduction_y = 1800 - 20 = 1780",
+     "rule_ids": [
+      "rs-cw50-demo:glass_deduction_x",
+      "rs-cw50-demo:glass_deduction_y"
+     ],
+     "panel_type_id": null
+    },
+    {
+     "mark": "G3.2",
+     "field_key": "b2-f1",
+     "fill_type": "glass",
+     "glass_type_id": "gl-dgu-24",
+     "description": "Glass DEMO-GL-D24 - Demo DGU 6-12-6",
+     "width": 1480.0,
+     "height": 1780.0,
+     "area_m2": 2.6344,
+     "quantity": 1,
+     "formula": "W = axis width - glass_deduction_x = 1500 - 20 = 1480; H = axis height - glass_deduction_y = 1800 - 20 = 1780",
+     "rule_ids": [
+      "rs-cw50-demo:glass_deduction_x",
+      "rs-cw50-demo:glass_deduction_y"
+     ],
+     "panel_type_id": null
+    }
+   ],
+   "bom": [
+    {
+     "item_type": "profile",
+     "item_id": "prf-cw50-m150",
+     "code": "DEMO-CW50-M150",
+     "description": "Demo mullion 50x150 (bar lower-bound estimate: 3 x 6500 mm; run 1D optimisation for actual)",
+     "unit": "m",
+     "quantity": 14.8,
+     "rule_ids": [
+      "sum(cut length x qty)"
+     ],
+     "demo_data": true
+    },
+    {
+     "item_type": "profile",
+     "item_id": "prf-cw50-t100",
+     "code": "DEMO-CW50-T100",
+     "description": "Demo transom 50x100 (bar lower-bound estimate: 3 x 6500 mm; run 1D optimisation for actual)",
+     "unit": "m",
+     "quantity": 13.032,
+     "rule_ids": [
+      "sum(cut length x qty)"
+     ],
+     "demo_data": true
+    },
+    {
+     "item_type": "profile",
+     "item_id": "prf-cw50-pp",
+     "code": "DEMO-CW50-PP",
+     "description": "Demo pressure plate 50 (bar lower-bound estimate: 5 x 6500 mm; run 1D optimisation for actual)",
+     "unit": "m",
+     "quantity": 27.9,
+     "rule_ids": [
+      "sum(cut length x qty)"
+     ],
+     "demo_data": true
+    },
+    {
+     "item_type": "profile",
+     "item_id": "prf-cw50-cc",
+     "code": "DEMO-CW50-CC",
+     "description": "Demo cover cap 50 (bar lower-bound estimate: 5 x 6500 mm; run 1D optimisation for actual)",
+     "unit": "m",
+     "quantity": 27.9,
+     "rule_ids": [
+      "sum(cut length x qty)"
+     ],
+     "demo_data": true
+    },
+    {
+     "item_type": "glass",
+     "item_id": "gl-dgu-24",
+     "code": "DEMO-GL-D24",
+     "description": "Demo DGU 6-12-6",
+     "unit": "m2",
+     "quantity": 15.806399999999998,
+     "rule_ids": [
+      "sum(glass area x qty)"
+     ],
+     "demo_data": true
+    },
+    {
+     "item_type": "gasket",
+     "item_id": "acc-cw50-gasket",
+     "code": "DEMO-CW50-GSK",
+     "description": "Demo EPDM glazing gasket",
+     "unit": "m",
+     "quantity": 78.24,
+     "rule_ids": [
+      "rs-cw50-demo:gasket_runs_per_field_edge (x fill perimeter)"
+     ],
+     "demo_data": true
+    },
+    {
+     "item_type": "connector",
+     "item_id": "acc-cw50-tconn",
+     "code": "DEMO-CW50-TC",
+     "description": "Demo transom connector",
+     "unit": "pcs",
+     "quantity": 18.0,
+     "rule_ids": [
+      "rs-cw50-demo:connectors_per_transom (x horizontal members incl. sill & head)"
+     ],
+     "demo_data": true
+    },
+    {
+     "item_type": "bracket",
+     "item_id": "acc-cw50-bracket",
+     "code": "DEMO-CW50-BRK",
+     "description": "Demo slab bracket/anchor set",
+     "unit": "pcs",
+     "quantity": 8.0,
+     "rule_ids": [
+      "rs-cw50-demo:brackets_per_anchor (x anchor levels x mullions)"
+     ],
+     "demo_data": true
+    },
+    {
+     "item_type": "accessory",
+     "item_id": "acc-cw50-endcap",
+     "code": "DEMO-CW50-EC",
+     "description": "Demo mullion end cap",
+     "unit": "pcs",
+     "quantity": 8.0,
+     "rule_ids": [
+      "rs-cw50-demo:end_caps_per_mullion"
+     ],
+     "demo_data": true
+    },
+    {
+     "item_type": "sealant",
+     "item_id": "acc-sealant-wx",
+     "code": "DEMO-SEAL-WX",
+     "description": "Demo weather sealant (per m run)",
+     "unit": "m",
+     "quantity": 16.2,
+     "rule_ids": [
+      "rs-cw50-demo:sealant_runs_per_perimeter (x framework perimeter)"
+     ],
+     "demo_data": true
+    }
+   ],
+   "issues": [
+    {
+     "code": "PROVISIONAL_DEMO_RULES",
+     "severity": "info",
+     "message": "Calculated with DEMO rule set (not approved). Not for production/fabrication.",
+     "ref": "rule_set:rs-cw50-demo"
+    }
+   ],
+   "validation_status": "PROVISIONAL_DEMO_RULES",
+   "validation": {
+    "passed": true,
+    "validator": "validate_calc/1.0",
+    "errors": [],
+    "checked_items": 24
+   },
+   "totals": {
+    "bars_lower_bound.prf-cw50-m150": 3.0,
+    "bars_lower_bound.prf-cw50-t100": 3.0,
+    "bars_lower_bound.prf-cw50-pp": 5.0,
+    "bars_lower_bound.prf-cw50-cc": 5.0,
+    "glass_area_m2": 15.806399999999998,
+    "panel_area_m2": 0.0,
+    "profile_length_m": 83.632,
+    "field_count": 6.0,
+    "fill_count": 6.0,
+    "mullion_count": 4.0,
+    "transom_count": 3.0,
+    "horizontal_member_count": 9.0,
+    "elevation_area_m2": 16.2,
+    "profile_weight_kg_demo": 103.83860000000001,
+    "glass_weight_kg_demo": 948.3839999999999,
+    "quantity": 1.0
+   }
+  },
+  "issues_no_catalogue": []
+ },
+ {
+  "name": "mixed_fills_qty2",
+  "elevation": {
+   "id": null,
+   "name": "Mixed fills CW50 qty2",
+   "units": "mm",
+   "width": 6000.0,
+   "height": 4200.0,
+   "mullions": [
+    0.0,
+    1500.0,
+    3000.0,
+    4500.0,
+    6000.0
+   ],
+   "bays": [
+    {
+     "transoms": [
+      1400.0,
+      2800.0
+     ],
+     "transom_profile_id": null
+    },
+    {
+     "transoms": [
+      1400.0,
+      2800.0
+     ],
+     "transom_profile_id": null
+    },
+    {
+     "transoms": [
+      1400.0,
+      2800.0
+     ],
+     "transom_profile_id": null
+    },
+    {
+     "transoms": [
+      1400.0,
+      2800.0
+     ],
+     "transom_profile_id": null
+    }
+   ],
+   "fills": {
+    "b0-f0": {
+     "type": "spandrel",
+     "glass_type_id": "gl-spandrel-6",
+     "panel_type_id": null,
+     "note": null
+    },
+    "b1-f0": {
+     "type": "panel",
+     "glass_type_id": null,
+     "panel_type_id": "pnl-acp-4",
+     "note": null
+    },
+    "b2-f1": {
+     "type": "none",
+     "glass_type_id": null,
+     "panel_type_id": null,
+     "note": null
+    },
+    "b3-f2": {
+     "type": "opening",
+     "glass_type_id": null,
+     "panel_type_id": null,
+     "note": null
+    },
+    "b3-f0": {
+     "type": "glass",
+     "glass_type_id": "gl-fire-demo",
+     "panel_type_id": null,
+     "note": null
+    }
+   },
+   "top_shape": {
+    "type": "flat"
+   },
+   "system_id": "ser-cw50",
+   "mullion_profile_id": null,
+   "transom_profile_id": null,
+   "colour_id": null,
+   "default_glass_type_id": "gl-dgu-28",
+   "anchor_levels": [
+    0.0,
+    2100.0,
+    4200.0
+   ],
+   "quantity": 2
+  },
+  "result": {
+   "units": "mm",
+   "engine_version": "calc/0.1.0-demo",
+   "catalogue_version": "DEMO-2026.10-r1",
+   "rule_set_id": "rs-cw50-demo",
+   "rule_set_version": "0.1-demo",
+   "rule_set_approved": false,
+   "inputs_hash": "12e4e7ca92068ab9166af4f1fbd8441440abf5346c3f9d5b752b82d87e72a7c6",
+   "elevation": {
+    "id": null,
+    "name": "Mixed fills CW50 qty2",
+    "units": "mm",
+    "width": 6000.0,
+    "height": 4200.0,
+    "mullions": [
+     0.0,
+     1500.0,
+     3000.0,
+     4500.0,
+     6000.0
+    ],
+    "bays": [
+     {
+      "transoms": [
+       1400.0,
+       2800.0
+      ],
+      "transom_profile_id": null
+     },
+     {
+      "transoms": [
+       1400.0,
+       2800.0
+      ],
+      "transom_profile_id": null
+     },
+     {
+      "transoms": [
+       1400.0,
+       2800.0
+      ],
+      "transom_profile_id": null
+     },
+     {
+      "transoms": [
+       1400.0,
+       2800.0
+      ],
+      "transom_profile_id": null
+     }
+    ],
+    "fills": {
+     "b0-f0": {
+      "type": "spandrel",
+      "glass_type_id": "gl-spandrel-6",
+      "panel_type_id": null,
+      "note": null
+     },
+     "b1-f0": {
+      "type": "panel",
+      "glass_type_id": null,
+      "panel_type_id": "pnl-acp-4",
+      "note": null
+     },
+     "b2-f1": {
+      "type": "none",
+      "glass_type_id": null,
+      "panel_type_id": null,
+      "note": null
+     },
+     "b3-f2": {
+      "type": "opening",
+      "glass_type_id": null,
+      "panel_type_id": null,
+      "note": null
+     },
+     "b3-f0": {
+      "type": "glass",
+      "glass_type_id": "gl-fire-demo",
+      "panel_type_id": null,
+      "note": null
+     }
+    },
+    "top_shape": {
+     "type": "flat"
+    },
+    "system_id": "ser-cw50",
+    "mullion_profile_id": null,
+    "transom_profile_id": null,
+    "colour_id": null,
+    "default_glass_type_id": "gl-dgu-28",
+    "anchor_levels": [
+     0.0,
+     2100.0,
+     4200.0
+    ],
+    "quantity": 2
+   },
+   "profile_cuts": [
+    {
+     "mark": "M1",
+     "role": "mullion",
+     "profile_id": "prf-cw50-m150",
+     "profile_code": "DEMO-CW50-M150",
+     "description": "Mullion DEMO-CW50-M150",
+     "length": 4300.0,
+     "angle_start": 90.0,
+     "angle_end": 90.0,
+     "quantity": 10,
+     "position": "x=0, x=1500, x=3000, x=4500, x=6000",
+     "formula": "H + mullion_ext_top + mullion_ext_bottom = 4200 + 50 + 50 = 4300",
+     "rule_ids": [
+      "rs-cw50-demo:mullion_ext_top",
+      "rs-cw50-demo:mullion_ext_bottom"
+     ]
+    },
+    {
+     "mark": "S1",
+     "role": "sill",
+     "profile_id": "prf-cw50-t100",
+     "profile_code": "DEMO-CW50-T100",
+     "description": "Sill DEMO-CW50-T100",
+     "length": 1448.0,
+     "angle_start": 90.0,
+     "angle_end": 90.0,
+     "quantity": 8,
+     "position": "bay 1, y=0, bay 2, y=0, bay 3, y=0, bay 4, y=0",
+     "formula": "bay axis width - mullion face/2 (left) - mullion face/2 (right) - 2 x transom_clearance = 1500 - 25 - 25 - 2 x 1 = 1448",
+     "rule_ids": [
+      "rs-cw50-demo:transom_clearance",
+      "profile:prf-cw50-m150:face_width"
+     ]
+    },
+    {
+     "mark": "T1",
+     "role": "transom",
+     "profile_id": "prf-cw50-t100",
+     "profile_code": "DEMO-CW50-T100",
+     "description": "Transom DEMO-CW50-T100",
+     "length": 1448.0,
+     "angle_start": 90.0,
+     "angle_end": 90.0,
+     "quantity": 16,
+     "position": "bay 1, y=1400, bay 1, y=2800, bay 2, y=1400, bay 2, y=2800, bay 3, y=1400, bay 3, y=2800, bay 4, y=1400, bay 4, y=2800",
+     "formula": "bay axis width - mullion face/2 (left) - mullion face/2 (right) - 2 x transom_clearance = 1500 - 25 - 25 - 2 x 1 = 1448",
+     "rule_ids": [
+      "rs-cw50-demo:transom_clearance",
+      "profile:prf-cw50-m150:face_width"
+     ]
+    },
+    {
+     "mark": "H1",
+     "role": "head",
+     "profile_id": "prf-cw50-t100",
+     "profile_code": "DEMO-CW50-T100",
+     "description": "Head DEMO-CW50-T100",
+     "length": 1448.0,
+     "angle_start": 90.0,
+     "angle_end": 90.0,
+     "quantity": 8,
+     "position": "bay 1, y=4200, bay 2, y=4200, bay 3, y=4200, bay 4, y=4200",
+     "formula": "bay axis width - mullion face/2 (left) - mullion face/2 (right) - 2 x transom_clearance = 1500 - 25 - 25 - 2 x 1 = 1448",
+     "rule_ids": [
+      "rs-cw50-demo:transom_clearance",
+      "profile:prf-cw50-m150:face_width"
+     ]
+    },
+    {
+     "mark": "PP1",
+     "role": "pressure_plate",
+     "profile_id": "prf-cw50-pp",
+     "profile_code": "DEMO-CW50-PP",
+     "description": "Pressure plate (vertical) DEMO-CW50-PP",
+     "length": 4200.0,
+     "angle_start": 90.0,
+     "angle_end": 90.0,
+     "quantity": 10,
+     "position": "vertical x=0, vertical x=1500, vertical x=3000, vertical x=4500, vertical x=6000",
+     "formula": "DEMO rule: vertical pressure_plate length = mullion axis run H = 4200",
+     "rule_ids": [
+      "demo:pressure_plate_axis_run"
+     ]
+    },
+    {
+     "mark": "PP2",
+     "role": "pressure_plate",
+     "profile_id": "prf-cw50-pp",
+     "profile_code": "DEMO-CW50-PP",
+     "description": "Pressure plate (horizontal) DEMO-CW50-PP",
+     "length": 1500.0,
+     "angle_start": 90.0,
+     "angle_end": 90.0,
+     "quantity": 32,
+     "position": "horizontal bay 1, y=0, horizontal bay 1, y=1400, horizontal bay 1, y=2800, horizontal bay 1, y=4200, horizontal bay 2, y=0, horizontal bay 2, y=1400, horizontal bay 2, y=2800, horizontal bay 2, y=4200, horizontal bay 3, y=0, horizontal bay 3, y=1400, horizontal bay 3, y=2800, horizontal bay 3, y=4200 ...",
+     "formula": "DEMO rule: horizontal pressure_plate length = bay axis width = 1500",
+     "rule_ids": [
+      "demo:pressure_plate_axis_run"
+     ]
+    },
+    {
+     "mark": "CC1",
+     "role": "cover_cap",
+     "profile_id": "prf-cw50-cc",
+     "profile_code": "DEMO-CW50-CC",
+     "description": "Cover cap (vertical) DEMO-CW50-CC",
+     "length": 4200.0,
+     "angle_start": 90.0,
+     "angle_end": 90.0,
+     "quantity": 10,
+     "position": "vertical x=0, vertical x=1500, vertical x=3000, vertical x=4500, vertical x=6000",
+     "formula": "DEMO rule: vertical cover_cap length = mullion axis run H = 4200",
+     "rule_ids": [
+      "demo:cover_cap_axis_run"
+     ]
+    },
+    {
+     "mark": "CC2",
+     "role": "cover_cap",
+     "profile_id": "prf-cw50-cc",
+     "profile_code": "DEMO-CW50-CC",
+     "description": "Cover cap (horizontal) DEMO-CW50-CC",
+     "length": 1500.0,
+     "angle_start": 90.0,
+     "angle_end": 90.0,
+     "quantity": 32,
+     "position": "horizontal bay 1, y=0, horizontal bay 1, y=1400, horizontal bay 1, y=2800, horizontal bay 1, y=4200, horizontal bay 2, y=0, horizontal bay 2, y=1400, horizontal bay 2, y=2800, horizontal bay 2, y=4200, horizontal bay 3, y=0, horizontal bay 3, y=1400, horizontal bay 3, y=2800, horizontal bay 3, y=4200 ...",
+     "formula": "DEMO rule: horizontal cover_cap length = bay axis width = 1500",
+     "rule_ids": [
+      "demo:cover_cap_axis_run"
+     ]
+    }
+   ],
+   "glass_items": [
+    {
+     "mark": "SP1.1",
+     "field_key": "b0-f0",
+     "fill_type": "spandrel",
+     "glass_type_id": "gl-spandrel-6",
+     "description": "Spandrel DEMO-GL-SP6 - Demo spandrel 6 mm ceramic frit",
+     "width": 1480.0,
+     "height": 1380.0,
+     "area_m2": 2.0424,
+     "quantity": 2,
+     "formula": "W = axis width - glass_deduction_x = 1500 - 20 = 1480; H = axis height - glass_deduction_y = 1400 - 20 = 1380",
+     "rule_ids": [
+      "rs-cw50-demo:glass_deduction_x",
+      "rs-cw50-demo:glass_deduction_y"
+     ],
+     "panel_type_id": null
+    },
+    {
+     "mark": "G1.2",
+     "field_key": "b0-f1",
+     "fill_type": "glass",
+     "glass_type_id": "gl-dgu-28",
+     "description": "Glass DEMO-GL-D28 - Demo DGU 6-16-6 low-E",
+     "width": 1480.0,
+     "height": 1380.0,
+     "area_m2": 2.0424,
+     "quantity": 2,
+     "formula": "W = axis width - glass_deduction_x = 1500 - 20 = 1480; H = axis height - glass_deduction_y = 1400 - 20 = 1380",
+     "rule_ids": [
+      "rs-cw50-demo:glass_deduction_x",
+      "rs-cw50-demo:glass_deduction_y"
+     ],
+     "panel_type_id": null
+    },
+    {
+     "mark": "G1.3",
+     "field_key": "b0-f2",
+     "fill_type": "glass",
+     "glass_type_id": "gl-dgu-28",
+     "description": "Glass DEMO-GL-D28 - Demo DGU 6-16-6 low-E",
+     "width": 1480.0,
+     "height": 1380.0,
+     "area_m2": 2.0424,
+     "quantity": 2,
+     "formula": "W = axis width - glass_deduction_x = 1500 - 20 = 1480; H = axis height - glass_deduction_y = 1400 - 20 = 1380",
+     "rule_ids": [
+      "rs-cw50-demo:glass_deduction_x",
+      "rs-cw50-demo:glass_deduction_y"
+     ],
+     "panel_type_id": null
+    },
+    {
+     "mark": "P2.1",
+     "field_key": "b1-f0",
+     "fill_type": "panel",
+     "glass_type_id": null,
+     "description": "Panel DEMO-PNL-ACP4 - Demo ACP 4 mm",
+     "width": 1480.0,
+     "height": 1380.0,
+     "area_m2": 2.0424,
+     "quantity": 2,
+     "formula": "W = axis width - glass_deduction_x = 1500 - 20 = 1480; H = axis height - glass_deduction_y = 1400 - 20 = 1380",
+     "rule_ids": [
+      "rs-cw50-demo:glass_deduction_x",
+      "rs-cw50-demo:glass_deduction_y"
+     ],
+     "panel_type_id": "pnl-acp-4"
+    },
+    {
+     "mark": "G2.2",
+     "field_key": "b1-f1",
+     "fill_type": "glass",
+     "glass_type_id": "gl-dgu-28",
+     "description": "Glass DEMO-GL-D28 - Demo DGU 6-16-6 low-E",
+     "width": 1480.0,
+     "height": 1380.0,
+     "area_m2": 2.0424,
+     "quantity": 2,
+     "formula": "W = axis width - glass_deduction_x = 1500 - 20 = 1480; H = axis height - glass_deduction_y = 1400 - 20 = 1380",
+     "rule_ids": [
+      "rs-cw50-demo:glass_deduction_x",
+      "rs-cw50-demo:glass_deduction_y"
+     ],
+     "panel_type_id": null
+    },
+    {
+     "mark": "G2.3",
+     "field_key": "b1-f2",
+     "fill_type": "glass",
+     "glass_type_id": "gl-dgu-28",
+     "description": "Glass DEMO-GL-D28 - Demo DGU 6-16-6 low-E",
+     "width": 1480.0,
+     "height": 1380.0,
+     "area_m2": 2.0424,
+     "quantity": 2,
+     "formula": "W = axis width - glass_deduction_x = 1500 - 20 = 1480; H = axis height - glass_deduction_y = 1400 - 20 = 1380",
+     "rule_ids": [
+      "rs-cw50-demo:glass_deduction_x",
+      "rs-cw50-demo:glass_deduction_y"
+     ],
+     "panel_type_id": null
+    },
+    {
+     "mark": "G3.1",
+     "field_key": "b2-f0",
+     "fill_type": "glass",
+     "glass_type_id": "gl-dgu-28",
+     "description": "Glass DEMO-GL-D28 - Demo DGU 6-16-6 low-E",
+     "width": 1480.0,
+     "height": 1380.0,
+     "area_m2": 2.0424,
+     "quantity": 2,
+     "formula": "W = axis width - glass_deduction_x = 1500 - 20 = 1480; H = axis height - glass_deduction_y = 1400 - 20 = 1380",
+     "rule_ids": [
+      "rs-cw50-demo:glass_deduction_x",
+      "rs-cw50-demo:glass_deduction_y"
+     ],
+     "panel_type_id": null
+    },
+    {
+     "mark": "G3.3",
+     "field_key": "b2-f2",
+     "fill_type": "glass",
+     "glass_type_id": "gl-dgu-28",
+     "description": "Glass DEMO-GL-D28 - Demo DGU 6-16-6 low-E",
+     "width": 1480.0,
+     "height": 1380.0,
+     "area_m2": 2.0424,
+     "quantity": 2,
+     "formula": "W = axis width - glass_deduction_x = 1500 - 20 = 1480; H = axis height - glass_deduction_y = 1400 - 20 = 1380",
+     "rule_ids": [
+      "rs-cw50-demo:glass_deduction_x",
+      "rs-cw50-demo:glass_deduction_y"
+     ],
+     "panel_type_id": null
+    },
+    {
+     "mark": "G4.1",
+     "field_key": "b3-f0",
+     "fill_type": "glass",
+     "glass_type_id": "gl-fire-demo",
+     "description": "Glass DEMO-GL-FIRE - Demo fire-resistant glass (rating not stated)",
+     "width": 1480.0,
+     "height": 1380.0,
+     "area_m2": 2.0424,
+     "quantity": 2,
+     "formula": "W = axis width - glass_deduction_x = 1500 - 20 = 1480; H = axis height - glass_deduction_y = 1400 - 20 = 1380",
+     "rule_ids": [
+      "rs-cw50-demo:glass_deduction_x",
+      "rs-cw50-demo:glass_deduction_y"
+     ],
+     "panel_type_id": null
+    },
+    {
+     "mark": "G4.2",
+     "field_key": "b3-f1",
+     "fill_type": "glass",
+     "glass_type_id": "gl-dgu-28",
+     "description": "Glass DEMO-GL-D28 - Demo DGU 6-16-6 low-E",
+     "width": 1480.0,
+     "height": 1380.0,
+     "area_m2": 2.0424,
+     "quantity": 2,
+     "formula": "W = axis width - glass_deduction_x = 1500 - 20 = 1480; H = axis height - glass_deduction_y = 1400 - 20 = 1380",
+     "rule_ids": [
+      "rs-cw50-demo:glass_deduction_x",
+      "rs-cw50-demo:glass_deduction_y"
+     ],
+     "panel_type_id": null
+    }
+   ],
+   "bom": [
+    {
+     "item_type": "profile",
+     "item_id": "prf-cw50-m150",
+     "code": "DEMO-CW50-M150",
+     "description": "Demo mullion 50x150 (bar lower-bound estimate: 7 x 6500 mm; run 1D optimisation for actual)",
+     "unit": "m",
+     "quantity": 43.0,
+     "rule_ids": [
+      "sum(cut length x qty)"
+     ],
+     "demo_data": true
+    },
+    {
+     "item_type": "profile",
+     "item_id": "prf-cw50-t100",
+     "code": "DEMO-CW50-T100",
+     "description": "Demo transom 50x100 (bar lower-bound estimate: 8 x 6500 mm; run 1D optimisation for actual)",
+     "unit": "m",
+     "quantity": 46.336,
+     "rule_ids": [
+      "sum(cut length x qty)"
+     ],
+     "demo_data": true
+    },
+    {
+     "item_type": "profile",
+     "item_id": "prf-cw50-pp",
+     "code": "DEMO-CW50-PP",
+     "description": "Demo pressure plate 50 (bar lower-bound estimate: 14 x 6500 mm; run 1D optimisation for actual)",
+     "unit": "m",
+     "quantity": 90.0,
+     "rule_ids": [
+      "sum(cut length x qty)"
+     ],
+     "demo_data": true
+    },
+    {
+     "item_type": "profile",
+     "item_id": "prf-cw50-cc",
+     "code": "DEMO-CW50-CC",
+     "description": "Demo cover cap 50 (bar lower-bound estimate: 14 x 6500 mm; run 1D optimisation for actual)",
+     "unit": "m",
+     "quantity": 90.0,
+     "rule_ids": [
+      "sum(cut length x qty)"
+     ],
+     "demo_data": true
+    },
+    {
+     "item_type": "glass",
+     "item_id": "gl-spandrel-6",
+     "code": "DEMO-GL-SP6",
+     "description": "Demo spandrel 6 mm ceramic frit",
+     "unit": "m2",
+     "quantity": 4.0848,
+     "rule_ids": [
+      "sum(glass area x qty)"
+     ],
+     "demo_data": true
+    },
+    {
+     "item_type": "glass",
+     "item_id": "gl-dgu-28",
+     "code": "DEMO-GL-D28",
+     "description": "Demo DGU 6-16-6 low-E",
+     "unit": "m2",
+     "quantity": 28.593600000000006,
+     "rule_ids": [
+      "sum(glass area x qty)"
+     ],
+     "demo_data": true
+    },
+    {
+     "item_type": "glass",
+     "item_id": "gl-fire-demo",
+     "code": "DEMO-GL-FIRE",
+     "description": "Demo fire-resistant glass (rating not stated)",
+     "unit": "m2",
+     "quantity": 4.0848,
+     "rule_ids": [
+      "sum(glass area x qty)"
+     ],
+     "demo_data": true
+    },
+    {
+     "item_type": "panel",
+     "item_id": "pnl-acp-4",
+     "code": "DEMO-PNL-ACP4",
+     "description": "Demo ACP 4 mm",
+     "unit": "m2",
+     "quantity": 4.0848,
+     "rule_ids": [
+      "sum(panel area x qty)"
+     ],
+     "demo_data": true
+    },
+    {
+     "item_type": "gasket",
+     "item_id": "acc-cw50-gasket",
+     "code": "DEMO-CW50-GSK",
+     "description": "Demo EPDM glazing gasket",
+     "unit": "m",
+     "quantity": 228.8,
+     "rule_ids": [
+      "rs-cw50-demo:gasket_runs_per_field_edge (x fill perimeter)"
+     ],
+     "demo_data": true
+    },
+    {
+     "item_type": "connector",
+     "item_id": "acc-cw50-tconn",
+     "code": "DEMO-CW50-TC",
+     "description": "Demo transom connector",
+     "unit": "pcs",
+     "quantity": 64.0,
+     "rule_ids": [
+      "rs-cw50-demo:connectors_per_transom (x horizontal members incl. sill & head)"
+     ],
+     "demo_data": true
+    },
+    {
+     "item_type": "bracket",
+     "item_id": "acc-cw50-bracket",
+     "code": "DEMO-CW50-BRK",
+     "description": "Demo slab bracket/anchor set",
+     "unit": "pcs",
+     "quantity": 30.0,
+     "rule_ids": [
+      "rs-cw50-demo:brackets_per_anchor (x anchor levels x mullions)"
+     ],
+     "demo_data": true
+    },
+    {
+     "item_type": "accessory",
+     "item_id": "acc-cw50-endcap",
+     "code": "DEMO-CW50-EC",
+     "description": "Demo mullion end cap",
+     "unit": "pcs",
+     "quantity": 20.0,
+     "rule_ids": [
+      "rs-cw50-demo:end_caps_per_mullion"
+     ],
+     "demo_data": true
+    },
+    {
+     "item_type": "sealant",
+     "item_id": "acc-sealant-wx",
+     "code": "DEMO-SEAL-WX",
+     "description": "Demo weather sealant (per m run)",
+     "unit": "m",
+     "quantity": 40.8,
+     "rule_ids": [
+      "rs-cw50-demo:sealant_runs_per_perimeter (x framework perimeter)"
+     ],
+     "demo_data": true
+    }
+   ],
+   "issues": [
+    {
+     "code": "VENT_NOT_SUPPORTED_IN_V1",
+     "severity": "warning",
+     "message": "Opening/vent fields are not calculated in v1 (no glass or vent hardware produced)",
+     "ref": "bay:3/field:2"
+    },
+    {
+     "code": "PANEL_THICKNESS_OUTSIDE_GLAZING_RANGE",
+     "severity": "warning",
+     "message": "Fill 'pnl-acp-4' thickness 4 mm outside 6-32 mm (series:ser-cw50); packers/adaptor needed - requires engineering approval",
+     "ref": "bay:1/field:0"
+    },
+    {
+     "code": "FIRE_RATING_NOT_CERTIFIED",
+     "severity": "warning",
+     "message": "Fire glass selected: no certified fire rating in catalogue; must be supplied",
+     "ref": "bay:3/field:0"
+    },
+    {
+     "code": "PROVISIONAL_DEMO_RULES",
+     "severity": "info",
+     "message": "Calculated with DEMO rule set (not approved). Not for production/fabrication.",
+     "ref": "rule_set:rs-cw50-demo"
+    }
+   ],
+   "validation_status": "PROVISIONAL_DEMO_RULES",
+   "validation": {
+    "passed": true,
+    "validator": "validate_calc/1.0",
+    "errors": [],
+    "checked_items": 31
+   },
+   "totals": {
+    "bars_lower_bound.prf-cw50-m150": 7.0,
+    "bars_lower_bound.prf-cw50-t100": 8.0,
+    "bars_lower_bound.prf-cw50-pp": 14.0,
+    "bars_lower_bound.prf-cw50-cc": 14.0,
+    "glass_area_m2": 36.763200000000005,
+    "panel_area_m2": 4.0848,
+    "profile_length_m": 269.336,
+    "field_count": 12.0,
+    "fill_count": 10.0,
+    "mullion_count": 10.0,
+    "transom_count": 16.0,
+    "horizontal_member_count": 32.0,
+    "elevation_area_m2": 50.4,
+    "profile_weight_kg_demo": 329.6728,
+    "glass_weight_kg_demo": 2277.2760000000007,
+    "quantity": 2.0
+   }
+  },
+  "issues_no_catalogue": [
+   {
+    "code": "VENT_NOT_SUPPORTED_IN_V1",
+    "severity": "warning",
+    "message": "Opening/vent fields are not calculated in v1 (no glass or vent hardware produced)",
+    "ref": "bay:3/field:2"
+   }
+  ]
+ },
+ {
+  "name": "tall_cw65_splice",
+  "elevation": {
+   "id": null,
+   "name": "Tall CW65 splice",
+   "units": "mm",
+   "width": 3000.0,
+   "height": 7200.0,
+   "mullions": [
+    0.0,
+    1500.0,
+    3000.0
+   ],
+   "bays": [
+    {
+     "transoms": [
+      2400.0,
+      4800.0
+     ],
+     "transom_profile_id": null
+    },
+    {
+     "transoms": [
+      2400.0,
+      4800.0
+     ],
+     "transom_profile_id": "prf-cw65-t175"
+    }
+   ],
+   "fills": {},
+   "top_shape": {
+    "type": "flat"
+   },
+   "system_id": "ser-cw65",
+   "mullion_profile_id": null,
+   "transom_profile_id": null,
+   "colour_id": null,
+   "default_glass_type_id": "gl-dgu-lam-3152",
+   "anchor_levels": [],
+   "quantity": 1
+  },
+  "result": {
+   "units": "mm",
+   "engine_version": "calc/0.1.0-demo",
+   "catalogue_version": "DEMO-2026.10-r1",
+   "rule_set_id": "rs-cw65-demo",
+   "rule_set_version": "0.1-demo",
+   "rule_set_approved": false,
+   "inputs_hash": "30d500ce7453d85544fe9aa10a5c4d9c355c9c9f8cc38e2c2ca1b14167ff9c50",
+   "elevation": {
+    "id": null,
+    "name": "Tall CW65 splice",
+    "units": "mm",
+    "width": 3000.0,
+    "height": 7200.0,
+    "mullions": [
+     0.0,
+     1500.0,
+     3000.0
+    ],
+    "bays": [
+     {
+      "transoms": [
+       2400.0,
+       4800.0
+      ],
+      "transom_profile_id": null
+     },
+     {
+      "transoms": [
+       2400.0,
+       4800.0
+      ],
+      "transom_profile_id": "prf-cw65-t175"
+     }
+    ],
+    "fills": {},
+    "top_shape": {
+     "type": "flat"
+    },
+    "system_id": "ser-cw65",
+    "mullion_profile_id": null,
+    "transom_profile_id": null,
+    "colour_id": null,
+    "default_glass_type_id": "gl-dgu-lam-3152",
+    "anchor_levels": [],
+    "quantity": 1
+   },
+   "profile_cuts": [
+    {
+     "mark": "M1",
+     "role": "mullion",
+     "profile_id": "prf-cw65-m175",
+     "profile_code": "DEMO-CW65-M175",
+     "description": "Mullion DEMO-CW65-M175",
+     "length": 7300.0,
+     "angle_start": 90.0,
+     "angle_end": 90.0,
+     "quantity": 3,
+     "position": "x=0, x=1500, x=3000",
+     "formula": "H + mullion_ext_top + mullion_ext_bottom = 7200 + 50 + 50 = 7300",
+     "rule_ids": [
+      "rs-cw65-demo:mullion_ext_top",
+      "rs-cw65-demo:mullion_ext_bottom"
+     ]
+    },
+    {
+     "mark": "S1",
+     "role": "sill",
+     "profile_id": "prf-cw65-t125",
+     "profile_code": "DEMO-CW65-T125",
+     "description": "Sill DEMO-CW65-T125",
+     "length": 1433.0,
+     "angle_start": 90.0,
+     "angle_end": 90.0,
+     "quantity": 1,
+     "position": "bay 1, y=0",
+     "formula": "bay axis width - mullion face/2 (left) - mullion face/2 (right) - 2 x transom_clearance = 1500 - 32.5 - 32.5 - 2 x 1 = 1433",
+     "rule_ids": [
+      "rs-cw65-demo:transom_clearance",
+      "profile:prf-cw65-m175:face_width"
+     ]
+    },
+    {
+     "mark": "T1",
+     "role": "transom",
+     "profile_id": "prf-cw65-t125",
+     "profile_code": "DEMO-CW65-T125",
+     "description": "Transom DEMO-CW65-T125",
+     "length": 1433.0,
+     "angle_start": 90.0,
+     "angle_end": 90.0,
+     "quantity": 2,
+     "position": "bay 1, y=2400, bay 1, y=4800",
+     "formula": "bay axis width - mullion face/2 (left) - mullion face/2 (right) - 2 x transom_clearance = 1500 - 32.5 - 32.5 - 2 x 1 = 1433",
+     "rule_ids": [
+      "rs-cw65-demo:transom_clearance",
+      "profile:prf-cw65-m175:face_width"
+     ]
+    },
+    {
+     "mark": "H1",
+     "role": "head",
+     "profile_id": "prf-cw65-t125",
+     "profile_code": "DEMO-CW65-T125",
+     "description": "Head DEMO-CW65-T125",
+     "length": 1433.0,
+     "angle_start": 90.0,
+     "angle_end": 90.0,
+     "quantity": 1,
+     "position": "bay 1, y=7200",
+     "formula": "bay axis width - mullion face/2 (left) - mullion face/2 (right) - 2 x transom_clearance = 1500 - 32.5 - 32.5 - 2 x 1 = 1433",
+     "rule_ids": [
+      "rs-cw65-demo:transom_clearance",
+      "profile:prf-cw65-m175:face_width"
+     ]
+    },
+    {
+     "mark": "S2",
+     "role": "sill",
+     "profile_id": "prf-cw65-t175",
+     "profile_code": "DEMO-CW65-T175",
+     "description": "Sill DEMO-CW65-T175",
+     "length": 1433.0,
+     "angle_start": 90.0,
+     "angle_end": 90.0,
+     "quantity": 1,
+     "position": "bay 2, y=0",
+     "formula": "bay axis width - mullion face/2 (left) - mullion face/2 (right) - 2 x transom_clearance = 1500 - 32.5 - 32.5 - 2 x 1 = 1433",
+     "rule_ids": [
+      "rs-cw65-demo:transom_clearance",
+      "profile:prf-cw65-m175:face_width"
+     ]
+    },
+    {
+     "mark": "T2",
+     "role": "transom",
+     "profile_id": "prf-cw65-t175",
+     "profile_code": "DEMO-CW65-T175",
+     "description": "Transom DEMO-CW65-T175",
+     "length": 1433.0,
+     "angle_start": 90.0,
+     "angle_end": 90.0,
+     "quantity": 2,
+     "position": "bay 2, y=2400, bay 2, y=4800",
+     "formula": "bay axis width - mullion face/2 (left) - mullion face/2 (right) - 2 x transom_clearance = 1500 - 32.5 - 32.5 - 2 x 1 = 1433",
+     "rule_ids": [
+      "rs-cw65-demo:transom_clearance",
+      "profile:prf-cw65-m175:face_width"
+     ]
+    },
+    {
+     "mark": "H2",
+     "role": "head",
+     "profile_id": "prf-cw65-t175",
+     "profile_code": "DEMO-CW65-T175",
+     "description": "Head DEMO-CW65-T175",
+     "length": 1433.0,
+     "angle_start": 90.0,
+     "angle_end": 90.0,
+     "quantity": 1,
+     "position": "bay 2, y=7200",
+     "formula": "bay axis width - mullion face/2 (left) - mullion face/2 (right) - 2 x transom_clearance = 1500 - 32.5 - 32.5 - 2 x 1 = 1433",
+     "rule_ids": [
+      "rs-cw65-demo:transom_clearance",
+      "profile:prf-cw65-m175:face_width"
+     ]
+    },
+    {
+     "mark": "PP1",
+     "role": "pressure_plate",
+     "profile_id": "prf-cw65-pp",
+     "profile_code": "DEMO-CW65-PP",
+     "description": "Pressure plate (vertical) DEMO-CW65-PP",
+     "length": 7200.0,
+     "angle_start": 90.0,
+     "angle_end": 90.0,
+     "quantity": 3,
+     "position": "vertical x=0, vertical x=1500, vertical x=3000",
+     "formula": "DEMO rule: vertical pressure_plate length = mullion axis run H = 7200",
+     "rule_ids": [
+      "demo:pressure_plate_axis_run"
+     ]
+    },
+    {
+     "mark": "PP2",
+     "role": "pressure_plate",
+     "profile_id": "prf-cw65-pp",
+     "profile_code": "DEMO-CW65-PP",
+     "description": "Pressure plate (horizontal) DEMO-CW65-PP",
+     "length": 1500.0,
+     "angle_start": 90.0,
+     "angle_end": 90.0,
+     "quantity": 8,
+     "position": "horizontal bay 1, y=0, horizontal bay 1, y=2400, horizontal bay 1, y=4800, horizontal bay 1, y=7200, horizontal bay 2, y=0, horizontal bay 2, y=2400, horizontal bay 2, y=4800, horizontal bay 2, y=7200",
+     "formula": "DEMO rule: horizontal pressure_plate length = bay axis width = 1500",
+     "rule_ids": [
+      "demo:pressure_plate_axis_run"
+     ]
+    },
+    {
+     "mark": "CC1",
+     "role": "cover_cap",
+     "profile_id": "prf-cw65-cc",
+     "profile_code": "DEMO-CW65-CC",
+     "description": "Cover cap (vertical) DEMO-CW65-CC",
+     "length": 7200.0,
+     "angle_start": 90.0,
+     "angle_end": 90.0,
+     "quantity": 3,
+     "position": "vertical x=0, vertical x=1500, vertical x=3000",
+     "formula": "DEMO rule: vertical cover_cap length = mullion axis run H = 7200",
+     "rule_ids": [
+      "demo:cover_cap_axis_run"
+     ]
+    },
+    {
+     "mark": "CC2",
+     "role": "cover_cap",
+     "profile_id": "prf-cw65-cc",
+     "profile_code": "DEMO-CW65-CC",
+     "description": "Cover cap (horizontal) DEMO-CW65-CC",
+     "length": 1500.0,
+     "angle_start": 90.0,
+     "angle_end": 90.0,
+     "quantity": 8,
+     "position": "horizontal bay 1, y=0, horizontal bay 1, y=2400, horizontal bay 1, y=4800, horizontal bay 1, y=7200, horizontal bay 2, y=0, horizontal bay 2, y=2400, horizontal bay 2, y=4800, horizontal bay 2, y=7200",
+     "formula": "DEMO rule: horizontal cover_cap length = bay axis width = 1500",
+     "rule_ids": [
+      "demo:cover_cap_axis_run"
+     ]
+    }
+   ],
+   "glass_items": [
+    {
+     "mark": "G1.1",
+     "field_key": "b0-f0",
+     "fill_type": "glass",
+     "glass_type_id": "gl-dgu-lam-3152",
+     "description": "Glass DEMO-GL-DL3152 - Demo DGU 6-12-6.6 laminated",
+     "width": 1465.0,
+     "height": 2365.0,
+     "area_m2": 3.464725,
+     "quantity": 1,
+     "formula": "W = axis width - glass_deduction_x = 1500 - 35 = 1465; H = axis height - glass_deduction_y = 2400 - 35 = 2365",
+     "rule_ids": [
+      "rs-cw65-demo:glass_deduction_x",
+      "rs-cw65-demo:glass_deduction_y"
+     ],
+     "panel_type_id": null
+    },
+    {
+     "mark": "G1.2",
+     "field_key": "b0-f1",
+     "fill_type": "glass",
+     "glass_type_id": "gl-dgu-lam-3152",
+     "description": "Glass DEMO-GL-DL3152 - Demo DGU 6-12-6.6 laminated",
+     "width": 1465.0,
+     "height": 2365.0,
+     "area_m2": 3.464725,
+     "quantity": 1,
+     "formula": "W = axis width - glass_deduction_x = 1500 - 35 = 1465; H = axis height - glass_deduction_y = 2400 - 35 = 2365",
+     "rule_ids": [
+      "rs-cw65-demo:glass_deduction_x",
+      "rs-cw65-demo:glass_deduction_y"
+     ],
+     "panel_type_id": null
+    },
+    {
+     "mark": "G1.3",
+     "field_key": "b0-f2",
+     "fill_type": "glass",
+     "glass_type_id": "gl-dgu-lam-3152",
+     "description": "Glass DEMO-GL-DL3152 - Demo DGU 6-12-6.6 laminated",
+     "width": 1465.0,
+     "height": 2365.0,
+     "area_m2": 3.464725,
+     "quantity": 1,
+     "formula": "W = axis width - glass_deduction_x = 1500 - 35 = 1465; H = axis height - glass_deduction_y = 2400 - 35 = 2365",
+     "rule_ids": [
+      "rs-cw65-demo:glass_deduction_x",
+      "rs-cw65-demo:glass_deduction_y"
+     ],
+     "panel_type_id": null
+    },
+    {
+     "mark": "G2.1",
+     "field_key": "b1-f0",
+     "fill_type": "glass",
+     "glass_type_id": "gl-dgu-lam-3152",
+     "description": "Glass DEMO-GL-DL3152 - Demo DGU 6-12-6.6 laminated",
+     "width": 1465.0,
+     "height": 2365.0,
+     "area_m2": 3.464725,
+     "quantity": 1,
+     "formula": "W = axis width - glass_deduction_x = 1500 - 35 = 1465; H = axis height - glass_deduction_y = 2400 - 35 = 2365",
+     "rule_ids": [
+      "rs-cw65-demo:glass_deduction_x",
+      "rs-cw65-demo:glass_deduction_y"
+     ],
+     "panel_type_id": null
+    },
+    {
+     "mark": "G2.2",
+     "field_key": "b1-f1",
+     "fill_type": "glass",
+     "glass_type_id": "gl-dgu-lam-3152",
+     "description": "Glass DEMO-GL-DL3152 - Demo DGU 6-12-6.6 laminated",
+     "width": 1465.0,
+     "height": 2365.0,
+     "area_m2": 3.464725,
+     "quantity": 1,
+     "formula": "W = axis width - glass_deduction_x = 1500 - 35 = 1465; H = axis height - glass_deduction_y = 2400 - 35 = 2365",
+     "rule_ids": [
+      "rs-cw65-demo:glass_deduction_x",
+      "rs-cw65-demo:glass_deduction_y"
+     ],
+     "panel_type_id": null
+    },
+    {
+     "mark": "G2.3",
+     "field_key": "b1-f2",
+     "fill_type": "glass",
+     "glass_type_id": "gl-dgu-lam-3152",
+     "description": "Glass DEMO-GL-DL3152 - Demo DGU 6-12-6.6 laminated",
+     "width": 1465.0,
+     "height": 2365.0,
+     "area_m2": 3.464725,
+     "quantity": 1,
+     "formula": "W = axis width - glass_deduction_x = 1500 - 35 = 1465; H = axis height - glass_deduction_y = 2400 - 35 = 2365",
+     "rule_ids": [
+      "rs-cw65-demo:glass_deduction_x",
+      "rs-cw65-demo:glass_deduction_y"
+     ],
+     "panel_type_id": null
+    }
+   ],
+   "bom": [
+    {
+     "item_type": "profile",
+     "item_id": "prf-cw65-m175",
+     "code": "DEMO-CW65-M175",
+     "description": "Demo mullion 65x175 (bar lower-bound estimate: 0 x 6500 mm; run 1D optimisation for actual)",
+     "unit": "m",
+     "quantity": 21.9,
+     "rule_ids": [
+      "sum(cut length x qty)"
+     ],
+     "demo_data": true
+    },
+    {
+     "item_type": "profile",
+     "item_id": "prf-cw65-t125",
+     "code": "DEMO-CW65-T125",
+     "description": "Demo transom 65x125 (bar lower-bound estimate: 1 x 6500 mm; run 1D optimisation for actual)",
+     "unit": "m",
+     "quantity": 5.732,
+     "rule_ids": [
+      "sum(cut length x qty)"
+     ],
+     "demo_data": true
+    },
+    {
+     "item_type": "profile",
+     "item_id": "prf-cw65-t175",
+     "code": "DEMO-CW65-T175",
+     "description": "Demo transom 65x175 (bar lower-bound estimate: 1 x 6500 mm; run 1D optimisation for actual)",
+     "unit": "m",
+     "quantity": 5.732,
+     "rule_ids": [
+      "sum(cut length x qty)"
+     ],
+     "demo_data": true
+    },
+    {
+     "item_type": "profile",
+     "item_id": "prf-cw65-pp",
+     "code": "DEMO-CW65-PP",
+     "description": "Demo pressure plate 65 (bar lower-bound estimate: 2 x 6500 mm; run 1D optimisation for actual)",
+     "unit": "m",
+     "quantity": 33.6,
+     "rule_ids": [
+      "sum(cut length x qty)"
+     ],
+     "demo_data": true
+    },
+    {
+     "item_type": "profile",
+     "item_id": "prf-cw65-cc",
+     "code": "DEMO-CW65-CC",
+     "description": "Demo cover cap 65 (bar lower-bound estimate: 2 x 6500 mm; run 1D optimisation for actual)",
+     "unit": "m",
+     "quantity": 33.6,
+     "rule_ids": [
+      "sum(cut length x qty)"
+     ],
+     "demo_data": true
+    },
+    {
+     "item_type": "glass",
+     "item_id": "gl-dgu-lam-3152",
+     "code": "DEMO-GL-DL3152",
+     "description": "Demo DGU 6-12-6.6 laminated",
+     "unit": "m2",
+     "quantity": 20.78835,
+     "rule_ids": [
+      "sum(glass area x qty)"
+     ],
+     "demo_data": true
+    },
+    {
+     "item_type": "gasket",
+     "item_id": "acc-cw65-gasket",
+     "code": "DEMO-CW65-GSK",
+     "description": "Demo EPDM glazing gasket",
+     "unit": "m",
+     "quantity": 91.92,
+     "rule_ids": [
+      "rs-cw65-demo:gasket_runs_per_field_edge (x fill perimeter)"
+     ],
+     "demo_data": true
+    },
+    {
+     "item_type": "connector",
+     "item_id": "acc-cw65-tconn",
+     "code": "DEMO-CW65-TC",
+     "description": "Demo transom connector",
+     "unit": "pcs",
+     "quantity": 16.0,
+     "rule_ids": [
+      "rs-cw65-demo:connectors_per_transom (x horizontal members incl. sill & head)"
+     ],
+     "demo_data": true
+    },
+    {
+     "item_type": "accessory",
+     "item_id": "acc-cw65-endcap",
+     "code": "DEMO-CW65-EC",
+     "description": "Demo mullion end cap",
+     "unit": "pcs",
+     "quantity": 6.0,
+     "rule_ids": [
+      "rs-cw65-demo:end_caps_per_mullion"
+     ],
+     "demo_data": true
+    },
+    {
+     "item_type": "sealant",
+     "item_id": "acc-sealant-wx",
+     "code": "DEMO-SEAL-WX",
+     "description": "Demo weather sealant (per m run)",
+     "unit": "m",
+     "quantity": 20.4,
+     "rule_ids": [
+      "rs-cw65-demo:sealant_runs_per_perimeter (x framework perimeter)"
+     ],
+     "demo_data": true
+    },
+    {
+     "item_type": "accessory",
+     "item_id": "acc-cw65-splice",
+     "code": "DEMO-CW65-SPL",
+     "description": "Demo splice kit",
+     "unit": "pcs",
+     "quantity": 9.0,
+     "rule_ids": [
+      "rs-cw65-demo:max_bar_length / splice_sleeves_per_splice (count only, positions not computed)"
+     ],
+     "demo_data": true
+    }
+   ],
+   "issues": [
+    {
+     "code": "SPLICE_REQUIRED",
+     "severity": "warning",
+     "message": "Mullion DEMO-CW65-M175 cut length 7300 mm exceeds max_bar_length 6500 mm: a splice is required (splice positions are NOT computed - engineering input required)",
+     "ref": "cut:M1"
+    },
+    {
+     "code": "SPLICE_REQUIRED",
+     "severity": "warning",
+     "message": "Pressure plate (vertical) DEMO-CW65-PP cut length 7200 mm exceeds max_bar_length 6500 mm: a splice is required (splice positions are NOT computed - engineering input required)",
+     "ref": "cut:PP1"
+    },
+    {
+     "code": "SPLICE_REQUIRED",
+     "severity": "warning",
+     "message": "Cover cap (vertical) DEMO-CW65-CC cut length 7200 mm exceeds max_bar_length 6500 mm: a splice is required (splice positions are NOT computed - engineering input required)",
+     "ref": "cut:CC1"
+    },
+    {
+     "code": "PROVISIONAL_DEMO_RULES",
+     "severity": "info",
+     "message": "Calculated with DEMO rule set (not approved). Not for production/fabrication.",
+     "ref": "rule_set:rs-cw65-demo"
+    }
+   ],
+   "validation_status": "PROVISIONAL_DEMO_RULES",
+   "validation": {
+    "passed": true,
+    "validator": "validate_calc/1.0",
+    "errors": [],
+    "checked_items": 28
+   },
+   "totals": {
+    "bars_lower_bound.prf-cw65-m175": 0.0,
+    "bars_lower_bound.prf-cw65-t125": 1.0,
+    "bars_lower_bound.prf-cw65-t175": 1.0,
+    "bars_lower_bound.prf-cw65-pp": 2.0,
+    "bars_lower_bound.prf-cw65-cc": 2.0,
+    "glass_area_m2": 20.78835,
+    "panel_area_m2": 0.0,
+    "profile_length_m": 100.564,
+    "field_count": 6.0,
+    "fill_count": 6.0,
+    "mullion_count": 3.0,
+    "transom_count": 4.0,
+    "horizontal_member_count": 8.0,
+    "elevation_area_m2": 21.6,
+    "profile_weight_kg_demo": 150.27899999999997,
+    "glass_weight_kg_demo": 1638.1219800000001,
+    "quantity": 1.0
+   }
+  },
+  "issues_no_catalogue": []
+ },
+ {
+  "name": "irregular_cw50",
+  "elevation": {
+   "id": null,
+   "name": "Elevation",
+   "units": "mm",
+   "width": 3000.0,
+   "height": 3000.0,
+   "mullions": [
+    0.0,
+    1500.0,
+    2300.0,
+    3000.0
+   ],
+   "bays": [
+    {
+     "transoms": [
+      1234.5
+     ],
+     "transom_profile_id": null
+    },
+    {
+     "transoms": [],
+     "transom_profile_id": null
+    },
+    {
+     "transoms": [],
+     "transom_profile_id": null
+    }
+   ],
+   "fills": {},
+   "top_shape": {
+    "type": "flat"
+   },
+   "system_id": "ser-cw50",
+   "mullion_profile_id": null,
+   "transom_profile_id": null,
+   "colour_id": null,
+   "default_glass_type_id": "gl-sgl-10",
+   "anchor_levels": [],
+   "quantity": 1
+  },
+  "result": {
+   "units": "mm",
+   "engine_version": "calc/0.1.0-demo",
+   "catalogue_version": "DEMO-2026.10-r1",
+   "rule_set_id": "rs-cw50-demo",
+   "rule_set_version": "0.1-demo",
+   "rule_set_approved": false,
+   "inputs_hash": "680072601f47979b9c443a8d12c8d8567883ef6b45cc7d545ddb4662d3171eaa",
+   "elevation": {
+    "id": null,
+    "name": "Elevation",
+    "units": "mm",
+    "width": 3000.0,
+    "height": 3000.0,
+    "mullions": [
+     0.0,
+     1500.0,
+     2300.0,
+     3000.0
+    ],
+    "bays": [
+     {
+      "transoms": [
+       1234.5
+      ],
+      "transom_profile_id": null
+     },
+     {
+      "transoms": [],
+      "transom_profile_id": null
+     },
+     {
+      "transoms": [],
+      "transom_profile_id": null
+     }
+    ],
+    "fills": {},
+    "top_shape": {
+     "type": "flat"
+    },
+    "system_id": "ser-cw50",
+    "mullion_profile_id": null,
+    "transom_profile_id": null,
+    "colour_id": null,
+    "default_glass_type_id": "gl-sgl-10",
+    "anchor_levels": [],
+    "quantity": 1
+   },
+   "profile_cuts": [
+    {
+     "mark": "M1",
+     "role": "mullion",
+     "profile_id": "prf-cw50-m150",
+     "profile_code": "DEMO-CW50-M150",
+     "description": "Mullion DEMO-CW50-M150",
+     "length": 3100.0,
+     "angle_start": 90.0,
+     "angle_end": 90.0,
+     "quantity": 4,
+     "position": "x=0, x=1500, x=2300, x=3000",
+     "formula": "H + mullion_ext_top + mullion_ext_bottom = 3000 + 50 + 50 = 3100",
+     "rule_ids": [
+      "rs-cw50-demo:mullion_ext_top",
+      "rs-cw50-demo:mullion_ext_bottom"
+     ]
+    },
+    {
+     "mark": "S1",
+     "role": "sill",
+     "profile_id": "prf-cw50-t100",
+     "profile_code": "DEMO-CW50-T100",
+     "description": "Sill DEMO-CW50-T100",
+     "length": 1448.0,
+     "angle_start": 90.0,
+     "angle_end": 90.0,
+     "quantity": 1,
+     "position": "bay 1, y=0",
+     "formula": "bay axis width - mullion face/2 (left) - mullion face/2 (right) - 2 x transom_clearance = 1500 - 25 - 25 - 2 x 1 = 1448",
+     "rule_ids": [
+      "rs-cw50-demo:transom_clearance",
+      "profile:prf-cw50-m150:face_width"
+     ]
+    },
+    {
+     "mark": "T1",
+     "role": "transom",
+     "profile_id": "prf-cw50-t100",
+     "profile_code": "DEMO-CW50-T100",
+     "description": "Transom DEMO-CW50-T100",
+     "length": 1448.0,
+     "angle_start": 90.0,
+     "angle_end": 90.0,
+     "quantity": 1,
+     "position": "bay 1, y=1234.5",
+     "formula": "bay axis width - mullion face/2 (left) - mullion face/2 (right) - 2 x transom_clearance = 1500 - 25 - 25 - 2 x 1 = 1448",
+     "rule_ids": [
+      "rs-cw50-demo:transom_clearance",
+      "profile:prf-cw50-m150:face_width"
+     ]
+    },
+    {
+     "mark": "H1",
+     "role": "head",
+     "profile_id": "prf-cw50-t100",
+     "profile_code": "DEMO-CW50-T100",
+     "description": "Head DEMO-CW50-T100",
+     "length": 1448.0,
+     "angle_start": 90.0,
+     "angle_end": 90.0,
+     "quantity": 1,
+     "position": "bay 1, y=3000",
+     "formula": "bay axis width - mullion face/2 (left) - mullion face/2 (right) - 2 x transom_clearance = 1500 - 25 - 25 - 2 x 1 = 1448",
+     "rule_ids": [
+      "rs-cw50-demo:transom_clearance",
+      "profile:prf-cw50-m150:face_width"
+     ]
+    },
+    {
+     "mark": "S2",
+     "role": "sill",
+     "profile_id": "prf-cw50-t100",
+     "profile_code": "DEMO-CW50-T100",
+     "description": "Sill DEMO-CW50-T100",
+     "length": 748.0,
+     "angle_start": 90.0,
+     "angle_end": 90.0,
+     "quantity": 1,
+     "position": "bay 2, y=0",
+     "formula": "bay axis width - mullion face/2 (left) - mullion face/2 (right) - 2 x transom_clearance = 800 - 25 - 25 - 2 x 1 = 748",
+     "rule_ids": [
+      "rs-cw50-demo:transom_clearance",
+      "profile:prf-cw50-m150:face_width"
+     ]
+    },
+    {
+     "mark": "H2",
+     "role": "head",
+     "profile_id": "prf-cw50-t100",
+     "profile_code": "DEMO-CW50-T100",
+     "description": "Head DEMO-CW50-T100",
+     "length": 748.0,
+     "angle_start": 90.0,
+     "angle_end": 90.0,
+     "quantity": 1,
+     "position": "bay 2, y=3000",
+     "formula": "bay axis width - mullion face/2 (left) - mullion face/2 (right) - 2 x transom_clearance = 800 - 25 - 25 - 2 x 1 = 748",
+     "rule_ids": [
+      "rs-cw50-demo:transom_clearance",
+      "profile:prf-cw50-m150:face_width"
+     ]
+    },
+    {
+     "mark": "S3",
+     "role": "sill",
+     "profile_id": "prf-cw50-t100",
+     "profile_code": "DEMO-CW50-T100",
+     "description": "Sill DEMO-CW50-T100",
+     "length": 648.0,
+     "angle_start": 90.0,
+     "angle_end": 90.0,
+     "quantity": 1,
+     "position": "bay 3, y=0",
+     "formula": "bay axis width - mullion face/2 (left) - mullion face/2 (right) - 2 x transom_clearance = 700 - 25 - 25 - 2 x 1 = 648",
+     "rule_ids": [
+      "rs-cw50-demo:transom_clearance",
+      "profile:prf-cw50-m150:face_width"
+     ]
+    },
+    {
+     "mark": "H3",
+     "role": "head",
+     "profile_id": "prf-cw50-t100",
+     "profile_code": "DEMO-CW50-T100",
+     "description": "Head DEMO-CW50-T100",
+     "length": 648.0,
+     "angle_start": 90.0,
+     "angle_end": 90.0,
+     "quantity": 1,
+     "position": "bay 3, y=3000",
+     "formula": "bay axis width - mullion face/2 (left) - mullion face/2 (right) - 2 x transom_clearance = 700 - 25 - 25 - 2 x 1 = 648",
+     "rule_ids": [
+      "rs-cw50-demo:transom_clearance",
+      "profile:prf-cw50-m150:face_width"
+     ]
+    },
+    {
+     "mark": "PP1",
+     "role": "pressure_plate",
+     "profile_id": "prf-cw50-pp",
+     "profile_code": "DEMO-CW50-PP",
+     "description": "Pressure plate (vertical) DEMO-CW50-PP",
+     "length": 3000.0,
+     "angle_start": 90.0,
+     "angle_end": 90.0,
+     "quantity": 4,
+     "position": "vertical x=0, vertical x=1500, vertical x=2300, vertical x=3000",
+     "formula": "DEMO rule: vertical pressure_plate length = mullion axis run H = 3000",
+     "rule_ids": [
+      "demo:pressure_plate_axis_run"
+     ]
+    },
+    {
+     "mark": "PP2",
+     "role": "pressure_plate",
+     "profile_id": "prf-cw50-pp",
+     "profile_code": "DEMO-CW50-PP",
+     "description": "Pressure plate (horizontal) DEMO-CW50-PP",
+     "length": 1500.0,
+     "angle_start": 90.0,
+     "angle_end": 90.0,
+     "quantity": 3,
+     "position": "horizontal bay 1, y=0, horizontal bay 1, y=1234.5, horizontal bay 1, y=3000",
+     "formula": "DEMO rule: horizontal pressure_plate length = bay axis width = 1500",
+     "rule_ids": [
+      "demo:pressure_plate_axis_run"
+     ]
+    },
+    {
+     "mark": "PP3",
+     "role": "pressure_plate",
+     "profile_id": "prf-cw50-pp",
+     "profile_code": "DEMO-CW50-PP",
+     "description": "Pressure plate (horizontal) DEMO-CW50-PP",
+     "length": 800.0,
+     "angle_start": 90.0,
+     "angle_end": 90.0,
+     "quantity": 2,
+     "position": "horizontal bay 2, y=0, horizontal bay 2, y=3000",
+     "formula": "DEMO rule: horizontal pressure_plate length = bay axis width = 800",
+     "rule_ids": [
+      "demo:pressure_plate_axis_run"
+     ]
+    },
+    {
+     "mark": "PP4",
+     "role": "pressure_plate",
+     "profile_id": "prf-cw50-pp",
+     "profile_code": "DEMO-CW50-PP",
+     "description": "Pressure plate (horizontal) DEMO-CW50-PP",
+     "length": 700.0,
+     "angle_start": 90.0,
+     "angle_end": 90.0,
+     "quantity": 2,
+     "position": "horizontal bay 3, y=0, horizontal bay 3, y=3000",
+     "formula": "DEMO rule: horizontal pressure_plate length = bay axis width = 700",
+     "rule_ids": [
+      "demo:pressure_plate_axis_run"
+     ]
+    },
+    {
+     "mark": "CC1",
+     "role": "cover_cap",
+     "profile_id": "prf-cw50-cc",
+     "profile_code": "DEMO-CW50-CC",
+     "description": "Cover cap (vertical) DEMO-CW50-CC",
+     "length": 3000.0,
+     "angle_start": 90.0,
+     "angle_end": 90.0,
+     "quantity": 4,
+     "position": "vertical x=0, vertical x=1500, vertical x=2300, vertical x=3000",
+     "formula": "DEMO rule: vertical cover_cap length = mullion axis run H = 3000",
+     "rule_ids": [
+      "demo:cover_cap_axis_run"
+     ]
+    },
+    {
+     "mark": "CC2",
+     "role": "cover_cap",
+     "profile_id": "prf-cw50-cc",
+     "profile_code": "DEMO-CW50-CC",
+     "description": "Cover cap (horizontal) DEMO-CW50-CC",
+     "length": 1500.0,
+     "angle_start": 90.0,
+     "angle_end": 90.0,
+     "quantity": 3,
+     "position": "horizontal bay 1, y=0, horizontal bay 1, y=1234.5, horizontal bay 1, y=3000",
+     "formula": "DEMO rule: horizontal cover_cap length = bay axis width = 1500",
+     "rule_ids": [
+      "demo:cover_cap_axis_run"
+     ]
+    },
+    {
+     "mark": "CC3",
+     "role": "cover_cap",
+     "profile_id": "prf-cw50-cc",
+     "profile_code": "DEMO-CW50-CC",
+     "description": "Cover cap (horizontal) DEMO-CW50-CC",
+     "length": 800.0,
+     "angle_start": 90.0,
+     "angle_end": 90.0,
+     "quantity": 2,
+     "position": "horizontal bay 2, y=0, horizontal bay 2, y=3000",
+     "formula": "DEMO rule: horizontal cover_cap length = bay axis width = 800",
+     "rule_ids": [
+      "demo:cover_cap_axis_run"
+     ]
+    },
+    {
+     "mark": "CC4",
+     "role": "cover_cap",
+     "profile_id": "prf-cw50-cc",
+     "profile_code": "DEMO-CW50-CC",
+     "description": "Cover cap (horizontal) DEMO-CW50-CC",
+     "length": 700.0,
+     "angle_start": 90.0,
+     "angle_end": 90.0,
+     "quantity": 2,
+     "position": "horizontal bay 3, y=0, horizontal bay 3, y=3000",
+     "formula": "DEMO rule: horizontal cover_cap length = bay axis width = 700",
+     "rule_ids": [
+      "demo:cover_cap_axis_run"
+     ]
+    }
+   ],
+   "glass_items": [
+    {
+     "mark": "G1.1",
+     "field_key": "b0-f0",
+     "fill_type": "glass",
+     "glass_type_id": "gl-sgl-10",
+     "description": "Glass DEMO-GL-S10 - Demo single 10 mm toughened",
+     "width": 1480.0,
+     "height": 1214.5,
+     "area_m2": 1.79746,
+     "quantity": 1,
+     "formula": "W = axis width - glass_deduction_x = 1500 - 20 = 1480; H = axis height - glass_deduction_y = 1234.5 - 20 = 1214.5",
+     "rule_ids": [
+      "rs-cw50-demo:glass_deduction_x",
+      "rs-cw50-demo:glass_deduction_y"
+     ],
+     "panel_type_id": null
+    },
+    {
+     "mark": "G1.2",
+     "field_key": "b0-f1",
+     "fill_type": "glass",
+     "glass_type_id": "gl-sgl-10",
+     "description": "Glass DEMO-GL-S10 - Demo single 10 mm toughened",
+     "width": 1480.0,
+     "height": 1745.5,
+     "area_m2": 2.58334,
+     "quantity": 1,
+     "formula": "W = axis width - glass_deduction_x = 1500 - 20 = 1480; H = axis height - glass_deduction_y = 1765.5 - 20 = 1745.5",
+     "rule_ids": [
+      "rs-cw50-demo:glass_deduction_x",
+      "rs-cw50-demo:glass_deduction_y"
+     ],
+     "panel_type_id": null
+    },
+    {
+     "mark": "G2.1",
+     "field_key": "b1-f0",
+     "fill_type": "glass",
+     "glass_type_id": "gl-sgl-10",
+     "description": "Glass DEMO-GL-S10 - Demo single 10 mm toughened",
+     "width": 780.0,
+     "height": 2980.0,
+     "area_m2": 2.3244,
+     "quantity": 1,
+     "formula": "W = axis width - glass_deduction_x = 800 - 20 = 780; H = axis height - glass_deduction_y = 3000 - 20 = 2980",
+     "rule_ids": [
+      "rs-cw50-demo:glass_deduction_x",
+      "rs-cw50-demo:glass_deduction_y"
+     ],
+     "panel_type_id": null
+    },
+    {
+     "mark": "G3.1",
+     "field_key": "b2-f0",
+     "fill_type": "glass",
+     "glass_type_id": "gl-sgl-10",
+     "description": "Glass DEMO-GL-S10 - Demo single 10 mm toughened",
+     "width": 680.0,
+     "height": 2980.0,
+     "area_m2": 2.0264,
+     "quantity": 1,
+     "formula": "W = axis width - glass_deduction_x = 700 - 20 = 680; H = axis height - glass_deduction_y = 3000 - 20 = 2980",
+     "rule_ids": [
+      "rs-cw50-demo:glass_deduction_x",
+      "rs-cw50-demo:glass_deduction_y"
+     ],
+     "panel_type_id": null
+    }
+   ],
+   "bom": [
+    {
+     "item_type": "profile",
+     "item_id": "prf-cw50-m150",
+     "code": "DEMO-CW50-M150",
+     "description": "Demo mullion 50x150 (bar lower-bound estimate: 2 x 6500 mm; run 1D optimisation for actual)",
+     "unit": "m",
+     "quantity": 12.4,
+     "rule_ids": [
+      "sum(cut length x qty)"
+     ],
+     "demo_data": true
+    },
+    {
+     "item_type": "profile",
+     "item_id": "prf-cw50-t100",
+     "code": "DEMO-CW50-T100",
+     "description": "Demo transom 50x100 (bar lower-bound estimate: 2 x 6500 mm; run 1D optimisation for actual)",
+     "unit": "m",
+     "quantity": 7.136,
+     "rule_ids": [
+      "sum(cut length x qty)"
+     ],
+     "demo_data": true
+    },
+    {
+     "item_type": "profile",
+     "item_id": "prf-cw50-pp",
+     "code": "DEMO-CW50-PP",
+     "description": "Demo pressure plate 50 (bar lower-bound estimate: 3 x 6500 mm; run 1D optimisation for actual)",
+     "unit": "m",
+     "quantity": 19.5,
+     "rule_ids": [
+      "sum(cut length x qty)"
+     ],
+     "demo_data": true
+    },
+    {
+     "item_type": "profile",
+     "item_id": "prf-cw50-cc",
+     "code": "DEMO-CW50-CC",
+     "description": "Demo cover cap 50 (bar lower-bound estimate: 3 x 6500 mm; run 1D optimisation for actual)",
+     "unit": "m",
+     "quantity": 19.5,
+     "rule_ids": [
+      "sum(cut length x qty)"
+     ],
+     "demo_data": true
+    },
+    {
+     "item_type": "glass",
+     "item_id": "gl-sgl-10",
+     "code": "DEMO-GL-S10",
+     "description": "Demo single 10 mm toughened",
+     "unit": "m2",
+     "quantity": 8.7316,
+     "rule_ids": [
+      "sum(glass area x qty)"
+     ],
+     "demo_data": true
+    },
+    {
+     "item_type": "gasket",
+     "item_id": "acc-cw50-gasket",
+     "code": "DEMO-CW50-GSK",
+     "description": "Demo EPDM glazing gasket",
+     "unit": "m",
+     "quantity": 53.36,
+     "rule_ids": [
+      "rs-cw50-demo:gasket_runs_per_field_edge (x fill perimeter)"
+     ],
+     "demo_data": true
+    },
+    {
+     "item_type": "connector",
+     "item_id": "acc-cw50-tconn",
+     "code": "DEMO-CW50-TC",
+     "description": "Demo transom connector",
+     "unit": "pcs",
+     "quantity": 14.0,
+     "rule_ids": [
+      "rs-cw50-demo:connectors_per_transom (x horizontal members incl. sill & head)"
+     ],
+     "demo_data": true
+    },
+    {
+     "item_type": "accessory",
+     "item_id": "acc-cw50-endcap",
+     "code": "DEMO-CW50-EC",
+     "description": "Demo mullion end cap",
+     "unit": "pcs",
+     "quantity": 8.0,
+     "rule_ids": [
+      "rs-cw50-demo:end_caps_per_mullion"
+     ],
+     "demo_data": true
+    },
+    {
+     "item_type": "sealant",
+     "item_id": "acc-sealant-wx",
+     "code": "DEMO-SEAL-WX",
+     "description": "Demo weather sealant (per m run)",
+     "unit": "m",
+     "quantity": 12.0,
+     "rule_ids": [
+      "rs-cw50-demo:sealant_runs_per_perimeter (x framework perimeter)"
+     ],
+     "demo_data": true
+    }
+   ],
+   "issues": [
+    {
+     "code": "PROVISIONAL_DEMO_RULES",
+     "severity": "info",
+     "message": "Calculated with DEMO rule set (not approved). Not for production/fabrication.",
+     "ref": "rule_set:rs-cw50-demo"
+    }
+   ],
+   "validation_status": "PROVISIONAL_DEMO_RULES",
+   "validation": {
+    "passed": true,
+    "validator": "validate_calc/1.0",
+    "errors": [],
+    "checked_items": 29
+   },
+   "totals": {
+    "bars_lower_bound.prf-cw50-m150": 2.0,
+    "bars_lower_bound.prf-cw50-t100": 2.0,
+    "bars_lower_bound.prf-cw50-pp": 3.0,
+    "bars_lower_bound.prf-cw50-cc": 3.0,
+    "glass_area_m2": 8.7316,
+    "panel_area_m2": 0.0,
+    "profile_length_m": 58.536,
+    "field_count": 4.0,
+    "fill_count": 4.0,
+    "mullion_count": 4.0,
+    "transom_count": 1.0,
+    "horizontal_member_count": 7.0,
+    "elevation_area_m2": 9.0,
+    "profile_weight_kg_demo": 74.61780000000002,
+    "glass_weight_kg_demo": 218.29000000000002,
+    "quantity": 1.0
+   }
+  },
+  "issues_no_catalogue": []
+ },
+ {
+  "name": "invalid_narrow",
+  "elevation": {
+   "id": null,
+   "name": "Elevation",
+   "units": "mm",
+   "width": 3000.0,
+   "height": 3000.0,
+   "mullions": [
+    0.0,
+    1500.0,
+    1600.0,
+    3000.0
+   ],
+   "bays": [
+    {
+     "transoms": [],
+     "transom_profile_id": null
+    },
+    {
+     "transoms": [],
+     "transom_profile_id": null
+    },
+    {
+     "transoms": [],
+     "transom_profile_id": null
+    }
+   ],
+   "fills": {},
+   "top_shape": {
+    "type": "flat"
+   },
+   "system_id": "ser-cw50",
+   "mullion_profile_id": null,
+   "transom_profile_id": null,
+   "colour_id": null,
+   "default_glass_type_id": "gl-dgu-24",
+   "anchor_levels": [],
+   "quantity": 1
+  },
+  "result": {
+   "units": "mm",
+   "engine_version": "calc/0.1.0-demo",
+   "catalogue_version": "DEMO-2026.10-r1",
+   "rule_set_id": "rs-cw50-demo",
+   "rule_set_version": "0.1-demo",
+   "rule_set_approved": false,
+   "inputs_hash": "dba72bd03ad19780ad3fd73fa51eafa3f2147c6d71747fafbfc0bf6c52d0ee4b",
+   "elevation": {
+    "id": null,
+    "name": "Elevation",
+    "units": "mm",
+    "width": 3000.0,
+    "height": 3000.0,
+    "mullions": [
+     0.0,
+     1500.0,
+     1600.0,
+     3000.0
+    ],
+    "bays": [
+     {
+      "transoms": [],
+      "transom_profile_id": null
+     },
+     {
+      "transoms": [],
+      "transom_profile_id": null
+     },
+     {
+      "transoms": [],
+      "transom_profile_id": null
+     }
+    ],
+    "fills": {},
+    "top_shape": {
+     "type": "flat"
+    },
+    "system_id": "ser-cw50",
+    "mullion_profile_id": null,
+    "transom_profile_id": null,
+    "colour_id": null,
+    "default_glass_type_id": "gl-dgu-24",
+    "anchor_levels": [],
+    "quantity": 1
+   },
+   "profile_cuts": [],
+   "glass_items": [],
+   "bom": [],
+   "issues": [
+    {
+     "code": "FIELD_TOO_NARROW",
+     "severity": "error",
+     "message": "Field width 100.0 < min 300.0",
+     "ref": "bay:1/field:0"
+    }
+   ],
+   "validation_status": "INVALID",
+   "validation": {
+    "passed": true,
+    "validator": "validate_calc/1.0",
+    "errors": [],
+    "checked_items": 0
+   },
+   "totals": {}
+  },
+  "issues_no_catalogue": []
+ },
+ {
+  "name": "arch_unsupported",
+  "elevation": {
+   "id": null,
+   "name": "Elevation",
+   "units": "mm",
+   "width": 3000.0,
+   "height": 3000.0,
+   "mullions": [
+    0.0,
+    1000.0,
+    2000.0,
+    3000.0
+   ],
+   "bays": [
+    {
+     "transoms": [
+      1500.0
+     ],
+     "transom_profile_id": null
+    },
+    {
+     "transoms": [
+      1500.0
+     ],
+     "transom_profile_id": null
+    },
+    {
+     "transoms": [
+      1500.0
+     ],
+     "transom_profile_id": null
+    }
+   ],
+   "fills": {},
+   "top_shape": {
+    "type": "arch",
+    "rise": 600.0
+   },
+   "system_id": "ser-cw50",
+   "mullion_profile_id": null,
+   "transom_profile_id": null,
+   "colour_id": null,
+   "default_glass_type_id": "gl-dgu-24",
+   "anchor_levels": [],
+   "quantity": 1
+  },
+  "result": {
+   "units": "mm",
+   "engine_version": "calc/0.1.0-demo",
+   "catalogue_version": "DEMO-2026.10-r1",
+   "rule_set_id": "rs-cw50-demo",
+   "rule_set_version": "0.1-demo",
+   "rule_set_approved": false,
+   "inputs_hash": "c09234f1bc4c97aadff50b5972763246d9cf209e19f000970d68da16ec92545f",
+   "elevation": {
+    "id": null,
+    "name": "Elevation",
+    "units": "mm",
+    "width": 3000.0,
+    "height": 3000.0,
+    "mullions": [
+     0.0,
+     1000.0,
+     2000.0,
+     3000.0
+    ],
+    "bays": [
+     {
+      "transoms": [
+       1500.0
+      ],
+      "transom_profile_id": null
+     },
+     {
+      "transoms": [
+       1500.0
+      ],
+      "transom_profile_id": null
+     },
+     {
+      "transoms": [
+       1500.0
+      ],
+      "transom_profile_id": null
+     }
+    ],
+    "fills": {},
+    "top_shape": {
+     "type": "arch",
+     "rise": 600.0
+    },
+    "system_id": "ser-cw50",
+    "mullion_profile_id": null,
+    "transom_profile_id": null,
+    "colour_id": null,
+    "default_glass_type_id": "gl-dgu-24",
+    "anchor_levels": [],
+    "quantity": 1
+   },
+   "profile_cuts": [],
+   "glass_items": [],
+   "bom": [],
+   "issues": [
+    {
+     "code": "ARCH_CALC_UNSUPPORTED",
+     "severity": "error",
+     "message": "Arched heads are geometry/display only in v1; member and glass calculation is not supported",
+     "ref": "top_shape"
+    }
+   ],
+   "validation_status": "INVALID",
+   "validation": {
+    "passed": true,
+    "validator": "validate_calc/1.0",
+    "errors": [],
+    "checked_items": 0
+   },
+   "totals": {}
+  },
+  "issues_no_catalogue": [
+   {
+    "code": "ARCH_CALC_UNSUPPORTED",
+    "severity": "error",
+    "message": "Arched heads are geometry/display only in v1; member and glass calculation is not supported",
+    "ref": "top_shape"
+   }
+  ]
+ },
+ {
+  "name": "thick_glass_incompatible",
+  "elevation": {
+   "id": null,
+   "name": "Elevation",
+   "units": "mm",
+   "width": 3000.0,
+   "height": 3000.0,
+   "mullions": [
+    0.0,
+    1500.0,
+    3000.0
+   ],
+   "bays": [
+    {
+     "transoms": [
+      1500.0
+     ],
+     "transom_profile_id": null
+    },
+    {
+     "transoms": [
+      1500.0
+     ],
+     "transom_profile_id": null
+    }
+   ],
+   "fills": {},
+   "top_shape": {
+    "type": "flat"
+   },
+   "system_id": "ser-cw50",
+   "mullion_profile_id": null,
+   "transom_profile_id": null,
+   "colour_id": null,
+   "default_glass_type_id": "gl-acoustic-demo",
+   "anchor_levels": [],
+   "quantity": 1
+  },
+  "result": {
+   "units": "mm",
+   "engine_version": "calc/0.1.0-demo",
+   "catalogue_version": "DEMO-2026.10-r1",
+   "rule_set_id": "rs-cw50-demo",
+   "rule_set_version": "0.1-demo",
+   "rule_set_approved": false,
+   "inputs_hash": "75b58a52913f091fc37587edc2886fc2911749e5dc644bce1f23cab87b75de0f",
+   "elevation": {
+    "id": null,
+    "name": "Elevation",
+    "units": "mm",
+    "width": 3000.0,
+    "height": 3000.0,
+    "mullions": [
+     0.0,
+     1500.0,
+     3000.0
+    ],
+    "bays": [
+     {
+      "transoms": [
+       1500.0
+      ],
+      "transom_profile_id": null
+     },
+     {
+      "transoms": [
+       1500.0
+      ],
+      "transom_profile_id": null
+     }
+    ],
+    "fills": {},
+    "top_shape": {
+     "type": "flat"
+    },
+    "system_id": "ser-cw50",
+    "mullion_profile_id": null,
+    "transom_profile_id": null,
+    "colour_id": null,
+    "default_glass_type_id": "gl-acoustic-demo",
+    "anchor_levels": [],
+    "quantity": 1
+   },
+   "profile_cuts": [],
+   "glass_items": [],
+   "bom": [],
+   "issues": [
+    {
+     "code": "GLASS_THICKNESS_INCOMPATIBLE",
+     "severity": "error",
+     "message": "Fill 'gl-acoustic-demo' thickness 33.52 mm outside 6-32 mm (series:ser-cw50)",
+     "ref": "bay:0/field:0"
+    },
+    {
+     "code": "GLASS_THICKNESS_INCOMPATIBLE",
+     "severity": "error",
+     "message": "Fill 'gl-acoustic-demo' thickness 33.52 mm outside 6-32 mm (series:ser-cw50)",
+     "ref": "bay:0/field:1"
+    },
+    {
+     "code": "GLASS_THICKNESS_INCOMPATIBLE",
+     "severity": "error",
+     "message": "Fill 'gl-acoustic-demo' thickness 33.52 mm outside 6-32 mm (series:ser-cw50)",
+     "ref": "bay:1/field:0"
+    },
+    {
+     "code": "GLASS_THICKNESS_INCOMPATIBLE",
+     "severity": "error",
+     "message": "Fill 'gl-acoustic-demo' thickness 33.52 mm outside 6-32 mm (series:ser-cw50)",
+     "ref": "bay:1/field:1"
+    }
+   ],
+   "validation_status": "INVALID",
+   "validation": {
+    "passed": true,
+    "validator": "validate_calc/1.0",
+    "errors": [],
+    "checked_items": 0
+   },
+   "totals": {}
+  },
+  "issues_no_catalogue": []
+ },
+ {
+  "name": "no_system",
+  "elevation": {
+   "id": null,
+   "name": "Elevation",
+   "units": "mm",
+   "width": 5000.0,
+   "height": 3000.0,
+   "mullions": [
+    0.0,
+    2500.0,
+    5000.0
+   ],
+   "bays": [
+    {
+     "transoms": [],
+     "transom_profile_id": null
+    },
+    {
+     "transoms": [],
+     "transom_profile_id": null
+    }
+   ],
+   "fills": {},
+   "top_shape": {
+    "type": "flat"
+   },
+   "system_id": null,
+   "mullion_profile_id": null,
+   "transom_profile_id": null,
+   "colour_id": null,
+   "default_glass_type_id": null,
+   "anchor_levels": [],
+   "quantity": 1
+  },
+  "result": {
+   "units": "mm",
+   "engine_version": "calc/0.1.0-demo",
+   "catalogue_version": "DEMO-2026.10-r1",
+   "rule_set_id": "UNKNOWN",
+   "rule_set_version": "UNKNOWN",
+   "rule_set_approved": false,
+   "inputs_hash": "ad216906ba6973b7e465c51d617b5b2aff878302538a6a3b5f44979e3a05eb40",
+   "elevation": {
+    "id": null,
+    "name": "Elevation",
+    "units": "mm",
+    "width": 5000.0,
+    "height": 3000.0,
+    "mullions": [
+     0.0,
+     2500.0,
+     5000.0
+    ],
+    "bays": [
+     {
+      "transoms": [],
+      "transom_profile_id": null
+     },
+     {
+      "transoms": [],
+      "transom_profile_id": null
+     }
+    ],
+    "fills": {},
+    "top_shape": {
+     "type": "flat"
+    },
+    "system_id": null,
+    "mullion_profile_id": null,
+    "transom_profile_id": null,
+    "colour_id": null,
+    "default_glass_type_id": null,
+    "anchor_levels": [],
+    "quantity": 1
+   },
+   "profile_cuts": [],
+   "glass_items": [],
+   "bom": [],
+   "issues": [
+    {
+     "code": "SYSTEM_NOT_SET",
+     "severity": "error",
+     "message": "No system (series) selected",
+     "ref": "system_id"
+    },
+    {
+     "code": "GLASS_TYPE_UNSPECIFIED",
+     "severity": "warning",
+     "message": "No glass type selected for this field",
+     "ref": "bay:0/field:0"
+    },
+    {
+     "code": "GLASS_TYPE_UNSPECIFIED",
+     "severity": "warning",
+     "message": "No glass type selected for this field",
+     "ref": "bay:1/field:0"
+    }
+   ],
+   "validation_status": "INVALID",
+   "validation": {
+    "passed": true,
+    "validator": "validate_calc/1.0",
+    "errors": [],
+    "checked_items": 0
+   },
+   "totals": {}
+  },
+  "issues_no_catalogue": []
+ }
+]

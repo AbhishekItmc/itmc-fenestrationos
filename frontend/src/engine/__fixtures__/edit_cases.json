@@ -1,0 +1,309 @@
+{
+ "base": {
+  "id": null,
+  "name": "Elevation",
+  "units": "mm",
+  "width": 4000.0,
+  "height": 3000.0,
+  "mullions": [
+   0.0,
+   2000.0,
+   4000.0
+  ],
+  "bays": [
+   {
+    "transoms": [
+     1500.0
+    ],
+    "transom_profile_id": null
+   },
+   {
+    "transoms": [
+     1500.0
+    ],
+    "transom_profile_id": null
+   }
+  ],
+  "fills": {
+   "b0-f0": {
+    "type": "spandrel",
+    "glass_type_id": null,
+    "panel_type_id": null,
+    "note": null
+   },
+   "b1-f1": {
+    "type": "panel",
+    "glass_type_id": null,
+    "panel_type_id": "pnl-acp-4",
+    "note": null
+   }
+  },
+  "top_shape": {
+   "type": "flat"
+  },
+  "system_id": "ser-cw50",
+  "mullion_profile_id": null,
+  "transom_profile_id": null,
+  "colour_id": null,
+  "default_glass_type_id": null,
+  "anchor_levels": [],
+  "quantity": 1
+ },
+ "add_mullion_1000": {
+  "id": null,
+  "name": "Elevation",
+  "units": "mm",
+  "width": 4000.0,
+  "height": 3000.0,
+  "mullions": [
+   0.0,
+   1000.0,
+   2000.0,
+   4000.0
+  ],
+  "bays": [
+   {
+    "transoms": [
+     1500.0
+    ],
+    "transom_profile_id": null
+   },
+   {
+    "transoms": [
+     1500.0
+    ],
+    "transom_profile_id": null
+   },
+   {
+    "transoms": [
+     1500.0
+    ],
+    "transom_profile_id": null
+   }
+  ],
+  "fills": {
+   "b0-f0": {
+    "type": "spandrel",
+    "glass_type_id": null,
+    "panel_type_id": null,
+    "note": null
+   },
+   "b1-f0": {
+    "type": "spandrel",
+    "glass_type_id": null,
+    "panel_type_id": null,
+    "note": null
+   },
+   "b2-f1": {
+    "type": "panel",
+    "glass_type_id": null,
+    "panel_type_id": "pnl-acp-4",
+    "note": null
+   }
+  },
+  "top_shape": {
+   "type": "flat"
+  },
+  "system_id": "ser-cw50",
+  "mullion_profile_id": null,
+  "transom_profile_id": null,
+  "colour_id": null,
+  "default_glass_type_id": null,
+  "anchor_levels": [],
+  "quantity": 1
+ },
+ "remove_mullion_1": {
+  "id": null,
+  "name": "Elevation",
+  "units": "mm",
+  "width": 4000.0,
+  "height": 3000.0,
+  "mullions": [
+   0.0,
+   4000.0
+  ],
+  "bays": [
+   {
+    "transoms": [
+     1500.0
+    ],
+    "transom_profile_id": null
+   }
+  ],
+  "fills": {
+   "b0-f0": {
+    "type": "spandrel",
+    "glass_type_id": null,
+    "panel_type_id": null,
+    "note": null
+   }
+  },
+  "top_shape": {
+   "type": "flat"
+  },
+  "system_id": "ser-cw50",
+  "mullion_profile_id": null,
+  "transom_profile_id": null,
+  "colour_id": null,
+  "default_glass_type_id": null,
+  "anchor_levels": [],
+  "quantity": 1
+ },
+ "add_transom_b1_700": {
+  "id": null,
+  "name": "Elevation",
+  "units": "mm",
+  "width": 4000.0,
+  "height": 3000.0,
+  "mullions": [
+   0.0,
+   2000.0,
+   4000.0
+  ],
+  "bays": [
+   {
+    "transoms": [
+     1500.0
+    ],
+    "transom_profile_id": null
+   },
+   {
+    "transoms": [
+     700.0,
+     1500.0
+    ],
+    "transom_profile_id": null
+   }
+  ],
+  "fills": {
+   "b0-f0": {
+    "type": "spandrel",
+    "glass_type_id": null,
+    "panel_type_id": null,
+    "note": null
+   },
+   "b1-f2": {
+    "type": "panel",
+    "glass_type_id": null,
+    "panel_type_id": "pnl-acp-4",
+    "note": null
+   }
+  },
+  "top_shape": {
+   "type": "flat"
+  },
+  "system_id": "ser-cw50",
+  "mullion_profile_id": null,
+  "transom_profile_id": null,
+  "colour_id": null,
+  "default_glass_type_id": null,
+  "anchor_levels": [],
+  "quantity": 1
+ },
+ "remove_transom_b0_0": {
+  "id": null,
+  "name": "Elevation",
+  "units": "mm",
+  "width": 4000.0,
+  "height": 3000.0,
+  "mullions": [
+   0.0,
+   2000.0,
+   4000.0
+  ],
+  "bays": [
+   {
+    "transoms": [],
+    "transom_profile_id": null
+   },
+   {
+    "transoms": [
+     1500.0
+    ],
+    "transom_profile_id": null
+   }
+  ],
+  "fills": {
+   "b0-f0": {
+    "type": "spandrel",
+    "glass_type_id": null,
+    "panel_type_id": null,
+    "note": null
+   },
+   "b1-f1": {
+    "type": "panel",
+    "glass_type_id": null,
+    "panel_type_id": "pnl-acp-4",
+    "note": null
+   }
+  },
+  "top_shape": {
+   "type": "flat"
+  },
+  "system_id": "ser-cw50",
+  "mullion_profile_id": null,
+  "transom_profile_id": null,
+  "colour_id": null,
+  "default_glass_type_id": null,
+  "anchor_levels": [],
+  "quantity": 1
+ },
+ "add_transom_all_2200": {
+  "id": null,
+  "name": "Elevation",
+  "units": "mm",
+  "width": 4000.0,
+  "height": 3000.0,
+  "mullions": [
+   0.0,
+   2000.0,
+   4000.0
+  ],
+  "bays": [
+   {
+    "transoms": [
+     1500.0,
+     2200.0
+    ],
+    "transom_profile_id": null
+   },
+   {
+    "transoms": [
+     1500.0,
+     2200.0
+    ],
+    "transom_profile_id": null
+   }
+  ],
+  "fills": {
+   "b0-f0": {
+    "type": "spandrel",
+    "glass_type_id": null,
+    "panel_type_id": null,
+    "note": null
+   },
+   "b1-f1": {
+    "type": "panel",
+    "glass_type_id": null,
+    "panel_type_id": "pnl-acp-4",
+    "note": null
+   },
+   "b1-f2": {
+    "type": "panel",
+    "glass_type_id": null,
+    "panel_type_id": "pnl-acp-4",
+    "note": null
+   }
+  },
+  "top_shape": {
+   "type": "flat"
+  },
+  "system_id": "ser-cw50",
+  "mullion_profile_id": null,
+  "transom_profile_id": null,
+  "colour_id": null,
+  "default_glass_type_id": null,
+  "anchor_levels": [],
+  "quantity": 1
+ }
+}

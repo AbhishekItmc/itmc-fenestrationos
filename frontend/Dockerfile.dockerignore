@@ -1,0 +1,10 @@
+# Dockerfile-specific ignore (BuildKit) for frontend/Dockerfile, whose context is the repo root.
+**/node_modules
+frontend/dist
+frontend/test-results
+e2e
+backend/.venv
+backend/**/__pycache__
+backend/.pytest_cache
+.git
+docs/screenshots

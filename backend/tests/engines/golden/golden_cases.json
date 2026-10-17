@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "notice": "Expert cases require APPROVED values from a domain expert. Arithmetic cases are arithmetic consistency, not engineering validation.",
+  "expert_cases": [
+    {
+      "id": "EXP-001",
+      "status": "AWAITING_EXPERT_VALUES",
+      "description": "Single-bay stick curtain wall on an approved system - reference cut list from approved fabrication drawings",
+      "approved_by": null,
+      "source": null,
+      "rule_set_id": null,
+      "elevation": null,
+      "expected": {
+        "mullion_cut_length": null,
+        "sill_cut_length": null,
+        "head_cut_length": null,
+        "transom_cut_length": null,
+        "glass_width": null,
+        "glass_height": null,
+        "gasket_length_m": null,
+        "transom_connectors": null,
+        "brackets": null
+      }
+    },
+    {
+      "id": "EXP-002",
+      "status": "AWAITING_EXPERT_VALUES",
+      "description": "Multi-bay elevation with spandrel and splice - reference BOM",
+      "approved_by": null,
+      "source": null,
+      "rule_set_id": null,
+      "elevation": null,
+      "expected": {
+        "profile_length_m": null,
+        "glass_area_m2": null,
+        "splice_count": null
+      }
+    },
+    {
+      "id": "EXP-1D-001",
+      "status": "AWAITING_EXPERT_VALUES",
+      "description": "Workshop 1D cutting reference (saw kerf, squaring trim and clamp zone confirmed by fabricator)",
+      "approved_by": null,
+      "source": null,
+      "request": null,
+      "expected": {"bars_used": null, "total_waste_length": null}
+    }
+  ],
+  "arithmetic_consistency_cases": [
+    {
+      "id": "ARITH-CALC-001",
+      "label": "arithmetic consistency, not engineering validation",
+      "description": "1 bay x 1 field, 1000 x 2000 mm, DEMO CW-50, rule set rs-cw50-demo (ext_top 50, ext_bottom 50, transom_clearance 1, mullion face 50, glass_deduction 20/20, gasket runs 2, connectors 2, brackets 1), anchors at 0 and 2000",
+      "rule_set_id": "rs-cw50-demo",
+      "grid": {"width": 1000, "height": 2000, "n_bays": 1, "n_rows": 1, "system_id": "ser-cw50",
+               "default_glass_type_id": "gl-dgu-24", "anchor_levels": [0, 2000]},
+      "expected": {
+        "mullion_cut_length": 2100,
+        "mullion_quantity": 2,
+        "sill_cut_length": 948,
+        "head_cut_length": 948,
+        "glass_width": 980,
+        "glass_height": 1980,
+        "glass_area_m2": 1.9404,
+        "gasket_length_m": 11.84,
+        "transom_connectors": 4,
+        "brackets": 4
+      }
+    },
+    {
+      "id": "ARITH-CALC-002",
+      "label": "arithmetic consistency, not engineering validation",
+      "description": "3 bays x 2 rows, 3000 x 3600 mm, DEMO CW-65 (face 65, glass_deduction 35)",
+      "rule_set_id": "rs-cw65-demo",
+      "grid": {"width": 3000, "height": 3600, "n_bays": 3, "n_rows": 2, "system_id": "ser-cw65",
+               "default_glass_type_id": "gl-dgu-28", "anchor_levels": [0]},
+      "expected": {
+        "mullion_cut_length": 3700,
+        "mullion_quantity": 4,
+        "transom_cut_length": 933,
+        "transom_quantity": 3,
+        "glass_width": 965,
+        "glass_height": 1765,
+        "glass_area_m2": 10.21935,
+        "transom_connectors": 18,
+        "brackets": 4
+      }
+    },
+    {
+      "id": "ARITH-1D-001",
+      "label": "arithmetic consistency, not engineering validation",
+      "description": "3 x 2000 into 6000 mm, kerf 4, trims 0: sum(p+kerf)=6012 > 6000 -> 2 bars (lower bound 2)",
+      "request": {"kerf": 4, "trim_start": 0, "trim_end": 0, "stocks": [{"id": "S", "length": 6000}],
+                  "pieces": [{"id": "A", "length": 2000, "quantity": 3}]},
+      "expected": {"bars_used": 2, "total_kerf_loss": 12, "total_piece_length": 6000}
+    }
+  ]
+}

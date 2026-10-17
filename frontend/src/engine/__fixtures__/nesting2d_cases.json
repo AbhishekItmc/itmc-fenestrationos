@@ -1,0 +1,2687 @@
+[
+ {
+  "name": "glass_igu",
+  "request": {
+   "units": "mm",
+   "kerf": 3.0,
+   "edge_trim": {
+    "left": 10.0,
+    "right": 10.0,
+    "top": 10.0,
+    "bottom": 10.0
+   },
+   "sheets": [
+    {
+     "id": "JUMBO",
+     "label": null,
+     "width": 6000.0,
+     "height": 3210.0,
+     "quantity": null,
+     "material": null,
+     "thickness": null,
+     "is_residual": false,
+     "cost_per_sheet": null
+    }
+   ],
+   "pieces": [
+    {
+     "id": "G1",
+     "label": null,
+     "width": 1480.0,
+     "height": 1780.0,
+     "quantity": 6,
+     "material": null,
+     "thickness": null,
+     "can_rotate": true
+    },
+    {
+     "id": "G2",
+     "label": null,
+     "width": 980.0,
+     "height": 1180.0,
+     "quantity": 8,
+     "material": null,
+     "thickness": null,
+     "can_rotate": true
+    },
+    {
+     "id": "G3",
+     "label": null,
+     "width": 1480.0,
+     "height": 580.0,
+     "quantity": 5,
+     "material": null,
+     "thickness": null,
+     "can_rotate": false
+    }
+   ],
+   "guillotine": true,
+   "min_residual_width": 300.0,
+   "min_residual_height": 300.0,
+   "prefer_residuals": true,
+   "time_limit_s": 10.0
+  },
+  "result": {
+   "units": "mm",
+   "engine_version": "nesting2d/0.1.0",
+   "method": "guillotine-BAF-slas / sort:max-side",
+   "status": "OPTIMAL",
+   "validation_status": "OPTIMAL_PROVEN",
+   "layouts": [
+    {
+     "layout_id": "L1",
+     "sheet_id": "JUMBO",
+     "sheet_label": null,
+     "width": 6000.0,
+     "height": 3210.0,
+     "is_residual_sheet": false,
+     "count": 1,
+     "placements": [
+      {
+       "piece_id": "G1",
+       "label": null,
+       "x": 10.0,
+       "y": 10.0,
+       "width": 1480.0,
+       "height": 1780.0,
+       "rotated": false
+      },
+      {
+       "piece_id": "G1",
+       "label": null,
+       "x": 1493.0,
+       "y": 10.0,
+       "width": 1480.0,
+       "height": 1780.0,
+       "rotated": false
+      },
+      {
+       "piece_id": "G1",
+       "label": null,
+       "x": 2976.0,
+       "y": 10.0,
+       "width": 1480.0,
+       "height": 1780.0,
+       "rotated": false
+      },
+      {
+       "piece_id": "G1",
+       "label": null,
+       "x": 4459.0,
+       "y": 10.0,
+       "width": 1480.0,
+       "height": 1780.0,
+       "rotated": false
+      },
+      {
+       "piece_id": "G3",
+       "label": null,
+       "x": 10.0,
+       "y": 1793.0,
+       "width": 1480.0,
+       "height": 580.0,
+       "rotated": false
+      },
+      {
+       "piece_id": "G3",
+       "label": null,
+       "x": 1493.0,
+       "y": 1793.0,
+       "width": 1480.0,
+       "height": 580.0,
+       "rotated": false
+      },
+      {
+       "piece_id": "G3",
+       "label": null,
+       "x": 2976.0,
+       "y": 1793.0,
+       "width": 1480.0,
+       "height": 580.0,
+       "rotated": false
+      },
+      {
+       "piece_id": "G2",
+       "label": null,
+       "x": 4459.0,
+       "y": 1793.0,
+       "width": 980.0,
+       "height": 1180.0,
+       "rotated": false
+      },
+      {
+       "piece_id": "G3",
+       "label": null,
+       "x": 10.0,
+       "y": 2376.0,
+       "width": 1480.0,
+       "height": 580.0,
+       "rotated": false
+      },
+      {
+       "piece_id": "G3",
+       "label": null,
+       "x": 1493.0,
+       "y": 2376.0,
+       "width": 1480.0,
+       "height": 580.0,
+       "rotated": false
+      }
+     ],
+     "residuals": [
+      {
+       "x": 2976.0,
+       "y": 2376.0,
+       "width": 1483.0,
+       "height": 824.0,
+       "reusable": true
+      },
+      {
+       "x": 5442.0,
+       "y": 1793.0,
+       "width": 548.0,
+       "height": 1407.0,
+       "reusable": true
+      },
+      {
+       "x": 10.0,
+       "y": 2959.0,
+       "width": 2966.0,
+       "height": 241.0,
+       "reusable": false
+      },
+      {
+       "x": 4459.0,
+       "y": 2976.0,
+       "width": 983.0,
+       "height": 224.0,
+       "reusable": false
+      },
+      {
+       "x": 5942.0,
+       "y": 10.0,
+       "width": 48.0,
+       "height": 1783.0,
+       "reusable": false
+      }
+     ],
+     "used_area": 15986000.0,
+     "utilization": 0.8300103842159917
+    },
+    {
+     "layout_id": "L2",
+     "sheet_id": "JUMBO",
+     "sheet_label": null,
+     "width": 6000.0,
+     "height": 3210.0,
+     "is_residual_sheet": false,
+     "count": 1,
+     "placements": [
+      {
+       "piece_id": "G1",
+       "label": null,
+       "x": 10.0,
+       "y": 10.0,
+       "width": 1480.0,
+       "height": 1780.0,
+       "rotated": false
+      },
+      {
+       "piece_id": "G1",
+       "label": null,
+       "x": 1493.0,
+       "y": 10.0,
+       "width": 1480.0,
+       "height": 1780.0,
+       "rotated": false
+      },
+      {
+       "piece_id": "G2",
+       "label": null,
+       "x": 2976.0,
+       "y": 10.0,
+       "width": 980.0,
+       "height": 1180.0,
+       "rotated": false
+      },
+      {
+       "piece_id": "G2",
+       "label": null,
+       "x": 3959.0,
+       "y": 10.0,
+       "width": 980.0,
+       "height": 1180.0,
+       "rotated": false
+      },
+      {
+       "piece_id": "G2",
+       "label": null,
+       "x": 4942.0,
+       "y": 10.0,
+       "width": 980.0,
+       "height": 1180.0,
+       "rotated": false
+      },
+      {
+       "piece_id": "G2",
+       "label": null,
+       "x": 2976.0,
+       "y": 1193.0,
+       "width": 980.0,
+       "height": 1180.0,
+       "rotated": false
+      },
+      {
+       "piece_id": "G2",
+       "label": null,
+       "x": 3959.0,
+       "y": 1193.0,
+       "width": 980.0,
+       "height": 1180.0,
+       "rotated": false
+      },
+      {
+       "piece_id": "G2",
+       "label": null,
+       "x": 10.0,
+       "y": 1793.0,
+       "width": 980.0,
+       "height": 1180.0,
+       "rotated": false
+      },
+      {
+       "piece_id": "G2",
+       "label": null,
+       "x": 1493.0,
+       "y": 1793.0,
+       "width": 980.0,
+       "height": 1180.0,
+       "rotated": false
+      }
+     ],
+     "residuals": [
+      {
+       "x": 4942.0,
+       "y": 1193.0,
+       "width": 1048.0,
+       "height": 2007.0,
+       "reusable": true
+      },
+      {
+       "x": 2976.0,
+       "y": 2376.0,
+       "width": 1966.0,
+       "height": 824.0,
+       "reusable": true
+      },
+      {
+       "x": 993.0,
+       "y": 1793.0,
+       "width": 500.0,
+       "height": 1407.0,
+       "reusable": true
+      },
+      {
+       "x": 2476.0,
+       "y": 1793.0,
+       "width": 500.0,
+       "height": 1407.0,
+       "reusable": true
+      },
+      {
+       "x": 10.0,
+       "y": 2976.0,
+       "width": 983.0,
+       "height": 224.0,
+       "reusable": false
+      },
+      {
+       "x": 1493.0,
+       "y": 2976.0,
+       "width": 983.0,
+       "height": 224.0,
+       "reusable": false
+      },
+      {
+       "x": 5925.0,
+       "y": 10.0,
+       "width": 65.0,
+       "height": 1183.0,
+       "reusable": false
+      }
+     ],
+     "used_area": 13363600.0,
+     "utilization": 0.693852544132918
+    }
+   ],
+   "unplaced": [],
+   "summary": {
+    "sheets_used": 2,
+    "total_sheet_area_m2": 38.52,
+    "total_piece_area_m2": 29.3496,
+    "waste_area_m2": 2.047052,
+    "reusable_residual_area_m2": 7.123348,
+    "utilization": 0.7619314641744548,
+    "total_cost": null
+   },
+   "lower_bound_sheets": 2,
+   "validation": {
+    "passed": true,
+    "validator": "validate_2d/1.0",
+    "errors": [],
+    "checked_items": 24
+   },
+   "issues": [],
+   "request": {
+    "units": "mm",
+    "kerf": 3.0,
+    "edge_trim": {
+     "left": 10.0,
+     "right": 10.0,
+     "top": 10.0,
+     "bottom": 10.0
+    },
+    "sheets": [
+     {
+      "id": "JUMBO",
+      "label": null,
+      "width": 6000.0,
+      "height": 3210.0,
+      "quantity": null,
+      "material": null,
+      "thickness": null,
+      "is_residual": false,
+      "cost_per_sheet": null
+     }
+    ],
+    "pieces": [
+     {
+      "id": "G1",
+      "label": null,
+      "width": 1480.0,
+      "height": 1780.0,
+      "quantity": 6,
+      "material": null,
+      "thickness": null,
+      "can_rotate": true
+     },
+     {
+      "id": "G2",
+      "label": null,
+      "width": 980.0,
+      "height": 1180.0,
+      "quantity": 8,
+      "material": null,
+      "thickness": null,
+      "can_rotate": true
+     },
+     {
+      "id": "G3",
+      "label": null,
+      "width": 1480.0,
+      "height": 580.0,
+      "quantity": 5,
+      "material": null,
+      "thickness": null,
+      "can_rotate": false
+     }
+    ],
+    "guillotine": true,
+    "min_residual_width": 300.0,
+    "min_residual_height": 300.0,
+    "prefer_residuals": true,
+    "time_limit_s": 10.0
+   },
+   "runtime_ms": 1.9151719998262706
+  }
+ },
+ {
+  "name": "acp_nonguillotine",
+  "request": {
+   "units": "mm",
+   "kerf": 4.0,
+   "edge_trim": {
+    "left": 0.0,
+    "right": 0.0,
+    "top": 0.0,
+    "bottom": 0.0
+   },
+   "sheets": [
+    {
+     "id": "ACP",
+     "label": null,
+     "width": 3050.0,
+     "height": 1250.0,
+     "quantity": 10,
+     "material": "ACP",
+     "thickness": null,
+     "is_residual": false,
+     "cost_per_sheet": null
+    },
+    {
+     "id": "R1",
+     "label": null,
+     "width": 1500.0,
+     "height": 1000.0,
+     "quantity": 1,
+     "material": "acp",
+     "thickness": null,
+     "is_residual": true,
+     "cost_per_sheet": null
+    }
+   ],
+   "pieces": [
+    {
+     "id": "A",
+     "label": null,
+     "width": 900.0,
+     "height": 600.0,
+     "quantity": 9,
+     "material": "ACP",
+     "thickness": null,
+     "can_rotate": true
+    },
+    {
+     "id": "B",
+     "label": null,
+     "width": 1200.0,
+     "height": 400.0,
+     "quantity": 4,
+     "material": "ACP",
+     "thickness": null,
+     "can_rotate": true
+    }
+   ],
+   "guillotine": false,
+   "min_residual_width": 300.0,
+   "min_residual_height": 300.0,
+   "prefer_residuals": true,
+   "time_limit_s": 10.0
+  },
+  "result": {
+   "units": "mm",
+   "engine_version": "nesting2d/0.1.0",
+   "method": "guillotine-BAF-slas / sort:area",
+   "status": "FEASIBLE",
+   "validation_status": "FEASIBLE_HEURISTIC",
+   "layouts": [
+    {
+     "layout_id": "L1",
+     "sheet_id": "R1",
+     "sheet_label": null,
+     "width": 1500.0,
+     "height": 1000.0,
+     "is_residual_sheet": true,
+     "count": 1,
+     "placements": [
+      {
+       "piece_id": "A",
+       "label": null,
+       "x": 0.0,
+       "y": 0.0,
+       "width": 900.0,
+       "height": 600.0,
+       "rotated": false
+      }
+     ],
+     "residuals": [
+      {
+       "x": 904.0,
+       "y": 0.0,
+       "width": 596.0,
+       "height": 1000.0,
+       "reusable": true
+      },
+      {
+       "x": 0.0,
+       "y": 604.0,
+       "width": 904.0,
+       "height": 396.0,
+       "reusable": true
+      }
+     ],
+     "used_area": 540000.0,
+     "utilization": 0.36
+    },
+    {
+     "layout_id": "L2",
+     "sheet_id": "ACP",
+     "sheet_label": null,
+     "width": 3050.0,
+     "height": 1250.0,
+     "is_residual_sheet": false,
+     "count": 1,
+     "placements": [
+      {
+       "piece_id": "A",
+       "label": null,
+       "x": 0.0,
+       "y": 0.0,
+       "width": 900.0,
+       "height": 600.0,
+       "rotated": false
+      },
+      {
+       "piece_id": "A",
+       "label": null,
+       "x": 904.0,
+       "y": 0.0,
+       "width": 900.0,
+       "height": 600.0,
+       "rotated": false
+      },
+      {
+       "piece_id": "A",
+       "label": null,
+       "x": 1808.0,
+       "y": 0.0,
+       "width": 900.0,
+       "height": 600.0,
+       "rotated": false
+      },
+      {
+       "piece_id": "A",
+       "label": null,
+       "x": 0.0,
+       "y": 604.0,
+       "width": 900.0,
+       "height": 600.0,
+       "rotated": false
+      },
+      {
+       "piece_id": "A",
+       "label": null,
+       "x": 904.0,
+       "y": 604.0,
+       "width": 900.0,
+       "height": 600.0,
+       "rotated": false
+      },
+      {
+       "piece_id": "A",
+       "label": null,
+       "x": 1808.0,
+       "y": 604.0,
+       "width": 900.0,
+       "height": 600.0,
+       "rotated": false
+      }
+     ],
+     "residuals": [
+      {
+       "x": 2712.0,
+       "y": 0.0,
+       "width": 338.0,
+       "height": 1250.0,
+       "reusable": true
+      },
+      {
+       "x": 0.0,
+       "y": 1208.0,
+       "width": 2712.0,
+       "height": 42.0,
+       "reusable": false
+      }
+     ],
+     "used_area": 3240000.0,
+     "utilization": 0.8498360655737704
+    },
+    {
+     "layout_id": "L3",
+     "sheet_id": "ACP",
+     "sheet_label": null,
+     "width": 3050.0,
+     "height": 1250.0,
+     "is_residual_sheet": false,
+     "count": 1,
+     "placements": [
+      {
+       "piece_id": "A",
+       "label": null,
+       "x": 0.0,
+       "y": 0.0,
+       "width": 900.0,
+       "height": 600.0,
+       "rotated": false
+      },
+      {
+       "piece_id": "B",
+       "label": null,
+       "x": 904.0,
+       "y": 0.0,
+       "width": 1200.0,
+       "height": 400.0,
+       "rotated": false
+      },
+      {
+       "piece_id": "B",
+       "label": null,
+       "x": 2108.0,
+       "y": 0.0,
+       "width": 400.0,
+       "height": 1200.0,
+       "rotated": true
+      },
+      {
+       "piece_id": "B",
+       "label": null,
+       "x": 904.0,
+       "y": 404.0,
+       "width": 1200.0,
+       "height": 400.0,
+       "rotated": false
+      },
+      {
+       "piece_id": "A",
+       "label": null,
+       "x": 0.0,
+       "y": 604.0,
+       "width": 900.0,
+       "height": 600.0,
+       "rotated": false
+      },
+      {
+       "piece_id": "B",
+       "label": null,
+       "x": 904.0,
+       "y": 808.0,
+       "width": 1200.0,
+       "height": 400.0,
+       "rotated": false
+      }
+     ],
+     "residuals": [
+      {
+       "x": 2512.0,
+       "y": 0.0,
+       "width": 538.0,
+       "height": 1250.0,
+       "reusable": true
+      },
+      {
+       "x": 904.0,
+       "y": 1212.0,
+       "width": 1204.0,
+       "height": 38.0,
+       "reusable": false
+      },
+      {
+       "x": 0.0,
+       "y": 1208.0,
+       "width": 904.0,
+       "height": 42.0,
+       "reusable": false
+      },
+      {
+       "x": 2108.0,
+       "y": 1204.0,
+       "width": 404.0,
+       "height": 46.0,
+       "reusable": false
+      }
+     ],
+     "used_area": 3000000.0,
+     "utilization": 0.7868852459016393
+    }
+   ],
+   "unplaced": [],
+   "summary": {
+    "sheets_used": 3,
+    "total_sheet_area_m2": 9.125,
+    "total_piece_area_m2": 6.78,
+    "waste_area_m2": 0.296016,
+    "reusable_residual_area_m2": 2.048984,
+    "utilization": 0.743013698630137,
+    "total_cost": null
+   },
+   "lower_bound_sheets": 2,
+   "validation": {
+    "passed": true,
+    "validator": "validate_2d/1.0",
+    "errors": [],
+    "checked_items": 18
+   },
+   "issues": [],
+   "request": {
+    "units": "mm",
+    "kerf": 4.0,
+    "edge_trim": {
+     "left": 0.0,
+     "right": 0.0,
+     "top": 0.0,
+     "bottom": 0.0
+    },
+    "sheets": [
+     {
+      "id": "ACP",
+      "label": null,
+      "width": 3050.0,
+      "height": 1250.0,
+      "quantity": 10,
+      "material": "ACP",
+      "thickness": null,
+      "is_residual": false,
+      "cost_per_sheet": null
+     },
+     {
+      "id": "R1",
+      "label": null,
+      "width": 1500.0,
+      "height": 1000.0,
+      "quantity": 1,
+      "material": "acp",
+      "thickness": null,
+      "is_residual": true,
+      "cost_per_sheet": null
+     }
+    ],
+    "pieces": [
+     {
+      "id": "A",
+      "label": null,
+      "width": 900.0,
+      "height": 600.0,
+      "quantity": 9,
+      "material": "ACP",
+      "thickness": null,
+      "can_rotate": true
+     },
+     {
+      "id": "B",
+      "label": null,
+      "width": 1200.0,
+      "height": 400.0,
+      "quantity": 4,
+      "material": "ACP",
+      "thickness": null,
+      "can_rotate": true
+     }
+    ],
+    "guillotine": false,
+    "min_residual_width": 300.0,
+    "min_residual_height": 300.0,
+    "prefer_residuals": true,
+    "time_limit_s": 10.0
+   },
+   "runtime_ms": 2.179016999889427
+  }
+ },
+ {
+  "name": "too_large",
+  "request": {
+   "units": "mm",
+   "kerf": 3.0,
+   "edge_trim": {
+    "left": 0.0,
+    "right": 0.0,
+    "top": 0.0,
+    "bottom": 0.0
+   },
+   "sheets": [
+    {
+     "id": "S",
+     "label": null,
+     "width": 2000.0,
+     "height": 1000.0,
+     "quantity": null,
+     "material": null,
+     "thickness": null,
+     "is_residual": false,
+     "cost_per_sheet": null
+    }
+   ],
+   "pieces": [
+    {
+     "id": "BIG",
+     "label": null,
+     "width": 2500.0,
+     "height": 900.0,
+     "quantity": 1,
+     "material": null,
+     "thickness": null,
+     "can_rotate": true
+    },
+    {
+     "id": "OK",
+     "label": null,
+     "width": 500.0,
+     "height": 500.0,
+     "quantity": 3,
+     "material": null,
+     "thickness": null,
+     "can_rotate": true
+    }
+   ],
+   "guillotine": true,
+   "min_residual_width": 300.0,
+   "min_residual_height": 300.0,
+   "prefer_residuals": true,
+   "time_limit_s": 10.0
+  },
+  "result": {
+   "units": "mm",
+   "engine_version": "nesting2d/0.1.0",
+   "method": "guillotine-BAF-slas / sort:area",
+   "status": "PARTIAL",
+   "validation_status": "FEASIBLE_HEURISTIC",
+   "layouts": [
+    {
+     "layout_id": "L1",
+     "sheet_id": "S",
+     "sheet_label": null,
+     "width": 2000.0,
+     "height": 1000.0,
+     "is_residual_sheet": false,
+     "count": 1,
+     "placements": [
+      {
+       "piece_id": "OK",
+       "label": null,
+       "x": 0.0,
+       "y": 0.0,
+       "width": 500.0,
+       "height": 500.0,
+       "rotated": false
+      },
+      {
+       "piece_id": "OK",
+       "label": null,
+       "x": 503.0,
+       "y": 0.0,
+       "width": 500.0,
+       "height": 500.0,
+       "rotated": false
+      },
+      {
+       "piece_id": "OK",
+       "label": null,
+       "x": 1006.0,
+       "y": 0.0,
+       "width": 500.0,
+       "height": 500.0,
+       "rotated": false
+      }
+     ],
+     "residuals": [
+      {
+       "x": 0.0,
+       "y": 503.0,
+       "width": 2000.0,
+       "height": 497.0,
+       "reusable": true
+      },
+      {
+       "x": 1509.0,
+       "y": 0.0,
+       "width": 491.0,
+       "height": 503.0,
+       "reusable": true
+      }
+     ],
+     "used_area": 750000.0,
+     "utilization": 0.375
+    }
+   ],
+   "unplaced": [
+    {
+     "id": "BIG",
+     "label": null,
+     "width": 2500.0,
+     "height": 900.0,
+     "quantity": 1,
+     "material": null,
+     "thickness": null,
+     "can_rotate": true
+    }
+   ],
+   "summary": {
+    "sheets_used": 1,
+    "total_sheet_area_m2": 2.0,
+    "total_piece_area_m2": 0.75,
+    "waste_area_m2": 0.009027,
+    "reusable_residual_area_m2": 1.240973,
+    "utilization": 0.375,
+    "total_cost": null
+   },
+   "lower_bound_sheets": 2,
+   "validation": {
+    "passed": true,
+    "validator": "validate_2d/1.0",
+    "errors": [],
+    "checked_items": 6
+   },
+   "issues": [
+    {
+     "code": "PIECE_TOO_LARGE",
+     "severity": "error",
+     "message": "piece 'BIG' (2500.0x900.0) does not fit the usable area of any available sheet",
+     "ref": "piece:BIG"
+    }
+   ],
+   "request": {
+    "units": "mm",
+    "kerf": 3.0,
+    "edge_trim": {
+     "left": 0.0,
+     "right": 0.0,
+     "top": 0.0,
+     "bottom": 0.0
+    },
+    "sheets": [
+     {
+      "id": "S",
+      "label": null,
+      "width": 2000.0,
+      "height": 1000.0,
+      "quantity": null,
+      "material": null,
+      "thickness": null,
+      "is_residual": false,
+      "cost_per_sheet": null
+     }
+    ],
+    "pieces": [
+     {
+      "id": "BIG",
+      "label": null,
+      "width": 2500.0,
+      "height": 900.0,
+      "quantity": 1,
+      "material": null,
+      "thickness": null,
+      "can_rotate": true
+     },
+     {
+      "id": "OK",
+      "label": null,
+      "width": 500.0,
+      "height": 500.0,
+      "quantity": 3,
+      "material": null,
+      "thickness": null,
+      "can_rotate": true
+     }
+    ],
+    "guillotine": true,
+    "min_residual_width": 300.0,
+    "min_residual_height": 300.0,
+    "prefer_residuals": true,
+    "time_limit_s": 10.0
+   },
+   "runtime_ms": 0.3722789997482323
+  }
+ },
+ {
+  "name": "random_0",
+  "request": {
+   "units": "mm",
+   "kerf": 0.0,
+   "edge_trim": {
+    "left": 0.0,
+    "right": 0.0,
+    "top": 0.0,
+    "bottom": 0.0
+   },
+   "sheets": [
+    {
+     "id": "S",
+     "label": null,
+     "width": 3210.0,
+     "height": 2250.0,
+     "quantity": null,
+     "material": null,
+     "thickness": null,
+     "is_residual": false,
+     "cost_per_sheet": null
+    }
+   ],
+   "pieces": [
+    {
+     "id": "q0",
+     "label": null,
+     "width": 296.0,
+     "height": 424.0,
+     "quantity": 2,
+     "material": null,
+     "thickness": null,
+     "can_rotate": true
+    },
+    {
+     "id": "q1",
+     "label": null,
+     "width": 1064.0,
+     "height": 1421.0,
+     "quantity": 1,
+     "material": null,
+     "thickness": null,
+     "can_rotate": true
+    },
+    {
+     "id": "q2",
+     "label": null,
+     "width": 1420.0,
+     "height": 1158.0,
+     "quantity": 5,
+     "material": null,
+     "thickness": null,
+     "can_rotate": true
+    }
+   ],
+   "guillotine": false,
+   "min_residual_width": 300.0,
+   "min_residual_height": 300.0,
+   "prefer_residuals": true,
+   "time_limit_s": 10.0
+  },
+  "result": {
+   "units": "mm",
+   "engine_version": "nesting2d/0.1.0",
+   "method": "guillotine-BAF-slas / sort:max-side",
+   "status": "FEASIBLE",
+   "validation_status": "FEASIBLE_HEURISTIC",
+   "layouts": [
+    {
+     "layout_id": "L1",
+     "sheet_id": "S",
+     "sheet_label": null,
+     "width": 3210.0,
+     "height": 2250.0,
+     "is_residual_sheet": false,
+     "count": 1,
+     "placements": [
+      {
+       "piece_id": "q1",
+       "label": null,
+       "x": 0.0,
+       "y": 0.0,
+       "width": 1064.0,
+       "height": 1421.0,
+       "rotated": false
+      },
+      {
+       "piece_id": "q2",
+       "label": null,
+       "x": 1064.0,
+       "y": 0.0,
+       "width": 1420.0,
+       "height": 1158.0,
+       "rotated": false
+      },
+      {
+       "piece_id": "q0",
+       "label": null,
+       "x": 2484.0,
+       "y": 0.0,
+       "width": 296.0,
+       "height": 424.0,
+       "rotated": false
+      },
+      {
+       "piece_id": "q0",
+       "label": null,
+       "x": 2780.0,
+       "y": 0.0,
+       "width": 296.0,
+       "height": 424.0,
+       "rotated": false
+      }
+     ],
+     "residuals": [
+      {
+       "x": 1064.0,
+       "y": 1158.0,
+       "width": 2146.0,
+       "height": 1092.0,
+       "reusable": true
+      },
+      {
+       "x": 0.0,
+       "y": 1421.0,
+       "width": 1064.0,
+       "height": 829.0,
+       "reusable": true
+      },
+      {
+       "x": 2484.0,
+       "y": 424.0,
+       "width": 726.0,
+       "height": 734.0,
+       "reusable": true
+      },
+      {
+       "x": 3076.0,
+       "y": 0.0,
+       "width": 134.0,
+       "height": 424.0,
+       "reusable": false
+      }
+     ],
+     "used_area": 3407312.0,
+     "utilization": 0.47176351678781586
+    },
+    {
+     "layout_id": "L2",
+     "sheet_id": "S",
+     "sheet_label": null,
+     "width": 3210.0,
+     "height": 2250.0,
+     "is_residual_sheet": false,
+     "count": 2,
+     "placements": [
+      {
+       "piece_id": "q2",
+       "label": null,
+       "x": 0.0,
+       "y": 0.0,
+       "width": 1420.0,
+       "height": 1158.0,
+       "rotated": false
+      },
+      {
+       "piece_id": "q2",
+       "label": null,
+       "x": 1420.0,
+       "y": 0.0,
+       "width": 1420.0,
+       "height": 1158.0,
+       "rotated": false
+      }
+     ],
+     "residuals": [
+      {
+       "x": 0.0,
+       "y": 1158.0,
+       "width": 3210.0,
+       "height": 1092.0,
+       "reusable": true
+      },
+      {
+       "x": 2840.0,
+       "y": 0.0,
+       "width": 370.0,
+       "height": 1158.0,
+       "reusable": true
+      }
+     ],
+     "used_area": 3288720.0,
+     "utilization": 0.455343717549325
+    }
+   ],
+   "unplaced": [],
+   "summary": {
+    "sheets_used": 3,
+    "total_sheet_area_m2": 21.6675,
+    "total_piece_area_m2": 9.984752,
+    "waste_area_m2": 0.056816,
+    "reusable_residual_area_m2": 11.625932,
+    "utilization": 0.4608169839621553,
+    "total_cost": null
+   },
+   "lower_bound_sheets": 2,
+   "validation": {
+    "passed": true,
+    "validator": "validate_2d/1.0",
+    "errors": [],
+    "checked_items": 11
+   },
+   "issues": [],
+   "request": {
+    "units": "mm",
+    "kerf": 0.0,
+    "edge_trim": {
+     "left": 0.0,
+     "right": 0.0,
+     "top": 0.0,
+     "bottom": 0.0
+    },
+    "sheets": [
+     {
+      "id": "S",
+      "label": null,
+      "width": 3210.0,
+      "height": 2250.0,
+      "quantity": null,
+      "material": null,
+      "thickness": null,
+      "is_residual": false,
+      "cost_per_sheet": null
+     }
+    ],
+    "pieces": [
+     {
+      "id": "q0",
+      "label": null,
+      "width": 296.0,
+      "height": 424.0,
+      "quantity": 2,
+      "material": null,
+      "thickness": null,
+      "can_rotate": true
+     },
+     {
+      "id": "q1",
+      "label": null,
+      "width": 1064.0,
+      "height": 1421.0,
+      "quantity": 1,
+      "material": null,
+      "thickness": null,
+      "can_rotate": true
+     },
+     {
+      "id": "q2",
+      "label": null,
+      "width": 1420.0,
+      "height": 1158.0,
+      "quantity": 5,
+      "material": null,
+      "thickness": null,
+      "can_rotate": true
+     }
+    ],
+    "guillotine": false,
+    "min_residual_width": 300.0,
+    "min_residual_height": 300.0,
+    "prefer_residuals": true,
+    "time_limit_s": 10.0
+   },
+   "runtime_ms": 1.5063959999679355
+  }
+ },
+ {
+  "name": "random_1",
+  "request": {
+   "units": "mm",
+   "kerf": 0.0,
+   "edge_trim": {
+    "left": 0.0,
+    "right": 0.0,
+    "top": 0.0,
+    "bottom": 0.0
+   },
+   "sheets": [
+    {
+     "id": "S",
+     "label": null,
+     "width": 3210.0,
+     "height": 2250.0,
+     "quantity": null,
+     "material": null,
+     "thickness": null,
+     "is_residual": false,
+     "cost_per_sheet": null
+    }
+   ],
+   "pieces": [
+    {
+     "id": "q0",
+     "label": null,
+     "width": 746.0,
+     "height": 896.0,
+     "quantity": 1,
+     "material": null,
+     "thickness": null,
+     "can_rotate": true
+    },
+    {
+     "id": "q1",
+     "label": null,
+     "width": 523.0,
+     "height": 1129.0,
+     "quantity": 1,
+     "material": null,
+     "thickness": null,
+     "can_rotate": false
+    },
+    {
+     "id": "q2",
+     "label": null,
+     "width": 739.0,
+     "height": 1225.0,
+     "quantity": 2,
+     "material": null,
+     "thickness": null,
+     "can_rotate": true
+    },
+    {
+     "id": "q3",
+     "label": null,
+     "width": 417.0,
+     "height": 1480.0,
+     "quantity": 3,
+     "material": null,
+     "thickness": null,
+     "can_rotate": false
+    },
+    {
+     "id": "q4",
+     "label": null,
+     "width": 1239.0,
+     "height": 1447.0,
+     "quantity": 2,
+     "material": null,
+     "thickness": null,
+     "can_rotate": true
+    },
+    {
+     "id": "q5",
+     "label": null,
+     "width": 530.0,
+     "height": 1304.0,
+     "quantity": 5,
+     "material": null,
+     "thickness": null,
+     "can_rotate": false
+    },
+    {
+     "id": "q6",
+     "label": null,
+     "width": 1426.0,
+     "height": 863.0,
+     "quantity": 4,
+     "material": null,
+     "thickness": null,
+     "can_rotate": true
+    }
+   ],
+   "guillotine": true,
+   "min_residual_width": 300.0,
+   "min_residual_height": 300.0,
+   "prefer_residuals": true,
+   "time_limit_s": 10.0
+  },
+  "result": {
+   "units": "mm",
+   "engine_version": "nesting2d/0.1.0",
+   "method": "guillotine-BAF-maxarea / sort:width",
+   "status": "FEASIBLE",
+   "validation_status": "FEASIBLE_HEURISTIC",
+   "layouts": [
+    {
+     "layout_id": "L1",
+     "sheet_id": "S",
+     "sheet_label": null,
+     "width": 3210.0,
+     "height": 2250.0,
+     "is_residual_sheet": false,
+     "count": 1,
+     "placements": [
+      {
+       "piece_id": "q6",
+       "label": null,
+       "x": 0.0,
+       "y": 0.0,
+       "width": 1426.0,
+       "height": 863.0,
+       "rotated": false
+      },
+      {
+       "piece_id": "q6",
+       "label": null,
+       "x": 1426.0,
+       "y": 0.0,
+       "width": 1426.0,
+       "height": 863.0,
+       "rotated": false
+      },
+      {
+       "piece_id": "q6",
+       "label": null,
+       "x": 0.0,
+       "y": 863.0,
+       "width": 1426.0,
+       "height": 863.0,
+       "rotated": false
+      },
+      {
+       "piece_id": "q6",
+       "label": null,
+       "x": 1426.0,
+       "y": 863.0,
+       "width": 1426.0,
+       "height": 863.0,
+       "rotated": false
+      }
+     ],
+     "residuals": [
+      {
+       "x": 0.0,
+       "y": 1726.0,
+       "width": 3210.0,
+       "height": 524.0,
+       "reusable": true
+      },
+      {
+       "x": 2852.0,
+       "y": 0.0,
+       "width": 358.0,
+       "height": 1726.0,
+       "reusable": true
+      }
+     ],
+     "used_area": 4922552.0,
+     "utilization": 0.6815579093111803
+    },
+    {
+     "layout_id": "L2",
+     "sheet_id": "S",
+     "sheet_label": null,
+     "width": 3210.0,
+     "height": 2250.0,
+     "is_residual_sheet": false,
+     "count": 1,
+     "placements": [
+      {
+       "piece_id": "q4",
+       "label": null,
+       "x": 0.0,
+       "y": 0.0,
+       "width": 1239.0,
+       "height": 1447.0,
+       "rotated": false
+      },
+      {
+       "piece_id": "q4",
+       "label": null,
+       "x": 1239.0,
+       "y": 0.0,
+       "width": 1239.0,
+       "height": 1447.0,
+       "rotated": false
+      },
+      {
+       "piece_id": "q5",
+       "label": null,
+       "x": 2478.0,
+       "y": 0.0,
+       "width": 530.0,
+       "height": 1304.0,
+       "rotated": false
+      },
+      {
+       "piece_id": "q0",
+       "label": null,
+       "x": 0.0,
+       "y": 1447.0,
+       "width": 896.0,
+       "height": 746.0,
+       "rotated": true
+      },
+      {
+       "piece_id": "q2",
+       "label": null,
+       "x": 1239.0,
+       "y": 1447.0,
+       "width": 1225.0,
+       "height": 739.0,
+       "rotated": true
+      }
+     ],
+     "residuals": [
+      {
+       "x": 2478.0,
+       "y": 1304.0,
+       "width": 732.0,
+       "height": 946.0,
+       "reusable": true
+      },
+      {
+       "x": 896.0,
+       "y": 1447.0,
+       "width": 343.0,
+       "height": 803.0,
+       "reusable": true
+      },
+      {
+       "x": 3008.0,
+       "y": 0.0,
+       "width": 202.0,
+       "height": 1304.0,
+       "reusable": false
+      },
+      {
+       "x": 1239.0,
+       "y": 2186.0,
+       "width": 1239.0,
+       "height": 64.0,
+       "reusable": false
+      },
+      {
+       "x": 0.0,
+       "y": 2193.0,
+       "width": 896.0,
+       "height": 57.0,
+       "reusable": false
+      },
+      {
+       "x": 2464.0,
+       "y": 1447.0,
+       "width": 14.0,
+       "height": 739.0,
+       "reusable": false
+      }
+     ],
+     "used_area": 5850477.0,
+     "utilization": 0.8100348909657321
+    },
+    {
+     "layout_id": "L3",
+     "sheet_id": "S",
+     "sheet_label": null,
+     "width": 3210.0,
+     "height": 2250.0,
+     "is_residual_sheet": false,
+     "count": 1,
+     "placements": [
+      {
+       "piece_id": "q2",
+       "label": null,
+       "x": 0.0,
+       "y": 0.0,
+       "width": 739.0,
+       "height": 1225.0,
+       "rotated": false
+      },
+      {
+       "piece_id": "q5",
+       "label": null,
+       "x": 739.0,
+       "y": 0.0,
+       "width": 530.0,
+       "height": 1304.0,
+       "rotated": false
+      },
+      {
+       "piece_id": "q5",
+       "label": null,
+       "x": 1269.0,
+       "y": 0.0,
+       "width": 530.0,
+       "height": 1304.0,
+       "rotated": false
+      },
+      {
+       "piece_id": "q5",
+       "label": null,
+       "x": 1799.0,
+       "y": 0.0,
+       "width": 530.0,
+       "height": 1304.0,
+       "rotated": false
+      },
+      {
+       "piece_id": "q5",
+       "label": null,
+       "x": 2329.0,
+       "y": 0.0,
+       "width": 530.0,
+       "height": 1304.0,
+       "rotated": false
+      }
+     ],
+     "residuals": [
+      {
+       "x": 739.0,
+       "y": 1304.0,
+       "width": 2471.0,
+       "height": 946.0,
+       "reusable": true
+      },
+      {
+       "x": 0.0,
+       "y": 1225.0,
+       "width": 739.0,
+       "height": 1025.0,
+       "reusable": true
+      },
+      {
+       "x": 2859.0,
+       "y": 0.0,
+       "width": 351.0,
+       "height": 1304.0,
+       "reusable": true
+      }
+     ],
+     "used_area": 3669755.0,
+     "utilization": 0.5081003807545864
+    },
+    {
+     "layout_id": "L4",
+     "sheet_id": "S",
+     "sheet_label": null,
+     "width": 3210.0,
+     "height": 2250.0,
+     "is_residual_sheet": false,
+     "count": 1,
+     "placements": [
+      {
+       "piece_id": "q1",
+       "label": null,
+       "x": 0.0,
+       "y": 0.0,
+       "width": 523.0,
+       "height": 1129.0,
+       "rotated": false
+      },
+      {
+       "piece_id": "q3",
+       "label": null,
+       "x": 523.0,
+       "y": 0.0,
+       "width": 417.0,
+       "height": 1480.0,
+       "rotated": false
+      },
+      {
+       "piece_id": "q3",
+       "label": null,
+       "x": 940.0,
+       "y": 0.0,
+       "width": 417.0,
+       "height": 1480.0,
+       "rotated": false
+      },
+      {
+       "piece_id": "q3",
+       "label": null,
+       "x": 1357.0,
+       "y": 0.0,
+       "width": 417.0,
+       "height": 1480.0,
+       "rotated": false
+      }
+     ],
+     "residuals": [
+      {
+       "x": 1774.0,
+       "y": 0.0,
+       "width": 1436.0,
+       "height": 2250.0,
+       "reusable": true
+      },
+      {
+       "x": 523.0,
+       "y": 1480.0,
+       "width": 1251.0,
+       "height": 770.0,
+       "reusable": true
+      },
+      {
+       "x": 0.0,
+       "y": 1129.0,
+       "width": 523.0,
+       "height": 1121.0,
+       "reusable": true
+      }
+     ],
+     "used_area": 2441947.0,
+     "utilization": 0.33810273451021117
+    }
+   ],
+   "unplaced": [],
+   "summary": {
+    "sheets_used": 4,
+    "total_sheet_area_m2": 28.89,
+    "total_piece_area_m2": 16.884731,
+    "waste_area_m2": 0.404122,
+    "reusable_residual_area_m2": 11.601147,
+    "utilization": 0.5844489788854275,
+    "total_cost": null
+   },
+   "lower_bound_sheets": 3,
+   "validation": {
+    "passed": true,
+    "validator": "validate_2d/1.0",
+    "errors": [],
+    "checked_items": 29
+   },
+   "issues": [],
+   "request": {
+    "units": "mm",
+    "kerf": 0.0,
+    "edge_trim": {
+     "left": 0.0,
+     "right": 0.0,
+     "top": 0.0,
+     "bottom": 0.0
+    },
+    "sheets": [
+     {
+      "id": "S",
+      "label": null,
+      "width": 3210.0,
+      "height": 2250.0,
+      "quantity": null,
+      "material": null,
+      "thickness": null,
+      "is_residual": false,
+      "cost_per_sheet": null
+     }
+    ],
+    "pieces": [
+     {
+      "id": "q0",
+      "label": null,
+      "width": 746.0,
+      "height": 896.0,
+      "quantity": 1,
+      "material": null,
+      "thickness": null,
+      "can_rotate": true
+     },
+     {
+      "id": "q1",
+      "label": null,
+      "width": 523.0,
+      "height": 1129.0,
+      "quantity": 1,
+      "material": null,
+      "thickness": null,
+      "can_rotate": false
+     },
+     {
+      "id": "q2",
+      "label": null,
+      "width": 739.0,
+      "height": 1225.0,
+      "quantity": 2,
+      "material": null,
+      "thickness": null,
+      "can_rotate": true
+     },
+     {
+      "id": "q3",
+      "label": null,
+      "width": 417.0,
+      "height": 1480.0,
+      "quantity": 3,
+      "material": null,
+      "thickness": null,
+      "can_rotate": false
+     },
+     {
+      "id": "q4",
+      "label": null,
+      "width": 1239.0,
+      "height": 1447.0,
+      "quantity": 2,
+      "material": null,
+      "thickness": null,
+      "can_rotate": true
+     },
+     {
+      "id": "q5",
+      "label": null,
+      "width": 530.0,
+      "height": 1304.0,
+      "quantity": 5,
+      "material": null,
+      "thickness": null,
+      "can_rotate": false
+     },
+     {
+      "id": "q6",
+      "label": null,
+      "width": 1426.0,
+      "height": 863.0,
+      "quantity": 4,
+      "material": null,
+      "thickness": null,
+      "can_rotate": true
+     }
+    ],
+    "guillotine": true,
+    "min_residual_width": 300.0,
+    "min_residual_height": 300.0,
+    "prefer_residuals": true,
+    "time_limit_s": 10.0
+   },
+   "runtime_ms": 1.748374000271724
+  }
+ },
+ {
+  "name": "random_2",
+  "request": {
+   "units": "mm",
+   "kerf": 3.0,
+   "edge_trim": {
+    "left": 0.0,
+    "right": 0.0,
+    "top": 0.0,
+    "bottom": 0.0
+   },
+   "sheets": [
+    {
+     "id": "S",
+     "label": null,
+     "width": 3210.0,
+     "height": 2250.0,
+     "quantity": null,
+     "material": null,
+     "thickness": null,
+     "is_residual": false,
+     "cost_per_sheet": null
+    }
+   ],
+   "pieces": [
+    {
+     "id": "q0",
+     "label": null,
+     "width": 318.0,
+     "height": 693.0,
+     "quantity": 5,
+     "material": null,
+     "thickness": null,
+     "can_rotate": false
+    },
+    {
+     "id": "q1",
+     "label": null,
+     "width": 375.0,
+     "height": 1195.0,
+     "quantity": 1,
+     "material": null,
+     "thickness": null,
+     "can_rotate": false
+    },
+    {
+     "id": "q2",
+     "label": null,
+     "width": 1290.0,
+     "height": 457.0,
+     "quantity": 2,
+     "material": null,
+     "thickness": null,
+     "can_rotate": true
+    },
+    {
+     "id": "q3",
+     "label": null,
+     "width": 1325.0,
+     "height": 538.0,
+     "quantity": 3,
+     "material": null,
+     "thickness": null,
+     "can_rotate": true
+    }
+   ],
+   "guillotine": false,
+   "min_residual_width": 300.0,
+   "min_residual_height": 300.0,
+   "prefer_residuals": true,
+   "time_limit_s": 10.0
+  },
+  "result": {
+   "units": "mm",
+   "engine_version": "nesting2d/0.1.0",
+   "method": "guillotine-BAF-slas / sort:area",
+   "status": "OPTIMAL",
+   "validation_status": "OPTIMAL_PROVEN",
+   "layouts": [
+    {
+     "layout_id": "L1",
+     "sheet_id": "S",
+     "sheet_label": null,
+     "width": 3210.0,
+     "height": 2250.0,
+     "is_residual_sheet": false,
+     "count": 1,
+     "placements": [
+      {
+       "piece_id": "q3",
+       "label": null,
+       "x": 0.0,
+       "y": 0.0,
+       "width": 1325.0,
+       "height": 538.0,
+       "rotated": false
+      },
+      {
+       "piece_id": "q2",
+       "label": null,
+       "x": 1328.0,
+       "y": 0.0,
+       "width": 1290.0,
+       "height": 457.0,
+       "rotated": false
+      },
+      {
+       "piece_id": "q1",
+       "label": null,
+       "x": 1328.0,
+       "y": 460.0,
+       "width": 375.0,
+       "height": 1195.0,
+       "rotated": false
+      },
+      {
+       "piece_id": "q0",
+       "label": null,
+       "x": 1706.0,
+       "y": 460.0,
+       "width": 318.0,
+       "height": 693.0,
+       "rotated": false
+      },
+      {
+       "piece_id": "q0",
+       "label": null,
+       "x": 2027.0,
+       "y": 460.0,
+       "width": 318.0,
+       "height": 693.0,
+       "rotated": false
+      },
+      {
+       "piece_id": "q0",
+       "label": null,
+       "x": 2348.0,
+       "y": 460.0,
+       "width": 318.0,
+       "height": 693.0,
+       "rotated": false
+      },
+      {
+       "piece_id": "q0",
+       "label": null,
+       "x": 2669.0,
+       "y": 460.0,
+       "width": 318.0,
+       "height": 693.0,
+       "rotated": false
+      },
+      {
+       "piece_id": "q3",
+       "label": null,
+       "x": 0.0,
+       "y": 541.0,
+       "width": 1325.0,
+       "height": 538.0,
+       "rotated": false
+      },
+      {
+       "piece_id": "q3",
+       "label": null,
+       "x": 0.0,
+       "y": 1082.0,
+       "width": 1325.0,
+       "height": 538.0,
+       "rotated": false
+      },
+      {
+       "piece_id": "q0",
+       "label": null,
+       "x": 1706.0,
+       "y": 1156.0,
+       "width": 318.0,
+       "height": 693.0,
+       "rotated": false
+      },
+      {
+       "piece_id": "q2",
+       "label": null,
+       "x": 0.0,
+       "y": 1623.0,
+       "width": 1290.0,
+       "height": 457.0,
+       "rotated": false
+      }
+     ],
+     "residuals": [
+      {
+       "x": 2027.0,
+       "y": 1156.0,
+       "width": 1183.0,
+       "height": 1094.0,
+       "reusable": true
+      },
+      {
+       "x": 2621.0,
+       "y": 0.0,
+       "width": 589.0,
+       "height": 460.0,
+       "reusable": true
+      },
+      {
+       "x": 1328.0,
+       "y": 1658.0,
+       "width": 378.0,
+       "height": 592.0,
+       "reusable": true
+      },
+      {
+       "x": 0.0,
+       "y": 2083.0,
+       "width": 1328.0,
+       "height": 167.0,
+       "reusable": false
+      },
+      {
+       "x": 2990.0,
+       "y": 460.0,
+       "width": 220.0,
+       "height": 696.0,
+       "reusable": false
+      },
+      {
+       "x": 1706.0,
+       "y": 1852.0,
+       "width": 321.0,
+       "height": 398.0,
+       "reusable": true
+      },
+      {
+       "x": 1293.0,
+       "y": 1623.0,
+       "width": 35.0,
+       "height": 460.0,
+       "reusable": false
+      }
+     ],
+     "used_area": 4867605.0,
+     "utilization": 0.6739501557632399
+    }
+   ],
+   "unplaced": [],
+   "summary": {
+    "sheets_used": 1,
+    "total_sheet_area_m2": 7.2225,
+    "total_piece_area_m2": 4.867605,
+    "waste_area_m2": 0.438219,
+    "reusable_residual_area_m2": 1.916676,
+    "utilization": 0.6739501557632399,
+    "total_cost": null
+   },
+   "lower_bound_sheets": 1,
+   "validation": {
+    "passed": true,
+    "validator": "validate_2d/1.0",
+    "errors": [],
+    "checked_items": 16
+   },
+   "issues": [],
+   "request": {
+    "units": "mm",
+    "kerf": 3.0,
+    "edge_trim": {
+     "left": 0.0,
+     "right": 0.0,
+     "top": 0.0,
+     "bottom": 0.0
+    },
+    "sheets": [
+     {
+      "id": "S",
+      "label": null,
+      "width": 3210.0,
+      "height": 2250.0,
+      "quantity": null,
+      "material": null,
+      "thickness": null,
+      "is_residual": false,
+      "cost_per_sheet": null
+     }
+    ],
+    "pieces": [
+     {
+      "id": "q0",
+      "label": null,
+      "width": 318.0,
+      "height": 693.0,
+      "quantity": 5,
+      "material": null,
+      "thickness": null,
+      "can_rotate": false
+     },
+     {
+      "id": "q1",
+      "label": null,
+      "width": 375.0,
+      "height": 1195.0,
+      "quantity": 1,
+      "material": null,
+      "thickness": null,
+      "can_rotate": false
+     },
+     {
+      "id": "q2",
+      "label": null,
+      "width": 1290.0,
+      "height": 457.0,
+      "quantity": 2,
+      "material": null,
+      "thickness": null,
+      "can_rotate": true
+     },
+     {
+      "id": "q3",
+      "label": null,
+      "width": 1325.0,
+      "height": 538.0,
+      "quantity": 3,
+      "material": null,
+      "thickness": null,
+      "can_rotate": true
+     }
+    ],
+    "guillotine": false,
+    "min_residual_width": 300.0,
+    "min_residual_height": 300.0,
+    "prefer_residuals": true,
+    "time_limit_s": 10.0
+   },
+   "runtime_ms": 1.8701529997997568
+  }
+ },
+ {
+  "name": "random_3",
+  "request": {
+   "units": "mm",
+   "kerf": 3.0,
+   "edge_trim": {
+    "left": 0.0,
+    "right": 0.0,
+    "top": 0.0,
+    "bottom": 0.0
+   },
+   "sheets": [
+    {
+     "id": "S",
+     "label": null,
+     "width": 3210.0,
+     "height": 2250.0,
+     "quantity": null,
+     "material": null,
+     "thickness": null,
+     "is_residual": false,
+     "cost_per_sheet": null
+    }
+   ],
+   "pieces": [
+    {
+     "id": "q0",
+     "label": null,
+     "width": 611.0,
+     "height": 838.0,
+     "quantity": 4,
+     "material": null,
+     "thickness": null,
+     "can_rotate": false
+    },
+    {
+     "id": "q1",
+     "label": null,
+     "width": 964.0,
+     "height": 1097.0,
+     "quantity": 5,
+     "material": null,
+     "thickness": null,
+     "can_rotate": true
+    },
+    {
+     "id": "q2",
+     "label": null,
+     "width": 707.0,
+     "height": 660.0,
+     "quantity": 1,
+     "material": null,
+     "thickness": null,
+     "can_rotate": true
+    },
+    {
+     "id": "q3",
+     "label": null,
+     "width": 1404.0,
+     "height": 1334.0,
+     "quantity": 2,
+     "material": null,
+     "thickness": null,
+     "can_rotate": true
+    },
+    {
+     "id": "q4",
+     "label": null,
+     "width": 214.0,
+     "height": 345.0,
+     "quantity": 1,
+     "material": null,
+     "thickness": null,
+     "can_rotate": true
+    },
+    {
+     "id": "q5",
+     "label": null,
+     "width": 264.0,
+     "height": 876.0,
+     "quantity": 1,
+     "material": null,
+     "thickness": null,
+     "can_rotate": true
+    },
+    {
+     "id": "q6",
+     "label": null,
+     "width": 770.0,
+     "height": 1194.0,
+     "quantity": 2,
+     "material": null,
+     "thickness": null,
+     "can_rotate": true
+    }
+   ],
+   "guillotine": true,
+   "min_residual_width": 300.0,
+   "min_residual_height": 300.0,
+   "prefer_residuals": true,
+   "time_limit_s": 10.0
+  },
+  "result": {
+   "units": "mm",
+   "engine_version": "nesting2d/0.1.0",
+   "method": "guillotine-BAF-slas / sort:width",
+   "status": "FEASIBLE",
+   "validation_status": "FEASIBLE_HEURISTIC",
+   "layouts": [
+    {
+     "layout_id": "L1",
+     "sheet_id": "S",
+     "sheet_label": null,
+     "width": 3210.0,
+     "height": 2250.0,
+     "is_residual_sheet": false,
+     "count": 1,
+     "placements": [
+      {
+       "piece_id": "q3",
+       "label": null,
+       "x": 0.0,
+       "y": 0.0,
+       "width": 1404.0,
+       "height": 1334.0,
+       "rotated": false
+      },
+      {
+       "piece_id": "q3",
+       "label": null,
+       "x": 1407.0,
+       "y": 0.0,
+       "width": 1404.0,
+       "height": 1334.0,
+       "rotated": false
+      },
+      {
+       "piece_id": "q5",
+       "label": null,
+       "x": 2814.0,
+       "y": 0.0,
+       "width": 264.0,
+       "height": 876.0,
+       "rotated": false
+      },
+      {
+       "piece_id": "q4",
+       "label": null,
+       "x": 2814.0,
+       "y": 879.0,
+       "width": 214.0,
+       "height": 345.0,
+       "rotated": false
+      },
+      {
+       "piece_id": "q6",
+       "label": null,
+       "x": 0.0,
+       "y": 1337.0,
+       "width": 1194.0,
+       "height": 770.0,
+       "rotated": true
+      },
+      {
+       "piece_id": "q6",
+       "label": null,
+       "x": 1407.0,
+       "y": 1337.0,
+       "width": 1194.0,
+       "height": 770.0,
+       "rotated": true
+      }
+     ],
+     "residuals": [
+      {
+       "x": 2604.0,
+       "y": 1337.0,
+       "width": 606.0,
+       "height": 913.0,
+       "reusable": true
+      },
+      {
+       "x": 1197.0,
+       "y": 1337.0,
+       "width": 210.0,
+       "height": 913.0,
+       "reusable": false
+      },
+      {
+       "x": 0.0,
+       "y": 2110.0,
+       "width": 1197.0,
+       "height": 140.0,
+       "reusable": false
+      },
+      {
+       "x": 1407.0,
+       "y": 2110.0,
+       "width": 1197.0,
+       "height": 140.0,
+       "reusable": false
+      },
+      {
+       "x": 3081.0,
+       "y": 0.0,
+       "width": 129.0,
+       "height": 879.0,
+       "reusable": false
+      },
+      {
+       "x": 3031.0,
+       "y": 879.0,
+       "width": 179.0,
+       "height": 458.0,
+       "reusable": false
+      },
+      {
+       "x": 2814.0,
+       "y": 1227.0,
+       "width": 217.0,
+       "height": 110.0,
+       "reusable": false
+      }
+     ],
+     "used_area": 5889726.0,
+     "utilization": 0.8154691588785047
+    },
+    {
+     "layout_id": "L2",
+     "sheet_id": "S",
+     "sheet_label": null,
+     "width": 3210.0,
+     "height": 2250.0,
+     "is_residual_sheet": false,
+     "count": 1,
+     "placements": [
+      {
+       "piece_id": "q1",
+       "label": null,
+       "x": 0.0,
+       "y": 0.0,
+       "width": 964.0,
+       "height": 1097.0,
+       "rotated": false
+      },
+      {
+       "piece_id": "q1",
+       "label": null,
+       "x": 967.0,
+       "y": 0.0,
+       "width": 964.0,
+       "height": 1097.0,
+       "rotated": false
+      },
+      {
+       "piece_id": "q1",
+       "label": null,
+       "x": 1934.0,
+       "y": 0.0,
+       "width": 964.0,
+       "height": 1097.0,
+       "rotated": false
+      },
+      {
+       "piece_id": "q1",
+       "label": null,
+       "x": 0.0,
+       "y": 1100.0,
+       "width": 964.0,
+       "height": 1097.0,
+       "rotated": false
+      },
+      {
+       "piece_id": "q1",
+       "label": null,
+       "x": 967.0,
+       "y": 1100.0,
+       "width": 964.0,
+       "height": 1097.0,
+       "rotated": false
+      },
+      {
+       "piece_id": "q2",
+       "label": null,
+       "x": 1934.0,
+       "y": 1100.0,
+       "width": 707.0,
+       "height": 660.0,
+       "rotated": false
+      }
+     ],
+     "residuals": [
+      {
+       "x": 2644.0,
+       "y": 1100.0,
+       "width": 566.0,
+       "height": 1150.0,
+       "reusable": true
+      },
+      {
+       "x": 1934.0,
+       "y": 1763.0,
+       "width": 710.0,
+       "height": 487.0,
+       "reusable": true
+      },
+      {
+       "x": 2901.0,
+       "y": 0.0,
+       "width": 309.0,
+       "height": 1100.0,
+       "reusable": true
+      },
+      {
+       "x": 0.0,
+       "y": 2200.0,
+       "width": 1934.0,
+       "height": 50.0,
+       "reusable": false
+      }
+     ],
+     "used_area": 5754160.0,
+     "utilization": 0.796699203876774
+    },
+    {
+     "layout_id": "L3",
+     "sheet_id": "S",
+     "sheet_label": null,
+     "width": 3210.0,
+     "height": 2250.0,
+     "is_residual_sheet": false,
+     "count": 1,
+     "placements": [
+      {
+       "piece_id": "q0",
+       "label": null,
+       "x": 0.0,
+       "y": 0.0,
+       "width": 611.0,
+       "height": 838.0,
+       "rotated": false
+      },
+      {
+       "piece_id": "q0",
+       "label": null,
+       "x": 614.0,
+       "y": 0.0,
+       "width": 611.0,
+       "height": 838.0,
+       "rotated": false
+      },
+      {
+       "piece_id": "q0",
+       "label": null,
+       "x": 0.0,
+       "y": 841.0,
+       "width": 611.0,
+       "height": 838.0,
+       "rotated": false
+      },
+      {
+       "piece_id": "q0",
+       "label": null,
+       "x": 614.0,
+       "y": 841.0,
+       "width": 611.0,
+       "height": 838.0,
+       "rotated": false
+      }
+     ],
+     "residuals": [
+      {
+       "x": 1228.0,
+       "y": 0.0,
+       "width": 1982.0,
+       "height": 2250.0,
+       "reusable": true
+      },
+      {
+       "x": 0.0,
+       "y": 1682.0,
+       "width": 1228.0,
+       "height": 568.0,
+       "reusable": true
+      }
+     ],
+     "used_area": 2048072.0,
+     "utilization": 0.28356829352717206
+    }
+   ],
+   "unplaced": [],
+   "summary": {
+    "sheets_used": 3,
+    "total_sheet_area_m2": 21.6675,
+    "total_piece_area_m2": 13.691958,
+    "waste_area_m2": 0.92869,
+    "reusable_residual_area_m2": 7.046852,
+    "utilization": 0.6319122187608169,
+    "total_cost": null
+   },
+   "lower_bound_sheets": 2,
+   "validation": {
+    "passed": true,
+    "validator": "validate_2d/1.0",
+    "errors": [],
+    "checked_items": 26
+   },
+   "issues": [],
+   "request": {
+    "units": "mm",
+    "kerf": 3.0,
+    "edge_trim": {
+     "left": 0.0,
+     "right": 0.0,
+     "top": 0.0,
+     "bottom": 0.0
+    },
+    "sheets": [
+     {
+      "id": "S",
+      "label": null,
+      "width": 3210.0,
+      "height": 2250.0,
+      "quantity": null,
+      "material": null,
+      "thickness": null,
+      "is_residual": false,
+      "cost_per_sheet": null
+     }
+    ],
+    "pieces": [
+     {
+      "id": "q0",
+      "label": null,
+      "width": 611.0,
+      "height": 838.0,
+      "quantity": 4,
+      "material": null,
+      "thickness": null,
+      "can_rotate": false
+     },
+     {
+      "id": "q1",
+      "label": null,
+      "width": 964.0,
+      "height": 1097.0,
+      "quantity": 5,
+      "material": null,
+      "thickness": null,
+      "can_rotate": true
+     },
+     {
+      "id": "q2",
+      "label": null,
+      "width": 707.0,
+      "height": 660.0,
+      "quantity": 1,
+      "material": null,
+      "thickness": null,
+      "can_rotate": true
+     },
+     {
+      "id": "q3",
+      "label": null,
+      "width": 1404.0,
+      "height": 1334.0,
+      "quantity": 2,
+      "material": null,
+      "thickness": null,
+      "can_rotate": true
+     },
+     {
+      "id": "q4",
+      "label": null,
+      "width": 214.0,
+      "height": 345.0,
+      "quantity": 1,
+      "material": null,
+      "thickness": null,
+      "can_rotate": true
+     },
+     {
+      "id": "q5",
+      "label": null,
+      "width": 264.0,
+      "height": 876.0,
+      "quantity": 1,
+      "material": null,
+      "thickness": null,
+      "can_rotate": true
+     },
+     {
+      "id": "q6",
+      "label": null,
+      "width": 770.0,
+      "height": 1194.0,
+      "quantity": 2,
+      "material": null,
+      "thickness": null,
+      "can_rotate": true
+     }
+    ],
+    "guillotine": true,
+    "min_residual_width": 300.0,
+    "min_residual_height": 300.0,
+    "prefer_residuals": true,
+    "time_limit_s": 10.0
+   },
+   "runtime_ms": 1.5565449998575787
+  }
+ }
+]

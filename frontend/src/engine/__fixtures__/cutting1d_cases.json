@@ -1,0 +1,4066 @@
+[
+ {
+  "name": "mullions_transoms",
+  "request": {
+   "units": "mm",
+   "material": "DEMO-CW50-M150",
+   "kerf": 4.0,
+   "trim_start": 10.0,
+   "trim_end": 0.0,
+   "min_reusable_offcut": 500.0,
+   "stocks": [
+    {
+     "id": "S6000",
+     "label": null,
+     "length": 6000.0,
+     "quantity": null,
+     "cost_per_bar": null,
+     "is_offcut": false,
+     "priority": 0
+    }
+   ],
+   "pieces": [
+    {
+     "id": "M1",
+     "label": null,
+     "length": 3700.0,
+     "quantity": 8,
+     "angle_start": 90.0,
+     "angle_end": 90.0
+    },
+    {
+     "id": "T1",
+     "label": null,
+     "length": 1449.0,
+     "quantity": 18,
+     "angle_start": 90.0,
+     "angle_end": 90.0
+    },
+    {
+     "id": "T2",
+     "label": null,
+     "length": 999.0,
+     "quantity": 6,
+     "angle_start": 90.0,
+     "angle_end": 90.0
+    }
+   ],
+   "strategy": "heuristic",
+   "prefer_offcuts": true,
+   "time_limit_s": 10.0
+  },
+  "result": {
+   "units": "mm",
+   "engine_version": "cutting1d/0.1.0",
+   "method": "FFD(longest-stock)+local-search",
+   "status": "FEASIBLE",
+   "validation_status": "FEASIBLE_HEURISTIC",
+   "patterns": [
+    {
+     "pattern_id": "P1",
+     "stock_id": "S6000",
+     "stock_length": 6000.0,
+     "is_offcut_stock": false,
+     "count": 8,
+     "cuts": [
+      {
+       "piece_id": "M1",
+       "label": null,
+       "length": 3700.0,
+       "offset": 10.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "T1",
+       "label": null,
+       "length": 1449.0,
+       "offset": 3714.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      }
+     ],
+     "used_length": 5167.0,
+     "remainder": 833.0,
+     "offcut_reusable": true,
+     "waste": 0.0
+    },
+    {
+     "pattern_id": "P2",
+     "stock_id": "S6000",
+     "stock_length": 6000.0,
+     "is_offcut_stock": false,
+     "count": 2,
+     "cuts": [
+      {
+       "piece_id": "T1",
+       "label": null,
+       "length": 1449.0,
+       "offset": 10.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "T1",
+       "label": null,
+       "length": 1449.0,
+       "offset": 1463.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "T1",
+       "label": null,
+       "length": 1449.0,
+       "offset": 2916.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "T1",
+       "label": null,
+       "length": 1449.0,
+       "offset": 4369.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      }
+     ],
+     "used_length": 5822.0,
+     "remainder": 178.0,
+     "offcut_reusable": false,
+     "waste": 178.0
+    },
+    {
+     "pattern_id": "P3",
+     "stock_id": "S6000",
+     "stock_length": 6000.0,
+     "is_offcut_stock": false,
+     "count": 1,
+     "cuts": [
+      {
+       "piece_id": "T1",
+       "label": null,
+       "length": 1449.0,
+       "offset": 10.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "T1",
+       "label": null,
+       "length": 1449.0,
+       "offset": 1463.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "T2",
+       "label": null,
+       "length": 999.0,
+       "offset": 2916.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "T2",
+       "label": null,
+       "length": 999.0,
+       "offset": 3919.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "T2",
+       "label": null,
+       "length": 999.0,
+       "offset": 4922.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      }
+     ],
+     "used_length": 5925.0,
+     "remainder": 75.0,
+     "offcut_reusable": false,
+     "waste": 75.0
+    },
+    {
+     "pattern_id": "P4",
+     "stock_id": "S6000",
+     "stock_length": 6000.0,
+     "is_offcut_stock": false,
+     "count": 1,
+     "cuts": [
+      {
+       "piece_id": "T2",
+       "label": null,
+       "length": 999.0,
+       "offset": 10.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "T2",
+       "label": null,
+       "length": 999.0,
+       "offset": 1013.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "T2",
+       "label": null,
+       "length": 999.0,
+       "offset": 2016.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      }
+     ],
+     "used_length": 3019.0,
+     "remainder": 2981.0,
+     "offcut_reusable": true,
+     "waste": 0.0
+    }
+   ],
+   "unplaced": [],
+   "summary": {
+    "bars_used": 12,
+    "total_stock_length": 72000.0,
+    "total_piece_length": 61676.0,
+    "total_kerf_loss": 128.0,
+    "total_trim_loss": 120.0,
+    "reusable_offcut_length": 9645.0,
+    "waste_length": 431.0,
+    "utilization": 0.8566111111111111,
+    "total_cost": null
+   },
+   "proof": {
+    "lower_bound_bars": 11,
+    "bars_used": 12,
+    "gap_bars": 1,
+    "is_optimal": false,
+    "note": "Lower bound (single stock length: ceil(sum(p_i + kerf) / (L - trim_start - trim_end))) = 11; bars used = 12."
+   },
+   "validation": {
+    "passed": true,
+    "validator": "validate_1d/1.0",
+    "errors": [],
+    "checked_items": 7
+   },
+   "issues": [],
+   "request": {
+    "units": "mm",
+    "material": "DEMO-CW50-M150",
+    "kerf": 4.0,
+    "trim_start": 10.0,
+    "trim_end": 0.0,
+    "min_reusable_offcut": 500.0,
+    "stocks": [
+     {
+      "id": "S6000",
+      "label": null,
+      "length": 6000.0,
+      "quantity": null,
+      "cost_per_bar": null,
+      "is_offcut": false,
+      "priority": 0
+     }
+    ],
+    "pieces": [
+     {
+      "id": "M1",
+      "label": null,
+      "length": 3700.0,
+      "quantity": 8,
+      "angle_start": 90.0,
+      "angle_end": 90.0
+     },
+     {
+      "id": "T1",
+      "label": null,
+      "length": 1449.0,
+      "quantity": 18,
+      "angle_start": 90.0,
+      "angle_end": 90.0
+     },
+     {
+      "id": "T2",
+      "label": null,
+      "length": 999.0,
+      "quantity": 6,
+      "angle_start": 90.0,
+      "angle_end": 90.0
+     }
+    ],
+    "strategy": "heuristic",
+    "prefer_offcuts": true,
+    "time_limit_s": 10.0
+   },
+   "runtime_ms": 1.1020859997188381
+  }
+ },
+ {
+  "name": "two_stock_lengths",
+  "request": {
+   "units": "mm",
+   "material": null,
+   "kerf": 3.0,
+   "trim_start": 15.0,
+   "trim_end": 20.0,
+   "min_reusable_offcut": 500.0,
+   "stocks": [
+    {
+     "id": "A",
+     "label": null,
+     "length": 6000.0,
+     "quantity": null,
+     "cost_per_bar": null,
+     "is_offcut": false,
+     "priority": 0
+    },
+    {
+     "id": "B",
+     "label": null,
+     "length": 6500.0,
+     "quantity": 3,
+     "cost_per_bar": null,
+     "is_offcut": false,
+     "priority": 0
+    }
+   ],
+   "pieces": [
+    {
+     "id": "P1",
+     "label": null,
+     "length": 2100.0,
+     "quantity": 7,
+     "angle_start": 90.0,
+     "angle_end": 90.0
+    },
+    {
+     "id": "P2",
+     "label": null,
+     "length": 1650.0,
+     "quantity": 9,
+     "angle_start": 90.0,
+     "angle_end": 90.0
+    },
+    {
+     "id": "P3",
+     "label": null,
+     "length": 820.0,
+     "quantity": 11,
+     "angle_start": 45.0,
+     "angle_end": 90.0
+    }
+   ],
+   "strategy": "heuristic",
+   "prefer_offcuts": true,
+   "time_limit_s": 10.0
+  },
+  "result": {
+   "units": "mm",
+   "engine_version": "cutting1d/0.1.0",
+   "method": "FFD(shortest-stock)+local-search",
+   "status": "FEASIBLE",
+   "validation_status": "FEASIBLE_HEURISTIC",
+   "patterns": [
+    {
+     "pattern_id": "P1",
+     "stock_id": "A",
+     "stock_length": 6000.0,
+     "is_offcut_stock": false,
+     "count": 3,
+     "cuts": [
+      {
+       "piece_id": "P1",
+       "label": null,
+       "length": 2100.0,
+       "offset": 15.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "P1",
+       "label": null,
+       "length": 2100.0,
+       "offset": 2118.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "P2",
+       "label": null,
+       "length": 1650.0,
+       "offset": 4221.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      }
+     ],
+     "used_length": 5874.0,
+     "remainder": 106.0,
+     "offcut_reusable": false,
+     "waste": 106.0
+    },
+    {
+     "pattern_id": "P2",
+     "stock_id": "A",
+     "stock_length": 6000.0,
+     "is_offcut_stock": false,
+     "count": 1,
+     "cuts": [
+      {
+       "piece_id": "P1",
+       "label": null,
+       "length": 2100.0,
+       "offset": 15.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "P2",
+       "label": null,
+       "length": 1650.0,
+       "offset": 2118.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "P2",
+       "label": null,
+       "length": 1650.0,
+       "offset": 3771.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      }
+     ],
+     "used_length": 5424.0,
+     "remainder": 556.0,
+     "offcut_reusable": true,
+     "waste": 0.0
+    },
+    {
+     "pattern_id": "P3",
+     "stock_id": "A",
+     "stock_length": 6000.0,
+     "is_offcut_stock": false,
+     "count": 1,
+     "cuts": [
+      {
+       "piece_id": "P2",
+       "label": null,
+       "length": 1650.0,
+       "offset": 15.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "P2",
+       "label": null,
+       "length": 1650.0,
+       "offset": 1668.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "P2",
+       "label": null,
+       "length": 1650.0,
+       "offset": 3321.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "P3",
+       "label": null,
+       "length": 820.0,
+       "offset": 4974.0,
+       "angle_start": 45.0,
+       "angle_end": 90.0
+      }
+     ],
+     "used_length": 5797.0,
+     "remainder": 183.0,
+     "offcut_reusable": false,
+     "waste": 183.0
+    },
+    {
+     "pattern_id": "P4",
+     "stock_id": "A",
+     "stock_length": 6000.0,
+     "is_offcut_stock": false,
+     "count": 1,
+     "cuts": [
+      {
+       "piece_id": "P2",
+       "label": null,
+       "length": 1650.0,
+       "offset": 15.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "P3",
+       "label": null,
+       "length": 820.0,
+       "offset": 1668.0,
+       "angle_start": 45.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "P3",
+       "label": null,
+       "length": 820.0,
+       "offset": 2491.0,
+       "angle_start": 45.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "P3",
+       "label": null,
+       "length": 820.0,
+       "offset": 3314.0,
+       "angle_start": 45.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "P3",
+       "label": null,
+       "length": 820.0,
+       "offset": 4137.0,
+       "angle_start": 45.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "P3",
+       "label": null,
+       "length": 820.0,
+       "offset": 4960.0,
+       "angle_start": 45.0,
+       "angle_end": 90.0
+      }
+     ],
+     "used_length": 5783.0,
+     "remainder": 197.0,
+     "offcut_reusable": false,
+     "waste": 197.0
+    },
+    {
+     "pattern_id": "P5",
+     "stock_id": "A",
+     "stock_length": 6000.0,
+     "is_offcut_stock": false,
+     "count": 1,
+     "cuts": [
+      {
+       "piece_id": "P3",
+       "label": null,
+       "length": 820.0,
+       "offset": 15.0,
+       "angle_start": 45.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "P3",
+       "label": null,
+       "length": 820.0,
+       "offset": 838.0,
+       "angle_start": 45.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "P3",
+       "label": null,
+       "length": 820.0,
+       "offset": 1661.0,
+       "angle_start": 45.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "P3",
+       "label": null,
+       "length": 820.0,
+       "offset": 2484.0,
+       "angle_start": 45.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "P3",
+       "label": null,
+       "length": 820.0,
+       "offset": 3307.0,
+       "angle_start": 45.0,
+       "angle_end": 90.0
+      }
+     ],
+     "used_length": 4130.0,
+     "remainder": 1850.0,
+     "offcut_reusable": true,
+     "waste": 0.0
+    }
+   ],
+   "unplaced": [],
+   "summary": {
+    "bars_used": 7,
+    "total_stock_length": 42000.0,
+    "total_piece_length": 38570.0,
+    "total_kerf_loss": 81.0,
+    "total_trim_loss": 245.0,
+    "reusable_offcut_length": 2406.0,
+    "waste_length": 698.0,
+    "utilization": 0.9183333333333333,
+    "total_cost": null
+   },
+   "proof": {
+    "lower_bound_bars": 6,
+    "bars_used": 7,
+    "gap_bars": 1,
+    "is_optimal": false,
+    "note": "Lower bound (multiple stock lengths: ceil(sum(p_i + kerf) / longest usable length) (bar-count bound only)) = 6; bars used = 7. Multiple stock lengths: lower bound proves bar count only, not minimum stock length."
+   },
+   "validation": {
+    "passed": true,
+    "validator": "validate_1d/1.0",
+    "errors": [],
+    "checked_items": 8
+   },
+   "issues": [
+    {
+     "code": "MITRE_ALLOWANCE_NOT_APPLIED",
+     "severity": "warning",
+     "message": "Non-90 degree cut angles are recorded but no mitre allowance is added (profile-specific; requires approval)",
+     "ref": "piece:P3"
+    }
+   ],
+   "request": {
+    "units": "mm",
+    "material": null,
+    "kerf": 3.0,
+    "trim_start": 15.0,
+    "trim_end": 20.0,
+    "min_reusable_offcut": 500.0,
+    "stocks": [
+     {
+      "id": "A",
+      "label": null,
+      "length": 6000.0,
+      "quantity": null,
+      "cost_per_bar": null,
+      "is_offcut": false,
+      "priority": 0
+     },
+     {
+      "id": "B",
+      "label": null,
+      "length": 6500.0,
+      "quantity": 3,
+      "cost_per_bar": null,
+      "is_offcut": false,
+      "priority": 0
+     }
+    ],
+    "pieces": [
+     {
+      "id": "P1",
+      "label": null,
+      "length": 2100.0,
+      "quantity": 7,
+      "angle_start": 90.0,
+      "angle_end": 90.0
+     },
+     {
+      "id": "P2",
+      "label": null,
+      "length": 1650.0,
+      "quantity": 9,
+      "angle_start": 90.0,
+      "angle_end": 90.0
+     },
+     {
+      "id": "P3",
+      "label": null,
+      "length": 820.0,
+      "quantity": 11,
+      "angle_start": 45.0,
+      "angle_end": 90.0
+     }
+    ],
+    "strategy": "heuristic",
+    "prefer_offcuts": true,
+    "time_limit_s": 10.0
+   },
+   "runtime_ms": 0.5133350000505743
+  }
+ },
+ {
+  "name": "with_offcuts",
+  "request": {
+   "units": "mm",
+   "material": null,
+   "kerf": 4.0,
+   "trim_start": 10.0,
+   "trim_end": 0.0,
+   "min_reusable_offcut": 500.0,
+   "stocks": [
+    {
+     "id": "O1",
+     "label": null,
+     "length": 2400.0,
+     "quantity": 2,
+     "cost_per_bar": null,
+     "is_offcut": true,
+     "priority": 0
+    },
+    {
+     "id": "N",
+     "label": null,
+     "length": 6000.0,
+     "quantity": null,
+     "cost_per_bar": 1200.0,
+     "is_offcut": false,
+     "priority": 0
+    }
+   ],
+   "pieces": [
+    {
+     "id": "X",
+     "label": null,
+     "length": 1150.0,
+     "quantity": 5,
+     "angle_start": 90.0,
+     "angle_end": 90.0
+    },
+    {
+     "id": "Y",
+     "label": null,
+     "length": 2950.0,
+     "quantity": 4,
+     "angle_start": 90.0,
+     "angle_end": 90.0
+    }
+   ],
+   "strategy": "heuristic",
+   "prefer_offcuts": true,
+   "time_limit_s": 10.0
+  },
+  "result": {
+   "units": "mm",
+   "engine_version": "cutting1d/0.1.0",
+   "method": "FFD(longest-stock)+local-search",
+   "status": "FEASIBLE",
+   "validation_status": "FEASIBLE_HEURISTIC",
+   "patterns": [
+    {
+     "pattern_id": "P1",
+     "stock_id": "N",
+     "stock_length": 6000.0,
+     "is_offcut_stock": false,
+     "count": 2,
+     "cuts": [
+      {
+       "piece_id": "Y",
+       "label": null,
+       "length": 2950.0,
+       "offset": 10.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "Y",
+       "label": null,
+       "length": 2950.0,
+       "offset": 2964.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      }
+     ],
+     "used_length": 5918.0,
+     "remainder": 82.0,
+     "offcut_reusable": false,
+     "waste": 82.0
+    },
+    {
+     "pattern_id": "P2",
+     "stock_id": "N",
+     "stock_length": 6000.0,
+     "is_offcut_stock": false,
+     "count": 1,
+     "cuts": [
+      {
+       "piece_id": "X",
+       "label": null,
+       "length": 1150.0,
+       "offset": 10.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "X",
+       "label": null,
+       "length": 1150.0,
+       "offset": 1164.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "X",
+       "label": null,
+       "length": 1150.0,
+       "offset": 2318.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "X",
+       "label": null,
+       "length": 1150.0,
+       "offset": 3472.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "X",
+       "label": null,
+       "length": 1150.0,
+       "offset": 4626.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      }
+     ],
+     "used_length": 5780.0,
+     "remainder": 220.0,
+     "offcut_reusable": false,
+     "waste": 220.0
+    }
+   ],
+   "unplaced": [],
+   "summary": {
+    "bars_used": 3,
+    "total_stock_length": 18000.0,
+    "total_piece_length": 17550.0,
+    "total_kerf_loss": 36.0,
+    "total_trim_loss": 30.0,
+    "reusable_offcut_length": 0.0,
+    "waste_length": 384.0,
+    "utilization": 0.975,
+    "total_cost": 3600.0
+   },
+   "proof": {
+    "lower_bound_bars": 3,
+    "bars_used": 3,
+    "gap_bars": 0,
+    "is_optimal": false,
+    "note": "Lower bound (multiple stock lengths: ceil(sum(p_i + kerf) / longest usable length) (bar-count bound only)) = 3; bars used = 3. Multiple stock lengths: lower bound proves bar count only, not minimum stock length."
+   },
+   "validation": {
+    "passed": true,
+    "validator": "validate_1d/1.0",
+    "errors": [],
+    "checked_items": 4
+   },
+   "issues": [],
+   "request": {
+    "units": "mm",
+    "material": null,
+    "kerf": 4.0,
+    "trim_start": 10.0,
+    "trim_end": 0.0,
+    "min_reusable_offcut": 500.0,
+    "stocks": [
+     {
+      "id": "O1",
+      "label": null,
+      "length": 2400.0,
+      "quantity": 2,
+      "cost_per_bar": null,
+      "is_offcut": true,
+      "priority": 0
+     },
+     {
+      "id": "N",
+      "label": null,
+      "length": 6000.0,
+      "quantity": null,
+      "cost_per_bar": 1200.0,
+      "is_offcut": false,
+      "priority": 0
+     }
+    ],
+    "pieces": [
+     {
+      "id": "X",
+      "label": null,
+      "length": 1150.0,
+      "quantity": 5,
+      "angle_start": 90.0,
+      "angle_end": 90.0
+     },
+     {
+      "id": "Y",
+      "label": null,
+      "length": 2950.0,
+      "quantity": 4,
+      "angle_start": 90.0,
+      "angle_end": 90.0
+     }
+    ],
+    "strategy": "heuristic",
+    "prefer_offcuts": true,
+    "time_limit_s": 10.0
+   },
+   "runtime_ms": 0.28061600005457876
+  }
+ },
+ {
+  "name": "exhausted",
+  "request": {
+   "units": "mm",
+   "material": null,
+   "kerf": 4.0,
+   "trim_start": 10.0,
+   "trim_end": 0.0,
+   "min_reusable_offcut": 500.0,
+   "stocks": [
+    {
+     "id": "S",
+     "label": null,
+     "length": 6000.0,
+     "quantity": 1,
+     "cost_per_bar": null,
+     "is_offcut": false,
+     "priority": 0
+    }
+   ],
+   "pieces": [
+    {
+     "id": "Z",
+     "label": null,
+     "length": 2000.0,
+     "quantity": 5,
+     "angle_start": 90.0,
+     "angle_end": 90.0
+    },
+    {
+     "id": "L",
+     "label": null,
+     "length": 7000.0,
+     "quantity": 1,
+     "angle_start": 90.0,
+     "angle_end": 90.0
+    }
+   ],
+   "strategy": "heuristic",
+   "prefer_offcuts": true,
+   "time_limit_s": 10.0
+  },
+  "result": {
+   "units": "mm",
+   "engine_version": "cutting1d/0.1.0",
+   "method": "FFD(longest-stock)+local-search",
+   "status": "PARTIAL",
+   "validation_status": "FEASIBLE_HEURISTIC",
+   "patterns": [
+    {
+     "pattern_id": "P1",
+     "stock_id": "S",
+     "stock_length": 6000.0,
+     "is_offcut_stock": false,
+     "count": 1,
+     "cuts": [
+      {
+       "piece_id": "Z",
+       "label": null,
+       "length": 2000.0,
+       "offset": 10.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "Z",
+       "label": null,
+       "length": 2000.0,
+       "offset": 2014.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      }
+     ],
+     "used_length": 4018.0,
+     "remainder": 1982.0,
+     "offcut_reusable": true,
+     "waste": 0.0
+    }
+   ],
+   "unplaced": [
+    {
+     "id": "Z",
+     "label": null,
+     "length": 2000.0,
+     "quantity": 3,
+     "angle_start": 90.0,
+     "angle_end": 90.0
+    },
+    {
+     "id": "L",
+     "label": null,
+     "length": 7000.0,
+     "quantity": 1,
+     "angle_start": 90.0,
+     "angle_end": 90.0
+    }
+   ],
+   "summary": {
+    "bars_used": 1,
+    "total_stock_length": 6000.0,
+    "total_piece_length": 4000.0,
+    "total_kerf_loss": 8.0,
+    "total_trim_loss": 10.0,
+    "reusable_offcut_length": 1982.0,
+    "waste_length": 0.0,
+    "utilization": 0.6666666666666666,
+    "total_cost": null
+   },
+   "proof": {
+    "lower_bound_bars": 1,
+    "bars_used": 1,
+    "gap_bars": 0,
+    "is_optimal": false,
+    "note": "Lower bound (single stock length: ceil(sum(p_i + kerf) / (L - trim_start - trim_end))) = 1; bars used = 1. Some pieces unplaced: bound computed over placed pieces only, optimality not claimed."
+   },
+   "validation": {
+    "passed": true,
+    "validator": "validate_1d/1.0",
+    "errors": [],
+    "checked_items": 3
+   },
+   "issues": [
+    {
+     "code": "PIECE_TOO_LONG",
+     "severity": "error",
+     "message": "piece 'L' (7000.0 mm + kerf 4.0) exceeds the longest usable stock capacity (5990 mm after trims)",
+     "ref": "piece:L"
+    },
+    {
+     "code": "STOCK_EXHAUSTED",
+     "severity": "error",
+     "message": "3 piece(s) could not be placed: finite stock quantities exhausted",
+     "ref": "stocks"
+    }
+   ],
+   "request": {
+    "units": "mm",
+    "material": null,
+    "kerf": 4.0,
+    "trim_start": 10.0,
+    "trim_end": 0.0,
+    "min_reusable_offcut": 500.0,
+    "stocks": [
+     {
+      "id": "S",
+      "label": null,
+      "length": 6000.0,
+      "quantity": 1,
+      "cost_per_bar": null,
+      "is_offcut": false,
+      "priority": 0
+     }
+    ],
+    "pieces": [
+     {
+      "id": "Z",
+      "label": null,
+      "length": 2000.0,
+      "quantity": 5,
+      "angle_start": 90.0,
+      "angle_end": 90.0
+     },
+     {
+      "id": "L",
+      "label": null,
+      "length": 7000.0,
+      "quantity": 1,
+      "angle_start": 90.0,
+      "angle_end": 90.0
+     }
+    ],
+    "strategy": "heuristic",
+    "prefer_offcuts": true,
+    "time_limit_s": 10.0
+   },
+   "runtime_ms": 0.14914399980625603
+  }
+ },
+ {
+  "name": "random_0",
+  "request": {
+   "units": "mm",
+   "material": null,
+   "kerf": 0.0,
+   "trim_start": 0.0,
+   "trim_end": 25.0,
+   "min_reusable_offcut": 500.0,
+   "stocks": [
+    {
+     "id": "S",
+     "label": null,
+     "length": 6000.0,
+     "quantity": null,
+     "cost_per_bar": null,
+     "is_offcut": false,
+     "priority": 0
+    }
+   ],
+   "pieces": [
+    {
+     "id": "p0",
+     "label": null,
+     "length": 1214.0,
+     "quantity": 3,
+     "angle_start": 90.0,
+     "angle_end": 90.0
+    },
+    {
+     "id": "p1",
+     "label": null,
+     "length": 719.0,
+     "quantity": 9,
+     "angle_start": 90.0,
+     "angle_end": 90.0
+    },
+    {
+     "id": "p2",
+     "label": null,
+     "length": 656.0,
+     "quantity": 7,
+     "angle_start": 90.0,
+     "angle_end": 90.0
+    },
+    {
+     "id": "p3",
+     "label": null,
+     "length": 430.0,
+     "quantity": 1,
+     "angle_start": 90.0,
+     "angle_end": 90.0
+    },
+    {
+     "id": "p4",
+     "label": null,
+     "length": 683.0,
+     "quantity": 4,
+     "angle_start": 90.0,
+     "angle_end": 90.0
+    },
+    {
+     "id": "p5",
+     "label": null,
+     "length": 1252.0,
+     "quantity": 9,
+     "angle_start": 90.0,
+     "angle_end": 90.0
+    },
+    {
+     "id": "p6",
+     "label": null,
+     "length": 2765.0,
+     "quantity": 1,
+     "angle_start": 90.0,
+     "angle_end": 90.0
+    },
+    {
+     "id": "p7",
+     "label": null,
+     "length": 2598.0,
+     "quantity": 4,
+     "angle_start": 90.0,
+     "angle_end": 90.0
+    }
+   ],
+   "strategy": "heuristic",
+   "prefer_offcuts": true,
+   "time_limit_s": 10.0
+  },
+  "result": {
+   "units": "mm",
+   "engine_version": "cutting1d/0.1.0",
+   "method": "BFD(longest-stock)+local-search",
+   "status": "OPTIMAL",
+   "validation_status": "OPTIMAL_PROVEN",
+   "patterns": [
+    {
+     "pattern_id": "P1",
+     "stock_id": "S",
+     "stock_length": 6000.0,
+     "is_offcut_stock": false,
+     "count": 1,
+     "cuts": [
+      {
+       "piece_id": "p6",
+       "label": null,
+       "length": 2765.0,
+       "offset": 0.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p7",
+       "label": null,
+       "length": 2598.0,
+       "offset": 2765.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      }
+     ],
+     "used_length": 5363.0,
+     "remainder": 612.0,
+     "offcut_reusable": true,
+     "waste": 0.0
+    },
+    {
+     "pattern_id": "P2",
+     "stock_id": "S",
+     "stock_length": 6000.0,
+     "is_offcut_stock": false,
+     "count": 1,
+     "cuts": [
+      {
+       "piece_id": "p7",
+       "label": null,
+       "length": 2598.0,
+       "offset": 0.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p7",
+       "label": null,
+       "length": 2598.0,
+       "offset": 2598.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p1",
+       "label": null,
+       "length": 719.0,
+       "offset": 5196.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      }
+     ],
+     "used_length": 5915.0,
+     "remainder": 60.0,
+     "offcut_reusable": false,
+     "waste": 60.0
+    },
+    {
+     "pattern_id": "P3",
+     "stock_id": "S",
+     "stock_length": 6000.0,
+     "is_offcut_stock": false,
+     "count": 1,
+     "cuts": [
+      {
+       "piece_id": "p7",
+       "label": null,
+       "length": 2598.0,
+       "offset": 0.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p5",
+       "label": null,
+       "length": 1252.0,
+       "offset": 2598.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p5",
+       "label": null,
+       "length": 1252.0,
+       "offset": 3850.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p1",
+       "label": null,
+       "length": 719.0,
+       "offset": 5102.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      }
+     ],
+     "used_length": 5821.0,
+     "remainder": 154.0,
+     "offcut_reusable": false,
+     "waste": 154.0
+    },
+    {
+     "pattern_id": "P4",
+     "stock_id": "S",
+     "stock_length": 6000.0,
+     "is_offcut_stock": false,
+     "count": 1,
+     "cuts": [
+      {
+       "piece_id": "p5",
+       "label": null,
+       "length": 1252.0,
+       "offset": 0.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p5",
+       "label": null,
+       "length": 1252.0,
+       "offset": 1252.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p5",
+       "label": null,
+       "length": 1252.0,
+       "offset": 2504.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p5",
+       "label": null,
+       "length": 1252.0,
+       "offset": 3756.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p1",
+       "label": null,
+       "length": 719.0,
+       "offset": 5008.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      }
+     ],
+     "used_length": 5727.0,
+     "remainder": 248.0,
+     "offcut_reusable": false,
+     "waste": 248.0
+    },
+    {
+     "pattern_id": "P5",
+     "stock_id": "S",
+     "stock_length": 6000.0,
+     "is_offcut_stock": false,
+     "count": 1,
+     "cuts": [
+      {
+       "piece_id": "p5",
+       "label": null,
+       "length": 1252.0,
+       "offset": 0.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p5",
+       "label": null,
+       "length": 1252.0,
+       "offset": 1252.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p5",
+       "label": null,
+       "length": 1252.0,
+       "offset": 2504.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p0",
+       "label": null,
+       "length": 1214.0,
+       "offset": 3756.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p1",
+       "label": null,
+       "length": 719.0,
+       "offset": 4970.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      }
+     ],
+     "used_length": 5689.0,
+     "remainder": 286.0,
+     "offcut_reusable": false,
+     "waste": 286.0
+    },
+    {
+     "pattern_id": "P6",
+     "stock_id": "S",
+     "stock_length": 6000.0,
+     "is_offcut_stock": false,
+     "count": 1,
+     "cuts": [
+      {
+       "piece_id": "p0",
+       "label": null,
+       "length": 1214.0,
+       "offset": 0.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p0",
+       "label": null,
+       "length": 1214.0,
+       "offset": 1214.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p1",
+       "label": null,
+       "length": 719.0,
+       "offset": 2428.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p1",
+       "label": null,
+       "length": 719.0,
+       "offset": 3147.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p1",
+       "label": null,
+       "length": 719.0,
+       "offset": 3866.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p1",
+       "label": null,
+       "length": 719.0,
+       "offset": 4585.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p2",
+       "label": null,
+       "length": 656.0,
+       "offset": 5304.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      }
+     ],
+     "used_length": 5960.0,
+     "remainder": 15.0,
+     "offcut_reusable": false,
+     "waste": 15.0
+    },
+    {
+     "pattern_id": "P7",
+     "stock_id": "S",
+     "stock_length": 6000.0,
+     "is_offcut_stock": false,
+     "count": 1,
+     "cuts": [
+      {
+       "piece_id": "p1",
+       "label": null,
+       "length": 719.0,
+       "offset": 0.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p4",
+       "label": null,
+       "length": 683.0,
+       "offset": 719.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p4",
+       "label": null,
+       "length": 683.0,
+       "offset": 1402.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p4",
+       "label": null,
+       "length": 683.0,
+       "offset": 2085.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p4",
+       "label": null,
+       "length": 683.0,
+       "offset": 2768.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p2",
+       "label": null,
+       "length": 656.0,
+       "offset": 3451.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p2",
+       "label": null,
+       "length": 656.0,
+       "offset": 4107.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p2",
+       "label": null,
+       "length": 656.0,
+       "offset": 4763.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p3",
+       "label": null,
+       "length": 430.0,
+       "offset": 5419.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      }
+     ],
+     "used_length": 5849.0,
+     "remainder": 126.0,
+     "offcut_reusable": false,
+     "waste": 126.0
+    },
+    {
+     "pattern_id": "P8",
+     "stock_id": "S",
+     "stock_length": 6000.0,
+     "is_offcut_stock": false,
+     "count": 1,
+     "cuts": [
+      {
+       "piece_id": "p2",
+       "label": null,
+       "length": 656.0,
+       "offset": 0.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p2",
+       "label": null,
+       "length": 656.0,
+       "offset": 656.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p2",
+       "label": null,
+       "length": 656.0,
+       "offset": 1312.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      }
+     ],
+     "used_length": 1968.0,
+     "remainder": 4007.0,
+     "offcut_reusable": true,
+     "waste": 0.0
+    }
+   ],
+   "unplaced": [],
+   "summary": {
+    "bars_used": 8,
+    "total_stock_length": 48000.0,
+    "total_piece_length": 42292.0,
+    "total_kerf_loss": 0.0,
+    "total_trim_loss": 200.0,
+    "reusable_offcut_length": 4619.0,
+    "waste_length": 889.0,
+    "utilization": 0.8810833333333333,
+    "total_cost": null
+   },
+   "proof": {
+    "lower_bound_bars": 8,
+    "bars_used": 8,
+    "gap_bars": 0,
+    "is_optimal": true,
+    "note": "Lower bound (single stock length: ceil(sum(p_i + kerf) / (L - trim_start - trim_end))) = 8; bars used = 8. Bars used equals the lower bound: optimal."
+   },
+   "validation": {
+    "passed": true,
+    "validator": "validate_1d/1.0",
+    "errors": [],
+    "checked_items": 16
+   },
+   "issues": [],
+   "request": {
+    "units": "mm",
+    "material": null,
+    "kerf": 0.0,
+    "trim_start": 0.0,
+    "trim_end": 25.0,
+    "min_reusable_offcut": 500.0,
+    "stocks": [
+     {
+      "id": "S",
+      "label": null,
+      "length": 6000.0,
+      "quantity": null,
+      "cost_per_bar": null,
+      "is_offcut": false,
+      "priority": 0
+     }
+    ],
+    "pieces": [
+     {
+      "id": "p0",
+      "label": null,
+      "length": 1214.0,
+      "quantity": 3,
+      "angle_start": 90.0,
+      "angle_end": 90.0
+     },
+     {
+      "id": "p1",
+      "label": null,
+      "length": 719.0,
+      "quantity": 9,
+      "angle_start": 90.0,
+      "angle_end": 90.0
+     },
+     {
+      "id": "p2",
+      "label": null,
+      "length": 656.0,
+      "quantity": 7,
+      "angle_start": 90.0,
+      "angle_end": 90.0
+     },
+     {
+      "id": "p3",
+      "label": null,
+      "length": 430.0,
+      "quantity": 1,
+      "angle_start": 90.0,
+      "angle_end": 90.0
+     },
+     {
+      "id": "p4",
+      "label": null,
+      "length": 683.0,
+      "quantity": 4,
+      "angle_start": 90.0,
+      "angle_end": 90.0
+     },
+     {
+      "id": "p5",
+      "label": null,
+      "length": 1252.0,
+      "quantity": 9,
+      "angle_start": 90.0,
+      "angle_end": 90.0
+     },
+     {
+      "id": "p6",
+      "label": null,
+      "length": 2765.0,
+      "quantity": 1,
+      "angle_start": 90.0,
+      "angle_end": 90.0
+     },
+     {
+      "id": "p7",
+      "label": null,
+      "length": 2598.0,
+      "quantity": 4,
+      "angle_start": 90.0,
+      "angle_end": 90.0
+     }
+    ],
+    "strategy": "heuristic",
+    "prefer_offcuts": true,
+    "time_limit_s": 10.0
+   },
+   "runtime_ms": 0.6893540003147791
+  }
+ },
+ {
+  "name": "random_1",
+  "request": {
+   "units": "mm",
+   "material": null,
+   "kerf": 4.5,
+   "trim_start": 10.0,
+   "trim_end": 0.0,
+   "min_reusable_offcut": 500.0,
+   "stocks": [
+    {
+     "id": "S",
+     "label": null,
+     "length": 6500.0,
+     "quantity": null,
+     "cost_per_bar": null,
+     "is_offcut": false,
+     "priority": 0
+    }
+   ],
+   "pieces": [
+    {
+     "id": "p0",
+     "label": null,
+     "length": 2713.0,
+     "quantity": 5,
+     "angle_start": 90.0,
+     "angle_end": 90.0
+    },
+    {
+     "id": "p1",
+     "label": null,
+     "length": 326.0,
+     "quantity": 3,
+     "angle_start": 90.0,
+     "angle_end": 90.0
+    },
+    {
+     "id": "p2",
+     "label": null,
+     "length": 2031.0,
+     "quantity": 6,
+     "angle_start": 90.0,
+     "angle_end": 90.0
+    },
+    {
+     "id": "p3",
+     "label": null,
+     "length": 1438.0,
+     "quantity": 3,
+     "angle_start": 90.0,
+     "angle_end": 90.0
+    },
+    {
+     "id": "p4",
+     "label": null,
+     "length": 1181.0,
+     "quantity": 6,
+     "angle_start": 90.0,
+     "angle_end": 90.0
+    },
+    {
+     "id": "p5",
+     "label": null,
+     "length": 718.0,
+     "quantity": 2,
+     "angle_start": 90.0,
+     "angle_end": 90.0
+    },
+    {
+     "id": "p6",
+     "label": null,
+     "length": 1856.0,
+     "quantity": 2,
+     "angle_start": 90.0,
+     "angle_end": 90.0
+    },
+    {
+     "id": "p7",
+     "label": null,
+     "length": 1770.0,
+     "quantity": 6,
+     "angle_start": 90.0,
+     "angle_end": 90.0
+    }
+   ],
+   "strategy": "heuristic",
+   "prefer_offcuts": true,
+   "time_limit_s": 10.0
+  },
+  "result": {
+   "units": "mm",
+   "engine_version": "cutting1d/0.1.0",
+   "method": "FFD(longest-stock)+local-search",
+   "status": "OPTIMAL",
+   "validation_status": "OPTIMAL_PROVEN",
+   "patterns": [
+    {
+     "pattern_id": "P1",
+     "stock_id": "S",
+     "stock_length": 6500.0,
+     "is_offcut_stock": false,
+     "count": 2,
+     "cuts": [
+      {
+       "piece_id": "p0",
+       "label": null,
+       "length": 2713.0,
+       "offset": 10.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p0",
+       "label": null,
+       "length": 2713.0,
+       "offset": 2727.5,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p5",
+       "label": null,
+       "length": 718.0,
+       "offset": 5445.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p1",
+       "label": null,
+       "length": 326.0,
+       "offset": 6167.5,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      }
+     ],
+     "used_length": 6498.0,
+     "remainder": 2.0,
+     "offcut_reusable": false,
+     "waste": 2.0
+    },
+    {
+     "pattern_id": "P2",
+     "stock_id": "S",
+     "stock_length": 6500.0,
+     "is_offcut_stock": false,
+     "count": 1,
+     "cuts": [
+      {
+       "piece_id": "p0",
+       "label": null,
+       "length": 2713.0,
+       "offset": 10.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p2",
+       "label": null,
+       "length": 2031.0,
+       "offset": 2727.5,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p3",
+       "label": null,
+       "length": 1438.0,
+       "offset": 4763.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      }
+     ],
+     "used_length": 6205.5,
+     "remainder": 294.5,
+     "offcut_reusable": false,
+     "waste": 294.5
+    },
+    {
+     "pattern_id": "P3",
+     "stock_id": "S",
+     "stock_length": 6500.0,
+     "is_offcut_stock": false,
+     "count": 1,
+     "cuts": [
+      {
+       "piece_id": "p2",
+       "label": null,
+       "length": 2031.0,
+       "offset": 10.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p2",
+       "label": null,
+       "length": 2031.0,
+       "offset": 2045.5,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p2",
+       "label": null,
+       "length": 2031.0,
+       "offset": 4081.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p1",
+       "label": null,
+       "length": 326.0,
+       "offset": 6116.5,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      }
+     ],
+     "used_length": 6447.0,
+     "remainder": 53.0,
+     "offcut_reusable": false,
+     "waste": 53.0
+    },
+    {
+     "pattern_id": "P4",
+     "stock_id": "S",
+     "stock_length": 6500.0,
+     "is_offcut_stock": false,
+     "count": 1,
+     "cuts": [
+      {
+       "piece_id": "p2",
+       "label": null,
+       "length": 2031.0,
+       "offset": 10.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p2",
+       "label": null,
+       "length": 2031.0,
+       "offset": 2045.5,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p6",
+       "label": null,
+       "length": 1856.0,
+       "offset": 4081.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      }
+     ],
+     "used_length": 5941.5,
+     "remainder": 558.5,
+     "offcut_reusable": true,
+     "waste": 0.0
+    },
+    {
+     "pattern_id": "P5",
+     "stock_id": "S",
+     "stock_length": 6500.0,
+     "is_offcut_stock": false,
+     "count": 1,
+     "cuts": [
+      {
+       "piece_id": "p6",
+       "label": null,
+       "length": 1856.0,
+       "offset": 10.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p7",
+       "label": null,
+       "length": 1770.0,
+       "offset": 1870.5,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p7",
+       "label": null,
+       "length": 1770.0,
+       "offset": 3645.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      }
+     ],
+     "used_length": 5419.5,
+     "remainder": 1080.5,
+     "offcut_reusable": true,
+     "waste": 0.0
+    },
+    {
+     "pattern_id": "P6",
+     "stock_id": "S",
+     "stock_length": 6500.0,
+     "is_offcut_stock": false,
+     "count": 1,
+     "cuts": [
+      {
+       "piece_id": "p7",
+       "label": null,
+       "length": 1770.0,
+       "offset": 10.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p7",
+       "label": null,
+       "length": 1770.0,
+       "offset": 1784.5,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p7",
+       "label": null,
+       "length": 1770.0,
+       "offset": 3559.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      }
+     ],
+     "used_length": 5333.5,
+     "remainder": 1166.5,
+     "offcut_reusable": true,
+     "waste": 0.0
+    },
+    {
+     "pattern_id": "P7",
+     "stock_id": "S",
+     "stock_length": 6500.0,
+     "is_offcut_stock": false,
+     "count": 1,
+     "cuts": [
+      {
+       "piece_id": "p7",
+       "label": null,
+       "length": 1770.0,
+       "offset": 10.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p3",
+       "label": null,
+       "length": 1438.0,
+       "offset": 1784.5,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p3",
+       "label": null,
+       "length": 1438.0,
+       "offset": 3227.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p4",
+       "label": null,
+       "length": 1181.0,
+       "offset": 4669.5,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      }
+     ],
+     "used_length": 5855.0,
+     "remainder": 645.0,
+     "offcut_reusable": true,
+     "waste": 0.0
+    },
+    {
+     "pattern_id": "P8",
+     "stock_id": "S",
+     "stock_length": 6500.0,
+     "is_offcut_stock": false,
+     "count": 1,
+     "cuts": [
+      {
+       "piece_id": "p4",
+       "label": null,
+       "length": 1181.0,
+       "offset": 10.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p4",
+       "label": null,
+       "length": 1181.0,
+       "offset": 1195.5,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p4",
+       "label": null,
+       "length": 1181.0,
+       "offset": 2381.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p4",
+       "label": null,
+       "length": 1181.0,
+       "offset": 3566.5,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p4",
+       "label": null,
+       "length": 1181.0,
+       "offset": 4752.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      }
+     ],
+     "used_length": 5937.5,
+     "remainder": 562.5,
+     "offcut_reusable": true,
+     "waste": 0.0
+    }
+   ],
+   "unplaced": [],
+   "summary": {
+    "bars_used": 9,
+    "total_stock_length": 58500.0,
+    "total_piece_length": 53897.0,
+    "total_kerf_loss": 148.5,
+    "total_trim_loss": 90.0,
+    "reusable_offcut_length": 4013.0,
+    "waste_length": 351.5,
+    "utilization": 0.9213162393162393,
+    "total_cost": null
+   },
+   "proof": {
+    "lower_bound_bars": 9,
+    "bars_used": 9,
+    "gap_bars": 0,
+    "is_optimal": true,
+    "note": "Lower bound (single stock length: ceil(sum(p_i + kerf) / (L - trim_start - trim_end))) = 9; bars used = 9. Bars used equals the lower bound: optimal."
+   },
+   "validation": {
+    "passed": true,
+    "validator": "validate_1d/1.0",
+    "errors": [],
+    "checked_items": 16
+   },
+   "issues": [],
+   "request": {
+    "units": "mm",
+    "material": null,
+    "kerf": 4.5,
+    "trim_start": 10.0,
+    "trim_end": 0.0,
+    "min_reusable_offcut": 500.0,
+    "stocks": [
+     {
+      "id": "S",
+      "label": null,
+      "length": 6500.0,
+      "quantity": null,
+      "cost_per_bar": null,
+      "is_offcut": false,
+      "priority": 0
+     }
+    ],
+    "pieces": [
+     {
+      "id": "p0",
+      "label": null,
+      "length": 2713.0,
+      "quantity": 5,
+      "angle_start": 90.0,
+      "angle_end": 90.0
+     },
+     {
+      "id": "p1",
+      "label": null,
+      "length": 326.0,
+      "quantity": 3,
+      "angle_start": 90.0,
+      "angle_end": 90.0
+     },
+     {
+      "id": "p2",
+      "label": null,
+      "length": 2031.0,
+      "quantity": 6,
+      "angle_start": 90.0,
+      "angle_end": 90.0
+     },
+     {
+      "id": "p3",
+      "label": null,
+      "length": 1438.0,
+      "quantity": 3,
+      "angle_start": 90.0,
+      "angle_end": 90.0
+     },
+     {
+      "id": "p4",
+      "label": null,
+      "length": 1181.0,
+      "quantity": 6,
+      "angle_start": 90.0,
+      "angle_end": 90.0
+     },
+     {
+      "id": "p5",
+      "label": null,
+      "length": 718.0,
+      "quantity": 2,
+      "angle_start": 90.0,
+      "angle_end": 90.0
+     },
+     {
+      "id": "p6",
+      "label": null,
+      "length": 1856.0,
+      "quantity": 2,
+      "angle_start": 90.0,
+      "angle_end": 90.0
+     },
+     {
+      "id": "p7",
+      "label": null,
+      "length": 1770.0,
+      "quantity": 6,
+      "angle_start": 90.0,
+      "angle_end": 90.0
+     }
+    ],
+    "strategy": "heuristic",
+    "prefer_offcuts": true,
+    "time_limit_s": 10.0
+   },
+   "runtime_ms": 0.564930000109598
+  }
+ },
+ {
+  "name": "random_2",
+  "request": {
+   "units": "mm",
+   "material": null,
+   "kerf": 3.0,
+   "trim_start": 0.0,
+   "trim_end": 25.0,
+   "min_reusable_offcut": 500.0,
+   "stocks": [
+    {
+     "id": "S",
+     "label": null,
+     "length": 6000.0,
+     "quantity": null,
+     "cost_per_bar": null,
+     "is_offcut": false,
+     "priority": 0
+    }
+   ],
+   "pieces": [
+    {
+     "id": "p0",
+     "label": null,
+     "length": 1850.0,
+     "quantity": 2,
+     "angle_start": 90.0,
+     "angle_end": 90.0
+    },
+    {
+     "id": "p1",
+     "label": null,
+     "length": 2561.0,
+     "quantity": 5,
+     "angle_start": 90.0,
+     "angle_end": 90.0
+    },
+    {
+     "id": "p2",
+     "label": null,
+     "length": 2874.0,
+     "quantity": 6,
+     "angle_start": 90.0,
+     "angle_end": 90.0
+    },
+    {
+     "id": "p3",
+     "label": null,
+     "length": 2664.0,
+     "quantity": 4,
+     "angle_start": 90.0,
+     "angle_end": 90.0
+    },
+    {
+     "id": "p4",
+     "label": null,
+     "length": 584.0,
+     "quantity": 1,
+     "angle_start": 90.0,
+     "angle_end": 90.0
+    },
+    {
+     "id": "p5",
+     "label": null,
+     "length": 1233.0,
+     "quantity": 5,
+     "angle_start": 90.0,
+     "angle_end": 90.0
+    },
+    {
+     "id": "p6",
+     "label": null,
+     "length": 626.0,
+     "quantity": 4,
+     "angle_start": 90.0,
+     "angle_end": 90.0
+    }
+   ],
+   "strategy": "heuristic",
+   "prefer_offcuts": true,
+   "time_limit_s": 10.0
+  },
+  "result": {
+   "units": "mm",
+   "engine_version": "cutting1d/0.1.0",
+   "method": "FFD(longest-stock)+local-search",
+   "status": "FEASIBLE",
+   "validation_status": "FEASIBLE_HEURISTIC",
+   "patterns": [
+    {
+     "pattern_id": "P1",
+     "stock_id": "S",
+     "stock_length": 6000.0,
+     "is_offcut_stock": false,
+     "count": 3,
+     "cuts": [
+      {
+       "piece_id": "p2",
+       "label": null,
+       "length": 2874.0,
+       "offset": 0.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p2",
+       "label": null,
+       "length": 2874.0,
+       "offset": 2877.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      }
+     ],
+     "used_length": 5754.0,
+     "remainder": 221.0,
+     "offcut_reusable": false,
+     "waste": 221.0
+    },
+    {
+     "pattern_id": "P2",
+     "stock_id": "S",
+     "stock_length": 6000.0,
+     "is_offcut_stock": false,
+     "count": 2,
+     "cuts": [
+      {
+       "piece_id": "p3",
+       "label": null,
+       "length": 2664.0,
+       "offset": 0.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p3",
+       "label": null,
+       "length": 2664.0,
+       "offset": 2667.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p6",
+       "label": null,
+       "length": 626.0,
+       "offset": 5334.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      }
+     ],
+     "used_length": 5963.0,
+     "remainder": 12.0,
+     "offcut_reusable": false,
+     "waste": 12.0
+    },
+    {
+     "pattern_id": "P3",
+     "stock_id": "S",
+     "stock_length": 6000.0,
+     "is_offcut_stock": false,
+     "count": 2,
+     "cuts": [
+      {
+       "piece_id": "p1",
+       "label": null,
+       "length": 2561.0,
+       "offset": 0.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p1",
+       "label": null,
+       "length": 2561.0,
+       "offset": 2564.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p6",
+       "label": null,
+       "length": 626.0,
+       "offset": 5128.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      }
+     ],
+     "used_length": 5757.0,
+     "remainder": 218.0,
+     "offcut_reusable": false,
+     "waste": 218.0
+    },
+    {
+     "pattern_id": "P4",
+     "stock_id": "S",
+     "stock_length": 6000.0,
+     "is_offcut_stock": false,
+     "count": 1,
+     "cuts": [
+      {
+       "piece_id": "p1",
+       "label": null,
+       "length": 2561.0,
+       "offset": 0.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p0",
+       "label": null,
+       "length": 1850.0,
+       "offset": 2564.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p5",
+       "label": null,
+       "length": 1233.0,
+       "offset": 4417.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      }
+     ],
+     "used_length": 5653.0,
+     "remainder": 322.0,
+     "offcut_reusable": false,
+     "waste": 322.0
+    },
+    {
+     "pattern_id": "P5",
+     "stock_id": "S",
+     "stock_length": 6000.0,
+     "is_offcut_stock": false,
+     "count": 1,
+     "cuts": [
+      {
+       "piece_id": "p0",
+       "label": null,
+       "length": 1850.0,
+       "offset": 0.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p5",
+       "label": null,
+       "length": 1233.0,
+       "offset": 1853.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p5",
+       "label": null,
+       "length": 1233.0,
+       "offset": 3089.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p5",
+       "label": null,
+       "length": 1233.0,
+       "offset": 4325.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      }
+     ],
+     "used_length": 5561.0,
+     "remainder": 414.0,
+     "offcut_reusable": false,
+     "waste": 414.0
+    },
+    {
+     "pattern_id": "P6",
+     "stock_id": "S",
+     "stock_length": 6000.0,
+     "is_offcut_stock": false,
+     "count": 1,
+     "cuts": [
+      {
+       "piece_id": "p5",
+       "label": null,
+       "length": 1233.0,
+       "offset": 0.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p4",
+       "label": null,
+       "length": 584.0,
+       "offset": 1236.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      }
+     ],
+     "used_length": 1823.0,
+     "remainder": 4152.0,
+     "offcut_reusable": true,
+     "waste": 0.0
+    }
+   ],
+   "unplaced": [],
+   "summary": {
+    "bars_used": 10,
+    "total_stock_length": 60000.0,
+    "total_piece_length": 53658.0,
+    "total_kerf_loss": 81.0,
+    "total_trim_loss": 250.0,
+    "reusable_offcut_length": 4152.0,
+    "waste_length": 1859.0,
+    "utilization": 0.8943,
+    "total_cost": null
+   },
+   "proof": {
+    "lower_bound_bars": 9,
+    "bars_used": 10,
+    "gap_bars": 1,
+    "is_optimal": false,
+    "note": "Lower bound (single stock length: ceil(sum(p_i + kerf) / (L - trim_start - trim_end))) = 9; bars used = 10."
+   },
+   "validation": {
+    "passed": true,
+    "validator": "validate_1d/1.0",
+    "errors": [],
+    "checked_items": 13
+   },
+   "issues": [],
+   "request": {
+    "units": "mm",
+    "material": null,
+    "kerf": 3.0,
+    "trim_start": 0.0,
+    "trim_end": 25.0,
+    "min_reusable_offcut": 500.0,
+    "stocks": [
+     {
+      "id": "S",
+      "label": null,
+      "length": 6000.0,
+      "quantity": null,
+      "cost_per_bar": null,
+      "is_offcut": false,
+      "priority": 0
+     }
+    ],
+    "pieces": [
+     {
+      "id": "p0",
+      "label": null,
+      "length": 1850.0,
+      "quantity": 2,
+      "angle_start": 90.0,
+      "angle_end": 90.0
+     },
+     {
+      "id": "p1",
+      "label": null,
+      "length": 2561.0,
+      "quantity": 5,
+      "angle_start": 90.0,
+      "angle_end": 90.0
+     },
+     {
+      "id": "p2",
+      "label": null,
+      "length": 2874.0,
+      "quantity": 6,
+      "angle_start": 90.0,
+      "angle_end": 90.0
+     },
+     {
+      "id": "p3",
+      "label": null,
+      "length": 2664.0,
+      "quantity": 4,
+      "angle_start": 90.0,
+      "angle_end": 90.0
+     },
+     {
+      "id": "p4",
+      "label": null,
+      "length": 584.0,
+      "quantity": 1,
+      "angle_start": 90.0,
+      "angle_end": 90.0
+     },
+     {
+      "id": "p5",
+      "label": null,
+      "length": 1233.0,
+      "quantity": 5,
+      "angle_start": 90.0,
+      "angle_end": 90.0
+     },
+     {
+      "id": "p6",
+      "label": null,
+      "length": 626.0,
+      "quantity": 4,
+      "angle_start": 90.0,
+      "angle_end": 90.0
+     }
+    ],
+    "strategy": "heuristic",
+    "prefer_offcuts": true,
+    "time_limit_s": 10.0
+   },
+   "runtime_ms": 0.5591829999502806
+  }
+ },
+ {
+  "name": "random_3",
+  "request": {
+   "units": "mm",
+   "material": null,
+   "kerf": 3.0,
+   "trim_start": 10.0,
+   "trim_end": 25.0,
+   "min_reusable_offcut": 500.0,
+   "stocks": [
+    {
+     "id": "S",
+     "label": null,
+     "length": 6500.0,
+     "quantity": null,
+     "cost_per_bar": null,
+     "is_offcut": false,
+     "priority": 0
+    }
+   ],
+   "pieces": [
+    {
+     "id": "p0",
+     "label": null,
+     "length": 966.0,
+     "quantity": 6,
+     "angle_start": 90.0,
+     "angle_end": 90.0
+    },
+    {
+     "id": "p1",
+     "label": null,
+     "length": 1755.0,
+     "quantity": 4,
+     "angle_start": 90.0,
+     "angle_end": 90.0
+    },
+    {
+     "id": "p2",
+     "label": null,
+     "length": 1393.0,
+     "quantity": 2,
+     "angle_start": 90.0,
+     "angle_end": 90.0
+    }
+   ],
+   "strategy": "heuristic",
+   "prefer_offcuts": true,
+   "time_limit_s": 10.0
+  },
+  "result": {
+   "units": "mm",
+   "engine_version": "cutting1d/0.1.0",
+   "method": "FFD(longest-stock)+local-search",
+   "status": "OPTIMAL",
+   "validation_status": "OPTIMAL_PROVEN",
+   "patterns": [
+    {
+     "pattern_id": "P1",
+     "stock_id": "S",
+     "stock_length": 6500.0,
+     "is_offcut_stock": false,
+     "count": 1,
+     "cuts": [
+      {
+       "piece_id": "p1",
+       "label": null,
+       "length": 1755.0,
+       "offset": 10.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p1",
+       "label": null,
+       "length": 1755.0,
+       "offset": 1768.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p1",
+       "label": null,
+       "length": 1755.0,
+       "offset": 3526.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p0",
+       "label": null,
+       "length": 966.0,
+       "offset": 5284.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      }
+     ],
+     "used_length": 6253.0,
+     "remainder": 222.0,
+     "offcut_reusable": false,
+     "waste": 222.0
+    },
+    {
+     "pattern_id": "P2",
+     "stock_id": "S",
+     "stock_length": 6500.0,
+     "is_offcut_stock": false,
+     "count": 1,
+     "cuts": [
+      {
+       "piece_id": "p1",
+       "label": null,
+       "length": 1755.0,
+       "offset": 10.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p2",
+       "label": null,
+       "length": 1393.0,
+       "offset": 1768.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p2",
+       "label": null,
+       "length": 1393.0,
+       "offset": 3164.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p0",
+       "label": null,
+       "length": 966.0,
+       "offset": 4560.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      }
+     ],
+     "used_length": 5529.0,
+     "remainder": 946.0,
+     "offcut_reusable": true,
+     "waste": 0.0
+    },
+    {
+     "pattern_id": "P3",
+     "stock_id": "S",
+     "stock_length": 6500.0,
+     "is_offcut_stock": false,
+     "count": 1,
+     "cuts": [
+      {
+       "piece_id": "p0",
+       "label": null,
+       "length": 966.0,
+       "offset": 10.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p0",
+       "label": null,
+       "length": 966.0,
+       "offset": 979.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p0",
+       "label": null,
+       "length": 966.0,
+       "offset": 1948.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p0",
+       "label": null,
+       "length": 966.0,
+       "offset": 2917.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      }
+     ],
+     "used_length": 3886.0,
+     "remainder": 2589.0,
+     "offcut_reusable": true,
+     "waste": 0.0
+    }
+   ],
+   "unplaced": [],
+   "summary": {
+    "bars_used": 3,
+    "total_stock_length": 19500.0,
+    "total_piece_length": 15602.0,
+    "total_kerf_loss": 36.0,
+    "total_trim_loss": 105.0,
+    "reusable_offcut_length": 3535.0,
+    "waste_length": 222.0,
+    "utilization": 0.8001025641025641,
+    "total_cost": null
+   },
+   "proof": {
+    "lower_bound_bars": 3,
+    "bars_used": 3,
+    "gap_bars": 0,
+    "is_optimal": true,
+    "note": "Lower bound (single stock length: ceil(sum(p_i + kerf) / (L - trim_start - trim_end))) = 3; bars used = 3. Bars used equals the lower bound: optimal."
+   },
+   "validation": {
+    "passed": true,
+    "validator": "validate_1d/1.0",
+    "errors": [],
+    "checked_items": 6
+   },
+   "issues": [],
+   "request": {
+    "units": "mm",
+    "material": null,
+    "kerf": 3.0,
+    "trim_start": 10.0,
+    "trim_end": 25.0,
+    "min_reusable_offcut": 500.0,
+    "stocks": [
+     {
+      "id": "S",
+      "label": null,
+      "length": 6500.0,
+      "quantity": null,
+      "cost_per_bar": null,
+      "is_offcut": false,
+      "priority": 0
+     }
+    ],
+    "pieces": [
+     {
+      "id": "p0",
+      "label": null,
+      "length": 966.0,
+      "quantity": 6,
+      "angle_start": 90.0,
+      "angle_end": 90.0
+     },
+     {
+      "id": "p1",
+      "label": null,
+      "length": 1755.0,
+      "quantity": 4,
+      "angle_start": 90.0,
+      "angle_end": 90.0
+     },
+     {
+      "id": "p2",
+      "label": null,
+      "length": 1393.0,
+      "quantity": 2,
+      "angle_start": 90.0,
+      "angle_end": 90.0
+     }
+    ],
+    "strategy": "heuristic",
+    "prefer_offcuts": true,
+    "time_limit_s": 10.0
+   },
+   "runtime_ms": 0.25811400018938
+  }
+ },
+ {
+  "name": "random_4",
+  "request": {
+   "units": "mm",
+   "material": null,
+   "kerf": 4.5,
+   "trim_start": 0.0,
+   "trim_end": 0.0,
+   "min_reusable_offcut": 500.0,
+   "stocks": [
+    {
+     "id": "S",
+     "label": null,
+     "length": 6000.0,
+     "quantity": null,
+     "cost_per_bar": null,
+     "is_offcut": false,
+     "priority": 0
+    }
+   ],
+   "pieces": [
+    {
+     "id": "p0",
+     "label": null,
+     "length": 2193.0,
+     "quantity": 7,
+     "angle_start": 90.0,
+     "angle_end": 90.0
+    },
+    {
+     "id": "p1",
+     "label": null,
+     "length": 1405.0,
+     "quantity": 9,
+     "angle_start": 90.0,
+     "angle_end": 90.0
+    },
+    {
+     "id": "p2",
+     "label": null,
+     "length": 1199.0,
+     "quantity": 6,
+     "angle_start": 90.0,
+     "angle_end": 90.0
+    },
+    {
+     "id": "p3",
+     "label": null,
+     "length": 529.0,
+     "quantity": 4,
+     "angle_start": 90.0,
+     "angle_end": 90.0
+    },
+    {
+     "id": "p4",
+     "label": null,
+     "length": 431.0,
+     "quantity": 6,
+     "angle_start": 90.0,
+     "angle_end": 90.0
+    },
+    {
+     "id": "p5",
+     "label": null,
+     "length": 1943.0,
+     "quantity": 5,
+     "angle_start": 90.0,
+     "angle_end": 90.0
+    },
+    {
+     "id": "p6",
+     "label": null,
+     "length": 571.0,
+     "quantity": 4,
+     "angle_start": 90.0,
+     "angle_end": 90.0
+    }
+   ],
+   "strategy": "heuristic",
+   "prefer_offcuts": true,
+   "time_limit_s": 10.0
+  },
+  "result": {
+   "units": "mm",
+   "engine_version": "cutting1d/0.1.0",
+   "method": "FFD(longest-stock)+local-search",
+   "status": "OPTIMAL",
+   "validation_status": "OPTIMAL_PROVEN",
+   "patterns": [
+    {
+     "pattern_id": "P1",
+     "stock_id": "S",
+     "stock_length": 6000.0,
+     "is_offcut_stock": false,
+     "count": 3,
+     "cuts": [
+      {
+       "piece_id": "p0",
+       "label": null,
+       "length": 2193.0,
+       "offset": 0.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p0",
+       "label": null,
+       "length": 2193.0,
+       "offset": 2197.5,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p1",
+       "label": null,
+       "length": 1405.0,
+       "offset": 4395.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      }
+     ],
+     "used_length": 5804.5,
+     "remainder": 195.5,
+     "offcut_reusable": false,
+     "waste": 195.5
+    },
+    {
+     "pattern_id": "P2",
+     "stock_id": "S",
+     "stock_length": 6000.0,
+     "is_offcut_stock": false,
+     "count": 1,
+     "cuts": [
+      {
+       "piece_id": "p0",
+       "label": null,
+       "length": 2193.0,
+       "offset": 0.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p5",
+       "label": null,
+       "length": 1943.0,
+       "offset": 2197.5,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p1",
+       "label": null,
+       "length": 1405.0,
+       "offset": 4145.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p4",
+       "label": null,
+       "length": 431.0,
+       "offset": 5554.5,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      }
+     ],
+     "used_length": 5990.0,
+     "remainder": 10.0,
+     "offcut_reusable": false,
+     "waste": 10.0
+    },
+    {
+     "pattern_id": "P3",
+     "stock_id": "S",
+     "stock_length": 6000.0,
+     "is_offcut_stock": false,
+     "count": 1,
+     "cuts": [
+      {
+       "piece_id": "p5",
+       "label": null,
+       "length": 1943.0,
+       "offset": 0.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p5",
+       "label": null,
+       "length": 1943.0,
+       "offset": 1947.5,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p5",
+       "label": null,
+       "length": 1943.0,
+       "offset": 3895.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      }
+     ],
+     "used_length": 5842.5,
+     "remainder": 157.5,
+     "offcut_reusable": false,
+     "waste": 157.5
+    },
+    {
+     "pattern_id": "P4",
+     "stock_id": "S",
+     "stock_length": 6000.0,
+     "is_offcut_stock": false,
+     "count": 1,
+     "cuts": [
+      {
+       "piece_id": "p5",
+       "label": null,
+       "length": 1943.0,
+       "offset": 0.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p1",
+       "label": null,
+       "length": 1405.0,
+       "offset": 1947.5,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p1",
+       "label": null,
+       "length": 1405.0,
+       "offset": 3357.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p2",
+       "label": null,
+       "length": 1199.0,
+       "offset": 4766.5,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      }
+     ],
+     "used_length": 5970.0,
+     "remainder": 30.0,
+     "offcut_reusable": false,
+     "waste": 30.0
+    },
+    {
+     "pattern_id": "P5",
+     "stock_id": "S",
+     "stock_length": 6000.0,
+     "is_offcut_stock": false,
+     "count": 1,
+     "cuts": [
+      {
+       "piece_id": "p1",
+       "label": null,
+       "length": 1405.0,
+       "offset": 0.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p1",
+       "label": null,
+       "length": 1405.0,
+       "offset": 1409.5,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p1",
+       "label": null,
+       "length": 1405.0,
+       "offset": 2819.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p2",
+       "label": null,
+       "length": 1199.0,
+       "offset": 4228.5,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p3",
+       "label": null,
+       "length": 529.0,
+       "offset": 5432.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      }
+     ],
+     "used_length": 5965.5,
+     "remainder": 34.5,
+     "offcut_reusable": false,
+     "waste": 34.5
+    },
+    {
+     "pattern_id": "P6",
+     "stock_id": "S",
+     "stock_length": 6000.0,
+     "is_offcut_stock": false,
+     "count": 1,
+     "cuts": [
+      {
+       "piece_id": "p2",
+       "label": null,
+       "length": 1199.0,
+       "offset": 0.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p2",
+       "label": null,
+       "length": 1199.0,
+       "offset": 1203.5,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p2",
+       "label": null,
+       "length": 1199.0,
+       "offset": 2407.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p2",
+       "label": null,
+       "length": 1199.0,
+       "offset": 3610.5,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p6",
+       "label": null,
+       "length": 571.0,
+       "offset": 4814.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p6",
+       "label": null,
+       "length": 571.0,
+       "offset": 5389.5,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      }
+     ],
+     "used_length": 5965.0,
+     "remainder": 35.0,
+     "offcut_reusable": false,
+     "waste": 35.0
+    },
+    {
+     "pattern_id": "P7",
+     "stock_id": "S",
+     "stock_length": 6000.0,
+     "is_offcut_stock": false,
+     "count": 1,
+     "cuts": [
+      {
+       "piece_id": "p6",
+       "label": null,
+       "length": 571.0,
+       "offset": 0.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p6",
+       "label": null,
+       "length": 571.0,
+       "offset": 575.5,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p3",
+       "label": null,
+       "length": 529.0,
+       "offset": 1151.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p3",
+       "label": null,
+       "length": 529.0,
+       "offset": 1684.5,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p3",
+       "label": null,
+       "length": 529.0,
+       "offset": 2218.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p4",
+       "label": null,
+       "length": 431.0,
+       "offset": 2751.5,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p4",
+       "label": null,
+       "length": 431.0,
+       "offset": 3187.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p4",
+       "label": null,
+       "length": 431.0,
+       "offset": 3622.5,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p4",
+       "label": null,
+       "length": 431.0,
+       "offset": 4058.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p4",
+       "label": null,
+       "length": 431.0,
+       "offset": 4493.5,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      }
+     ],
+     "used_length": 4929.0,
+     "remainder": 1071.0,
+     "offcut_reusable": true,
+     "waste": 0.0
+    }
+   ],
+   "unplaced": [],
+   "summary": {
+    "bars_used": 9,
+    "total_stock_length": 54000.0,
+    "total_piece_length": 51891.0,
+    "total_kerf_loss": 184.5,
+    "total_trim_loss": 0.0,
+    "reusable_offcut_length": 1071.0,
+    "waste_length": 853.5,
+    "utilization": 0.9609444444444445,
+    "total_cost": null
+   },
+   "proof": {
+    "lower_bound_bars": 9,
+    "bars_used": 9,
+    "gap_bars": 0,
+    "is_optimal": true,
+    "note": "Lower bound (single stock length: ceil(sum(p_i + kerf) / (L - trim_start - trim_end))) = 9; bars used = 9. Bars used equals the lower bound: optimal."
+   },
+   "validation": {
+    "passed": true,
+    "validator": "validate_1d/1.0",
+    "errors": [],
+    "checked_items": 14
+   },
+   "issues": [],
+   "request": {
+    "units": "mm",
+    "material": null,
+    "kerf": 4.5,
+    "trim_start": 0.0,
+    "trim_end": 0.0,
+    "min_reusable_offcut": 500.0,
+    "stocks": [
+     {
+      "id": "S",
+      "label": null,
+      "length": 6000.0,
+      "quantity": null,
+      "cost_per_bar": null,
+      "is_offcut": false,
+      "priority": 0
+     }
+    ],
+    "pieces": [
+     {
+      "id": "p0",
+      "label": null,
+      "length": 2193.0,
+      "quantity": 7,
+      "angle_start": 90.0,
+      "angle_end": 90.0
+     },
+     {
+      "id": "p1",
+      "label": null,
+      "length": 1405.0,
+      "quantity": 9,
+      "angle_start": 90.0,
+      "angle_end": 90.0
+     },
+     {
+      "id": "p2",
+      "label": null,
+      "length": 1199.0,
+      "quantity": 6,
+      "angle_start": 90.0,
+      "angle_end": 90.0
+     },
+     {
+      "id": "p3",
+      "label": null,
+      "length": 529.0,
+      "quantity": 4,
+      "angle_start": 90.0,
+      "angle_end": 90.0
+     },
+     {
+      "id": "p4",
+      "label": null,
+      "length": 431.0,
+      "quantity": 6,
+      "angle_start": 90.0,
+      "angle_end": 90.0
+     },
+     {
+      "id": "p5",
+      "label": null,
+      "length": 1943.0,
+      "quantity": 5,
+      "angle_start": 90.0,
+      "angle_end": 90.0
+     },
+     {
+      "id": "p6",
+      "label": null,
+      "length": 571.0,
+      "quantity": 4,
+      "angle_start": 90.0,
+      "angle_end": 90.0
+     }
+    ],
+    "strategy": "heuristic",
+    "prefer_offcuts": true,
+    "time_limit_s": 10.0
+   },
+   "runtime_ms": 0.6312689997685084
+  }
+ },
+ {
+  "name": "random_5",
+  "request": {
+   "units": "mm",
+   "material": null,
+   "kerf": 4.5,
+   "trim_start": 10.0,
+   "trim_end": 0.0,
+   "min_reusable_offcut": 500.0,
+   "stocks": [
+    {
+     "id": "S",
+     "label": null,
+     "length": 6500.0,
+     "quantity": null,
+     "cost_per_bar": null,
+     "is_offcut": false,
+     "priority": 0
+    }
+   ],
+   "pieces": [
+    {
+     "id": "p0",
+     "label": null,
+     "length": 1920.0,
+     "quantity": 8,
+     "angle_start": 90.0,
+     "angle_end": 90.0
+    },
+    {
+     "id": "p1",
+     "label": null,
+     "length": 885.0,
+     "quantity": 5,
+     "angle_start": 90.0,
+     "angle_end": 90.0
+    },
+    {
+     "id": "p2",
+     "label": null,
+     "length": 871.0,
+     "quantity": 4,
+     "angle_start": 90.0,
+     "angle_end": 90.0
+    },
+    {
+     "id": "p3",
+     "label": null,
+     "length": 2599.0,
+     "quantity": 9,
+     "angle_start": 90.0,
+     "angle_end": 90.0
+    },
+    {
+     "id": "p4",
+     "label": null,
+     "length": 1376.0,
+     "quantity": 7,
+     "angle_start": 90.0,
+     "angle_end": 90.0
+    },
+    {
+     "id": "p5",
+     "label": null,
+     "length": 2690.0,
+     "quantity": 7,
+     "angle_start": 90.0,
+     "angle_end": 90.0
+    },
+    {
+     "id": "p6",
+     "label": null,
+     "length": 1782.0,
+     "quantity": 4,
+     "angle_start": 90.0,
+     "angle_end": 90.0
+    }
+   ],
+   "strategy": "heuristic",
+   "prefer_offcuts": true,
+   "time_limit_s": 10.0
+  },
+  "result": {
+   "units": "mm",
+   "engine_version": "cutting1d/0.1.0",
+   "method": "BFD(longest-stock)+local-search",
+   "status": "FEASIBLE",
+   "validation_status": "FEASIBLE_HEURISTIC",
+   "patterns": [
+    {
+     "pattern_id": "P1",
+     "stock_id": "S",
+     "stock_length": 6500.0,
+     "is_offcut_stock": false,
+     "count": 3,
+     "cuts": [
+      {
+       "piece_id": "p5",
+       "label": null,
+       "length": 2690.0,
+       "offset": 10.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p5",
+       "label": null,
+       "length": 2690.0,
+       "offset": 2704.5,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p1",
+       "label": null,
+       "length": 885.0,
+       "offset": 5399.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      }
+     ],
+     "used_length": 6288.5,
+     "remainder": 211.5,
+     "offcut_reusable": false,
+     "waste": 211.5
+    },
+    {
+     "pattern_id": "P2",
+     "stock_id": "S",
+     "stock_length": 6500.0,
+     "is_offcut_stock": false,
+     "count": 3,
+     "cuts": [
+      {
+       "piece_id": "p3",
+       "label": null,
+       "length": 2599.0,
+       "offset": 10.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p3",
+       "label": null,
+       "length": 2599.0,
+       "offset": 2613.5,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p2",
+       "label": null,
+       "length": 871.0,
+       "offset": 5217.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      }
+     ],
+     "used_length": 6092.5,
+     "remainder": 407.5,
+     "offcut_reusable": false,
+     "waste": 407.5
+    },
+    {
+     "pattern_id": "P3",
+     "stock_id": "S",
+     "stock_length": 6500.0,
+     "is_offcut_stock": false,
+     "count": 2,
+     "cuts": [
+      {
+       "piece_id": "p0",
+       "label": null,
+       "length": 1920.0,
+       "offset": 10.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p0",
+       "label": null,
+       "length": 1920.0,
+       "offset": 1934.5,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p0",
+       "label": null,
+       "length": 1920.0,
+       "offset": 3859.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      }
+     ],
+     "used_length": 5783.5,
+     "remainder": 716.5,
+     "offcut_reusable": true,
+     "waste": 0.0
+    },
+    {
+     "pattern_id": "P4",
+     "stock_id": "S",
+     "stock_length": 6500.0,
+     "is_offcut_stock": false,
+     "count": 1,
+     "cuts": [
+      {
+       "piece_id": "p5",
+       "label": null,
+       "length": 2690.0,
+       "offset": 10.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p3",
+       "label": null,
+       "length": 2599.0,
+       "offset": 2704.5,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p2",
+       "label": null,
+       "length": 871.0,
+       "offset": 5308.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      }
+     ],
+     "used_length": 6183.5,
+     "remainder": 316.5,
+     "offcut_reusable": false,
+     "waste": 316.5
+    },
+    {
+     "pattern_id": "P5",
+     "stock_id": "S",
+     "stock_length": 6500.0,
+     "is_offcut_stock": false,
+     "count": 1,
+     "cuts": [
+      {
+       "piece_id": "p3",
+       "label": null,
+       "length": 2599.0,
+       "offset": 10.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p3",
+       "label": null,
+       "length": 2599.0,
+       "offset": 2613.5,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      }
+     ],
+     "used_length": 5217.0,
+     "remainder": 1283.0,
+     "offcut_reusable": true,
+     "waste": 0.0
+    },
+    {
+     "pattern_id": "P6",
+     "stock_id": "S",
+     "stock_length": 6500.0,
+     "is_offcut_stock": false,
+     "count": 1,
+     "cuts": [
+      {
+       "piece_id": "p0",
+       "label": null,
+       "length": 1920.0,
+       "offset": 10.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p0",
+       "label": null,
+       "length": 1920.0,
+       "offset": 1934.5,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p6",
+       "label": null,
+       "length": 1782.0,
+       "offset": 3859.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      }
+     ],
+     "used_length": 5645.5,
+     "remainder": 854.5,
+     "offcut_reusable": true,
+     "waste": 0.0
+    },
+    {
+     "pattern_id": "P7",
+     "stock_id": "S",
+     "stock_length": 6500.0,
+     "is_offcut_stock": false,
+     "count": 1,
+     "cuts": [
+      {
+       "piece_id": "p6",
+       "label": null,
+       "length": 1782.0,
+       "offset": 10.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p6",
+       "label": null,
+       "length": 1782.0,
+       "offset": 1796.5,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p6",
+       "label": null,
+       "length": 1782.0,
+       "offset": 3583.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p1",
+       "label": null,
+       "length": 885.0,
+       "offset": 5369.5,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      }
+     ],
+     "used_length": 6259.0,
+     "remainder": 241.0,
+     "offcut_reusable": false,
+     "waste": 241.0
+    },
+    {
+     "pattern_id": "P8",
+     "stock_id": "S",
+     "stock_length": 6500.0,
+     "is_offcut_stock": false,
+     "count": 1,
+     "cuts": [
+      {
+       "piece_id": "p4",
+       "label": null,
+       "length": 1376.0,
+       "offset": 10.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p4",
+       "label": null,
+       "length": 1376.0,
+       "offset": 1390.5,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p4",
+       "label": null,
+       "length": 1376.0,
+       "offset": 2771.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p4",
+       "label": null,
+       "length": 1376.0,
+       "offset": 4151.5,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p1",
+       "label": null,
+       "length": 885.0,
+       "offset": 5532.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      }
+     ],
+     "used_length": 6421.5,
+     "remainder": 78.5,
+     "offcut_reusable": false,
+     "waste": 78.5
+    },
+    {
+     "pattern_id": "P9",
+     "stock_id": "S",
+     "stock_length": 6500.0,
+     "is_offcut_stock": false,
+     "count": 1,
+     "cuts": [
+      {
+       "piece_id": "p4",
+       "label": null,
+       "length": 1376.0,
+       "offset": 10.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p4",
+       "label": null,
+       "length": 1376.0,
+       "offset": 1390.5,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      },
+      {
+       "piece_id": "p4",
+       "label": null,
+       "length": 1376.0,
+       "offset": 2771.0,
+       "angle_start": 90.0,
+       "angle_end": 90.0
+      }
+     ],
+     "used_length": 4151.5,
+     "remainder": 2348.5,
+     "offcut_reusable": true,
+     "waste": 0.0
+    }
+   ],
+   "unplaced": [],
+   "summary": {
+    "bars_used": 14,
+    "total_stock_length": 91000.0,
+    "total_piece_length": 82250.0,
+    "total_kerf_loss": 198.0,
+    "total_trim_loss": 140.0,
+    "reusable_offcut_length": 5919.0,
+    "waste_length": 2493.0,
+    "utilization": 0.9038461538461539,
+    "total_cost": null
+   },
+   "proof": {
+    "lower_bound_bars": 13,
+    "bars_used": 14,
+    "gap_bars": 1,
+    "is_optimal": false,
+    "note": "Lower bound (single stock length: ceil(sum(p_i + kerf) / (L - trim_start - trim_end))) = 13; bars used = 14."
+   },
+   "validation": {
+    "passed": true,
+    "validator": "validate_1d/1.0",
+    "errors": [],
+    "checked_items": 16
+   },
+   "issues": [],
+   "request": {
+    "units": "mm",
+    "material": null,
+    "kerf": 4.5,
+    "trim_start": 10.0,
+    "trim_end": 0.0,
+    "min_reusable_offcut": 500.0,
+    "stocks": [
+     {
+      "id": "S",
+      "label": null,
+      "length": 6500.0,
+      "quantity": null,
+      "cost_per_bar": null,
+      "is_offcut": false,
+      "priority": 0
+     }
+    ],
+    "pieces": [
+     {
+      "id": "p0",
+      "label": null,
+      "length": 1920.0,
+      "quantity": 8,
+      "angle_start": 90.0,
+      "angle_end": 90.0
+     },
+     {
+      "id": "p1",
+      "label": null,
+      "length": 885.0,
+      "quantity": 5,
+      "angle_start": 90.0,
+      "angle_end": 90.0
+     },
+     {
+      "id": "p2",
+      "label": null,
+      "length": 871.0,
+      "quantity": 4,
+      "angle_start": 90.0,
+      "angle_end": 90.0
+     },
+     {
+      "id": "p3",
+      "label": null,
+      "length": 2599.0,
+      "quantity": 9,
+      "angle_start": 90.0,
+      "angle_end": 90.0
+     },
+     {
+      "id": "p4",
+      "label": null,
+      "length": 1376.0,
+      "quantity": 7,
+      "angle_start": 90.0,
+      "angle_end": 90.0
+     },
+     {
+      "id": "p5",
+      "label": null,
+      "length": 2690.0,
+      "quantity": 7,
+      "angle_start": 90.0,
+      "angle_end": 90.0
+     },
+     {
+      "id": "p6",
+      "label": null,
+      "length": 1782.0,
+      "quantity": 4,
+      "angle_start": 90.0,
+      "angle_end": 90.0
+     }
+    ],
+    "strategy": "heuristic",
+    "prefer_offcuts": true,
+    "time_limit_s": 10.0
+   },
+   "runtime_ms": 0.8633790002932074
+  }
+ }
+]

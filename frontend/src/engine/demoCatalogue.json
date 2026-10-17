@@ -1,0 +1,878 @@
+{
+  "catalogue_version": "DEMO-2026.10-r1",
+  "demo_data": true,
+  "disclaimer": "DEMO DATA — illustrative values, not manufacturer data. Requires domain-expert approval before production use.",
+  "currency": "INR",
+  "price_note": "Illustrative demo prices in INR, not supplier quotations.",
+  "series": [
+    {
+      "id": "ser-cw50",
+      "code": "DEMO-CW50",
+      "name": "DEMO CW-50 Stick Curtain Wall",
+      "system_type": "stick_curtain_wall",
+      "description": "Generic demo stick curtain wall, 50 mm face width. DEMO DATA — illustrative values, not manufacturer data. Requires domain-expert approval before production use.",
+      "default_rule_set_id": "rs-cw50-demo",
+      "mullion_profile_ids": [
+        "prf-cw50-m100",
+        "prf-cw50-m150",
+        "prf-cw50-m200"
+      ],
+      "transom_profile_ids": [
+        "prf-cw50-t60",
+        "prf-cw50-t100",
+        "prf-cw50-t150"
+      ],
+      "pressure_plate_profile_id": "prf-cw50-pp",
+      "cover_cap_profile_id": "prf-cw50-cc",
+      "splice_sleeve_profile_id": "prf-cw50-ss",
+      "default_mullion_profile_id": "prf-cw50-m150",
+      "default_transom_profile_id": "prf-cw50-t100",
+      "glass_thickness_min": 6,
+      "glass_thickness_max": 32,
+      "face_width": 50,
+      "demo": true
+    },
+    {
+      "id": "ser-cw65",
+      "code": "DEMO-CW65",
+      "name": "DEMO CW-65 Stick Curtain Wall",
+      "system_type": "stick_curtain_wall",
+      "description": "Generic demo stick curtain wall, 65 mm face width. DEMO DATA — illustrative values, not manufacturer data. Requires domain-expert approval before production use.",
+      "default_rule_set_id": "rs-cw65-demo",
+      "mullion_profile_ids": [
+        "prf-cw65-m125",
+        "prf-cw65-m175",
+        "prf-cw65-m225"
+      ],
+      "transom_profile_ids": [
+        "prf-cw65-t75",
+        "prf-cw65-t125",
+        "prf-cw65-t175"
+      ],
+      "pressure_plate_profile_id": "prf-cw65-pp",
+      "cover_cap_profile_id": "prf-cw65-cc",
+      "splice_sleeve_profile_id": "prf-cw65-ss",
+      "default_mullion_profile_id": "prf-cw65-m175",
+      "default_transom_profile_id": "prf-cw65-t125",
+      "glass_thickness_min": 6,
+      "glass_thickness_max": 42,
+      "face_width": 65,
+      "demo": true
+    }
+  ],
+  "profiles": [
+    {
+      "id": "prf-cw50-m100",
+      "series_id": "ser-cw50",
+      "code": "DEMO-CW50-M100",
+      "name": "Demo mullion 50x100",
+      "role": "mullion",
+      "face_width": 50,
+      "depth": 100,
+      "weight_kg_m": 2.6,
+      "price_per_m": 770.0,
+      "stock_lengths": [
+        6000,
+        6500
+      ],
+      "demo": true,
+      "notes": "DEMO DATA — illustrative values, not manufacturer data. Requires domain-expert approval before production use."
+    },
+    {
+      "id": "prf-cw50-m150",
+      "series_id": "ser-cw50",
+      "code": "DEMO-CW50-M150",
+      "name": "Demo mullion 50x150",
+      "role": "mullion",
+      "face_width": 50,
+      "depth": 150,
+      "weight_kg_m": 3.2,
+      "price_per_m": 930.0,
+      "stock_lengths": [
+        6000,
+        6500
+      ],
+      "demo": true,
+      "notes": "DEMO DATA — illustrative values, not manufacturer data. Requires domain-expert approval before production use."
+    },
+    {
+      "id": "prf-cw50-m200",
+      "series_id": "ser-cw50",
+      "code": "DEMO-CW50-M200",
+      "name": "Demo mullion 50x200",
+      "role": "mullion",
+      "face_width": 50,
+      "depth": 200,
+      "weight_kg_m": 3.8,
+      "price_per_m": 1090.0,
+      "stock_lengths": [
+        6000,
+        6500
+      ],
+      "demo": true,
+      "notes": "DEMO DATA — illustrative values, not manufacturer data. Requires domain-expert approval before production use."
+    },
+    {
+      "id": "prf-cw50-t60",
+      "series_id": "ser-cw50",
+      "code": "DEMO-CW50-T60",
+      "name": "Demo transom 50x60",
+      "role": "transom",
+      "face_width": 50,
+      "depth": 60,
+      "weight_kg_m": 1.86,
+      "price_per_m": 580.0,
+      "stock_lengths": [
+        6000,
+        6500
+      ],
+      "demo": true,
+      "notes": "DEMO DATA — illustrative values, not manufacturer data. Requires domain-expert approval before production use."
+    },
+    {
+      "id": "prf-cw50-t100",
+      "series_id": "ser-cw50",
+      "code": "DEMO-CW50-T100",
+      "name": "Demo transom 50x100",
+      "role": "transom",
+      "face_width": 50,
+      "depth": 100,
+      "weight_kg_m": 2.3,
+      "price_per_m": 700.0,
+      "stock_lengths": [
+        6000,
+        6500
+      ],
+      "demo": true,
+      "notes": "DEMO DATA — illustrative values, not manufacturer data. Requires domain-expert approval before production use."
+    },
+    {
+      "id": "prf-cw50-t150",
+      "series_id": "ser-cw50",
+      "code": "DEMO-CW50-T150",
+      "name": "Demo transom 50x150",
+      "role": "transom",
+      "face_width": 50,
+      "depth": 150,
+      "weight_kg_m": 2.85,
+      "price_per_m": 850.0,
+      "stock_lengths": [
+        6000,
+        6500
+      ],
+      "demo": true,
+      "notes": "DEMO DATA — illustrative values, not manufacturer data. Requires domain-expert approval before production use."
+    },
+    {
+      "id": "prf-cw50-pp",
+      "series_id": "ser-cw50",
+      "code": "DEMO-CW50-PP",
+      "name": "Demo pressure plate 50",
+      "role": "pressure_plate",
+      "face_width": 50,
+      "depth": 12,
+      "weight_kg_m": 0.5,
+      "price_per_m": 230,
+      "stock_lengths": [
+        6000,
+        6500
+      ],
+      "demo": true,
+      "notes": "DEMO DATA — illustrative values, not manufacturer data. Requires domain-expert approval before production use."
+    },
+    {
+      "id": "prf-cw50-cc",
+      "series_id": "ser-cw50",
+      "code": "DEMO-CW50-CC",
+      "name": "Demo cover cap 50",
+      "role": "cover_cap",
+      "face_width": 50,
+      "depth": 15,
+      "weight_kg_m": 0.45,
+      "price_per_m": 210,
+      "stock_lengths": [
+        6000,
+        6500
+      ],
+      "demo": true,
+      "notes": "DEMO DATA — illustrative values, not manufacturer data. Requires domain-expert approval before production use."
+    },
+    {
+      "id": "prf-cw50-ss",
+      "series_id": "ser-cw50",
+      "code": "DEMO-CW50-SS",
+      "name": "Demo splice sleeve 50",
+      "role": "splice_sleeve",
+      "face_width": 44,
+      "depth": 94,
+      "weight_kg_m": 1.2,
+      "price_per_m": 420,
+      "stock_lengths": [
+        6000
+      ],
+      "demo": true,
+      "notes": "DEMO DATA — illustrative values, not manufacturer data. Requires domain-expert approval before production use."
+    },
+    {
+      "id": "prf-cw65-m125",
+      "series_id": "ser-cw65",
+      "code": "DEMO-CW65-M125",
+      "name": "Demo mullion 65x125",
+      "role": "mullion",
+      "face_width": 65,
+      "depth": 125,
+      "weight_kg_m": 3.05,
+      "price_per_m": 880.0,
+      "stock_lengths": [
+        6000,
+        6500
+      ],
+      "demo": true,
+      "notes": "DEMO DATA — illustrative values, not manufacturer data. Requires domain-expert approval before production use."
+    },
+    {
+      "id": "prf-cw65-m175",
+      "series_id": "ser-cw65",
+      "code": "DEMO-CW65-M175",
+      "name": "Demo mullion 65x175",
+      "role": "mullion",
+      "face_width": 65,
+      "depth": 175,
+      "weight_kg_m": 3.65,
+      "price_per_m": 1040.0,
+      "stock_lengths": [
+        6000,
+        6500
+      ],
+      "demo": true,
+      "notes": "DEMO DATA — illustrative values, not manufacturer data. Requires domain-expert approval before production use."
+    },
+    {
+      "id": "prf-cw65-m225",
+      "series_id": "ser-cw65",
+      "code": "DEMO-CW65-M225",
+      "name": "Demo mullion 65x225",
+      "role": "mullion",
+      "face_width": 65,
+      "depth": 225,
+      "weight_kg_m": 4.25,
+      "price_per_m": 1200.0,
+      "stock_lengths": [
+        6000,
+        6500
+      ],
+      "demo": true,
+      "notes": "DEMO DATA — illustrative values, not manufacturer data. Requires domain-expert approval before production use."
+    },
+    {
+      "id": "prf-cw65-t75",
+      "series_id": "ser-cw65",
+      "code": "DEMO-CW65-T75",
+      "name": "Demo transom 65x75",
+      "role": "transom",
+      "face_width": 65,
+      "depth": 75,
+      "weight_kg_m": 2.17,
+      "price_per_m": 655.0,
+      "stock_lengths": [
+        6000,
+        6500
+      ],
+      "demo": true,
+      "notes": "DEMO DATA — illustrative values, not manufacturer data. Requires domain-expert approval before production use."
+    },
+    {
+      "id": "prf-cw65-t125",
+      "series_id": "ser-cw65",
+      "code": "DEMO-CW65-T125",
+      "name": "Demo transom 65x125",
+      "role": "transom",
+      "face_width": 65,
+      "depth": 125,
+      "weight_kg_m": 2.73,
+      "price_per_m": 805.0,
+      "stock_lengths": [
+        6000,
+        6500
+      ],
+      "demo": true,
+      "notes": "DEMO DATA — illustrative values, not manufacturer data. Requires domain-expert approval before production use."
+    },
+    {
+      "id": "prf-cw65-t175",
+      "series_id": "ser-cw65",
+      "code": "DEMO-CW65-T175",
+      "name": "Demo transom 65x175",
+      "role": "transom",
+      "face_width": 65,
+      "depth": 175,
+      "weight_kg_m": 3.27,
+      "price_per_m": 955.0,
+      "stock_lengths": [
+        6000,
+        6500
+      ],
+      "demo": true,
+      "notes": "DEMO DATA — illustrative values, not manufacturer data. Requires domain-expert approval before production use."
+    },
+    {
+      "id": "prf-cw65-pp",
+      "series_id": "ser-cw65",
+      "code": "DEMO-CW65-PP",
+      "name": "Demo pressure plate 65",
+      "role": "pressure_plate",
+      "face_width": 65,
+      "depth": 12,
+      "weight_kg_m": 0.56,
+      "price_per_m": 245,
+      "stock_lengths": [
+        6000,
+        6500
+      ],
+      "demo": true,
+      "notes": "DEMO DATA — illustrative values, not manufacturer data. Requires domain-expert approval before production use."
+    },
+    {
+      "id": "prf-cw65-cc",
+      "series_id": "ser-cw65",
+      "code": "DEMO-CW65-CC",
+      "name": "Demo cover cap 65",
+      "role": "cover_cap",
+      "face_width": 65,
+      "depth": 15,
+      "weight_kg_m": 0.51,
+      "price_per_m": 225,
+      "stock_lengths": [
+        6000,
+        6500
+      ],
+      "demo": true,
+      "notes": "DEMO DATA — illustrative values, not manufacturer data. Requires domain-expert approval before production use."
+    },
+    {
+      "id": "prf-cw65-ss",
+      "series_id": "ser-cw65",
+      "code": "DEMO-CW65-SS",
+      "name": "Demo splice sleeve 65",
+      "role": "splice_sleeve",
+      "face_width": 59,
+      "depth": 119,
+      "weight_kg_m": 1.2,
+      "price_per_m": 420,
+      "stock_lengths": [
+        6000
+      ],
+      "demo": true,
+      "notes": "DEMO DATA — illustrative values, not manufacturer data. Requires domain-expert approval before production use."
+    }
+  ],
+  "glass_types": [
+    {
+      "id": "gl-sgl-6",
+      "code": "DEMO-GL-S6",
+      "name": "Demo single 6 mm toughened",
+      "category": "single",
+      "build_up": "6T",
+      "thickness": 6,
+      "weight_kg_m2": 15.0,
+      "price_per_m2": 1100,
+      "fire_rating": null,
+      "notes": "DEMO DATA — illustrative values, not manufacturer data. Requires domain-expert approval before production use.",
+      "demo": true
+    },
+    {
+      "id": "gl-sgl-10",
+      "code": "DEMO-GL-S10",
+      "name": "Demo single 10 mm toughened",
+      "category": "single",
+      "build_up": "10T",
+      "thickness": 10,
+      "weight_kg_m2": 25.0,
+      "price_per_m2": 1700,
+      "fire_rating": null,
+      "notes": "DEMO DATA — illustrative values, not manufacturer data. Requires domain-expert approval before production use.",
+      "demo": true
+    },
+    {
+      "id": "gl-lam-1352",
+      "code": "DEMO-GL-L1352",
+      "name": "Demo laminated 6+1.52+6",
+      "category": "laminated",
+      "build_up": "6 / 1.52 PVB / 6",
+      "thickness": 13.52,
+      "weight_kg_m2": 33.8,
+      "price_per_m2": 2900,
+      "fire_rating": null,
+      "notes": "DEMO DATA — illustrative values, not manufacturer data. Requires domain-expert approval before production use.",
+      "demo": true
+    },
+    {
+      "id": "gl-dgu-24",
+      "code": "DEMO-GL-D24",
+      "name": "Demo DGU 6-12-6",
+      "category": "igu",
+      "build_up": "6T / 12 air / 6T",
+      "thickness": 24,
+      "weight_kg_m2": 60.0,
+      "price_per_m2": 3200,
+      "fire_rating": null,
+      "notes": "DEMO DATA — illustrative values, not manufacturer data. Requires domain-expert approval before production use.",
+      "demo": true
+    },
+    {
+      "id": "gl-dgu-28",
+      "code": "DEMO-GL-D28",
+      "name": "Demo DGU 6-16-6 low-E",
+      "category": "igu",
+      "build_up": "6T low-E / 16 argon / 6T",
+      "thickness": 28,
+      "weight_kg_m2": 70.0,
+      "price_per_m2": 3900,
+      "fire_rating": null,
+      "notes": "DEMO DATA — illustrative values, not manufacturer data. Requires domain-expert approval before production use.",
+      "demo": true
+    },
+    {
+      "id": "gl-dgu-lam-3152",
+      "code": "DEMO-GL-DL3152",
+      "name": "Demo DGU 6-12-6.6 laminated",
+      "category": "igu",
+      "build_up": "6T / 12 air / 6+1.52+6",
+      "thickness": 31.52,
+      "weight_kg_m2": 78.8,
+      "price_per_m2": 5200,
+      "fire_rating": null,
+      "notes": "DEMO DATA — illustrative values, not manufacturer data. Requires domain-expert approval before production use.",
+      "demo": true
+    },
+    {
+      "id": "gl-spandrel-6",
+      "code": "DEMO-GL-SP6",
+      "name": "Demo spandrel 6 mm ceramic frit",
+      "category": "spandrel",
+      "build_up": "6T ceramic frit",
+      "thickness": 6,
+      "weight_kg_m2": 15.0,
+      "price_per_m2": 1500,
+      "fire_rating": null,
+      "notes": "DEMO DATA — illustrative values, not manufacturer data. Requires domain-expert approval before production use.",
+      "demo": true
+    },
+    {
+      "id": "gl-fire-demo",
+      "code": "DEMO-GL-FIRE",
+      "name": "Demo fire-resistant glass (rating not stated)",
+      "category": "fire",
+      "build_up": "demo build-up",
+      "thickness": 21,
+      "weight_kg_m2": 52.5,
+      "price_per_m2": 7800,
+      "fire_rating": null,
+      "notes": "fire_rating is null: certified fire ratings must be supplied by the manufacturer/test certificate before use. DEMO DATA — illustrative values, not manufacturer data. Requires domain-expert approval before production use.",
+      "demo": true
+    },
+    {
+      "id": "gl-acoustic-demo",
+      "code": "DEMO-GL-AC",
+      "name": "Demo acoustic laminated DGU",
+      "category": "special",
+      "build_up": "8 / 0.76 acoustic PVB / 8 - 16 - 6T",
+      "thickness": 33.52,
+      "weight_kg_m2": 83.8,
+      "price_per_m2": 6900,
+      "fire_rating": null,
+      "notes": "DEMO DATA — illustrative values, not manufacturer data. Requires domain-expert approval before production use.",
+      "demo": true
+    },
+    {
+      "id": "gl-project",
+      "code": "DEMO-GL-PRJ",
+      "name": "Project-specific glass (placeholder)",
+      "category": "project",
+      "build_up": "to be defined by project",
+      "thickness": null,
+      "weight_kg_m2": null,
+      "price_per_m2": null,
+      "fire_rating": null,
+      "notes": "Placeholder: thickness and price to be defined per project; compatibility cannot be checked until set. DEMO DATA — illustrative values, not manufacturer data. Requires domain-expert approval before production use.",
+      "demo": true
+    }
+  ],
+  "panel_types": [
+    {
+      "id": "pnl-acp-4",
+      "code": "DEMO-PNL-ACP4",
+      "name": "Demo ACP 4 mm",
+      "category": "acp",
+      "thickness": 4,
+      "price_per_m2": 2100,
+      "notes": "DEMO DATA — illustrative values, not manufacturer data. Requires domain-expert approval before production use.",
+      "demo": true
+    },
+    {
+      "id": "pnl-alu-3",
+      "code": "DEMO-PNL-AL3",
+      "name": "Demo aluminium sheet 3 mm",
+      "category": "aluminium_sheet",
+      "thickness": 3,
+      "price_per_m2": 2600,
+      "notes": "DEMO DATA — illustrative values, not manufacturer data. Requires domain-expert approval before production use.",
+      "demo": true
+    },
+    {
+      "id": "pnl-ins-25",
+      "code": "DEMO-PNL-INS25",
+      "name": "Demo insulated panel 25 mm",
+      "category": "insulated",
+      "thickness": 25,
+      "price_per_m2": 3400,
+      "notes": "DEMO DATA — illustrative values, not manufacturer data. Requires domain-expert approval before production use.",
+      "demo": true
+    }
+  ],
+  "accessories": [
+    {
+      "id": "acc-cw50-bracket",
+      "code": "DEMO-CW50-BRK",
+      "name": "Demo slab bracket/anchor set",
+      "kind": "bracket",
+      "unit": "pcs",
+      "price": 950,
+      "demo": true,
+      "series_ids": [
+        "ser-cw50"
+      ]
+    },
+    {
+      "id": "acc-cw50-tconn",
+      "code": "DEMO-CW50-TC",
+      "name": "Demo transom connector",
+      "kind": "connector",
+      "unit": "pcs",
+      "price": 140,
+      "demo": true,
+      "series_ids": [
+        "ser-cw50"
+      ]
+    },
+    {
+      "id": "acc-cw50-splice",
+      "code": "DEMO-CW50-SPL",
+      "name": "Demo splice kit",
+      "kind": "splice",
+      "unit": "pcs",
+      "price": 480,
+      "demo": true,
+      "series_ids": [
+        "ser-cw50"
+      ]
+    },
+    {
+      "id": "acc-cw50-gasket",
+      "code": "DEMO-CW50-GSK",
+      "name": "Demo EPDM glazing gasket",
+      "kind": "gasket",
+      "unit": "m",
+      "price": 45,
+      "demo": true,
+      "series_ids": [
+        "ser-cw50"
+      ]
+    },
+    {
+      "id": "acc-cw50-endcap",
+      "code": "DEMO-CW50-EC",
+      "name": "Demo mullion end cap",
+      "kind": "end_cap",
+      "unit": "pcs",
+      "price": 60,
+      "demo": true,
+      "series_ids": [
+        "ser-cw50"
+      ]
+    },
+    {
+      "id": "acc-cw65-bracket",
+      "code": "DEMO-CW65-BRK",
+      "name": "Demo slab bracket/anchor set",
+      "kind": "bracket",
+      "unit": "pcs",
+      "price": 950,
+      "demo": true,
+      "series_ids": [
+        "ser-cw65"
+      ]
+    },
+    {
+      "id": "acc-cw65-tconn",
+      "code": "DEMO-CW65-TC",
+      "name": "Demo transom connector",
+      "kind": "connector",
+      "unit": "pcs",
+      "price": 140,
+      "demo": true,
+      "series_ids": [
+        "ser-cw65"
+      ]
+    },
+    {
+      "id": "acc-cw65-splice",
+      "code": "DEMO-CW65-SPL",
+      "name": "Demo splice kit",
+      "kind": "splice",
+      "unit": "pcs",
+      "price": 480,
+      "demo": true,
+      "series_ids": [
+        "ser-cw65"
+      ]
+    },
+    {
+      "id": "acc-cw65-gasket",
+      "code": "DEMO-CW65-GSK",
+      "name": "Demo EPDM glazing gasket",
+      "kind": "gasket",
+      "unit": "m",
+      "price": 45,
+      "demo": true,
+      "series_ids": [
+        "ser-cw65"
+      ]
+    },
+    {
+      "id": "acc-cw65-endcap",
+      "code": "DEMO-CW65-EC",
+      "name": "Demo mullion end cap",
+      "kind": "end_cap",
+      "unit": "pcs",
+      "price": 60,
+      "demo": true,
+      "series_ids": [
+        "ser-cw65"
+      ]
+    },
+    {
+      "id": "acc-sealant-wx",
+      "code": "DEMO-SEAL-WX",
+      "name": "Demo weather sealant (per m run)",
+      "kind": "sealant",
+      "unit": "m",
+      "price": 85,
+      "series_ids": [
+        "ser-cw50",
+        "ser-cw65"
+      ],
+      "demo": true
+    },
+    {
+      "id": "acc-setting-block",
+      "code": "DEMO-SB",
+      "name": "Demo setting block",
+      "kind": "hardware",
+      "unit": "pcs",
+      "price": 12,
+      "series_ids": [
+        "ser-cw50",
+        "ser-cw65"
+      ],
+      "demo": true
+    }
+  ],
+  "colours": [
+    {
+      "id": "col-ral9010",
+      "code": "DEMO-C-WHT",
+      "name": "Demo white (powder)",
+      "finish": "powder",
+      "hex": "#F1EFE6",
+      "surcharge_pct": 0,
+      "demo": true
+    },
+    {
+      "id": "col-ral7016",
+      "code": "DEMO-C-ANT",
+      "name": "Demo anthracite (powder)",
+      "finish": "powder",
+      "hex": "#383E42",
+      "surcharge_pct": 0,
+      "demo": true
+    },
+    {
+      "id": "col-ano-nat",
+      "code": "DEMO-C-ANN",
+      "name": "Demo natural anodised",
+      "finish": "anodised",
+      "hex": "#C9CBCC",
+      "surcharge_pct": 8,
+      "demo": true
+    },
+    {
+      "id": "col-ano-bronze",
+      "code": "DEMO-C-ANB",
+      "name": "Demo bronze anodised",
+      "finish": "anodised",
+      "hex": "#6B4E31",
+      "surcharge_pct": 10,
+      "demo": true
+    },
+    {
+      "id": "col-pvdf-silver",
+      "code": "DEMO-C-PVS",
+      "name": "Demo silver PVDF",
+      "finish": "pvdf",
+      "hex": "#A8A9AD",
+      "surcharge_pct": 15,
+      "demo": true
+    }
+  ],
+  "rule_sets": [
+    {
+      "id": "rs-cw50-demo",
+      "series_id": "ser-cw50",
+      "version": "0.1-demo",
+      "approved": false,
+      "golden_cases_passed": false,
+      "description": "Demo calculation rules for DEMO CW-50 Stick Curtain Wall. DEMO DATA — illustrative values, not manufacturer data. Requires domain-expert approval before production use.",
+      "params": {
+        "mullion_ext_top": 50.0,
+        "mullion_ext_bottom": 50.0,
+        "transom_clearance": 1.0,
+        "glass_deduction_x": 20.0,
+        "glass_deduction_y": 20.0,
+        "gasket_runs_per_field_edge": 2.0,
+        "connectors_per_transom": 2.0,
+        "brackets_per_anchor": 1.0,
+        "max_bar_length": 6500.0,
+        "min_field_width": 300.0,
+        "min_field_height": 300.0,
+        "max_field_width": 2500.0,
+        "max_field_height": 4000.0,
+        "end_caps_per_mullion": 2.0,
+        "splice_sleeves_per_splice": 1.0,
+        "sealant_runs_per_perimeter": 1.0
+      },
+      "param_docs": {
+        "mullion_ext_top": "Mullion extension above the head centre-line (mm). source: DEMO placeholder — requires approval",
+        "mullion_ext_bottom": "Mullion extension below the sill centre-line (mm). source: DEMO placeholder — requires approval",
+        "transom_clearance": "Clearance per transom end between transom and mullion face (mm). source: DEMO placeholder — requires approval",
+        "glass_deduction_x": "Axis width minus this deduction = glass/fill width (mm); encodes face width and glass bite. source: DEMO placeholder — requires approval",
+        "glass_deduction_y": "Axis height minus this deduction = glass/fill height (mm). source: DEMO placeholder — requires approval",
+        "gasket_runs_per_field_edge": "Number of gasket runs along each field edge (e.g. inner + outer). source: DEMO placeholder — requires approval",
+        "connectors_per_transom": "Transom connectors per transom member (one per end). source: DEMO placeholder — requires approval",
+        "brackets_per_anchor": "Brackets per mullion per anchor level. source: DEMO placeholder — requires approval",
+        "max_bar_length": "Maximum single-bar member length (mm) before a splice is required. source: DEMO placeholder — requires approval",
+        "min_field_width": "Minimum field axis width (mm). source: DEMO placeholder — requires approval",
+        "min_field_height": "Minimum field axis height (mm). source: DEMO placeholder — requires approval",
+        "max_field_width": "Maximum field axis width (mm). source: DEMO placeholder — requires approval",
+        "max_field_height": "Maximum field axis height (mm). source: DEMO placeholder — requires approval",
+        "end_caps_per_mullion": "End caps per mullion line. source: DEMO placeholder — requires approval",
+        "splice_sleeves_per_splice": "Splice sleeves per required splice (count only; positions not computed). source: DEMO placeholder — requires approval",
+        "sealant_runs_per_perimeter": "Perimeter sealant runs around the framework outline. source: DEMO placeholder — requires approval"
+      },
+      "demo": true
+    },
+    {
+      "id": "rs-cw65-demo",
+      "series_id": "ser-cw65",
+      "version": "0.1-demo",
+      "approved": false,
+      "golden_cases_passed": false,
+      "description": "Demo calculation rules for DEMO CW-65 Stick Curtain Wall. DEMO DATA — illustrative values, not manufacturer data. Requires domain-expert approval before production use.",
+      "params": {
+        "mullion_ext_top": 50.0,
+        "mullion_ext_bottom": 50.0,
+        "transom_clearance": 1.0,
+        "glass_deduction_x": 35.0,
+        "glass_deduction_y": 35.0,
+        "gasket_runs_per_field_edge": 2.0,
+        "connectors_per_transom": 2.0,
+        "brackets_per_anchor": 1.0,
+        "max_bar_length": 6500.0,
+        "min_field_width": 300.0,
+        "min_field_height": 300.0,
+        "max_field_width": 3000.0,
+        "max_field_height": 4500.0,
+        "end_caps_per_mullion": 2.0,
+        "splice_sleeves_per_splice": 1.0,
+        "sealant_runs_per_perimeter": 1.0
+      },
+      "param_docs": {
+        "mullion_ext_top": "Mullion extension above the head centre-line (mm). source: DEMO placeholder — requires approval",
+        "mullion_ext_bottom": "Mullion extension below the sill centre-line (mm). source: DEMO placeholder — requires approval",
+        "transom_clearance": "Clearance per transom end between transom and mullion face (mm). source: DEMO placeholder — requires approval",
+        "glass_deduction_x": "Axis width minus this deduction = glass/fill width (mm); encodes face width and glass bite. source: DEMO placeholder — requires approval",
+        "glass_deduction_y": "Axis height minus this deduction = glass/fill height (mm). source: DEMO placeholder — requires approval",
+        "gasket_runs_per_field_edge": "Number of gasket runs along each field edge (e.g. inner + outer). source: DEMO placeholder — requires approval",
+        "connectors_per_transom": "Transom connectors per transom member (one per end). source: DEMO placeholder — requires approval",
+        "brackets_per_anchor": "Brackets per mullion per anchor level. source: DEMO placeholder — requires approval",
+        "max_bar_length": "Maximum single-bar member length (mm) before a splice is required. source: DEMO placeholder — requires approval",
+        "min_field_width": "Minimum field axis width (mm). source: DEMO placeholder — requires approval",
+        "min_field_height": "Minimum field axis height (mm). source: DEMO placeholder — requires approval",
+        "max_field_width": "Maximum field axis width (mm). source: DEMO placeholder — requires approval",
+        "max_field_height": "Maximum field axis height (mm). source: DEMO placeholder — requires approval",
+        "end_caps_per_mullion": "End caps per mullion line. source: DEMO placeholder — requires approval",
+        "splice_sleeves_per_splice": "Splice sleeves per required splice (count only; positions not computed). source: DEMO placeholder — requires approval",
+        "sealant_runs_per_perimeter": "Perimeter sealant runs around the framework outline. source: DEMO placeholder — requires approval"
+      },
+      "demo": true
+    }
+  ],
+  "compatibility": [
+    {
+      "id": "cmp-cw50-glass",
+      "kind": "glass_thickness_range",
+      "series_id": "ser-cw50",
+      "params": {
+        "min": 6,
+        "max": 32
+      },
+      "message": "Fill thickness must be 6-32 mm for DEMO CW-50 Stick Curtain Wall (demo rule)."
+    },
+    {
+      "id": "cmp-cw50-prof",
+      "kind": "profile_in_series",
+      "series_id": "ser-cw50",
+      "params": {},
+      "message": "Mullion/transom profiles must belong to the selected series (demo rule)."
+    },
+    {
+      "id": "cmp-cw50-size",
+      "kind": "max_field_size",
+      "series_id": "ser-cw50",
+      "params": {
+        "max_width": 2500,
+        "max_height": 4000,
+        "max_area_m2": 8.0
+      },
+      "message": "Maximum field size for DEMO CW-50 Stick Curtain Wall (demo rule)."
+    },
+    {
+      "id": "cmp-cw65-glass",
+      "kind": "glass_thickness_range",
+      "series_id": "ser-cw65",
+      "params": {
+        "min": 6,
+        "max": 42
+      },
+      "message": "Fill thickness must be 6-42 mm for DEMO CW-65 Stick Curtain Wall (demo rule)."
+    },
+    {
+      "id": "cmp-cw65-prof",
+      "kind": "profile_in_series",
+      "series_id": "ser-cw65",
+      "params": {},
+      "message": "Mullion/transom profiles must belong to the selected series (demo rule)."
+    },
+    {
+      "id": "cmp-cw65-size",
+      "kind": "max_field_size",
+      "series_id": "ser-cw65",
+      "params": {
+        "max_width": 3000,
+        "max_height": 4500,
+        "max_area_m2": 10.8
+      },
+      "message": "Maximum field size for DEMO CW-65 Stick Curtain Wall (demo rule)."
+    }
+  ]
+}
