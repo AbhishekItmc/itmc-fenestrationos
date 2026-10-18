@@ -29,33 +29,41 @@ const S = ({ children }: { children: React.ReactNode }) => <Suspense fallback={<
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    // application chrome (top bar, sidebar, status bar)
     element: <Shell />,
     children: [
-      { index: true, element: <Navigate to="/projects" replace /> },
-      { path: 'projects', element: <S><ProjectsPage /></S> },
-      { path: 'projects/:projectId', element: <S><ProjectDetailPage /></S> },
-      { path: 'editor', element: <EditorPage /> },
-      { path: 'editor/:elevationId', element: <EditorPage /> },
-      { path: 'catalogue', element: <S><CataloguePage /></S> },
-      { path: 'glass', element: <S><GlassPage /></S> },
-      { path: 'calc', element: <S><CalcPage /></S> },
-      { path: 'cutting', element: <S><CuttingPage /></S> },
-      { path: 'nesting', element: <S><NestingPage /></S> },
-      { path: 'inventory', element: <S><InventoryPage /></S> },
-      { path: 'quotes', element: <S><QuotesPage /></S> },
-      { path: 'reports', element: <S><ReportsPage /></S> },
-      { path: 'admin', element: <S><AdminPage /></S> },
-      { path: 'production', element: <S><ProductionPage /></S> },
-      { path: 'production/:orderId', element: <S><ProductionPage /></S> },
-      { path: 'station', element: <S><StationPage /></S> },
-      { path: 'p/:code', element: <S><PartPage /></S> },
-      { path: 'purchasing', element: <S><PurchasingPage /></S> },
-      { path: '*', element: <Navigate to="/projects" replace /> },
+      {
+        path: '/app',
+        children: [
+          { index: true, element: <Navigate to="/app/projects" replace /> },
+          { path: 'projects', element: <S><ProjectsPage /></S> },
+          { path: 'projects/:projectId', element: <S><ProjectDetailPage /></S> },
+          { path: 'editor', element: <EditorPage /> },
+          { path: 'editor/:elevationId', element: <EditorPage /> },
+          { path: 'catalogue', element: <S><CataloguePage /></S> },
+          { path: 'glass', element: <S><GlassPage /></S> },
+          { path: 'calc', element: <S><CalcPage /></S> },
+          { path: 'cutting', element: <S><CuttingPage /></S> },
+          { path: 'nesting', element: <S><NestingPage /></S> },
+          { path: 'inventory', element: <S><InventoryPage /></S> },
+          { path: 'quotes', element: <S><QuotesPage /></S> },
+          { path: 'reports', element: <S><ReportsPage /></S> },
+          { path: 'admin', element: <S><AdminPage /></S> },
+          { path: 'production', element: <S><ProductionPage /></S> },
+          { path: 'production/:orderId', element: <S><ProductionPage /></S> },
+          { path: 'station', element: <S><StationPage /></S> },
+          { path: 'purchasing', element: <S><PurchasingPage /></S> },
+          { path: '*', element: <Navigate to="/app/projects" replace /> },
+        ],
+      },
+      // what a printed QR label opens — stays at the root (labels already in circulation point here)
+      { path: '/p/:code', element: <S><PartPage /></S> },
     ],
   },
   // print-optimised, outside the app chrome
-  { path: '/production/:orderId/labels', element: <S><LabelsPage /></S> },
+  { path: '/app/production/:orderId/labels', element: <S><LabelsPage /></S> },
+  // the public website lives outside this router (see main.tsx); anything else that reaches it goes to the app home
+  { path: '*', element: <Navigate to="/app/projects" replace /> },
 ], {
   future: { v7_relativeSplatPath: true, v7_fetcherPersist: true, v7_normalizeFormMethod: true, v7_partialHydration: true, v7_skipActionErrorRevalidation: true },
 });

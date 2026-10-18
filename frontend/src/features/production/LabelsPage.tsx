@@ -110,7 +110,7 @@ export default function LabelsPage() {
     <div className="flex h-full flex-col bg-bg" data-testid="labels-page">
       <style>{pageCss}</style>
       <div className="no-print flex flex-wrap items-center gap-2 border-b border-line bg-panel px-3 py-2">
-        <Link to={`/production/${id}`} className="btn btn-ghost" data-testid="labels-back">
+        <Link to={`/app/production/${id}`} className="btn btn-ghost" data-testid="labels-back">
           <ArrowLeft className="h-4 w-4" /> Work order
         </Link>
         <div className="min-w-0">

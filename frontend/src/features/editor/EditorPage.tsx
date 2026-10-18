@@ -128,7 +128,7 @@ export function EditorPage() {
     if (routeId === null) {
       const st = useEditor.getState();
       const appEl = useApp.getState().elevationId;
-      if (!st.elevation && appEl) nav(`/editor/${appEl}`, { replace: true });
+      if (!st.elevation && appEl) nav(`/app/editor/${appEl}`, { replace: true });
       return;
     }
     const st = useEditor.getState();
@@ -215,7 +215,7 @@ export function EditorPage() {
           useEditor.getState().load(rec.data, { id: rec.id, projectId: rec.project_id, version: rec.version });
           if (useApp.getState().projectId !== pid) selectProject(pid);
           selectElevation(rec.id);
-          nav(`/editor/${rec.id}`, { replace: true });
+          nav(`/app/editor/${rec.id}`, { replace: true });
           toast.success('Elevation created', `${rec.name} saved to project`);
         }
         await refreshElevations();
@@ -429,7 +429,7 @@ export function EditorPage() {
     if (saveNow) await save();
     else {
       selectElevation(null);
-      nav('/editor', { replace: true });
+      nav('/app/editor', { replace: true });
       toast.info('New elevation created', 'Unsaved — use Save to store it in a project.');
     }
   };
@@ -599,7 +599,7 @@ export function EditorPage() {
         title="Could not load elevation"
         detail={loadError}
         action={
-          <Button onClick={() => nav('/editor', { replace: true })} variant="primary">
+          <Button onClick={() => nav('/app/editor', { replace: true })} variant="primary">
             Back
           </Button>
         }

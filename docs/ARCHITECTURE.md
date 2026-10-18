@@ -224,3 +224,26 @@ FIELD_ASPECT_HIGH, MULLION_SPAN_HIGH, ANCHORS_MISSING, NO_COLOUR_SELECTED. Each 
 `FOS-MULLION`, `FOS-TRANSOM`, `FOS-GLASS`, `FOS-PANEL`, `FOS-DIM`, `FOS-TEXT`, member outlines from face widths,
 field rectangles + mark text, overall + chained dimension lines drawn as LINE+TEXT (no DIMENSION entities).
 `GET /elevations/{id}/export.dxf`, `POST /export/dxf {elevation}`. Frontend ports the same writer to TS for offline.
+
+## 9. Public website and URL layout (v0.3)
+
+One Vite app, two code-split bundles chosen in `frontend/src/main.tsx` from the first URL:
+
+| Path | Bundle | Notes |
+|---|---|---|
+| `/`, `/solutions`, `/solutions/{design-calculation,cutting-nesting,production-tracking,purchasing-quotes}`, `/pricing`, `/about`, `/contact`, `/privacy`, `/terms`, anything else (404 page) | website (`src/site/`) | No startup check, no API needed (except the contact form POST). `html.is-site` switches to normal document scrolling. |
+| `/app`, `/app/...` | application (`src/App.tsx`) | Startup mode check → login / offline → app. All app routes live under `/app` (e.g. `/app/editor/:id`, `/app/production/:id/labels`). |
+| `/p/:code` | application | QR part labels — unchanged, payload stays `{PUBLIC_BASE_URL}/p/{code}`. |
+
+Old top-level app URLs (`/projects`, `/editor/*`, `/cutting`, `/nesting`, `/production*`, `/station`, `/purchasing`,
+`/inventory`, `/quotes`, `/quotations`, `/reports`, `/admin`, `/catalogue`, `/glass`, `/calc`, `/login`) are rewritten
+client-side to `/app/...` (`src/routes.ts`, `legacyRedirect`) keeping query and hash. Vercel's `web` rewrite
+(`/((?!assets/).*)` → `/index.html`) already serves deep links; static files (`/site/*.webp`) are matched first.
+
+Owner-editable content lives in `frontend/src/site/siteConfig.ts` (contact e-mail, phone/address, plan prices
+— `null` renders "On request" —, plan contents, comparison table, FAQ, About mission/facts). Page copy for the
+solutions is in `src/site/content.ts`. Website images: `python3 scripts/site-images.py` converts the light-theme
+screenshots in `docs/screenshots/` to `frontend/public/site/*.webp` and builds `og-image.png`.
+
+Leads: `Lead` table (migration 0003), `POST /api/v1/leads` (public, honeypot + time-on-form + per-IP limit, IP
+stored only as HMAC hash), admin listing/status under `/api/v1/admin/leads`, app screen Admin → Leads.

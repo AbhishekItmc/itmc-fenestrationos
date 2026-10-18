@@ -384,3 +384,111 @@ text.cad-halo {
   stroke-width: 3px;
   stroke-linejoin: round;
 }
+
+/* ------------------------------------------------------------------------------------------------
+ * Public website (html.is-site, set in main.tsx). Normal document scrolling instead of the app's fixed viewport.
+ * ---------------------------------------------------------------------------------------------- */
+html.is-site,
+html.is-site body,
+html.is-site #root {
+  height: auto;
+  min-height: 100%;
+}
+html.is-site body {
+  overflow: visible;
+}
+@media (prefers-reduced-motion: no-preference) {
+  html.is-site {
+    scroll-behavior: smooth;
+  }
+}
+
+/* blueprint grid: fine 8 px + major 40 px lines, faded out towards the edges */
+.bp-grid {
+  background-image:
+    linear-gradient(rgb(var(--accent) / 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(var(--accent) / 0.07) 1px, transparent 1px),
+    linear-gradient(rgb(var(--line) / 0.55) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(var(--line) / 0.55) 1px, transparent 1px);
+  background-size:
+    40px 40px,
+    40px 40px,
+    8px 8px,
+    8px 8px;
+  background-position: -1px -1px;
+  -webkit-mask-image: radial-gradient(ellipse 75% 70% at 50% 35%, #000 30%, transparent 78%);
+  mask-image: radial-gradient(ellipse 75% 70% at 50% 35%, #000 30%, transparent 78%);
+}
+.bp-grid-dark {
+  background-image:
+    linear-gradient(rgb(255 255 255 / 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(255 255 255 / 0.06) 1px, transparent 1px);
+  background-size: 32px 32px;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 25%, #000 75%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 25%, #000 75%, transparent);
+}
+
+/* registration (crop) marks at the four corners of a figure */
+.reg-marks {
+  position: relative;
+}
+.reg-marks::before,
+.reg-marks::after {
+  content: '';
+  position: absolute;
+  inset: -10px;
+  pointer-events: none;
+  background:
+    linear-gradient(rgb(var(--accent) / 0.7), rgb(var(--accent) / 0.7)) top left / 14px 1px no-repeat,
+    linear-gradient(rgb(var(--accent) / 0.7), rgb(var(--accent) / 0.7)) top left / 1px 14px no-repeat,
+    linear-gradient(rgb(var(--accent) / 0.7), rgb(var(--accent) / 0.7)) top right / 14px 1px no-repeat,
+    linear-gradient(rgb(var(--accent) / 0.7), rgb(var(--accent) / 0.7)) top right / 1px 14px no-repeat;
+}
+.reg-marks::after {
+  background:
+    linear-gradient(rgb(var(--accent) / 0.7), rgb(var(--accent) / 0.7)) bottom left / 14px 1px no-repeat,
+    linear-gradient(rgb(var(--accent) / 0.7), rgb(var(--accent) / 0.7)) bottom left / 1px 14px no-repeat,
+    linear-gradient(rgb(var(--accent) / 0.7), rgb(var(--accent) / 0.7)) bottom right / 14px 1px no-repeat,
+    linear-gradient(rgb(var(--accent) / 0.7), rgb(var(--accent) / 0.7)) bottom right / 1px 14px no-repeat;
+}
+
+/* scroll reveal (see site/ui.tsx <Reveal>) — only animates when motion is welcome */
+@media (prefers-reduced-motion: no-preference) {
+  .reveal {
+    opacity: 0;
+    transform: translateY(14px);
+    transition:
+      opacity 600ms cubic-bezier(0.2, 0.7, 0.2, 1),
+      transform 600ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .reveal.is-in {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.site-focus:focus-visible,
+.site a:focus-visible,
+.site button:focus-visible,
+.site summary:focus-visible {
+  outline: 2px solid rgb(var(--accent));
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+@layer components {
+.site-link {
+  @apply rounded-sm underline decoration-line-strong decoration-1 underline-offset-[3px] transition-colors hover:text-accent hover:decoration-accent;
+}
+.site-btn {
+  @apply inline-flex h-11 items-center justify-center gap-2 whitespace-nowrap rounded-md px-5 text-[15px] font-medium transition-[background-color,border-color,color,box-shadow,transform] duration-150;
+}
+.site-btn-primary {
+  @apply bg-accent text-[rgb(var(--on-accent))] shadow-[0_1px_0_rgb(255_255_255/0.15)_inset,0_6px_16px_-8px_rgb(var(--accent)/0.8)] hover:bg-[var(--accent-hover)];
+}
+.site-btn-secondary {
+  @apply border border-line-strong bg-panel text-fg hover:border-faint hover:bg-hover;
+}
+.site-btn-sm {
+  @apply h-9 px-3.5 text-sm;
+}
+}

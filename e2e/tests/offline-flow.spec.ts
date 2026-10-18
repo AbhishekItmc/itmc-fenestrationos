@@ -65,7 +65,7 @@ test('offline: wizard → mullion → undo/redo → fill → calculate → send 
 });
 
 test('offline: 1D demo dataset, save job and return offcuts to inventory', async ({ page }) => {
-  await openOffline(page, '/cutting');
+  await openOffline(page, '/app/cutting');
   await page.getByTestId('load-demo-cutting').click();
   await page.getByTestId('run-cutting').click();
   await expect(page.getByTestId('cutting-results')).toContainText('VALIDATOR PASSED');
@@ -79,7 +79,7 @@ test('offline: 1D demo dataset, save job and return offcuts to inventory', async
 });
 
 test('offline: 2D nesting demo run', async ({ page }) => {
-  await openOffline(page, '/nesting');
+  await openOffline(page, '/app/nesting');
   await page.getByTestId('load-demo-nesting').click();
   await page.getByTestId('run-nesting').click();
   const res = page.getByTestId('nesting-results');
@@ -89,7 +89,7 @@ test('offline: 2D nesting demo run', async ({ page }) => {
 });
 
 test('offline: import validation rejects a malformed elevation JSON', async ({ page }) => {
-  await openOffline(page, '/editor/11');
+  await openOffline(page, '/app/editor/11');
   await expect(page.getByTestId('cad-canvas')).toBeVisible();
   await page.getByTestId('import-file').setInputFiles({ name: 'bad.json', mimeType: 'application/json', buffer: Buffer.from(JSON.stringify({ width: -5, mullions: 'x' })) });
   await expect(page.getByRole('dialog')).toContainText('Import rejected');

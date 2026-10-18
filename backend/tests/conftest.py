@@ -53,7 +53,9 @@ def client(app):
 @pytest.fixture(autouse=True)
 def _reset_login_limiter(request):
     if "client" in request.fixturenames or "app" in request.fixturenames:
-        request.getfixturevalue("app").state.login_limiter.reset()
+        application = request.getfixturevalue("app")
+        application.state.login_limiter.reset()
+        application.state.lead_limiter.reset()
     yield
 
 

@@ -90,7 +90,7 @@ export function TopBar({ narrow = false, onMenu }: { narrow?: boolean; onMenu?: 
           onChange={(e) => {
             const id = e.target.value ? Number(e.target.value) : null;
             selectElevation(id);
-            if (id) nav(`/editor/${id}`);
+            if (id) nav(`/app/editor/${id}`);
           }}
         >
           <option value="">{projectId ? (elevations.length ? '— select elevation —' : 'no elevations yet') : '—'}</option>

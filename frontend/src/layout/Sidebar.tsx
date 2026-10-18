@@ -27,37 +27,37 @@ export const NAV_GROUPS = [
   {
     label: 'Design',
     items: [
-      { to: '/projects', label: 'Projects', icon: FolderKanban },
-      { to: '/editor', label: 'Elevation CAD', icon: PenTool },
-      { to: '/catalogue', label: 'Catalogue', icon: Library },
-      { to: '/glass', label: 'Glass & Panels', icon: Layers3 },
+      { to: '/app/projects', label: 'Projects', icon: FolderKanban },
+      { to: '/app/editor', label: 'Elevation CAD', icon: PenTool },
+      { to: '/app/catalogue', label: 'Catalogue', icon: Library },
+      { to: '/app/glass', label: 'Glass & Panels', icon: Layers3 },
     ],
   },
   {
     label: 'Engineering',
     items: [
-      { to: '/calc', label: 'Calculation / BOM', icon: Calculator },
-      { to: '/cutting', label: '1D Cutting', icon: Ruler },
-      { to: '/nesting', label: '2D Nesting', icon: LayoutGrid },
-      { to: '/inventory', label: 'Inventory', icon: Boxes },
+      { to: '/app/calc', label: 'Calculation / BOM', icon: Calculator },
+      { to: '/app/cutting', label: '1D Cutting', icon: Ruler },
+      { to: '/app/nesting', label: '2D Nesting', icon: LayoutGrid },
+      { to: '/app/inventory', label: 'Inventory', icon: Boxes },
     ],
   },
   {
     label: 'Manufacturing',
     items: [
-      { to: '/production', label: 'Production', icon: Factory },
-      { to: '/station', label: 'Workstation', icon: ScanLine },
+      { to: '/app/production', label: 'Production', icon: Factory },
+      { to: '/app/station', label: 'Workstation', icon: ScanLine },
     ],
   },
   {
     label: 'Commercial',
     items: [
-      { to: '/quotes', label: 'Quotations', icon: ReceiptText },
-      { to: '/purchasing', label: 'Purchasing', icon: ShoppingCart },
-      { to: '/reports', label: 'Reports', icon: FileBarChart2 },
+      { to: '/app/quotes', label: 'Quotations', icon: ReceiptText },
+      { to: '/app/purchasing', label: 'Purchasing', icon: ShoppingCart },
+      { to: '/app/reports', label: 'Reports', icon: FileBarChart2 },
     ],
   },
-  { label: 'System', items: [{ to: '/admin', label: 'Admin / Audit', icon: ShieldCheck }] },
+  { label: 'System', items: [{ to: '/app/admin', label: 'Admin / Audit', icon: ShieldCheck }] },
 ];
 
 function NavItems({ collapsed, onNavigate }: { collapsed: boolean; onNavigate?: () => void }) {

@@ -17,6 +17,9 @@ export DATABASE_URL=postgresql+psycopg://fos:fos_dev@localhost:5432/fos SEED_DEM
 # frontend (new terminal)
 cd frontend && npm ci && npm run dev                                                # http://localhost:5173
 ```
+Public website at `/` (solutions, pricing, about, contact); the application is at **`/app`** (QR labels keep `/p/{code}`).
+Website copy, contact e-mail and plan prices: `frontend/src/site/siteConfig.ts`.
+
 Login: `admin@demo.local` / `Demo@12345` (also engineer@, estimator@, viewer@). Without the backend the UI offers
 **Offline demo mode** (browser-only heuristic engine, clearly labelled).
 
@@ -28,9 +31,9 @@ docker compose up -d --build     # web: http://localhost:8080
 
 ## Tests
 ```bash
-cd backend && .venv/bin/pytest tests -q                          # 132 passed, 3 skipped (golden cases awaiting expert values)
-cd frontend && npm run typecheck && npm run lint && npm test && npm run build   # 115 passed
-cd e2e && npm ci && npx playwright test                          # 6 passed (with backend running)
+cd backend && .venv/bin/pytest tests -q                          # 180 passed, 3 skipped (golden cases awaiting expert values)
+cd frontend && npm run typecheck && npm run lint && npm test && npm run build   # 181 passed
+cd e2e && npm ci && npx playwright test                          # 20 passed (with backend running; server specs skip without it)
 ```
 
 Docs: `docs/ARCHITECTURE.md`, `docs/API.md`, `docs/DEPLOYMENT.md`, `docs/REQUIREMENTS_TRACEABILITY.md`, `docs/APPROVALS.md`.

@@ -286,3 +286,25 @@ class AuditLog(Base):
     detail: Mapped[Optional[Any]] = mapped_column(JSONType)
     ip: Mapped[Optional[str]] = mapped_column(String(64))
     request_id: Mapped[Optional[str]] = mapped_column(String(64))
+
+
+LEAD_STATUSES = ("new", "contacted", "closed")
+
+
+class Lead(Base):
+    """Demo request / contact enquiry from the public website (POST /api/v1/leads). No personal data is ever
+    echoed back by the public endpoint; the client IP is stored only as a salted hash (rate limiting / abuse)."""
+    __tablename__ = "leads"
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    name: Mapped[str] = mapped_column(String(200), nullable=False)
+    company: Mapped[str] = mapped_column(String(200), nullable=False)
+    email: Mapped[str] = mapped_column(String(254), nullable=False)
+    phone: Mapped[Optional[str]] = mapped_column(String(50))
+    country: Mapped[Optional[str]] = mapped_column(String(100))
+    message: Mapped[str] = mapped_column(Text, nullable=False)
+    interest: Mapped[list] = mapped_column(JSONType, nullable=False, default=list)   # solution keys
+    source_page: Mapped[Optional[str]] = mapped_column(String(200))
+    status: Mapped[str] = mapped_column(String(20), nullable=False, default="new", index=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow, nullable=False, index=True)
+    ip_hash: Mapped[Optional[str]] = mapped_column(String(64))
+    user_agent: Mapped[Optional[str]] = mapped_column(String(300))

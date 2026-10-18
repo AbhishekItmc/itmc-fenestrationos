@@ -16,12 +16,12 @@ test.beforeEach(async ({ request }) => {
 });
 
 test('server: login → project → elevation → persisted calc → cutting job → nesting → quote', async ({ page }) => {
-  await page.goto('/');
+  await page.goto('/app');
   await page.evaluate(() => {
     localStorage.clear();
     sessionStorage.clear();
   });
-  await page.goto('/');
+  await page.goto('/app');
   await page.getByTestId('login-email').fill(EMAIL);
   await page.getByTestId('login-password').fill(PASSWORD);
   await page.getByTestId('login-submit').click();
@@ -77,4 +77,32 @@ test('server: login → project → elevation → persisted calc → cutting job
   await page.getByTestId('create-quote').click();
   await expect(page.getByTestId('quote-view')).toContainText('Demo prices — not a commercial offer');
   await expect(page.getByTestId('quote-total')).toContainText(/\d/);
+});
+
+test('server: website demo request appears in Admin → Leads and can be marked contacted', async ({ page, request }) => {
+  const company = `E2E Facades ${Date.now().toString(36)}`;
+  const r = await request.post('/api/v1/leads', {
+    data: { name: 'E2E Visitor', company, email: 'e2e.visitor@example.com', message: 'Automated e2e demo request.', interest: ['cutting-nesting'], website: '', elapsed_ms: 5000, source_page: '/contact' },
+  });
+  test.skip(r.status() === 429, 'lead rate limit reached for this IP (5/hour) — rerun later');
+  expect(r.status()).toBe(201);
+  expect(await r.json()).toEqual({ ok: true });
+
+  await page.goto('/app');
+  await page.evaluate(() => {
+    localStorage.clear();
+    sessionStorage.clear();
+  });
+  await page.goto('/app');
+  await page.getByTestId('login-email').fill(EMAIL);
+  await page.getByTestId('login-password').fill(PASSWORD);
+  await page.getByTestId('login-submit').click();
+  await expect(page.getByTestId('mode-indicator')).toHaveText(/SERVER/);
+  await page.goto('/app/admin');
+  await page.getByRole('tab', { name: 'Leads' }).click();
+  const row = page.getByTestId('leads-table').locator('tr', { hasText: company });
+  await expect(row).toBeVisible();
+  await row.locator('select').selectOption('contacted');
+  await expect(page.getByTestId('toaster')).toContainText('contacted');
+  await expect(page.getByTestId('leads-table').locator('tr', { hasText: company })).toContainText('contacted');
 });

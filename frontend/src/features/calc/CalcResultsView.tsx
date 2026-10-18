@@ -36,13 +36,13 @@ export function CalcResultsView({ entry, onPickIssue }: { entry: CalcEntry; onPi
     if (!profileId) return;
     useCutting.getState().replaceDraft(cuttingDraftFromCalc(r, profileId, cat, entry.elevationName));
     toast.success('Sent to 1D cutting', `${profiles.find((p) => p.id === profileId)?.code} — ${r.profile_cuts.filter((c) => c.profile_id === profileId).length} piece types`);
-    nav('/cutting');
+    nav('/app/cutting');
   };
   const sendToNesting = () => {
     if (!groupKey) return;
     useNesting.getState().replaceDraft(nestingDraftFromCalc(r, groupKey, cat, entry.elevationName));
     toast.success('Sent to 2D nesting', groups.find((g) => g.key === groupKey)?.label);
-    nav('/nesting');
+    nav('/app/nesting');
   };
   const download = async (fmt: 'pdf' | 'xlsx') => {
     if (!entry.runId) return;

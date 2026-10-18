@@ -68,13 +68,13 @@ export default function ProjectDetailPage() {
   const openElevation = (e: ElevationRecord) => {
     selectProject(p.id);
     selectElevation(e.id);
-    nav(`/editor/${e.id}`);
+    nav(`/app/editor/${e.id}`);
   };
   const newElevation = () => {
     selectProject(p.id);
     selectElevation(null);
     useEditor.getState().clear();
-    nav('/editor');
+    nav('/app/editor');
   };
   const createRevision = async () => {
     setBusy(true);
@@ -109,7 +109,7 @@ export default function ProjectDetailPage() {
       toast.success('Project deleted', p.code);
       selectProject(null);
       await refreshProjects();
-      nav('/projects');
+      nav('/app/projects');
     } catch (e) {
       toast.error('Delete failed', errorMessage(e));
     }
@@ -118,7 +118,7 @@ export default function ProjectDetailPage() {
   return (
     <div className="flex h-full flex-col" data-testid="project-detail">
       <div className="border-b border-line bg-panel/60 px-5 pb-3 pt-3">
-        <button className="mb-2 flex items-center gap-1 text-xs text-muted hover:text-fg" onClick={() => nav('/projects')}>
+        <button className="mb-2 flex items-center gap-1 text-xs text-muted hover:text-fg" onClick={() => nav('/app/projects')}>
           <ArrowLeft className="h-3.5 w-3.5" /> All projects
         </button>
         <div className="flex items-end gap-4">

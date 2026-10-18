@@ -560,3 +560,67 @@ class PurchaseOrderOut(ORM):
 
 class DxfExportIn(BaseModel):
     elevation: ElevationModel
+
+
+# ---------------------------------------------------------------- website leads (demo requests)
+SOLUTION_KEYS = ("design-calculation", "cutting-nesting", "production-tracking", "purchasing-quotes")
+LeadStatus = Literal["new", "contacted", "closed"]
+
+
+class LeadIn(BaseModel):
+    """Public demo-request form. `website` is a honeypot (must be empty); `elapsed_ms` = time the form was open."""
+    model_config = ConfigDict(extra="ignore")
+    name: str = Field(min_length=1, max_length=200)
+    company: str = Field(min_length=1, max_length=200)
+    email: str = Field(max_length=254)
+    phone: Optional[str] = Field(default=None, max_length=50)
+    country: Optional[str] = Field(default=None, max_length=100)
+    message: str = Field(min_length=1, max_length=5000)
+    interest: List[Literal["design-calculation", "cutting-nesting", "production-tracking",
+                           "purchasing-quotes"]] = Field(default_factory=list, max_length=4)
+    source_page: Optional[str] = Field(default=None, max_length=200)
+    website: Optional[str] = Field(default=None, max_length=500)
+    elapsed_ms: Optional[int] = Field(default=None, ge=0)
+
+    @field_validator("name", "company", "message")
+    @classmethod
+    def _strip_required(cls, v: str) -> str:
+        v = v.strip()
+        if not v:
+            raise ValueError("must not be blank")
+        return v
+
+    @field_validator("phone", "country", "source_page")
+    @classmethod
+    def _strip_optional(cls, v: Optional[str]) -> Optional[str]:
+        v = (v or "").strip()
+        return v or None
+
+    @field_validator("email")
+    @classmethod
+    def _e(cls, v: str) -> str:
+        return _email(v)
+
+    @field_validator("interest")
+    @classmethod
+    def _dedupe(cls, v: List[str]) -> List[str]:
+        return list(dict.fromkeys(v))
+
+
+class LeadOut(ORM):
+    id: int
+    name: str
+    company: str
+    email: str
+    phone: Optional[str] = None
+    country: Optional[str] = None
+    message: str
+    interest: List[str]
+    source_page: Optional[str] = None
+    status: LeadStatus
+    created_at: datetime
+    user_agent: Optional[str] = None
+
+
+class LeadUpdate(BaseModel):
+    status: LeadStatus

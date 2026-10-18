@@ -45,7 +45,7 @@ export function Shell() {
   const narrow = useMediaQuery(NARROW_QUERY);
   const [navOpen, setNavOpen] = useState(false);
   useEffect(() => {
-    if (!loc.pathname.startsWith('/editor')) reset();
+    if (!loc.pathname.startsWith('/app/editor')) reset();
     setNavOpen(false);
   }, [loc.pathname, reset]);
   return (

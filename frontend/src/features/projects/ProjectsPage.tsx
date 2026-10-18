@@ -106,7 +106,7 @@ export default function ProjectsPage() {
             </thead>
             <tbody>
               {rows.map((p) => (
-                <tr key={p.id} className="cursor-pointer" onClick={() => nav(`/projects/${p.id}`)}>
+                <tr key={p.id} className="cursor-pointer" onClick={() => nav(`/app/projects/${p.id}`)}>
                   <td className="font-mono text-xs font-medium text-accent">{p.code}</td>
                   <td>
                     <div className="flex items-center gap-2">

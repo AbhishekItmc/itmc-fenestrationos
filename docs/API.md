@@ -84,6 +84,8 @@ that project additionally require an `editor` membership.
 | GET `/reports/production/{order_id}.pdf` | any | work order sheet: station board + parts grouped by current station |
 | GET `/reports/purchase-order/{id}.pdf\|xlsx` | any | banner `PROVISIONAL …` + `Demo prices — not a commercial offer` |
 | GET/POST `/admin/users`, PUT/DELETE `/admin/users/{id}` | admin | PUT `{name?, role?, active?, password?}`; DELETE = deactivate; last active admin protected (409) |
+| POST `/leads` | public (no auth) | Website demo request `{name, company, email, phone?, country?, message, interest: ("design-calculation"\|"cutting-nesting"\|"production-tracking"\|"purchasing-quotes")[], source_page?, website, elapsed_ms}` → 201 `{ok:true}` (data never echoed). Honeypot `website` filled, or `elapsed_ms` missing / < 2000 → 202 `{ok:true}`, nothing stored. 5 requests / hour / IP (in-memory) → 429 `RATE_LIMITED`. Invalid e-mail / lengths → 422 |
+| GET `/admin/leads`, PUT `/admin/leads/{id}` | admin | `?status=new\|contacted\|closed&limit=50&offset=0` → `{items, total, limit, offset}`; PUT `{status}` (audited) |
 | GET `/admin/audit` | admin | `?action=&entity=&entity_id=&user_id=&since=&until=&limit=50&offset=0` → `{items, total, limit, offset}` |
 
 Audited actions: `create/update/delete/deactivate/consume` on all entities, `calculate`, `optimize`, `build`,

@@ -63,7 +63,7 @@ export default function CalcPage() {
                   <div className="truncate text-sm">{e.name}</div>
                   <div className="font-mono text-2xs text-faint">v{e.version}</div>
                 </div>
-                <Button size="sm" iconOnly icon={<FolderOpen className="h-3.5 w-3.5" />} tip="Open in editor" onClick={() => nav(`/editor/${e.id}`)} />
+                <Button size="sm" iconOnly icon={<FolderOpen className="h-3.5 w-3.5" />} tip="Open in editor" onClick={() => nav(`/app/editor/${e.id}`)} />
                 <Button size="sm" variant="primary" icon={<Calculator className="h-3.5 w-3.5" />} loading={busy === e.id} disabled={!eng} tip={eng ? 'Persisted calculation run' : 'Requires engineer role'} onClick={() => void runFor(e)} data-testid={`calc-run-${e.id}`}>
                   Run
                 </Button>

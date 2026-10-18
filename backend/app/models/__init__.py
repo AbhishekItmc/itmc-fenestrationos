@@ -1,3 +1,3 @@
-from .core import (PROJECT_STATUSES, ROLES, AuditLog, CalcRun, CatalogueRevision, Customer, CuttingJob,  # noqa: F401
-                   Elevation, InventoryItem, NestingJob, Part, PartEvent, ProductionOrder, Project, ProjectMember,
-                   ProjectRevision, PurchaseOrder, Quote, User)
+from .core import (LEAD_STATUSES, PROJECT_STATUSES, ROLES, AuditLog, CalcRun, CatalogueRevision,  # noqa: F401
+                   Customer, CuttingJob, Elevation, InventoryItem, Lead, NestingJob, Part, PartEvent,
+                   ProductionOrder, Project, ProjectMember, ProjectRevision, PurchaseOrder, Quote, User)

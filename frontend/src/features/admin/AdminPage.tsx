@@ -11,12 +11,13 @@ import { Button } from '../../ui/Button';
 import { Dialog } from '../../ui/Dialog';
 import { Field, Select } from '../../ui/Field';
 import { EmptyState, ErrorBlock, LoadingBlock, PageHeader, Tabs } from '../../ui/Misc';
+import { LeadsTab } from './LeadsTab';
 
 const ROLES: Role[] = ['admin', 'engineer', 'estimator', 'viewer', 'operator'];
 
 export default function AdminPage() {
   const { mode, user } = useApp();
-  const [tab, setTab] = useState<'users' | 'audit'>('users');
+  const [tab, setTab] = useState<'users' | 'audit' | 'leads'>('users');
   if (mode === 'offline')
     return (
       <div className="flex h-full flex-col" data-testid="admin-page">
@@ -24,7 +25,7 @@ export default function AdminPage() {
         <EmptyState
           icon={<ShieldAlert className="h-5 w-5" />}
           title="Server mode only"
-          detail="User administration and the audit trail are recorded and enforced by the FenestrationOS server (every write — logins, edits, calculations, optimisations, catalogue changes — is audited). Offline demo mode has a single local admin user and keeps no audit trail."
+          detail="User administration, the audit trail and website demo requests (Leads) are recorded and enforced by the FenestrationOS server (every write — logins, edits, calculations, optimisations, catalogue changes — is audited). Offline demo mode has a single local admin user, keeps no audit trail and cannot see leads."
         />
       </div>
     );
@@ -38,9 +39,9 @@ export default function AdminPage() {
   return (
     <div className="flex h-full flex-col" data-testid="admin-page">
       <PageHeader title="Admin / Audit">
-        <Tabs value={tab} onChange={setTab} tabs={[{ value: 'users', label: 'Users' }, { value: 'audit', label: 'Audit trail' }]} className="mt-2 border-b-0" />
+        <Tabs value={tab} onChange={setTab} tabs={[{ value: 'users', label: 'Users' }, { value: 'audit', label: 'Audit trail' }, { value: 'leads', label: 'Leads' }]} className="mt-2 border-b-0" />
       </PageHeader>
-      {tab === 'users' ? <Users /> : <Audit />}
+      {tab === 'users' ? <Users /> : tab === 'audit' ? <Audit /> : <LeadsTab />}
     </div>
   );
 }

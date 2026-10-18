@@ -220,7 +220,7 @@ function PoDetail({ po, writable, onBack, onSaved }: { po: PurchaseOrder; writab
           CSV
         </Button>
         {po.status === 'received' && (
-          <Button size="sm" variant="ghost" onClick={() => nav('/inventory')}>
+          <Button size="sm" variant="ghost" onClick={() => nav('/app/inventory')}>
             View inventory →
           </Button>
         )}

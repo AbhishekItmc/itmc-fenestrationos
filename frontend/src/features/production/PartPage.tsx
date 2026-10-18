@@ -62,7 +62,7 @@ export default function PartPage({ publicView, onSignIn }: { publicView?: boolea
               }
               action={
                 !publicView ? (
-                  <Link to="/station" className="btn btn-primary">
+                  <Link to="/app/station" className="btn btn-primary">
                     <ScanLine className="h-3.5 w-3.5" /> Open workstation
                   </Link>
                 ) : undefined

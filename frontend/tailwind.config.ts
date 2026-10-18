@@ -41,6 +41,11 @@ export default {
         lg: ['18px', { lineHeight: '24px' }],
         xl: ['21px', { lineHeight: '28px' }],
         '2xl': ['26px', { lineHeight: '32px' }],
+        // website display sizes
+        '3xl': ['32px', { lineHeight: '38px', letterSpacing: '-0.015em' }],
+        '4xl': ['40px', { lineHeight: '46px', letterSpacing: '-0.02em' }],
+        '5xl': ['50px', { lineHeight: '56px', letterSpacing: '-0.025em' }],
+        '6xl': ['60px', { lineHeight: '64px', letterSpacing: '-0.03em' }],
       },
       borderRadius: { DEFAULT: '4px', sm: '2px', md: '5px', lg: '7px' },
       boxShadow: {

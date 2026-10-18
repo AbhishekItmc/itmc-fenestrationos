@@ -43,7 +43,7 @@ export default function ProductionPage() {
 
   // select the first order when none in the URL (wide screens)
   useEffect(() => {
-    if (!orderId && orders.data?.length && window.matchMedia('(min-width: 1024px)').matches) nav(`/production/${orders.data[0].id}`, { replace: true });
+    if (!orderId && orders.data?.length && window.matchMedia('(min-width: 1024px)').matches) nav(`/app/production/${orders.data[0].id}`, { replace: true });
   }, [orderId, orders.data, nav]);
 
   if (!projectId) return <EmptyState className="h-full" icon={<Factory className="h-5 w-5" />} title="Select a project" detail="Work orders are created per project from stored calculation runs." />;
@@ -75,7 +75,7 @@ export default function ProductionPage() {
               <button
                 key={o.id}
                 className={clsx('block w-full border-b border-line/60 px-3 py-2.5 text-left hover:bg-hover', o.id === orderId && 'bg-accent/10 shadow-[inset_2px_0_0_rgb(var(--accent))]')}
-                onClick={() => nav(`/production/${o.id}`)}
+                onClick={() => nav(`/app/production/${o.id}`)}
                 data-testid={`wo-${o.id}`}
               >
                 <div className="flex items-center gap-2">
@@ -108,7 +108,7 @@ export default function ProductionPage() {
         onCreated={(o) => {
           setCreating(false);
           orders.reload();
-          nav(`/production/${o.id}`);
+          nav(`/app/production/${o.id}`);
         }}
       />
     </div>
@@ -153,7 +153,7 @@ function OrderDetail({ orderId, onChanged }: { orderId: number; onChanged: () =>
   return (
     <div className="space-y-3 p-4" data-testid="order-detail">
       <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
-        <button className="btn btn-ghost btn-icon lg:hidden" onClick={() => nav('/production')} aria-label="Back to work orders">
+        <button className="btn btn-ghost btn-icon lg:hidden" onClick={() => nav('/app/production')} aria-label="Back to work orders">
           <ArrowLeft className="h-4 w-4" />
         </button>
         <h2 className="font-mono text-lg font-semibold" data-testid="order-number">
@@ -187,7 +187,7 @@ function OrderDetail({ orderId, onChanged }: { orderId: number; onChanged: () =>
               </Button>
             )}
             items={[
-              ...LABEL_LAYOUTS.map((l) => ({ label: l.label, hint: <span className="text-2xs text-faint">{l.detail}</span>, icon: <QrCode className="h-3.5 w-3.5" />, onClick: () => nav(`/production/${order.id}/labels?layout=${l.value}`), testId: `labels-${l.value}` })),
+              ...LABEL_LAYOUTS.map((l) => ({ label: l.label, hint: <span className="text-2xs text-faint">{l.detail}</span>, icon: <QrCode className="h-3.5 w-3.5" />, onClick: () => nav(`/app/production/${order.id}/labels?layout=${l.value}`), testId: `labels-${l.value}` })),
               ...(mode === 'server' ? LABEL_LAYOUTS.map((l) => ({ label: `PDF · ${l.label}`, icon: <FileDown className="h-3.5 w-3.5" />, onClick: () => void pdf('labels', l.value) })) : []),
             ]}
           />

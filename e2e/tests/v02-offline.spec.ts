@@ -4,7 +4,7 @@ import { openOffline } from './helpers';
 
 /** Persist a calc run for elevation 11 (saved + not dirty → the editor creates a stored run). */
 async function calcRun(page: Page): Promise<void> {
-  await page.goto('/editor/11');
+  await page.goto('/app/editor/11');
   await expect(page.getByTestId('cad-canvas')).toBeVisible();
   await page.getByTestId('calculate').click();
   await expect(page.getByTestId('calc-drawer')).toBeVisible();
@@ -138,7 +138,7 @@ test('offline: generate purchase orders from a calc, edit, send, receive', async
 });
 
 test('offline: export DXF from the editor; design checks shown with demo tag', async ({ page }) => {
-  await openOffline(page, '/editor/11');
+  await openOffline(page, '/app/editor/11');
   await expect(page.getByTestId('cad-canvas')).toBeVisible();
   // E01 is anchored only at 0 and 4200 mm → unsupported span above the demo threshold
   await expect(page.getByTestId('editor-issues')).toContainText('MULLION_SPAN_HIGH');
@@ -163,12 +163,12 @@ test.describe('phone viewport (390×844)', () => {
   };
 
   test('start screen fits without horizontal overflow; app shell uses a drawer', async ({ page }) => {
-    await page.goto('/');
+    await page.goto('/app');
     await page.evaluate(() => {
       localStorage.clear();
       sessionStorage.clear();
     });
-    await page.goto('/');
+    await page.goto('/app');
     const btn = page.getByTestId('continue-offline').or(page.getByTestId('login-offline'));
     await expect(btn.first()).toBeVisible({ timeout: 20_000 });
     await noHorizontalOverflow(page);
@@ -197,7 +197,7 @@ test.describe('phone viewport (390×844)', () => {
     await page.keyboard.press('Enter');
     await expect(page.getByTestId('station-part')).toContainText('Part not found');
     expect(await page.getByTestId('station-page').evaluate((el) => el.scrollWidth - el.clientWidth)).toBeLessThanOrEqual(0);
-    await page.goto('/editor/11');
+    await page.goto('/app/editor/11');
     await expect(page.getByTestId('editor-small-screen')).toBeVisible();
     await noHorizontalOverflow(page);
   });

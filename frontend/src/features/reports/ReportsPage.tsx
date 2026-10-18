@@ -38,7 +38,7 @@ export default function ReportsPage() {
       ...qs.map((q): ReportLink => ({ key: `q${q.id}`, kind: 'quote', id: q.id, title: `Quotation ${q.number} (demo prices)`, formats: ['pdf'], status: q.validation_status, created_at: q.created_at })),
       ...wos.flatMap((o): ReportLink[] => [
         { key: `w${o.id}`, kind: 'production', id: o.id, title: `Work order sheet ${o.number} — ${o.name}`, formats: ['pdf'], status: o.provisional === false ? 'VALIDATED' : 'PROVISIONAL_DEMO_RULES', created_at: o.created_at },
-        { key: `l${o.id}`, kind: 'labels', id: o.id, title: `QR part labels ${o.number} (A4 · 24 per sheet) — ${o.counts.total} labels`, formats: ['pdf'], query: { layout: 'a4-24' }, href: `/production/${o.id}/labels?layout=a4-24`, status: o.provisional === false ? 'VALIDATED' : 'PROVISIONAL_DEMO_RULES', created_at: o.created_at },
+        { key: `l${o.id}`, kind: 'labels', id: o.id, title: `QR part labels ${o.number} (A4 · 24 per sheet) — ${o.counts.total} labels`, formats: ['pdf'], query: { layout: 'a4-24' }, href: `/app/production/${o.id}/labels?layout=a4-24`, status: o.provisional === false ? 'VALIDATED' : 'PROVISIONAL_DEMO_RULES', created_at: o.created_at },
       ]),
       ...pos.map((p): ReportLink => ({ key: `p${p.id}`, kind: 'purchase-order', id: p.id, title: `Purchase order ${p.number} · ${p.category} · ${p.supplier} (demo prices)`, formats: ['pdf', 'xlsx'], status: 'PROVISIONAL_DEMO_RULES', created_at: p.created_at })),
     ];

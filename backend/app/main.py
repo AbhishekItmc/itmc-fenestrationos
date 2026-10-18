@@ -17,6 +17,7 @@ from .db import make_engine, make_sessionmaker
 from .errors import body, install_handlers
 from .logging_conf import configure_logging
 from .middleware import RequestContextMiddleware
+from .api.v1.leads import LeadRateLimiter
 from .security import LoginRateLimiter
 
 log = logging.getLogger("fos.app")
@@ -49,6 +50,7 @@ TAGS = [
     {"name": "export", "description": "CAD export (DXF R12)."},
     {"name": "reports", "description": "PDF / Excel documents with versions, status and DEMO banner."},
     {"name": "admin", "description": "User administration and audit trail (admin only)."},
+    {"name": "website", "description": "Public website: demo requests (honeypot + rate limited; never echoes data)."},
 ]
 
 
@@ -90,6 +92,7 @@ def create_app(settings: Optional[Settings] = None, engine=None) -> FastAPI:
     app.state.SessionLocal = SessionLocal
     app.state.login_limiter = LoginRateLimiter(settings.login_max_failures_per_email,
                                                settings.login_max_failures_per_ip, settings.login_window_s)
+    app.state.lead_limiter = LeadRateLimiter()
     install_handlers(app)
     app.add_middleware(CORSMiddleware, allow_origins=settings.cors_origin_list, allow_credentials=False,
                        allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
