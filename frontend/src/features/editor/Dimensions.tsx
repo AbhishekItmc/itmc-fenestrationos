@@ -79,12 +79,12 @@ export function DimV({ y0, y1, x, refX, value, label, style, testId }: { y0: num
 /** Small floating label (live drag feedback). */
 export function Tag({ x, y, text, tone = 'accent', anchor = 'middle' }: { x: number; y: number; text: string; tone?: 'accent' | 'warn' | 'err'; anchor?: 'start' | 'middle' | 'end' }) {
   const w = text.length * 6.7 + 10;
-  const fill = tone === 'accent' ? 'var(--cad-select)' : tone === 'warn' ? '#fb923c' : 'var(--cad-error)';
+  const fill = tone === 'accent' ? 'var(--cad-select)' : tone === 'warn' ? 'var(--cad-warn)' : 'var(--cad-error)';
   const rx = anchor === 'middle' ? x - w / 2 : anchor === 'end' ? x - w : x;
   return (
     <g pointerEvents="none">
       <rect x={rx} y={y - 12} width={w} height={17} rx={2} fill={fill} />
-      <text x={rx + w / 2} y={y} fontSize={13} fill="#04141a" textAnchor="middle" fontWeight={600}>
+      <text x={rx + w / 2} y={y} fontSize={13} fill="var(--cad-text-bg)" textAnchor="middle" fontWeight={600}>
         {text}
       </text>
     </g>

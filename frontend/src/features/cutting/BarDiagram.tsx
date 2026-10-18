@@ -1,6 +1,6 @@
 import type { Pattern1D } from '../../api/types';
 import { fmtMm } from '../../lib/format';
-import { seriesColor, STATUS } from '../../lib/palette';
+import { seriesColor, SERIES_FILL_OPACITY, STATUS } from '../../lib/palette';
 
 /** One stock bar drawn to scale: trims hatched, pieces coloured by type, kerf slivers, offcut/waste. */
 export function BarDiagram({ p, kerf, trimStart, trimEnd, colorOf, width = 900 }: { p: Pattern1D; kerf: number; trimStart: number; trimEnd: number; colorOf: (pieceId: string) => number; width?: number }) {
@@ -19,7 +19,7 @@ export function BarDiagram({ p, kerf, trimStart, trimEnd, colorOf, width = 900 }
     const label = `${c.piece_id} ${fmtMm(c.length)}`;
     segs.push(
       <g key={`c${i}`}>
-        <rect x={x} y={0} width={Math.max(1, w)} height={H} fill={col} fillOpacity={0.5} stroke={col} strokeWidth={1}>
+        <rect x={x} y={0} width={Math.max(1, w)} height={H} fill={col} style={{ fillOpacity: SERIES_FILL_OPACITY }} stroke={col} strokeWidth={1}>
           <title>{`${c.piece_id}${c.label ? ` · ${c.label}` : ''}\nlength ${fmtMm(c.length)} mm · offset ${fmtMm(c.offset)} mm · ${c.angle_start}°/${c.angle_end}°`}</title>
         </rect>
         {w > label.length * 6.4 + 6 ? (
@@ -31,7 +31,7 @@ export function BarDiagram({ p, kerf, trimStart, trimEnd, colorOf, width = 900 }
             {c.piece_id}
           </text>
         ) : null}
-        {kerf > 0 && <rect x={x + w} y={0} width={Math.max(1, kerf * k)} height={H} fill="#06080a" />}
+        {kerf > 0 && <rect x={x + w} y={0} width={Math.max(1, kerf * k)} height={H} fill="var(--dia-kerf)" />}
       </g>,
     );
   });
@@ -62,11 +62,11 @@ export function BarDiagram({ p, kerf, trimStart, trimEnd, colorOf, width = 900 }
     <svg width={width} height={H + 1} className="block overflow-visible">
       <defs>
         <pattern id="bar-trim" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
-          <rect width="5" height="5" fill="#1e252e" />
-          <line x1="0" y1="0" x2="0" y2="5" stroke="#6b7685" strokeWidth="1.2" />
+          <rect width="5" height="5" fill="var(--dia-hatch-bg)" />
+          <line x1="0" y1="0" x2="0" y2="5" stroke="var(--dia-hatch-line)" strokeWidth="1.2" />
         </pattern>
       </defs>
-      <rect x={0.5} y={0.5} width={width - 1} height={H} fill="#0b0e12" stroke="rgb(var(--line-strong))" />
+      <rect x={0.5} y={0.5} width={width - 1} height={H} fill="var(--dia-bg)" stroke="rgb(var(--line-strong))" />
       {segs}
     </svg>
   );

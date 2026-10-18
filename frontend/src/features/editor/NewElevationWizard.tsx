@@ -124,15 +124,15 @@ export function NewElevationWizard({ open, onClose, onCreate }: { open: boolean;
         </div>
         <div>
           <div className="label">Preview</div>
-          <div className="flex h-[190px] items-center justify-center rounded border border-line bg-[#0b0e12]">
+          <div className="flex h-[190px] items-center justify-center rounded border border-line bg-[var(--cad-bg)]">
             <svg width={pw + 20} height={ph + 20}>
               <g transform={`translate(${10 + (pw - W * k) / 2} ${10 + (ph - H * k) / 2})`}>
-                <rect width={W * k} height={H * k} fill="rgba(56,189,248,0.12)" stroke="#aeb8c5" strokeWidth={2} />
+                <rect width={W * k} height={H * k} fill="var(--cad-glass)" stroke="var(--cad-member)" strokeWidth={2} />
                 {Array.from({ length: Math.max(0, bays - 1) }, (_, i) => (
-                  <line key={i} x1={((i + 1) * W * k) / bays} y1={0} x2={((i + 1) * W * k) / bays} y2={H * k} stroke="#aeb8c5" strokeWidth={1.5} />
+                  <line key={i} x1={((i + 1) * W * k) / bays} y1={0} x2={((i + 1) * W * k) / bays} y2={H * k} stroke="var(--cad-member)" strokeWidth={1.5} />
                 ))}
                 {Array.from({ length: Math.max(0, rows - 1) }, (_, j) => (
-                  <line key={j} x1={0} y1={((j + 1) * H * k) / rows} x2={W * k} y2={((j + 1) * H * k) / rows} stroke="#aeb8c5" strokeWidth={1.2} />
+                  <line key={j} x1={0} y1={((j + 1) * H * k) / rows} x2={W * k} y2={((j + 1) * H * k) / rows} stroke="var(--cad-member)" strokeWidth={1.2} />
                 ))}
               </g>
             </svg>

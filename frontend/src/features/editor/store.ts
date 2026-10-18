@@ -30,11 +30,12 @@ export interface ViewPrefs {
   snapMembers: boolean;
   showGrid: boolean;
   showDims: boolean;
-  theme: 'dark' | 'light';
+  /** Drawing canvas colours: follow the app theme ('auto') or force one. */
+  canvas: 'auto' | 'dark' | 'light';
 }
 
 const PREFS_KEY = 'fos.editor.view';
-const defaultPrefs: ViewPrefs = { snapStep: 10, snapGrid: true, snapMembers: true, showGrid: true, showDims: true, theme: 'dark' };
+const defaultPrefs: ViewPrefs = { snapStep: 10, snapGrid: true, snapMembers: true, showGrid: true, showDims: true, canvas: 'auto' };
 
 export interface EditorState extends ViewPrefs {
   elevation: Elevation | null;
@@ -181,7 +182,7 @@ export const createEditorStore = () =>
     setPrefs(p) {
       set(p);
       const s = get();
-      saveJson(PREFS_KEY, { snapStep: s.snapStep, snapGrid: s.snapGrid, snapMembers: s.snapMembers, showGrid: s.showGrid, showDims: s.showDims, theme: s.theme });
+      saveJson(PREFS_KEY, { snapStep: s.snapStep, snapGrid: s.snapGrid, snapMembers: s.snapMembers, showGrid: s.showGrid, showDims: s.showDims, canvas: s.canvas });
     },
     set(p) {
       set(p);

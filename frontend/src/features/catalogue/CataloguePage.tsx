@@ -28,22 +28,22 @@ export function ProfileSchematic({ p, size = 180 }: { p: CatProfile; size?: numb
   const y0 = (size - d) / 2 - 6;
   return (
     <figure className="flex flex-col items-center">
-      <svg width={size} height={size} className="rounded border border-line bg-[#0b0e12]">
+      <svg width={size} height={size} className="rounded border border-line bg-[var(--dia-bg)]">
         <defs>
           <pattern id="sch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
             <line x1="0" y1="0" x2="0" y2="6" stroke="rgba(148,163,184,0.25)" />
           </pattern>
         </defs>
-        <rect x={x0} y={y0} width={w} height={d} fill="url(#sch)" stroke="#aeb8c5" strokeWidth={1.2} strokeDasharray="5 3" />
-        <line x1={x0} y1={y0 + d + 12} x2={x0 + w} y2={y0 + d + 12} stroke="#8fa1b5" />
-        <text x={x0 + w / 2} y={y0 + d + 25} fontSize={10} fill="#d5dde6" textAnchor="middle" fontFamily="JetBrains Mono">
+        <rect x={x0} y={y0} width={w} height={d} fill="url(#sch)" stroke="var(--cad-member)" strokeWidth={1.2} strokeDasharray="5 3" />
+        <line x1={x0} y1={y0 + d + 12} x2={x0 + w} y2={y0 + d + 12} stroke="var(--cad-dim)" />
+        <text x={x0 + w / 2} y={y0 + d + 25} fontSize={10} fill="var(--cad-dim-text)" textAnchor="middle" fontFamily="JetBrains Mono">
           {p.face_width}
         </text>
-        <line x1={x0 - 12} y1={y0} x2={x0 - 12} y2={y0 + d} stroke="#8fa1b5" />
-        <text x={x0 - 16} y={y0 + d / 2} fontSize={10} fill="#d5dde6" textAnchor="middle" fontFamily="JetBrains Mono" transform={`rotate(-90 ${x0 - 16} ${y0 + d / 2})`}>
+        <line x1={x0 - 12} y1={y0} x2={x0 - 12} y2={y0 + d} stroke="var(--cad-dim)" />
+        <text x={x0 - 16} y={y0 + d / 2} fontSize={10} fill="var(--cad-dim-text)" textAnchor="middle" fontFamily="JetBrains Mono" transform={`rotate(-90 ${x0 - 16} ${y0 + d / 2})`}>
           {p.depth}
         </text>
-        <text x={size / 2} y={size - 6} fontSize={8.5} fill="#f5b428" textAnchor="middle">
+        <text x={size / 2} y={size - 6} fontSize={8.5} fill="var(--cad-amber)" textAnchor="middle">
           schematic – not manufacturer section
         </text>
       </svg>

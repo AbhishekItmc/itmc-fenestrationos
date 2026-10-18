@@ -16,7 +16,7 @@ export function Dialog({ open, onClose, title, subtitle, children, footer, width
   }, [open, onClose]);
   if (!open) return null;
   return (
-    <div className="fixed inset-0 z-50 flex items-start justify-center bg-black/55 pt-[10vh] animate-fade-in" onMouseDown={onClose}>
+    <div className="fixed inset-0 z-50 flex items-start justify-center bg-[rgb(var(--scrim)/0.45)] pt-[10vh] animate-fade-in" onMouseDown={onClose}>
       <div role="dialog" aria-modal="true" data-testid={testId} className="flex max-h-[80vh] flex-col rounded-md border border-line-strong bg-panel shadow-pop" style={{ width }} onMouseDown={(e) => e.stopPropagation()}>
         <div className="flex items-start gap-3 border-b border-line px-4 py-3">
           <div className="min-w-0 flex-1">
@@ -45,7 +45,7 @@ export function Drawer({ open, onClose, title, subtitle, children, width = 640, 
   }, [open, onClose]);
   if (!open) return null;
   return (
-    <div className="fixed inset-0 z-40 flex justify-end bg-black/35 animate-fade-in" onMouseDown={onClose}>
+    <div className="fixed inset-0 z-40 flex justify-end bg-[rgb(var(--scrim)/0.25)] animate-fade-in" onMouseDown={onClose}>
       <aside data-testid={testId} className={clsx('flex h-full flex-col border-l border-line-strong bg-panel shadow-pop animate-slide-in')} style={{ width, maxWidth: '96vw' }} onMouseDown={(e) => e.stopPropagation()}>
         <div className="flex items-center gap-3 border-b border-line px-4 py-2.5">
           <div className="min-w-0 flex-1">

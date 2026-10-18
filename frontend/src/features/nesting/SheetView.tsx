@@ -1,6 +1,6 @@
 import type { EdgeTrim, SheetLayout } from '../../api/types';
 import { fmtMm, fmtPct } from '../../lib/format';
-import { seriesColor, STATUS } from '../../lib/palette';
+import { seriesColor, SERIES_FILL_OPACITY, STATUS } from '../../lib/palette';
 
 /** One sheet layout drawn to scale (origin bottom-left, y up). */
 /** `scale` (px per mm) should be shared by all layouts of a result so sheet sizes compare truthfully. */
@@ -15,15 +15,15 @@ export function SheetView({ lay, trim, colorOf, scale }: { lay: SheetLayout; tri
     <svg width={W + pad * 2} height={H + pad * 2} className="block" data-testid="sheet-svg">
       <defs>
         <pattern id="sheet-trim" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
-          <rect width="5" height="5" fill="#1e252e" />
-          <line x1="0" y1="0" x2="0" y2="5" stroke="#6b7685" strokeWidth="1" />
+          <rect width="5" height="5" fill="var(--dia-hatch-bg)" />
+          <line x1="0" y1="0" x2="0" y2="5" stroke="var(--dia-hatch-line)" strokeWidth="1" />
         </pattern>
       </defs>
       <rect x={pad} y={pad} width={W} height={H} fill="url(#sheet-trim)" stroke="rgb(var(--line-strong))" />
-      <rect x={X(trim.left)} y={Y(lay.height - trim.top)} width={Math.max(0, (lay.width - trim.left - trim.right) * k)} height={Math.max(0, (lay.height - trim.top - trim.bottom) * k)} fill="#0b0e12" />
+      <rect x={X(trim.left)} y={Y(lay.height - trim.top)} width={Math.max(0, (lay.width - trim.left - trim.right) * k)} height={Math.max(0, (lay.height - trim.top - trim.bottom) * k)} fill="var(--dia-bg)" />
       {lay.residuals.map((r, i) => (
         <g key={`r${i}`}>
-          <rect x={X(r.x)} y={Y(r.y + r.height)} width={r.width * k} height={r.height * k} fill={r.reusable ? STATUS.ok : 'transparent'} fillOpacity={r.reusable ? 0.08 : 0} stroke={r.reusable ? STATUS.ok : '#6b7685'} strokeWidth={1} strokeDasharray="5 3">
+          <rect x={X(r.x)} y={Y(r.y + r.height)} width={r.width * k} height={r.height * k} fill={r.reusable ? STATUS.ok : 'transparent'} fillOpacity={r.reusable ? 0.08 : 0} stroke={r.reusable ? STATUS.ok : 'var(--dia-hatch-line)'} strokeWidth={1} strokeDasharray="5 3">
             <title>{`${r.reusable ? 'Reusable residual' : 'Residual (below min size)'} ${fmtMm(r.width)} × ${fmtMm(r.height)}`}</title>
           </rect>
           {r.reusable && r.width * k > 90 && r.height * k > 22 && (
@@ -42,7 +42,7 @@ export function SheetView({ lay, trim, colorOf, scale }: { lay: SheetLayout; tri
         const dims = `${fmtMm(p.width)}×${fmtMm(p.height)}`;
         return (
           <g key={`p${i}`}>
-            <rect x={x} y={y} width={w} height={h} fill={col} fillOpacity={0.42} stroke={col} strokeWidth={1}>
+            <rect x={x} y={y} width={w} height={h} fill={col} style={{ fillOpacity: SERIES_FILL_OPACITY }} stroke={col} strokeWidth={1}>
               <title>{`${p.piece_id}${p.label ? ` · ${p.label}` : ''}\n${dims} mm${p.rotated ? ' · rotated 90°' : ''}\nat (${fmtMm(p.x)}, ${fmtMm(p.y)})`}</title>
             </rect>
             {w > 34 && h > 16 && (

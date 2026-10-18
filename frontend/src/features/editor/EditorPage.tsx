@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+import { useTheme } from '../../store/theme';
 import {
   AlertTriangle,
   Calculator,
@@ -100,6 +101,8 @@ export function EditorPage() {
   const be = useBackend();
   const { catalogue: cat, projectId, projects, mode, selectElevation, selectProject } = useApp();
   const ed = useEditor();
+  const appTheme = useTheme((s) => s.theme);
+  const canvasDark = (ed.canvas === 'auto' ? appTheme : ed.canvas) === 'dark';
   const view = useView();
   const e = ed.elevation;
   const [loading, setLoading] = useState(false);
@@ -446,8 +449,8 @@ export function EditorPage() {
       <ToolBtn active={ed.showDims} onClick={() => ed.setPrefs({ showDims: !ed.showDims })} tip="Dimensions">
         <Ruler className="h-4 w-4" />
       </ToolBtn>
-      <ToolBtn onClick={() => ed.setPrefs({ theme: ed.theme === 'dark' ? 'light' : 'dark' })} tip={ed.theme === 'dark' ? 'Light drawing sheet' : 'Dark canvas'} testId="theme-toggle">
-        {ed.theme === 'dark' ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+      <ToolBtn onClick={() => ed.setPrefs({ canvas: canvasDark ? 'light' : 'dark' })} tip={canvasDark ? 'Light drawing sheet' : 'Dark canvas'} testId="theme-toggle">
+        {canvasDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
       </ToolBtn>
       <Sep />
       <ToolBtn onClick={() => view.zoomCenter(0.8)} tip="Zoom out (−)" disabled={!e}>
@@ -621,12 +624,12 @@ export function EditorPage() {
         <div className="relative min-w-0 flex-1">
           <CadCanvas issues={issues} />
           {e.top_shape?.type === 'arch' && (
-            <div className="pointer-events-none absolute left-1/2 top-3 -translate-x-1/2 rounded-sm border border-prov/50 bg-[#1d1608]/90 px-3 py-1 text-xs font-medium text-prov" data-testid="arch-banner">
+            <div className="pointer-events-none absolute left-1/2 top-3 -translate-x-1/2 rounded-sm border border-prov/50 bg-[var(--banner-prov-bg)] px-3 py-1 text-xs font-medium text-prov" data-testid="arch-banner">
               Arch: geometry only — calculation not supported
             </div>
           )}
           <div className="pointer-events-none absolute left-3 top-3 flex items-center gap-2">
-            {ed.dirty && <span className="rounded-sm border border-warn/40 bg-[#1f1408]/90 px-1.5 py-0.5 text-2xs font-semibold uppercase tracking-wide text-warn">unsaved</span>}
+            {ed.dirty && <span className="rounded-sm border border-warn/40 bg-[var(--banner-warn-bg)] px-1.5 py-0.5 text-2xs font-semibold uppercase tracking-wide text-warn">unsaved</span>}
             {!ed.record?.id && <span className="rounded-sm border border-line-strong bg-panel/90 px-1.5 py-0.5 text-2xs font-semibold uppercase tracking-wide text-muted">not in a project</span>}
             {ed.lastLabel && ed.past.length > 0 && <span className="rounded-sm bg-panel/80 px-1.5 py-0.5 text-2xs text-faint">last: {ed.lastLabel}</span>}
           </div>

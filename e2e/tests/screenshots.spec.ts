@@ -12,11 +12,12 @@ test('screenshots: editor, cutting, nesting (1440×900)', async ({ page }) => {
   await page.waitForTimeout(300);
   await page.screenshot({ path: `${OUT}/editor.png` });
 
-  await page.getByTestId('theme-toggle').click();
+  // dark application theme variant, then back to the default light theme
+  await page.getByTestId('app-theme-toggle').click();
   await page.getByTestId('tree-b1-f1').click();
   await page.waitForTimeout(200);
-  await page.screenshot({ path: `${OUT}/editor-light.png` });
-  await page.getByTestId('theme-toggle').click();
+  await page.screenshot({ path: `${OUT}/editor-dark.png` });
+  await page.getByTestId('app-theme-toggle').click();
 
   await page.getByTestId('calculate').click();
   await expect(page.getByTestId('calc-drawer')).toBeVisible();

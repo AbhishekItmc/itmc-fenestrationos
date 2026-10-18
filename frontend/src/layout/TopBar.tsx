@@ -1,11 +1,12 @@
 import clsx from 'clsx';
-import { ChevronDown, Cloud, CloudOff, LogOut, RotateCcw, ServerCog, UserRound } from 'lucide-react';
+import { ChevronDown, Cloud, CloudOff, LogOut, Moon, RotateCcw, ServerCog, Sun, UserRound } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { pingHealth } from '../api/client';
 import { resetOfflineData } from '../services/offlineBackend';
 import { useApp } from '../store/app';
 import { toast } from '../store/toast';
+import { useTheme } from '../store/theme';
 
 function Logo() {
   return (
@@ -28,6 +29,7 @@ function Logo() {
 export function TopBar() {
   const { mode, user, projects, elevations, projectId, elevationId, selectProject, selectElevation, logout, catalogue } = useApp();
   const nav = useNavigate();
+  const { theme, toggle: toggleTheme } = useTheme();
   const [menu, setMenu] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
@@ -105,6 +107,16 @@ export function TopBar() {
       <div className="hidden font-mono text-2xs text-faint xl:block" data-tip="Active catalogue version (DEMO data)" data-tip-pos="left">
         {catalogue.catalogue_version}
       </div>
+      <button
+        data-testid="app-theme-toggle"
+        aria-label={theme === 'light' ? 'Switch to dark theme' : 'Switch to light theme'}
+        data-tip={theme === 'light' ? 'Dark theme' : 'Light theme'}
+        data-tip-pos="left"
+        className="flex h-7 w-7 items-center justify-center rounded border border-line text-muted hover:bg-hover hover:text-fg"
+        onClick={toggleTheme}
+      >
+        {theme === 'light' ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}
+      </button>
       <div className="relative" ref={menuRef}>
         <button data-testid="user-menu" className="flex h-7 items-center gap-2 rounded px-1.5 hover:bg-hover" onClick={() => setMenu(!menu)}>
           <span className="flex h-6 w-6 items-center justify-center rounded-full border border-line-strong bg-raised text-2xs font-semibold text-muted">

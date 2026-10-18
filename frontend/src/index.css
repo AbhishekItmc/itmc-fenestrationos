@@ -43,8 +43,113 @@
   --cad-hover: rgba(34, 211, 238, 0.5);
   --cad-error: #f87171;
   --cad-label: #6b7685;
+  --cad-amber: #f5b428;
+  --cad-warn: #fb923c;
+
+  /* diagrams (cutting bars, nesting sheets, schematics) */
+  --dia-bg: #0b0e12;
+  --dia-hatch-bg: #1e252e;
+  --dia-hatch-line: #6b7685;
+  --dia-kerf: #06080a;
+  --dia-ok: #34d399;
+  --dia-bad: #f87171;
+  --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #c98500; --s5: #d55181; --s6: #9085e9; --s-overflow: #5b6676;
+  --series-fill-opacity: 0.5;
+
+  --on-accent: 4 20 26;
+  --accent-hover: #5ee3f5;
+  --tip-bg: #0a0d10;
+  --banner-prov-bg: rgba(29, 22, 8, 0.9);
+  --banner-warn-bg: rgba(31, 20, 8, 0.9);
+  --scrim: 0 0 0;
 
   color-scheme: dark;
+}
+
+/* LIGHT application theme (default). Toggle: top bar sun/moon button; stored per browser. */
+:root[data-theme='light'] {
+  --bg: 241 244 247; /* #f1f4f7 */
+  --panel: 255 255 255;
+  --raised: 234 238 243;
+  --hover: 226 232 239;
+  --line: 217 223 230;
+  --line-strong: 192 201 212;
+  --fg: 22 32 43;
+  --muted: 72 84 99;
+  --faint: 100 112 127;
+  --accent: 14 116 144; /* #0e7490 */
+  --accent-strong: 10 90 112;
+  --ok: 4 120 87;
+  --warn: 194 65 12;
+  --err: 200 30 30;
+  --prov: 161 98 7;
+  --info: 29 99 186;
+  --sheet: 255 255 255;
+  --ink: 24 38 56;
+
+  --cad-bg: #f8fafc;
+  --cad-grid-minor: rgba(30, 64, 110, 0.05);
+  --cad-grid-major: rgba(30, 64, 110, 0.11);
+  --cad-member: #1b2a3a;
+  --cad-member-fill: #d6dde5;
+  --cad-member-edge: #1b2a3a;
+  --cad-glass: rgba(14, 116, 180, 0.08);
+  --cad-glass-edge: rgba(14, 116, 180, 0.55);
+  --cad-glass-mark: rgba(14, 116, 180, 0.55);
+  --cad-spandrel: #c4ccd5;
+  --cad-hatch: rgba(27, 42, 58, 0.35);
+  --cad-panel: #8592a1;
+  --cad-dim: #3f5873;
+  --cad-dim-text: #182638;
+  --cad-text-bg: #f8fafc;
+  --cad-select: #0891b2;
+  --cad-hover: rgba(8, 145, 178, 0.5);
+  --cad-error: #dc2626;
+  --cad-label: #5b6b7f;
+  --cad-amber: #a16207;
+  --cad-warn: #c2410c;
+
+  --dia-bg: #f8fafc;
+  --dia-hatch-bg: #e3e8ee;
+  --dia-hatch-line: #94a3b8;
+  --dia-kerf: #1b2a3a;
+  --dia-ok: #047857;
+  --dia-bad: #c81e1e;
+  --s1: #7fb0ef; --s2: #ef9a75; --s3: #6cc6a4; --s4: #e6bd5c; --s5: #ec9cbb; --s6: #b3abf3; --s-overflow: #b7c0cb;
+  --series-fill-opacity: 0.85;
+
+  --on-accent: 255 255 255;
+  --accent-hover: #0b6075;
+  --tip-bg: #1b2430;
+  --banner-prov-bg: rgba(253, 243, 225, 0.95);
+  --banner-warn-bg: rgba(255, 237, 225, 0.95);
+  --scrim: 15 23 42;
+
+  color-scheme: light;
+}
+
+.cad-dark {
+  --cad-bg: #0b0e12;
+  --cad-grid-minor: rgba(148, 163, 184, 0.06);
+  --cad-grid-major: rgba(148, 163, 184, 0.13);
+  --cad-member: #aeb8c5;
+  --cad-member-fill: #2a323d;
+  --cad-member-edge: #c9d2dc;
+  --cad-glass: rgba(56, 189, 248, 0.13);
+  --cad-glass-edge: rgba(125, 211, 252, 0.55);
+  --cad-glass-mark: rgba(186, 230, 253, 0.6);
+  --cad-spandrel: #3a414c;
+  --cad-hatch: rgba(203, 213, 225, 0.32);
+  --cad-panel: #59636f;
+  --cad-dim: #8fa1b5;
+  --cad-dim-text: #d5dde6;
+  --cad-text-bg: #0b0e12;
+  --cad-select: #22d3ee;
+  --cad-hover: rgba(34, 211, 238, 0.5);
+  --cad-error: #f87171;
+  --cad-label: #6b7685;
+  --cad-amber: #f5b428;
+  --cad-warn: #fb923c;
 }
 
 .cad-light {
@@ -66,7 +171,9 @@
   --cad-select: #0891b2;
   --cad-hover: rgba(8, 145, 178, 0.5);
   --cad-error: #dc2626;
-  --cad-label: #64748b;
+  --cad-label: #5b6b7f;
+  --cad-amber: #a16207;
+  --cad-warn: #c2410c;
 }
 
 html,
@@ -111,10 +218,10 @@ body {
     @apply border-accent bg-accent/25;
   }
   .btn-solid {
-    @apply border-transparent bg-accent text-[#04141a];
+    @apply border-transparent bg-accent text-[rgb(var(--on-accent))];
   }
   .btn-solid:hover:not(:disabled) {
-    @apply bg-[#5ee3f5];
+    @apply bg-[var(--accent-hover)];
   }
   .btn-ghost {
     @apply border-transparent bg-transparent text-muted;
@@ -240,9 +347,10 @@ body {
   letter-spacing: 0;
   text-transform: none;
   color: rgb(var(--fg));
-  background: #0a0d10;
+  background: var(--tip-bg);
+  color: #eef2f6;
   border: 1px solid rgb(var(--line-strong));
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
 }
 [data-tip-pos='right']:hover::after {
   left: calc(100% + 8px);

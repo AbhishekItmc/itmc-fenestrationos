@@ -3,6 +3,7 @@
  * dimension text and hit areas stay crisp at every zoom level).
  */
 import clsx from 'clsx';
+import { useTheme } from '../../store/theme';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import type { Catalogue, Elevation, FieldFill, Issue } from '../../api/types';
 import { getGlassType, getPanelType, getSeries } from '../../engine/catalogue';
@@ -154,6 +155,7 @@ export function CadCanvas({ issues }: { issues: Issue[] }) {
     return m;
   }, [issues]);
 
+  const appTheme = useTheme((st) => st.theme);
   if (!e) return <div ref={wrapRef} className="h-full w-full" />;
 
   const W = e.width;
@@ -163,7 +165,7 @@ export function CadCanvas({ issues }: { issues: Issue[] }) {
   const fwTmax = Math.max(50, ...fw.transomByBay);
   const px = (mm: number, min = 1.5) => Math.max(min, mm * s);
   const tol = SNAP_PX / s;
-  const isLight = ed.theme === 'light';
+  const isLight = (ed.canvas === 'auto' ? appTheme : ed.canvas) === 'light';
 
   const snapX = (x: number, targets: number[] = []) => snapValue(x, { step: ed.snapStep, grid: ed.snapGrid, targets: ed.snapMembers ? targets : [], tol });
   const snapY = (y: number, targets: number[] = []) => snapValue(y, { step: ed.snapStep, grid: ed.snapGrid, targets: ed.snapMembers ? targets : [], tol });
@@ -411,8 +413,8 @@ export function CadCanvas({ issues }: { issues: Issue[] }) {
       } else {
         body = (
           <g fill="none">
-            <rect x={x0} y={yTop} width={wpx} height={hpx} fill="var(--cad-glass)" stroke="#fb923c" strokeWidth={1} strokeDasharray="6 4" />
-            <path d={`M${x0 + 4} ${yBot - 4} L${x0 + wpx / 2} ${yTop + 4} L${x1 - 4} ${yBot - 4}`} stroke="#fb923c" strokeWidth={0.9} strokeDasharray="6 4" />
+            <rect x={x0} y={yTop} width={wpx} height={hpx} fill="var(--cad-glass)" stroke="var(--cad-warn)" strokeWidth={1} strokeDasharray="6 4" />
+            <path d={`M${x0 + 4} ${yBot - 4} L${x0 + wpx / 2} ${yTop + 4} L${x1 - 4} ${yBot - 4}`} stroke="var(--cad-warn)" strokeWidth={0.9} strokeDasharray="6 4" />
           </g>
         );
       }
@@ -500,7 +502,7 @@ export function CadCanvas({ issues }: { issues: Issue[] }) {
         <path d={`${arc} Z`} fill="var(--cad-glass)" stroke="none" />
         <path d={arc} fill="none" stroke="var(--cad-member-edge)" strokeWidth={px(fwM, 2) + 1.8} />
         <path d={arc} fill="none" stroke="var(--cad-member-fill)" strokeWidth={px(fwM, 2)} />
-        <text x={X(W / 2)} y={Y(H + r * 0.42)} fontSize={12} fill="#f5b428" textAnchor="middle">
+        <text x={X(W / 2)} y={Y(H + r * 0.42)} fontSize={12} fill="var(--cad-amber)" textAnchor="middle">
           ARCH · geometry only
         </text>
       </g>
@@ -514,11 +516,11 @@ export function CadCanvas({ issues }: { issues: Issue[] }) {
     anchorEls.push(
       <g key={`al-${k}`} pointerEvents="none">
         {e.mullions.map((mx, i) => (
-          <rect key={i} x={X(mx) - 3.5} y={Y(ay) - 3.5} width={7} height={7} fill="none" stroke="#f5b428" strokeWidth={1} />
+          <rect key={i} x={X(mx) - 3.5} y={Y(ay) - 3.5} width={7} height={7} fill="none" stroke="var(--cad-amber)" strokeWidth={1} />
         ))}
-        <line x1={xr} y1={Y(ay)} x2={xr + 38} y2={Y(ay)} stroke="#f5b428" strokeWidth={0.8} strokeDasharray="3 2" />
-        <path d={`M${xr + 4} ${Y(ay) - 7} l5 7 l5 -7 z`} fill="#f5b428" />
-        <text x={xr + 16} y={Y(ay) - 3} fontSize={11.5} fill="#f5b428">
+        <line x1={xr} y1={Y(ay)} x2={xr + 38} y2={Y(ay)} stroke="var(--cad-amber)" strokeWidth={0.8} strokeDasharray="3 2" />
+        <path d={`M${xr + 4} ${Y(ay) - 7} l5 7 l5 -7 z`} fill="var(--cad-amber)" />
+        <text x={xr + 16} y={Y(ay) - 3} fontSize={11.5} fill="var(--cad-amber)">
           {`AL ${fmtDim(ay)}`}
         </text>
       </g>,
@@ -651,7 +653,7 @@ export function CadCanvas({ issues }: { issues: Issue[] }) {
   const cursorCls = panning ? 'cursor-grabbing' : space || ed.tool === 'hand' ? 'cursor-grab' : ed.tool === 'select' ? 'cursor-default' : 'cursor-crosshair';
 
   return (
-    <div ref={wrapRef} className={clsx('relative h-full w-full overflow-hidden', isLight && 'cad-light')} style={{ background: 'var(--cad-bg)' }}>
+    <div ref={wrapRef} className={clsx('relative h-full w-full overflow-hidden', isLight ? 'cad-light' : 'cad-dark')} style={{ background: 'var(--cad-bg)' }}>
       <svg
         ref={svgRef}
         data-testid="cad-canvas"
@@ -713,7 +715,7 @@ export function CadCanvas({ issues }: { issues: Issue[] }) {
           <text x={204} y={38} fontSize={11.5} fill="var(--cad-label)">
             {`scale ≈ ${drawingScaleLabel(s)}`}
           </text>
-          <text x={204} y={54} fontSize={11.5} fill="#f5b428">
+          <text x={204} y={54} fontSize={11.5} fill="var(--cad-amber)">
             DEMO · PROVISIONAL
           </text>
           <text x={8} y={67} fontSize={10} fill="var(--cad-label)" opacity={0.7}>
