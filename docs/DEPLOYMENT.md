@@ -14,7 +14,7 @@ SEED_DEMO_USERS=1 DEMO_PASSWORD='Demo@12345' .venv/bin/uvicorn app.main:app --re
 # optional explicit seed (idempotent):  .venv/bin/python -m app.seed
 ```
 
-* API docs: http://localhost:8000/docs — frontend dev server (`cd frontend && npm run dev`) proxies `/api`.
+* API docs: http://localhost:8000/api/docs — frontend dev server (`cd frontend && npm run dev`) proxies `/api`.
 * Demo logins (only when `SEED_DEMO_USERS=1`): `admin@demo.local`, `engineer@demo.local`,
   `estimator@demo.local`, `viewer@demo.local`, password = `DEMO_PASSWORD`. Demo customers/projects are
   clearly marked “(fictitious)”.
@@ -106,3 +106,31 @@ regularly. The API re-applies newer migrations on start, so restoring an older d
 - [ ] Catalogue/rule sets remain flagged DEMO until approved by a domain expert (`approved` and
       `golden_cases_passed`); reports and quotes show the PROVISIONAL banner until then.
 - [ ] Upload limit (`MAX_UPLOAD_MB`, nginx `client_max_body_size`) appropriate.
+
+## Vercel (one project, two services)
+
+The repo-root `vercel.json` deploys the whole app as one Vercel project using
+[Vercel Services](https://vercel.com/docs/services):
+
+| Service | Root | Public path | Notes |
+|---|---|---|---|
+| `api` | `backend/` | `/api/*` | FastAPI (`app.main:app`), Python 3.12 (`backend/.python-version`). Receives the original path, so routes stay `/api/v1/...`; Swagger UI at `/api/docs`. |
+| `web` | `frontend/` | everything else | Vite static build (`dist/`), SPA fallback to `index.html` for client routes. |
+
+No service bindings: the browser calls the API on the same origin via the public `/api` rewrite; neither
+service calls the other server-side.
+
+**Environment variables (Project → Settings → Environment Variables):**
+
+| Variable | Value |
+|---|---|
+| `DATABASE_URL` | Hosted PostgreSQL, e.g. Neon from the Vercel Marketplace (`postgres://…?sslmode=require` is accepted; the driver prefix is added automatically) |
+| `ENV` | `prod` |
+| `JWT_SECRET` | random string, ≥ 32 characters |
+| `AUTO_MIGRATE` | `1` — runs `alembic upgrade head` at start-up under a PostgreSQL advisory lock (no release step on Vercel) |
+| `SEED_DEMO_USERS` / `DEMO_PASSWORD` | `1` / strong password — demo accounts; turn off once real users exist |
+
+Do not use SQLite on Vercel (the function filesystem is not persistent). On Vercel the DB pool defaults to
+2 + 3 overflow per instance (`DB_POOL_SIZE` / `DB_MAX_OVERFLOW` override). The login rate limiter is
+per-instance in memory; add a Vercel Firewall rate-limit rule on `/api/v1/auth/login` for production.
+Local check: `vercel dev` (runs both services). Docker/compose deployment is unchanged.

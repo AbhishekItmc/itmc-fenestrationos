@@ -52,25 +52,30 @@ TAGS = [
 def create_app(settings: Optional[Settings] = None, engine=None) -> FastAPI:
     settings = settings or get_settings()
     configure_logging(settings.log_level, settings.log_json)
-    engine = engine or make_engine(settings.database_url, settings.db_echo)
+    engine = engine or make_engine(settings.database_url, settings.db_echo, settings.pool_size, settings.max_overflow)
     SessionLocal = make_sessionmaker(engine)
 
     @asynccontextmanager
     async def lifespan(app: FastAPI):
         for w in settings.startup_warnings():
             log.warning(w)
-        if settings.seed_on_startup:
+        if settings.auto_migrate or settings.seed_on_startup:
+            from .migrate import migrate_to_head, startup_lock
             try:
-                from .seed import run_seed
-                with SessionLocal() as db:
-                    log.info("seed complete", extra={"seed": run_seed(db, settings)})
+                with startup_lock(engine) as conn:
+                    if settings.auto_migrate:
+                        migrate_to_head(conn)
+                    if settings.seed_on_startup:
+                        from .seed import run_seed
+                        with SessionLocal() as db:
+                            log.info("seed complete", extra={"seed": run_seed(db, settings)})
             except Exception:  # noqa: BLE001
-                log.exception("seed failed - is the database migrated? run `alembic upgrade head`")
+                log.exception("start-up migrate/seed failed - is the database migrated? run `alembic upgrade head`")
         yield
         engine.dispose()
 
     app = FastAPI(title="ITMC FenestrationOS API", version=APP_VERSION, description=DESCRIPTION,
-                  openapi_tags=TAGS, lifespan=lifespan, docs_url="/docs", redoc_url="/redoc",
+                  openapi_tags=TAGS, lifespan=lifespan, docs_url="/api/docs", redoc_url="/api/redoc",
                   openapi_url="/api/v1/openapi.json")
     app.state.settings = settings
     app.state.engine = engine

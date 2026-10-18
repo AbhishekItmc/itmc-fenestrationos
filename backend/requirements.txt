@@ -1,3 +1,4 @@
+# Runtime dependencies (deployed). Test tools: requirements-dev.txt.
 # Minimum versions; tested with the latest releases (Python 3.13, Oct 2026). Wheels exist for Python 3.10-3.14 on Windows/Linux/macOS.
 fastapi>=0.118
 uvicorn[standard]>=0.32
@@ -14,5 +15,3 @@ reportlab>=4.2
 ortools>=9.14
 httpx>=0.28
 pypdf>=5.0
-pytest>=8.3
-pytest-cov>=6.0

@@ -11,7 +11,7 @@ from app.db import Base
 import app.models  # noqa: F401  (register tables)
 
 config = context.config
-if config.config_file_name is not None:
+if config.config_file_name is not None and not config.attributes.get("connection"):
     fileConfig(config.config_file_name, disable_existing_loggers=False)
 
 url = config.attributes.get("database_url") or get_settings().database_url

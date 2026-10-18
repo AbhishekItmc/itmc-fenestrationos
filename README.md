@@ -13,7 +13,7 @@ createuser fos -P   # password fos_dev ;  createdb -O fos fos
 # backend
 cd backend && python -m venv .venv && .venv/bin/pip install -r requirements.txt   # Windows: .venv\Scripts\pip
 export DATABASE_URL=postgresql+psycopg://fos:fos_dev@localhost:5432/fos SEED_DEMO_USERS=1 DEMO_PASSWORD='Demo@12345'
-.venv/bin/alembic upgrade head && .venv/bin/uvicorn app.main:app --port 8000      # API docs: http://localhost:8000/docs
+.venv/bin/alembic upgrade head && .venv/bin/uvicorn app.main:app --port 8000      # API docs: http://localhost:8000/api/docs
 # frontend (new terminal)
 cd frontend && npm ci && npm run dev                                                # http://localhost:5173
 ```

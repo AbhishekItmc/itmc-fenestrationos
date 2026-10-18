@@ -23,13 +23,14 @@ class Base(DeclarativeBase):
     pass
 
 
-def make_engine(url: str, echo: bool = False) -> Engine:
+def make_engine(url: str, echo: bool = False, pool_size: int = 10, max_overflow: int = 20) -> Engine:
     if url.startswith("sqlite"):
         kw = {"connect_args": {"check_same_thread": False}}
         if ":memory:" in url or url in ("sqlite://", "sqlite+pysqlite://"):
             kw["poolclass"] = StaticPool
         return create_engine(url, echo=echo, future=True, **kw)
-    return create_engine(url, echo=echo, future=True, pool_pre_ping=True, pool_size=10, max_overflow=20)
+    return create_engine(url, echo=echo, future=True, pool_pre_ping=True, pool_size=pool_size,
+                         max_overflow=max_overflow)
 
 
 def make_sessionmaker(engine: Engine) -> sessionmaker:

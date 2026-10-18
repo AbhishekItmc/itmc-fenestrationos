@@ -1,7 +1,7 @@
 # ITMC FenestrationOS — REST API reference (v1)
 
-Base path `/api/v1`. JSON everywhere (except uploads/documents). Interactive docs: `/docs` (Swagger UI),
-`/redoc`, schema at `/api/v1/openapi.json`. Engine payloads (`Elevation`, `CalcResult`, `Cutting1DRequest`, …)
+Base path `/api/v1`. JSON everywhere (except uploads/documents). Interactive docs: `/api/docs` (Swagger UI),
+`/api/redoc`, schema at `/api/v1/openapi.json`. Engine payloads (`Elevation`, `CalcResult`, `Cutting1DRequest`, …)
 are defined in `backend/app/engines/models.py` and mirrored in `frontend/src/api/types.ts`.
 
 * Units: lengths **mm**, areas m², angles degrees. Every engine result echoes `units`, engine version and

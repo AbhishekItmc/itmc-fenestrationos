@@ -25,6 +25,12 @@ class Settings(BaseSettings):
     env: Literal["dev", "test", "prod"] = "dev"
     database_url: str = "postgresql+psycopg://fos:fos_dev@localhost:5432/fos"
     db_echo: bool = False
+    # Connection pool per process. Serverless hosts (Vercel) run many small instances: keep it tiny there.
+    db_pool_size: Optional[int] = None      # default: 10, or 2 when running on Vercel (VERCEL=1)
+    db_max_overflow: Optional[int] = None   # default: 20, or 3 on Vercel
+    # Run `alembic upgrade head` (under a PostgreSQL advisory lock) at start-up. Needed on hosts without a
+    # release/entrypoint step, e.g. Vercel. Docker uses docker-entrypoint.sh instead.
+    auto_migrate: bool = False
 
     jwt_secret: Optional[str] = Field(default=None, repr=False)
     jwt_algorithm: Literal["HS256"] = "HS256"
@@ -74,6 +80,19 @@ class Settings(BaseSettings):
             object.__setattr__(self, "demo_password", secrets.token_urlsafe(12))
             object.__setattr__(self, "_generated_demo_password", True)
         return self
+
+    @property
+    def on_vercel(self) -> bool:
+        import os
+        return os.environ.get("VERCEL") == "1"
+
+    @property
+    def pool_size(self) -> int:
+        return self.db_pool_size if self.db_pool_size is not None else (2 if self.on_vercel else 10)
+
+    @property
+    def max_overflow(self) -> int:
+        return self.db_max_overflow if self.db_max_overflow is not None else (3 if self.on_vercel else 20)
 
     @property
     def cors_origin_list(self) -> List[str]:
