@@ -225,6 +225,20 @@ export function saveBlob(blob: Blob, filename: string): void {
 }
 
 /** Ping /health with a short timeout. Resolves true when the server answers 2xx. */
+/**
+ * Is the API reachable? Serverless hosts (Vercel) cold-start the Python API in several seconds, and the first
+ * health call can return 503 while start-up migration/seed runs, so retry with a generous timeout.
+ */
+export async function waitForHealth(opts: { attempts?: number; timeoutMs?: number; onAttempt?: (n: number) => void } = {}): Promise<boolean> {
+  const attempts = opts.attempts ?? 4;
+  for (let i = 1; i <= attempts; i++) {
+    opts.onAttempt?.(i);
+    if (await pingHealth(opts.timeoutMs ?? 15000)) return true;
+    if (i < attempts) await new Promise((r) => setTimeout(r, Math.min(4000, 1000 * i)));
+  }
+  return false;
+}
+
 export async function pingHealth(timeoutMs = 2500): Promise<boolean> {
   const ctrl = new AbortController();
   const t = setTimeout(() => ctrl.abort(), timeoutMs);

@@ -1,6 +1,6 @@
 import { CloudOff, Loader2, RefreshCw, ServerCrash } from 'lucide-react';
 import { useCallback, useEffect, useState } from 'react';
-import { configureClient, errorMessage, getToken, pingHealth } from '../../api/client';
+import { configureClient, errorMessage, getToken, waitForHealth } from '../../api/client';
 import { serverBackend } from '../../services/serverBackend';
 import { offlineChosen, useApp } from '../../store/app';
 import { toast } from '../../store/toast';
@@ -26,6 +26,7 @@ export function Brand({ big }: { big?: boolean }) {
 export function Startup() {
   const phase = useApp((s) => s.phase);
   const [checking, setChecking] = useState(true);
+  const [attempt, setAttempt] = useState(1);
 
   const check = useCallback(async () => {
     setChecking(true);
@@ -34,7 +35,7 @@ export function Startup() {
       useApp.getState().enterOffline();
       return;
     }
-    const ok = await pingHealth();
+    const ok = await waitForHealth({ onAttempt: setAttempt });
     if (!ok) {
       setChecking(false);
       useApp.setState({ phase: 'choose', serverReachable: false });
@@ -73,6 +74,11 @@ export function Startup() {
           <div className="flex items-center gap-2 text-sm text-muted">
             <Loader2 className="h-4 w-4 animate-spin text-accent" /> Connecting to server…
           </div>
+          {attempt > 1 && (
+            <p className="max-w-xs text-center text-xs text-faint" data-testid="waking-hint">
+              The server is waking up — this can take up to 30 seconds on the first visit (attempt {attempt} of 4).
+            </p>
+          )}
         </div>
       </div>
     );

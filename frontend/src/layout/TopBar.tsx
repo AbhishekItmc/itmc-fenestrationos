@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import { ChevronDown, Cloud, CloudOff, LogOut, Menu as MenuIcon, Moon, RotateCcw, ServerCog, Sun, UserRound } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { pingHealth } from '../api/client';
+import { waitForHealth } from '../api/client';
 import { resetOfflineData } from '../services/offlineBackend';
 import { useApp } from '../store/app';
 import { toast } from '../store/toast';
@@ -43,7 +43,7 @@ export function TopBar({ narrow = false, onMenu }: { narrow?: boolean; onMenu?: 
 
   const tryServer = async () => {
     setMenu(false);
-    if (await pingHealth()) {
+    if (await waitForHealth({ attempts: 2 })) {
       try {
         sessionStorage.removeItem('fos.mode');
       } catch {
