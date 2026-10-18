@@ -29,7 +29,10 @@ def make_engine(url: str, echo: bool = False, pool_size: int = 10, max_overflow:
         if ":memory:" in url or url in ("sqlite://", "sqlite+pysqlite://"):
             kw["poolclass"] = StaticPool
         return create_engine(url, echo=echo, future=True, **kw)
-    return create_engine(url, echo=echo, future=True, pool_pre_ping=True, pool_size=pool_size,
+    kw = {}
+    if "-pooler." in url:  # PgBouncer transaction mode (e.g. Neon pooled endpoint): no server-side prepares
+        kw["connect_args"] = {"prepare_threshold": None}
+    return create_engine(url, echo=echo, future=True, pool_pre_ping=True, **kw, pool_size=pool_size,
                          max_overflow=max_overflow)
 
 

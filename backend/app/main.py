@@ -62,7 +62,12 @@ def create_app(settings: Optional[Settings] = None, engine=None) -> FastAPI:
         if settings.auto_migrate or settings.seed_on_startup:
             from .migrate import migrate_to_head, startup_lock
             try:
-                with startup_lock(engine) as conn:
+                lock_engine = engine
+                if settings.startup_database_url != settings.database_url:
+                    from sqlalchemy import create_engine
+                    from sqlalchemy.pool import NullPool
+                    lock_engine = create_engine(settings.startup_database_url, poolclass=NullPool, future=True)
+                with startup_lock(lock_engine) as conn:
                     if settings.auto_migrate:
                         migrate_to_head(conn)
                     if settings.seed_on_startup:

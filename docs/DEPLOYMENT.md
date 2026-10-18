@@ -127,7 +127,7 @@ service calls the other server-side.
 | `DATABASE_URL` | Hosted PostgreSQL, e.g. Neon from the Vercel Marketplace (`postgres://…?sslmode=require` is accepted; the driver prefix is added automatically) |
 | `ENV` | `prod` |
 | `JWT_SECRET` | random string, ≥ 32 characters |
-| `AUTO_MIGRATE` | `1` — runs `alembic upgrade head` at start-up under a PostgreSQL advisory lock (no release step on Vercel) |
+| `AUTO_MIGRATE` | `1` — runs `alembic upgrade head` at start-up under a PostgreSQL advisory lock (no release step on Vercel). The lock uses `DATABASE_URL_UNPOOLED` (set by the Neon integration) when present, because advisory locks are unsafe through PgBouncer. |
 | `SEED_DEMO_USERS` / `DEMO_PASSWORD` | `1` / strong password — demo accounts; turn off once real users exist |
 
 Do not use SQLite on Vercel (the function filesystem is not persistent). On Vercel the DB pool defaults to

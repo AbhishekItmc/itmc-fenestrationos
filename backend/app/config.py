@@ -31,6 +31,9 @@ class Settings(BaseSettings):
     # Run `alembic upgrade head` (under a PostgreSQL advisory lock) at start-up. Needed on hosts without a
     # release/entrypoint step, e.g. Vercel. Docker uses docker-entrypoint.sh instead.
     auto_migrate: bool = False
+    # Direct (non-pooled) connection for start-up migrate/seed lock. Neon on Vercel injects DATABASE_URL (pooled,
+    # PgBouncer transaction mode - session advisory locks are unsafe there) and DATABASE_URL_UNPOOLED (direct).
+    database_url_unpooled: Optional[str] = None
 
     jwt_secret: Optional[str] = Field(default=None, repr=False)
     jwt_algorithm: Literal["HS256"] = "HS256"
@@ -54,9 +57,11 @@ class Settings(BaseSettings):
     serve_frontend: bool = True
     frontend_dist: Optional[str] = None   # default ../frontend/dist relative to backend/
 
-    @field_validator("database_url")
+    @field_validator("database_url", "database_url_unpooled")
     @classmethod
-    def _db(cls, v: str) -> str:
+    def _db(cls, v: Optional[str]) -> Optional[str]:
+        if not v:
+            return v
         # accept plain postgres URLs and force the psycopg 3 driver
         if v.startswith("postgres://"):
             v = "postgresql://" + v[len("postgres://"):]
@@ -80,6 +85,10 @@ class Settings(BaseSettings):
             object.__setattr__(self, "demo_password", secrets.token_urlsafe(12))
             object.__setattr__(self, "_generated_demo_password", True)
         return self
+
+    @property
+    def startup_database_url(self) -> str:
+        return self.database_url_unpooled or self.database_url
 
     @property
     def on_vercel(self) -> bool:
