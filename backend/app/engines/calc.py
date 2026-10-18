@@ -12,6 +12,7 @@ import math
 from collections import OrderedDict, defaultdict
 from typing import Any, Dict, List, Optional, Tuple
 
+from .checks import run_design_checks
 from .catalogue import (find_accessory, get_glass_type, get_panel_type, get_profile, get_rule_set,
                         get_series)
 from .elevation import (effective_mullion_profile_id, effective_transom_profile_id, field_rects,
@@ -37,6 +38,9 @@ def _fmt(v: float) -> str:
 def calculate(elev: Elevation, catalogue: Dict[str, Any], rule_set_id: Optional[str] = None) -> CalcResult:
     cat_version = str(catalogue.get("catalogue_version", "UNKNOWN"))
     issues: List[Issue] = list(validate_elevation(elev, catalogue, rule_set_id))
+    if not any(i.severity == "error" for i in issues):
+        # DEMO design checks (§8.3): warnings only, appended to the calc issues
+        issues.extend(run_design_checks(elev, catalogue, rule_set_id))
     rs = resolve_rule_set(elev, catalogue, rule_set_id)
     if rs is None and not any(i.code in ("RULE_SET_NOT_FOUND", "SYSTEM_NOT_SET", "SYSTEM_NOT_FOUND") for i in issues):
         issues.append(Issue(code="RULE_SET_NOT_FOUND", severity="error",

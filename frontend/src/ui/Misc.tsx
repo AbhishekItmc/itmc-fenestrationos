@@ -67,7 +67,7 @@ export function OfflineEngineLabel({ className }: { className?: string }) {
   );
 }
 
-export function IssueList({ issues, onPick, activeRef, empty = 'No issues', testId }: { issues: Issue[]; onPick?: (i: Issue) => void; activeRef?: string | null; empty?: string; testId?: string }) {
+export function IssueList({ issues, onPick, activeRef, empty = 'No issues', testId, tag }: { issues: Issue[]; onPick?: (i: Issue) => void; activeRef?: string | null; empty?: string; testId?: string; tag?: (i: Issue) => ReactNode }) {
   if (!issues.length) return <div className="px-3 py-3 text-sm text-faint">{empty}</div>;
   return (
     <ul data-testid={testId} className="divide-y divide-line/60">
@@ -81,9 +81,12 @@ export function IssueList({ issues, onPick, activeRef, empty = 'No issues', test
             <SeverityIcon severity={i.severity} className="mt-[1px]" />
             <span className="min-w-0 flex-1">
               <span className="block text-fg">{i.message}</span>
-              <span className="font-mono text-2xs text-faint">
-                {i.code}
-                {i.ref ? ` · ${i.ref}` : ''}
+              <span className="flex flex-wrap items-center gap-x-1.5 gap-y-0.5">
+                {tag?.(i)}
+                <span className="font-mono text-2xs text-faint">
+                  {i.code}
+                  {i.ref ? ` · ${i.ref}` : ''}
+                </span>
               </span>
             </span>
           </button>

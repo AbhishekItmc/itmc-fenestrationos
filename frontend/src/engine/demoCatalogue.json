@@ -749,7 +749,12 @@
         "max_field_height": 4000.0,
         "end_caps_per_mullion": 2.0,
         "splice_sleeves_per_splice": 1.0,
-        "sealant_runs_per_perimeter": 1.0
+        "sealant_runs_per_perimeter": 1.0,
+        "max_glass_weight_kg": 250.0,
+        "max_field_area_m2": 4.5,
+        "max_field_aspect_ratio": 4.0,
+        "max_unsupported_mullion_span": 4000.0,
+        "min_anchor_levels": 2.0
       },
       "param_docs": {
         "mullion_ext_top": "Mullion extension above the head centre-line (mm). source: DEMO placeholder — requires approval",
@@ -767,7 +772,12 @@
         "max_field_height": "Maximum field axis height (mm). source: DEMO placeholder — requires approval",
         "end_caps_per_mullion": "End caps per mullion line. source: DEMO placeholder — requires approval",
         "splice_sleeves_per_splice": "Splice sleeves per required splice (count only; positions not computed). source: DEMO placeholder — requires approval",
-        "sealant_runs_per_perimeter": "Perimeter sealant runs around the framework outline. source: DEMO placeholder — requires approval"
+        "sealant_runs_per_perimeter": "Perimeter sealant runs around the framework outline. source: DEMO placeholder — requires approval",
+        "max_glass_weight_kg": "Design check: maximum weight of a single glass/spandrel pane (kg) = pane area x glass_type.weight_kg_m2; above it a GLASS_WEIGHT_HIGH warning is raised. source: DEMO placeholder — requires approval",
+        "max_field_area_m2": "Design check: maximum field axis area (m²); above it a FIELD_AREA_HIGH warning is raised. source: DEMO placeholder — requires approval",
+        "max_field_aspect_ratio": "Design check: maximum field axis aspect ratio (long side / short side); above it a FIELD_ASPECT_HIGH warning is raised. source: DEMO placeholder — requires approval",
+        "max_unsupported_mullion_span": "Design check: maximum vertical mullion span (mm) between anchor levels or from an anchor to the framework bottom/head; above it a MULLION_SPAN_HIGH warning is raised. Not a structural check. source: DEMO placeholder — requires approval",
+        "min_anchor_levels": "Design check: minimum number of anchor levels per elevation; fewer raises an ANCHORS_MISSING warning. source: DEMO placeholder — requires approval"
       },
       "demo": true
     },
@@ -794,7 +804,12 @@
         "max_field_height": 4500.0,
         "end_caps_per_mullion": 2.0,
         "splice_sleeves_per_splice": 1.0,
-        "sealant_runs_per_perimeter": 1.0
+        "sealant_runs_per_perimeter": 1.0,
+        "max_glass_weight_kg": 350.0,
+        "max_field_area_m2": 6.0,
+        "max_field_aspect_ratio": 4.0,
+        "max_unsupported_mullion_span": 4500.0,
+        "min_anchor_levels": 2.0
       },
       "param_docs": {
         "mullion_ext_top": "Mullion extension above the head centre-line (mm). source: DEMO placeholder — requires approval",
@@ -812,7 +827,12 @@
         "max_field_height": "Maximum field axis height (mm). source: DEMO placeholder — requires approval",
         "end_caps_per_mullion": "End caps per mullion line. source: DEMO placeholder — requires approval",
         "splice_sleeves_per_splice": "Splice sleeves per required splice (count only; positions not computed). source: DEMO placeholder — requires approval",
-        "sealant_runs_per_perimeter": "Perimeter sealant runs around the framework outline. source: DEMO placeholder — requires approval"
+        "sealant_runs_per_perimeter": "Perimeter sealant runs around the framework outline. source: DEMO placeholder — requires approval",
+        "max_glass_weight_kg": "Design check: maximum weight of a single glass/spandrel pane (kg) = pane area x glass_type.weight_kg_m2; above it a GLASS_WEIGHT_HIGH warning is raised. source: DEMO placeholder — requires approval",
+        "max_field_area_m2": "Design check: maximum field axis area (m²); above it a FIELD_AREA_HIGH warning is raised. source: DEMO placeholder — requires approval",
+        "max_field_aspect_ratio": "Design check: maximum field axis aspect ratio (long side / short side); above it a FIELD_ASPECT_HIGH warning is raised. source: DEMO placeholder — requires approval",
+        "max_unsupported_mullion_span": "Design check: maximum vertical mullion span (mm) between anchor levels or from an anchor to the framework bottom/head; above it a MULLION_SPAN_HIGH warning is raised. Not a structural check. source: DEMO placeholder — requires approval",
+        "min_anchor_levels": "Design check: minimum number of anchor levels per elevation; fewer raises an ANCHORS_MISSING warning. source: DEMO placeholder — requires approval"
       },
       "demo": true
     }

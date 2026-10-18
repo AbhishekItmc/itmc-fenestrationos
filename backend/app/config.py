@@ -51,6 +51,9 @@ class Settings(BaseSettings):
     login_max_failures_per_ip: int = 20
     login_window_s: int = 300
 
+    # Public URL of the web app; QR labels encode {PUBLIC_BASE_URL}/p/{part code} (ARCHITECTURE §8.1)
+    public_base_url: str = "http://localhost:5173"
+
     max_upload_mb: float = 5.0
     log_level: str = "INFO"
     log_json: bool = True
@@ -85,6 +88,14 @@ class Settings(BaseSettings):
             object.__setattr__(self, "demo_password", secrets.token_urlsafe(12))
             object.__setattr__(self, "_generated_demo_password", True)
         return self
+
+    @field_validator("public_base_url")
+    @classmethod
+    def _pub(cls, v: str) -> str:
+        v = (v or "").strip().rstrip("/")
+        if not (v.startswith("http://") or v.startswith("https://")):
+            raise ValueError("PUBLIC_BASE_URL must start with http:// or https://")
+        return v
 
     @property
     def startup_database_url(self) -> str:

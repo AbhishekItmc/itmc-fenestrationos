@@ -19,13 +19,25 @@ import type {
   Id,
   InventoryItem,
   Issue,
+  LabelLayout,
   Nesting2DRequest,
   Nesting2DResult,
   NestingImportResult,
   NestingJob,
+  Part,
+  PartDetail,
+  PartEventInput,
+  PartFilter,
+  ProductionBoard,
+  ProductionOrder,
+  ProductionOrderInput,
+  ProductionOrderUpdate,
   Project,
   ProjectInput,
   ProjectMember,
+  PurchaseFromCalcInput,
+  PurchaseOrder,
+  PurchaseOrderUpdate,
   Quote,
   Revision,
   Role,
@@ -47,14 +59,15 @@ export interface JobSummary {
 }
 
 export interface InventoryFilter {
-  kind?: 'bar' | 'sheet';
+  kind?: 'bar' | 'sheet' | 'item';
   residual?: boolean;
   status?: string;
   material?: string;
 }
 
 export interface InventoryInput {
-  kind: 'bar' | 'sheet';
+  kind: 'bar' | 'sheet' | 'item';
+  unit?: string | null;
   material?: string | null;
   profile_code?: string | null;
   length?: number | null;
@@ -82,12 +95,18 @@ export interface AuditPage {
   offset: number;
 }
 
+export type ReportKind = 'calc' | 'cutting' | 'nesting' | 'quote' | 'labels' | 'production' | 'purchase-order';
+
 export interface ReportLink {
   key: string;
   title: string;
-  kind: 'calc' | 'cutting' | 'nesting' | 'quote';
+  kind: ReportKind;
   id: Id;
   formats: ('pdf' | 'xlsx')[];
+  /** e.g. label layout for `labels` */
+  query?: { layout?: LabelLayout };
+  /** client-side alternative available in every mode (printable page route) */
+  href?: string;
   status?: string | null;
   created_at?: string;
 }
@@ -146,8 +165,25 @@ export interface Backend {
   // quotes
   listQuotes(projectId: Id): Promise<Quote[]>;
   createQuote(projectId: Id, calcRunIds: Id[], marginPct: number, notes: string): Promise<Quote>;
+  // production (§8.1)
+  listProductionOrders(projectId?: Id | null): Promise<ProductionOrder[]>;
+  createProductionOrder(input: ProductionOrderInput): Promise<ProductionOrder>;
+  getProductionOrder(id: Id): Promise<ProductionOrder>;
+  updateProductionOrder(id: Id, input: ProductionOrderUpdate): Promise<ProductionOrder>;
+  listParts(orderId: Id, f?: PartFilter): Promise<Part[]>;
+  getBoard(orderId: Id): Promise<ProductionBoard>;
+  getPart(code: string): Promise<PartDetail>;
+  postPartEvent(code: string, input: PartEventInput): Promise<Part>;
+  // purchasing (§8.2)
+  listPurchaseOrders(projectId?: Id | null): Promise<PurchaseOrder[]>;
+  getPurchaseOrder(id: Id): Promise<PurchaseOrder>;
+  purchaseOrdersFromCalc(projectId: Id, input: PurchaseFromCalcInput): Promise<PurchaseOrder[]>;
+  updatePurchaseOrder(id: Id, input: PurchaseOrderUpdate): Promise<PurchaseOrder>;
+  receivePurchaseOrder(id: Id): Promise<PurchaseOrder>;
+  // DXF (§8.4): returns the DXF text
+  exportDxf(elevation: Elevation): Promise<string>;
   // reports
-  downloadReport(kind: ReportLink['kind'], id: Id, fmt: 'pdf' | 'xlsx'): Promise<void>;
+  downloadReport(kind: ReportKind, id: Id, fmt: 'pdf' | 'xlsx', query?: { layout?: LabelLayout }): Promise<void>;
   readonly reportsAvailable: boolean;
   // admin
   listUsers(): Promise<User[]>;

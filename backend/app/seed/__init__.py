@@ -10,15 +10,17 @@ from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from ..engines.models import Bay, Elevation as ElevationModel, FieldFill, Nesting2DRequest, Piece2D, Sheet2D
-from ..models import Customer, CuttingJob, Elevation, NestingJob, Project, User
+from ..models import (CalcRun, Customer, CuttingJob, Elevation, NestingJob, Part, ProductionOrder, Project,
+                      PurchaseOrder, User)
 from ..security import hash_password
-from ..services.catalogue import ensure_seed_catalogue
+from ..services.catalogue import ensure_design_check_params, ensure_seed_catalogue
 from ..services.jobs import apply_cutting_result, cutting_requests_from_calc, run_calc, run_cutting, run_nesting
 
 log = logging.getLogger("fos.seed")
 
 DEMO_USERS = [("admin@demo.local", "Demo Admin", "admin"), ("engineer@demo.local", "Demo Engineer", "engineer"),
-              ("estimator@demo.local", "Demo Estimator", "estimator"), ("viewer@demo.local", "Demo Viewer", "viewer")]
+              ("estimator@demo.local", "Demo Estimator", "estimator"), ("viewer@demo.local", "Demo Viewer", "viewer"),
+              ("operator@demo.local", "Demo Operator", "operator")]
 
 DEMO_CUSTOMERS = [
     {"name": "Demo Developer Pvt Ltd (fictitious)", "contact_name": "A. Example (fictitious)",
@@ -147,15 +149,84 @@ def _seed_jobs(db: Session, p: Project, e: Elevation, cat, owner: User) -> None:
     db.flush()
 
 
+def seed_v02(db: Session, owner: Optional[User], operator: Optional[User]) -> None:
+    """Demo work order (parts partly advanced through stations) + one demo purchase order for DEMO-P001's
+    seeded calc run. Idempotent: skipped when the project already has a work order / purchase order."""
+    from ..services import production as prod
+    from ..services import purchasing as purch
+    from ..services.catalogue import get_catalogue
+    if owner is None:
+        return
+    p = db.scalars(select(Project).where(Project.code == "DEMO-P001")).first()
+    if p is None:
+        return
+    run = db.scalars(select(CalcRun).where(CalcRun.project_id == p.id, CalcRun.validation_status != "INVALID")
+                     .order_by(CalcRun.id)).first()
+    if run is None:
+        return
+    cat = get_catalogue(db)
+    if db.scalars(select(ProductionOrder.id).where(ProductionOrder.project_id == p.id)).first() is None:
+        order = prod.create_order(db, p.id, "Lobby E1 — fabrication (demo)", [run.id], cat, owner,
+                                  notes="Demo work order (fictitious). Parts partly advanced for the board.",
+                                  status="released")
+        parts = db.scalars(select(Part).where(Part.production_order_id == order.id).order_by(Part.id)).all()
+        who = operator or owner
+        profiles = [x for x in parts if x.kind == "profile"]
+        fills = [x for x in parts if x.kind != "profile"]
+
+        def walk(part: Part, steps: int, finish_with_start: bool = False) -> None:
+            for _ in range(steps):
+                prod.apply_event(db, part, order, part.current_station, "complete", None, who)
+            if finish_with_start and part.status == "pending":
+                prod.apply_event(db, part, order, part.current_station, "start", None, who)
+
+        n = len(profiles)
+        for i, part in enumerate(profiles):
+            if i < n * 0.10:
+                walk(part, len(part.route))                       # dispatched
+            elif i < n * 0.25:
+                walk(part, 3)                                     # cut, machined, assembled -> at QC
+            elif i < n * 0.45:
+                walk(part, 1, finish_with_start=i % 2 == 0)       # cut; machining pending / in progress
+            elif i < n * 0.60:
+                prod.apply_event(db, part, order, "cutting", "start", None, who)
+        if profiles:
+            blk = profiles[-1]
+            prod.apply_event(db, blk, order, blk.current_station, "block",
+                             "Demo: profile bar damaged in transport — awaiting replacement (fictitious)", who)
+        for i, part in enumerate(fills):
+            if i < len(fills) * 0.5:
+                walk(part, 1, finish_with_start=i % 3 == 0)       # glass received; glazing pending / started
+        db.flush()
+        log.info("seeded demo production order", extra={"number": order.number, "parts": len(parts)})
+    if db.scalars(select(PurchaseOrder.id).where(PurchaseOrder.project_id == p.id)).first() is None:
+        jobs = db.scalars(select(CuttingJob).where(CuttingJob.source_calc_run_id == run.id)
+                          .order_by(CuttingJob.id)).all()
+        jobs = [j for j in jobs if j.result is not None and j.validation_status != "INVALID"]
+        pos = purch.create_from_calc(db, p.id, [run], jobs, cat, False, owner)
+        for po in pos:
+            po.notes = purch.DEMO_NOTE + "\nDemo purchase order (fictitious supplier not assigned)."
+        db.flush()
+        log.info("seeded demo purchase order", extra={"numbers": [po.number for po in pos]})
+
+
 def run_seed(db: Session, settings) -> dict:
     rev, created = ensure_seed_catalogue(db)
     out = {"catalogue_version": rev.version, "catalogue_created": created, "users": 0, "demo_data": False}
+    upgraded = ensure_design_check_params(db)
+    if upgraded is not None:
+        from ..services.audit import audit
+        out["catalogue_version"] = upgraded.version
+        out["catalogue_upgraded"] = True
+        audit(db, None, None, "upgrade", "catalogue", upgraded.version, {"note": upgraded.note},
+              user_email="system")
     users = {}
     if settings.seed_demo_users:
         users = seed_users(db, settings.demo_password)
         out["users"] = len(users)
     if settings.demo_data_enabled:
         seed_demo_data(db, users.get("admin") or users.get("engineer"))
+        seed_v02(db, users.get("admin") or users.get("engineer"), users.get("operator"))
         out["demo_data"] = True
     if created:  # first seed of this database
         from ..services.audit import audit

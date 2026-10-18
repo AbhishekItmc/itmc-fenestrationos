@@ -5,7 +5,7 @@ import { useToasts } from '../store/toast';
 export function Toaster() {
   const { toasts, dismiss } = useToasts();
   return (
-    <div className="pointer-events-none fixed bottom-9 right-4 z-[70] flex w-[360px] flex-col gap-2" data-testid="toaster">
+    <div className="pointer-events-none fixed right-4 top-14 z-[70] flex w-[360px] max-w-[calc(100vw-32px)] flex-col gap-2 min-[900px]:bottom-9 min-[900px]:top-auto" data-testid="toaster">
       {toasts.map((t) => (
         <div key={t.id} role="status" className={clsx('pointer-events-auto flex items-start gap-2.5 rounded border bg-panel px-3 py-2 shadow-pop animate-slide-in', t.kind === 'error' ? 'border-err/50' : t.kind === 'success' ? 'border-ok/40' : t.kind === 'warning' ? 'border-warn/45' : 'border-line-strong')}>
           {t.kind === 'success' && <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-ok" />}

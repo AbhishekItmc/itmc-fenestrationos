@@ -27,7 +27,7 @@ reusable residuals, quotations and documents.
 
 * All lengths in **mm**, areas in m², angles in degrees.
 * Authentication: `POST /api/v1/auth/login` → bearer JWT; click *Authorize* and paste the token.
-* Roles: `admin`, `engineer`, `estimator`, `viewer` (read-only).
+* Roles: `admin`, `engineer`, `estimator`, `viewer` (read-only), `operator` (read-only + production scan events).
 * Errors: `{"detail": {"code", "message", "issues": [Issue]}}`.
 * **All catalogue data and calculation rules are DEMO / PROVISIONAL** — not manufacturer data, not for production.
 """
@@ -44,6 +44,9 @@ TAGS = [
     {"name": "nesting", "description": "2D sheet nesting (guillotine) optimisation, jobs, Excel import."},
     {"name": "inventory", "description": "Stock and reusable residuals (offcuts / sheet remnants)."},
     {"name": "quotes", "description": "Quotations from calc-run BOMs × demo prices (always provisional)."},
+    {"name": "production", "description": "Work orders, tracked parts (QR codes), station scan events, board."},
+    {"name": "purchasing", "description": "Purchase orders from calc runs / cutting jobs minus stock (demo prices)."},
+    {"name": "export", "description": "CAD export (DXF R12)."},
     {"name": "reports", "description": "PDF / Excel documents with versions, status and DEMO banner."},
     {"name": "admin", "description": "User administration and audit trail (admin only)."},
 ]

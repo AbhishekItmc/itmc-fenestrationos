@@ -1173,6 +1173,12 @@
      "ref": "bay:3/field:0"
     },
     {
+     "code": "NO_COLOUR_SELECTED",
+     "severity": "warning",
+     "message": "No colour/finish selected for the elevation; colour surcharge and finish are not costed (demo threshold — requires engineering approval)",
+     "ref": "elevation:colour_id"
+    },
+    {
      "code": "PROVISIONAL_DEMO_RULES",
      "severity": "info",
      "message": "Calculated with DEMO rule set (not approved). Not for production/fabrication.",
@@ -1726,6 +1732,24 @@
     }
    ],
    "issues": [
+    {
+     "code": "NO_COLOUR_SELECTED",
+     "severity": "warning",
+     "message": "No colour/finish selected for the elevation; colour surcharge and finish are not costed (demo threshold — requires engineering approval)",
+     "ref": "elevation:colour_id"
+    },
+    {
+     "code": "ANCHORS_MISSING",
+     "severity": "warning",
+     "message": "0 anchor level(s) defined, min_anchor_levels is 2; bracket quantities and mullion spans are unreliable (demo threshold — requires engineering approval)",
+     "ref": "elevation:anchor_levels"
+    },
+    {
+     "code": "MULLION_SPAN_HIGH",
+     "severity": "warning",
+     "message": "Largest unsupported mullion span 7,200 mm (between anchor levels / framework ends) exceeds max_unsupported_mullion_span 4,500 mm (demo threshold — requires engineering approval)",
+     "ref": "elevation:anchor_levels"
+    },
     {
      "code": "SPLICE_REQUIRED",
      "severity": "warning",
@@ -2317,6 +2341,24 @@
     }
    ],
    "issues": [
+    {
+     "code": "NO_COLOUR_SELECTED",
+     "severity": "warning",
+     "message": "No colour/finish selected for the elevation; colour surcharge and finish are not costed (demo threshold — requires engineering approval)",
+     "ref": "elevation:colour_id"
+    },
+    {
+     "code": "FIELD_ASPECT_HIGH",
+     "severity": "warning",
+     "message": "Field b3.f1 (700 x 3,000 mm axis): aspect ratio 4.29 exceeds max_field_aspect_ratio 4 (demo threshold — requires engineering approval)",
+     "ref": "bay:2/field:0"
+    },
+    {
+     "code": "ANCHORS_MISSING",
+     "severity": "warning",
+     "message": "0 anchor level(s) defined, min_anchor_levels is 2; bracket quantities and mullion spans are unreliable (demo threshold — requires engineering approval)",
+     "ref": "elevation:anchor_levels"
+    },
     {
      "code": "PROVISIONAL_DEMO_RULES",
      "severity": "info",

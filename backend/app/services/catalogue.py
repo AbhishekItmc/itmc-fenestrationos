@@ -44,6 +44,43 @@ def ensure_seed_catalogue(db: Session) -> Tuple[CatalogueRevision, bool]:
     return rev, True
 
 
+def ensure_design_check_params(db: Session) -> Optional[CatalogueRevision]:
+    """v0.2 upgrade (idempotent): when the ACTIVE revision is a demo revision whose rule sets lack the DEMO
+    design-check params (§8.3) shipped in demo_catalogue.json, create a new revision with only those missing params
+    (+ param_docs) added. Existing values are never overwritten; non-demo catalogues are left untouched."""
+    from ..engines.checks import CHECK_PARAMS
+    try:
+        cur = active_revision(db)
+    except APIError:
+        return None
+    if not cur.demo:
+        return None
+    seed = {rs["id"]: rs for rs in load_demo_catalogue().get("rule_sets", [])}
+    data = copy.deepcopy(cur.data)
+    added: Dict[str, list] = {}
+    for rs in data.get("rule_sets", []):
+        src = seed.get(rs.get("id"))
+        if not src:
+            continue
+        params, docs = rs.setdefault("params", {}), rs.setdefault("param_docs", {})
+        for k in CHECK_PARAMS:
+            if k not in params and k in src.get("params", {}):
+                params[k] = src["params"][k]
+                docs.setdefault(k, src.get("param_docs", {}).get(k, "source: DEMO placeholder — requires approval"))
+                added.setdefault(rs["id"], []).append(k)
+    if not added:
+        return None
+    new_ver = next_version(db, cur.version)
+    data["catalogue_version"] = new_ver
+    db.execute(update(CatalogueRevision).where(CatalogueRevision.active.is_(True)).values(active=False))
+    rev = CatalogueRevision(version=new_ver, data=data, active=True, demo=True,
+                            note="v0.2: added DEMO design-check params " + "; ".join(
+                                f"{k}: {', '.join(v)}" for k, v in added.items()))
+    db.add(rev)
+    db.flush()
+    return rev
+
+
 def next_version(db: Session, current: str) -> str:
     m = _REV.match(current)
     base, n = (m.group(1), int(m.group(2))) if m else (current, 0)

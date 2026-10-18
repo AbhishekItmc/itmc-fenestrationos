@@ -7,15 +7,15 @@ are inside the payload and duplicated in indexed columns where useful).
 """
 from __future__ import annotations
 
-from datetime import datetime
+from datetime import date, datetime
 from typing import Any, Optional
 
-from sqlalchemy import (Boolean, DateTime, Float, ForeignKey, Index, Integer, String, Text, UniqueConstraint)
+from sqlalchemy import (Boolean, Date, DateTime, Float, ForeignKey, Index, Integer, String, Text, UniqueConstraint)
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from ..db import Base, JSONType, utcnow
 
-ROLES = ("admin", "engineer", "estimator", "viewer")
+ROLES = ("admin", "engineer", "estimator", "viewer", "operator")
 PROJECT_STATUSES = ("enquiry", "design", "quoted", "won", "production", "closed")
 
 
@@ -173,6 +173,7 @@ class InventoryItem(TimestampMixin, Base):
     demo: Mapped[bool] = mapped_column(Boolean, nullable=False, default=False)
     notes: Mapped[Optional[str]] = mapped_column(Text)
     created_by: Mapped[Optional[int]] = mapped_column(ForeignKey("users.id", ondelete="SET NULL"))
+    unit: Mapped[Optional[str]] = mapped_column(String(10))                # kind=item: pcs|m|m2 (v0.2)
 
 
 class Quote(TimestampMixin, Base):
@@ -193,6 +194,82 @@ class Quote(TimestampMixin, Base):
     catalogue_version: Mapped[Optional[str]] = mapped_column(String(100))
     notes: Mapped[Optional[str]] = mapped_column(Text)
     issues: Mapped[list] = mapped_column(JSONType, nullable=False, default=list)
+    created_by: Mapped[Optional[int]] = mapped_column(ForeignKey("users.id", ondelete="SET NULL"))
+
+
+class ProductionOrder(TimestampMixin, Base):
+    """Work order (§8.1): a set of calc runs exploded into individually tracked physical parts."""
+    __tablename__ = "production_orders"
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    number: Mapped[str] = mapped_column(String(30), unique=True, nullable=False)
+    project_id: Mapped[int] = mapped_column(ForeignKey("projects.id", ondelete="CASCADE"), index=True, nullable=False)
+    name: Mapped[str] = mapped_column(String(200), nullable=False)
+    status: Mapped[str] = mapped_column(String(20), nullable=False, default="planned")
+    calc_run_ids: Mapped[list] = mapped_column(JSONType, nullable=False, default=list)
+    due_date: Mapped[Optional[date]] = mapped_column(Date)
+    notes: Mapped[Optional[str]] = mapped_column(Text)
+    provisional: Mapped[bool] = mapped_column(Boolean, nullable=False, default=True)
+    created_by: Mapped[Optional[int]] = mapped_column(ForeignKey("users.id", ondelete="SET NULL"))
+
+
+class Part(TimestampMixin, Base):
+    """One physical piece (profile cut, glass pane or panel) with a unique 8-char scan code."""
+    __tablename__ = "parts"
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    production_order_id: Mapped[int] = mapped_column(ForeignKey("production_orders.id", ondelete="CASCADE"),
+                                                     index=True, nullable=False)
+    code: Mapped[str] = mapped_column(String(8), unique=True, nullable=False)
+    kind: Mapped[str] = mapped_column(String(10), nullable=False)          # profile|glass|panel
+    mark: Mapped[str] = mapped_column(String(30), nullable=False)
+    description: Mapped[str] = mapped_column(String(300), nullable=False, default="")
+    item_code: Mapped[Optional[str]] = mapped_column(String(100))
+    length: Mapped[Optional[float]] = mapped_column(Float)
+    width: Mapped[Optional[float]] = mapped_column(Float)
+    height: Mapped[Optional[float]] = mapped_column(Float)
+    angle_start: Mapped[Optional[float]] = mapped_column(Float)
+    angle_end: Mapped[Optional[float]] = mapped_column(Float)
+    calc_run_id: Mapped[Optional[int]] = mapped_column(ForeignKey("calc_runs.id", ondelete="SET NULL"))
+    elevation_id: Mapped[Optional[int]] = mapped_column(ForeignKey("elevations.id", ondelete="SET NULL"))
+    elevation_name: Mapped[Optional[str]] = mapped_column(String(200))
+    field_key: Mapped[Optional[str]] = mapped_column(String(30))
+    seq: Mapped[int] = mapped_column(Integer, nullable=False, default=1)
+    route: Mapped[list] = mapped_column(JSONType, nullable=False, default=list)
+    station_index: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
+    current_station: Mapped[Optional[str]] = mapped_column(String(20), index=True)
+    status: Mapped[str] = mapped_column(String(20), nullable=False, default="pending", index=True)
+    prev_status: Mapped[Optional[str]] = mapped_column(String(20))         # status before `block` (for unblock)
+
+
+class PartEvent(Base):
+    __tablename__ = "part_events"
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    part_id: Mapped[int] = mapped_column(ForeignKey("parts.id", ondelete="CASCADE"), index=True, nullable=False)
+    station: Mapped[str] = mapped_column(String(20), nullable=False)
+    action: Mapped[str] = mapped_column(String(20), nullable=False)        # start|complete|block|unblock|note
+    note: Mapped[Optional[str]] = mapped_column(Text)
+    user_id: Mapped[Optional[int]] = mapped_column(ForeignKey("users.id", ondelete="SET NULL"))
+    user_name: Mapped[Optional[str]] = mapped_column(String(200))
+    ts: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow, nullable=False, index=True)
+
+
+class PurchaseOrder(TimestampMixin, Base):
+    """Purchase order (§8.2) from calc-run BOMs / cutting jobs minus available stock. Demo prices: provisional."""
+    __tablename__ = "purchase_orders"
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    number: Mapped[str] = mapped_column(String(30), unique=True, nullable=False)
+    project_id: Mapped[int] = mapped_column(ForeignKey("projects.id", ondelete="CASCADE"), index=True, nullable=False)
+    supplier: Mapped[str] = mapped_column(String(200), nullable=False, default="To be assigned")
+    category: Mapped[str] = mapped_column(String(20), nullable=False)      # profiles|glass|accessories|mixed
+    status: Mapped[str] = mapped_column(String(20), nullable=False, default="draft")
+    currency: Mapped[str] = mapped_column(String(10), nullable=False, default="INR")
+    lines: Mapped[list] = mapped_column(JSONType, nullable=False, default=list)
+    total: Mapped[float] = mapped_column(Float, nullable=False, default=0.0)
+    provisional: Mapped[bool] = mapped_column(Boolean, nullable=False, default=True)
+    calc_run_ids: Mapped[list] = mapped_column(JSONType, nullable=False, default=list)
+    cutting_job_ids: Mapped[list] = mapped_column(JSONType, nullable=False, default=list)
+    catalogue_version: Mapped[Optional[str]] = mapped_column(String(100))
+    notes: Mapped[Optional[str]] = mapped_column(Text)
+    received_at: Mapped[Optional[datetime]] = mapped_column(DateTime(timezone=True))
     created_by: Mapped[Optional[int]] = mapped_column(ForeignKey("users.id", ondelete="SET NULL"))
 
 

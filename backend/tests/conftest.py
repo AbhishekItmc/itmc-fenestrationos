@@ -66,7 +66,7 @@ def _login(client, email, password=DEMO_PW):
 @pytest.fixture(scope="session")
 def auth(client):
     """auth['admin'] etc. -> request headers with a bearer token."""
-    return {role: _login(client, f"{role}@demo.local") for role in ("admin", "engineer", "estimator", "viewer")}
+    return {role: _login(client, f"{role}@demo.local") for role in ("admin", "engineer", "estimator", "viewer", "operator")}
 
 
 @pytest.fixture

@@ -30,8 +30,9 @@ export function LoginPage() {
   };
 
   return (
-    <div className="flex h-full items-center justify-center bg-bg">
-      <div className="flex w-[880px] overflow-hidden rounded-md border border-line bg-panel shadow-pop">
+    <div className="h-full overflow-y-auto overflow-x-hidden bg-bg" data-testid="login-screen">
+      <div className="flex min-h-full items-center justify-center px-4 py-6">
+      <div className="flex w-full max-w-[880px] overflow-hidden rounded-md border border-line bg-panel shadow-pop">
         <div className="relative hidden w-[400px] border-r border-line bg-bg md:block">
           <svg className="absolute inset-0 h-full w-full" viewBox="0 0 400 520" preserveAspectRatio="xMidYMid slice" aria-hidden>
             <defs>
@@ -66,19 +67,19 @@ export function LoginPage() {
           </svg>
           <div className="absolute bottom-5 left-6 right-6 text-xs text-faint">Stick curtain wall · elevation CAD · cut optimisation · nesting · BOM &amp; quotation</div>
         </div>
-        <form onSubmit={submit} className="flex-1 p-8" data-testid="login-form">
+        <form onSubmit={submit} className="min-w-0 flex-1 p-5 sm:p-8" data-testid="login-form">
           <Brand />
           <h2 className="mt-8 text-lg font-semibold">Sign in</h2>
           <p className="mt-1 text-sm text-muted">Use your FenestrationOS account.</p>
           <div className="mt-5 space-y-3">
             <Field label="E-mail">
-              <input className="input" type="email" autoComplete="username" value={email} onChange={(e) => setEmail(e.target.value)} data-testid="login-email" autoFocus />
+              <input className="input h-10 sm:h-7" type="email" autoComplete="username" value={email} onChange={(e) => setEmail(e.target.value)} data-testid="login-email" autoFocus />
             </Field>
             <Field label="Password">
-              <input className="input" type="password" autoComplete="current-password" value={password} onChange={(e) => setPassword(e.target.value)} data-testid="login-password" />
+              <input className="input h-10 sm:h-7" type="password" autoComplete="current-password" value={password} onChange={(e) => setPassword(e.target.value)} data-testid="login-password" />
             </Field>
             {err && <div className="rounded border border-err/40 bg-err/10 px-2.5 py-1.5 text-sm text-err">{err}</div>}
-            <Button type="submit" variant="solid" className="w-full justify-center" loading={busy} icon={<LogIn className="h-4 w-4" />} data-testid="login-submit">
+            <Button type="submit" variant="solid" className="h-10 w-full justify-center sm:h-7" loading={busy} icon={<LogIn className="h-4 w-4" />} data-testid="login-submit">
               Sign in
             </Button>
           </div>
@@ -93,6 +94,7 @@ export function LoginPage() {
             </button>
           </div>
         </form>
+      </div>
       </div>
     </div>
   );

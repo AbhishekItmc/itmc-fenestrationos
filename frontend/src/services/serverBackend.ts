@@ -12,8 +12,13 @@ import type {
   Nesting2DResult,
   NestingImportResult,
   NestingJob,
+  Part,
+  PartDetail,
+  ProductionBoard,
+  ProductionOrder,
   Project,
   ProjectMember,
+  PurchaseOrder,
   Quote,
   Revision,
   Stock1D,
@@ -84,7 +89,32 @@ export const serverBackend: Backend = {
   listQuotes: (pid) => api.get<Quote[]>(`/projects/${pid}/quotes`),
   createQuote: (pid, calcRunIds, marginPct, notes) => api.post<Quote>(`/projects/${pid}/quotes`, { calc_run_ids: calcRunIds, margin_pct: marginPct, notes: notes || null }),
 
-  downloadReport: (kind, id, fmt) => api.download(`/reports/${kind}/${id}.${fmt}`, `${kind}-${id}.${fmt}`),
+  listProductionOrders: (projectId) => api.get<ProductionOrder[]>('/production-orders', { query: { project_id: projectId ?? undefined } }),
+  createProductionOrder: (input) => api.post<ProductionOrder>('/production-orders', input),
+  getProductionOrder: (id) => api.get<ProductionOrder>(`/production-orders/${id}`),
+  updateProductionOrder: (id, input) => api.put<ProductionOrder>(`/production-orders/${id}`, input),
+  listParts: (orderId, f = {}) => api.get<Part[]>(`/production-orders/${orderId}/parts`, { query: { status: f.status, station: f.station, kind: f.kind } }),
+  getBoard: (orderId) => api.get<ProductionBoard>(`/production-orders/${orderId}/board`),
+  getPart: (code) => api.get<PartDetail>(`/parts/${encodeURIComponent(code)}`),
+  postPartEvent: (code, input) => api.post<Part>(`/parts/${encodeURIComponent(code)}/events`, { station: input.station, action: input.action, note: input.note || null }),
+
+  listPurchaseOrders: (projectId) => api.get<PurchaseOrder[]>('/purchase-orders', { query: { project_id: projectId ?? undefined } }),
+  getPurchaseOrder: (id) => api.get<PurchaseOrder>(`/purchase-orders/${id}`),
+  purchaseOrdersFromCalc: (pid, input) =>
+    api.post<PurchaseOrder[]>(`/projects/${pid}/purchase-orders/from-calc`, { calc_run_ids: input.calc_run_ids, cutting_job_ids: input.cutting_job_ids ?? [], split_by_category: input.split_by_category ?? true }),
+  updatePurchaseOrder: (id, input) => api.put<PurchaseOrder>(`/purchase-orders/${id}`, input),
+  receivePurchaseOrder: (id) => api.post<PurchaseOrder>(`/purchase-orders/${id}/receive`, {}),
+
+  exportDxf: async (elevation) => {
+    const r = await api.post<string | { dxf?: string }>('/export/dxf', { elevation });
+    return typeof r === 'string' ? r : (r.dxf ?? '');
+  },
+
+  downloadReport: (kind, id, fmt, query) => {
+    const qs = query?.layout ? `?layout=${encodeURIComponent(query.layout)}` : '';
+    const suffix = query?.layout ? `-${query.layout}` : '';
+    return api.download(`/reports/${kind}/${id}.${fmt}${qs}`, `${kind}-${id}${suffix}.${fmt}`);
+  },
 
   listUsers: () => api.get<User[]>('/admin/users'),
   createUser: (input) => api.post<User>('/admin/users', input),

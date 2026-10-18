@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { ChevronDown, Cloud, CloudOff, LogOut, Moon, RotateCcw, ServerCog, Sun, UserRound } from 'lucide-react';
+import { ChevronDown, Cloud, CloudOff, LogOut, Menu as MenuIcon, Moon, RotateCcw, ServerCog, Sun, UserRound } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { pingHealth } from '../api/client';
@@ -8,25 +8,25 @@ import { useApp } from '../store/app';
 import { toast } from '../store/toast';
 import { useTheme } from '../store/theme';
 
-function Logo() {
+function Logo({ compact }: { compact?: boolean }) {
   return (
-    <div className="flex items-center gap-2 pr-2">
+    <div className="flex shrink-0 items-center gap-2 pr-1 sm:pr-2">
       <svg width="22" height="22" viewBox="0 0 32 32" aria-hidden>
         <rect x="3" y="3" width="26" height="26" rx="2" fill="none" stroke="rgb(var(--accent))" strokeWidth="2.4" />
         <path d="M16 3v26M3 16h13" stroke="rgb(var(--accent))" strokeWidth="2.4" />
         <rect x="18.5" y="18.5" width="8" height="8" fill="rgb(var(--accent) / 0.25)" />
       </svg>
-      <div className="leading-none">
+      <div className={clsx('leading-none', compact && 'hidden min-[420px]:block')}>
         <div className="text-[15px] font-semibold tracking-tight">
           FenestrationOS
         </div>
-        <div className="mt-0.5 text-[11px] font-medium uppercase tracking-[0.16em] text-faint">ITMC · Engineering</div>
+        {!compact && <div className="mt-0.5 text-[11px] font-medium uppercase tracking-[0.16em] text-faint">ITMC · Engineering</div>}
       </div>
     </div>
   );
 }
 
-export function TopBar() {
+export function TopBar({ narrow = false, onMenu }: { narrow?: boolean; onMenu?: () => void }) {
   const { mode, user, projects, elevations, projectId, elevationId, selectProject, selectElevation, logout, catalogue } = useApp();
   const nav = useNavigate();
   const { theme, toggle: toggleTheme } = useTheme();
@@ -54,14 +54,21 @@ export function TopBar() {
   };
 
   return (
-    <header className="flex h-11 shrink-0 items-center gap-3 border-b border-line bg-panel px-3">
-      <Logo />
+    <header className={clsx('flex shrink-0 items-center border-b border-line bg-panel', narrow ? 'h-12 gap-2 px-2' : 'h-11 gap-3 px-3')}>
+      {narrow && (
+        <button className="btn btn-ghost btn-icon h-9 w-9" onClick={onMenu} aria-label="Open menu" data-testid="nav-menu">
+          <MenuIcon className="h-5 w-5" />
+        </button>
+      )}
+      <Logo compact={narrow} />
+      {!narrow && (
+        <>
       <div className="h-6 w-px bg-line" />
-      <div className="flex items-center gap-1.5">
-        <span className="section-title">Project</span>
+      <div className="flex min-w-0 items-center gap-1.5">
+        <span className="section-title hidden xl:inline">Project</span>
         <select
           data-testid="project-select"
-          className="input h-7 w-[260px] text-sm"
+          className="input h-7 w-[180px] text-sm lg:w-[260px]"
           value={projectId ?? ''}
           onChange={(e) => selectProject(e.target.value ? Number(e.target.value) : null)}
         >
@@ -73,11 +80,11 @@ export function TopBar() {
           ))}
         </select>
       </div>
-      <div className="flex items-center gap-1.5">
-        <span className="section-title">Elevation</span>
+      <div className="hidden min-w-0 items-center gap-1.5 lg:flex">
+        <span className="section-title hidden xl:inline">Elevation</span>
         <select
           data-testid="elevation-select"
-          className="input h-7 w-[220px] text-sm"
+          className="input h-7 w-[200px] text-sm xl:w-[220px]"
           value={elevationId ?? ''}
           disabled={!projectId}
           onChange={(e) => {
@@ -94,15 +101,17 @@ export function TopBar() {
           ))}
         </select>
       </div>
+        </>
+      )}
       <div className="flex-1" />
       <div
         data-testid="mode-indicator"
         data-tip={mode === 'server' ? 'Connected to the FenestrationOS server — results are authoritative' : 'Offline demo mode — in-browser heuristic engines, data kept in this browser only'}
         data-tip-pos="left"
-        className={clsx('flex h-7 items-center gap-1.5 rounded-sm border px-2 text-xs font-semibold', mode === 'server' ? 'border-ok/40 bg-ok/10 text-ok' : 'border-info/45 bg-info/10 text-info')}
+        className={clsx('flex h-7 shrink-0 items-center gap-1.5 rounded-sm border px-2 text-xs font-semibold', mode === 'server' ? 'border-ok/40 bg-ok/10 text-ok' : 'border-info/45 bg-info/10 text-info')}
       >
         {mode === 'server' ? <Cloud className="h-3.5 w-3.5" /> : <CloudOff className="h-3.5 w-3.5" />}
-        {mode === 'server' ? 'SERVER' : 'OFFLINE DEMO'}
+        <span className={clsx(narrow && 'sr-only min-[520px]:not-sr-only')}>{mode === 'server' ? 'SERVER' : 'OFFLINE DEMO'}</span>
       </div>
       <div className="hidden font-mono text-2xs text-faint xl:block" data-tip="Active catalogue version (DEMO data)" data-tip-pos="left">
         {catalogue.catalogue_version}
@@ -112,7 +121,7 @@ export function TopBar() {
         aria-label={theme === 'light' ? 'Switch to dark theme' : 'Switch to light theme'}
         data-tip={theme === 'light' ? 'Dark theme' : 'Light theme'}
         data-tip-pos="left"
-        className="flex h-7 w-7 items-center justify-center rounded border border-line text-muted hover:bg-hover hover:text-fg"
+        className="flex h-7 w-7 shrink-0 items-center justify-center rounded border border-line text-muted hover:bg-hover hover:text-fg"
         onClick={toggleTheme}
       >
         {theme === 'light' ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}
@@ -129,7 +138,7 @@ export function TopBar() {
           <ChevronDown className="h-3.5 w-3.5 text-faint" />
         </button>
         {menu && (
-          <div className="absolute right-0 top-9 z-50 w-60 rounded border border-line-strong bg-panel py-1 shadow-pop">
+          <div className="absolute right-0 top-9 z-50 w-60 max-w-[calc(100vw-16px)] rounded border border-line-strong bg-panel py-1 shadow-pop">
             <div className="border-b border-line px-3 py-2 text-xs">
               <div className="flex items-center gap-1.5 font-medium">
                 <UserRound className="h-3.5 w-3.5 text-faint" />

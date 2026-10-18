@@ -90,11 +90,13 @@ def require_roles(*roles: str) -> Callable[..., User]:
 
 
 # Role groups (ARCHITECTURE §6)
-ANY = ("admin", "engineer", "estimator", "viewer")
+ANY = ("admin", "engineer", "estimator", "viewer", "operator")   # operator: read-only + production scans
 ADMIN = ("admin",)
 ENGINEERING = ("admin", "engineer")
 COMMERCIAL = ("admin", "estimator")
 PROJECT_WRITERS = ("admin", "engineer", "estimator")
+SHOP_FLOOR = ("admin", "engineer", "operator")          # production part scan events (§8.1)
+PURCHASING = ("admin", "estimator", "engineer")         # purchase orders (§8.2)
 
 
 class LoginRateLimiter:

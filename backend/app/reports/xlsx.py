@@ -188,3 +188,17 @@ def quote_xlsx(q: Dict[str, Any], meta: ReportMeta) -> bytes:
     b.sheet("Lines", ["#", "Type", "Code", "Description", "Unit", "Qty", f"Unit price ({q['currency']})",
                       f"Amount ({q['currency']})"], rows, [5, 14, 20, 45, 6, 12, 16, 16])
     return b.bytes()
+
+
+def purchase_order_xlsx(po: Dict[str, Any], meta: ReportMeta) -> bytes:
+    b = _Book(meta)
+    cur = po["currency"]
+    rows = [[ln.get("line_no"), ln["item_type"], ln["code"], ln.get("description"), ln["unit"],
+             ln.get("qty_required"), ln.get("qty_in_stock"), ln.get("qty_to_order"), ln.get("unit_price"),
+             ln.get("amount"), ln.get("stock_length"), ln.get("note")] for ln in po["lines"]]
+    rows += [[], ["", "", "", "TOTAL (excl. taxes)", "", "", "", "", "", po["total"]],
+             ["", "", "", "Demo prices — not a commercial offer"]]
+    b.sheet("Lines", ["#", "Type", "Code", "Description", "Unit", "Qty required", "Qty in stock", "Qty to order",
+                      f"Unit price ({cur})", f"Amount ({cur})", "Bar length (mm)", "Note"], rows,
+            [5, 12, 20, 45, 6, 12, 12, 12, 14, 14, 12, 45])
+    return b.bytes()

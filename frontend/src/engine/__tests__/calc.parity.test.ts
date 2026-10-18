@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import type { CalcResult, Elevation, Issue } from '../../api/types';
 import { calculate } from '../calc';
+import { isDesignCheck } from '../checks';
 import { DEMO_CATALOGUE } from '../catalogue';
 import { validateElevation } from '../elevation';
 import cases from '../__fixtures__/calc_cases.json';
@@ -21,6 +22,8 @@ describe('offline calc parity with the Python engine (fixtures from backend/app/
     expect(r.validation_status).toBe(py.validation_status);
     expect(r.validation.passed).toBe(py.validation.passed);
     expect(r.issues.map(issueKey)).toEqual(py.issues.map(issueKey));
+    // design checks (§8.3): messages must match the Python wording exactly
+    expect(r.issues.filter(isDesignCheck).map((i) => i.message)).toEqual(py.issues.filter(isDesignCheck).map((i) => i.message));
     expect(r.profile_cuts.map((x) => [x.mark, x.role, x.profile_id, x.quantity, x.position, x.formula])).toEqual(
       py.profile_cuts.map((x) => [x.mark, x.role, x.profile_id, x.quantity, x.position, x.formula]),
     );

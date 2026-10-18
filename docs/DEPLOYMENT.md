@@ -71,6 +71,7 @@ open http://localhost:8080          # nginx: SPA + /api proxy; API docs at /docs
 | `DEMO_PASSWORD` | — | required (prod) when demo users seeded; random+logged in dev if missing |
 | `LOGIN_MAX_FAILURES_PER_EMAIL` / `_PER_IP` / `LOGIN_WINDOW_S` | 5 / 20 / 300 | in-process login limiter |
 | `MAX_UPLOAD_MB` | 5 | Excel import size limit |
+| `PUBLIC_BASE_URL` | `http://localhost:5173` | public URL of the web app; QR part labels encode `{PUBLIC_BASE_URL}/p/{code}` (no trailing slash) |
 | `LOG_LEVEL`, `LOG_JSON` | INFO, 1 | structured JSON logs with `request_id` |
 | `SERVE_FRONTEND`, `FRONTEND_DIST` | 1, `../frontend/dist` | single-container SPA serving |
 | `FORWARDED_ALLOW_IPS` | 127.0.0.1 | (container) proxies trusted for `X-Forwarded-For` |
@@ -98,6 +99,7 @@ regularly. The API re-applies newer migrations on start, so restoring an older d
 - [ ] `SEED_DEMO_USERS=0` in production; delete/deactivate demo accounts if they were ever created.
 - [ ] Terminate TLS in front of nginx (or add a TLS server block); HSTS is emitted by the API in prod.
 - [ ] `CORS_ORIGINS` limited to the real frontend origin(s).
+- [ ] `PUBLIC_BASE_URL` set to the real web-app URL before printing part labels (printed QR codes cannot be changed).
 - [ ] Run the API with **one worker per container** (login limiter is in-process) or add a shared limiter
       at the proxy; keep `FORWARDED_ALLOW_IPS` restricted to the proxy.
 - [ ] Containers run as non-root; images rebuilt regularly for OS/Python patches; `pip-audit`/`npm audit`.

@@ -1,3 +1,7 @@
 -r requirements.txt
 pytest>=8.3
 pytest-cov>=6.0
+# optional read-back / decode checks in tests (tests skip when missing; pyzbar also needs the system libzbar0)
+ezdxf>=1.3
+pyzbar>=0.1.9
+pypdfium2>=4.30

@@ -12,7 +12,7 @@ import { Dialog } from '../../ui/Dialog';
 import { Field, Select } from '../../ui/Field';
 import { EmptyState, ErrorBlock, LoadingBlock, PageHeader, Tabs } from '../../ui/Misc';
 
-const ROLES: Role[] = ['admin', 'engineer', 'estimator', 'viewer'];
+const ROLES: Role[] = ['admin', 'engineer', 'estimator', 'viewer', 'operator'];
 
 export default function AdminPage() {
   const { mode, user } = useApp();
@@ -79,7 +79,7 @@ function Users() {
   return (
     <div className="min-h-0 flex-1 overflow-auto">
       <div className="flex items-center px-4 py-2">
-        <div className="flex-1 text-xs text-muted">Roles: admin · engineer · estimator · viewer. The last active admin cannot be demoted.</div>
+        <div className="flex-1 text-xs text-muted">Roles: admin · engineer · estimator · viewer · operator (workstation scans only). The last active admin cannot be demoted.</div>
         <Button variant="solid" icon={<UserPlus className="h-3.5 w-3.5" />} onClick={() => setDlg(true)}>
           New user
         </Button>

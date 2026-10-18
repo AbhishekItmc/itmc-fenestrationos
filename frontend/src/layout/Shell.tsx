@@ -1,10 +1,11 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
+import { NARROW_QUERY, useMediaQuery } from '../lib/useMediaQuery';
 import { errorMessage } from '../api/client';
 import { backend, useApp, useBackend } from '../store/app';
 import { useStatus } from '../store/status';
 import { toast } from '../store/toast';
-import { Sidebar } from './Sidebar';
+import { NavDrawer, Sidebar } from './Sidebar';
 import { StatusBar } from './StatusBar';
 import { TopBar } from './TopBar';
 
@@ -41,19 +42,23 @@ export function Shell() {
   useContextSync();
   const loc = useLocation();
   const reset = useStatus((s) => s.reset);
+  const narrow = useMediaQuery(NARROW_QUERY);
+  const [navOpen, setNavOpen] = useState(false);
   useEffect(() => {
     if (!loc.pathname.startsWith('/editor')) reset();
+    setNavOpen(false);
   }, [loc.pathname, reset]);
   return (
     <div className="flex h-full flex-col">
-      <TopBar />
+      <TopBar narrow={narrow} onMenu={() => setNavOpen(true)} />
       <div className="flex min-h-0 flex-1">
-        <Sidebar />
+        {!narrow && <Sidebar />}
         <main className="min-w-0 flex-1 overflow-hidden">
           <Outlet />
         </main>
       </div>
-      <StatusBar />
+      {!narrow && <StatusBar />}
+      {narrow && <NavDrawer open={navOpen} onClose={() => setNavOpen(false)} />}
     </div>
   );
 }

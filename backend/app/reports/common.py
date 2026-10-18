@@ -28,6 +28,7 @@ class ReportMeta:
     generated_by: Optional[str] = None
     generated_at: str = field(default_factory=lambda: datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC"))
     extra: List[Tuple[str, str]] = field(default_factory=list)
+    notices: List[str] = field(default_factory=list)   # extra banner lines shown when provisional (e.g. demo prices)
 
     @property
     def invalid(self) -> bool:
@@ -40,6 +41,7 @@ class ReportMeta:
             b.append(INVALID_BANNER)
         if self.provisional:
             b.append(BANNER)
+            b += list(self.notices)
         return b
 
     def rows(self) -> List[Tuple[str, str]]:

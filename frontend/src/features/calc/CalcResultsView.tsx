@@ -9,6 +9,7 @@ import { toast } from '../../store/toast';
 import { ValidationStatusBadge, ValidatorBadge } from '../../ui/Badge';
 import { Button } from '../../ui/Button';
 import { ServerOnlyButton } from '../../ui/InDev';
+import { designCheckTag } from '../../ui/DesignCheckTag';
 import { IssueList, Kpi, OfflineEngineLabel, ProvisionalBanner, Tabs } from '../../ui/Misc';
 import { useCutting } from '../cutting/store';
 import { useNesting } from '../nesting/store';
@@ -185,7 +186,7 @@ export function CalcResultsView({ entry, onPickIssue }: { entry: CalcEntry; onPi
             </tbody>
           </table>
         )}
-        {tab === 'issues' && <IssueList issues={r.issues} onPick={onPickIssue} empty="No issues" testId="calc-issues" />}
+        {tab === 'issues' && <IssueList issues={r.issues} onPick={onPickIssue} empty="No issues" testId="calc-issues" tag={designCheckTag} />}
         {tab === 'totals' && (
           <table className="dense">
             <tbody>

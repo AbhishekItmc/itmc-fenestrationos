@@ -16,8 +16,8 @@ export function Dialog({ open, onClose, title, subtitle, children, footer, width
   }, [open, onClose]);
   if (!open) return null;
   return (
-    <div className="fixed inset-0 z-50 flex items-start justify-center bg-[rgb(var(--scrim)/0.45)] pt-[10vh] animate-fade-in" onMouseDown={onClose}>
-      <div role="dialog" aria-modal="true" data-testid={testId} className="flex max-h-[80vh] flex-col rounded-md border border-line-strong bg-panel shadow-pop" style={{ width }} onMouseDown={(e) => e.stopPropagation()}>
+    <div className="fixed inset-0 z-50 flex items-start justify-center bg-[rgb(var(--scrim)/0.45)] px-3 pt-[6vh] animate-fade-in sm:pt-[10vh]" onMouseDown={onClose}>
+      <div role="dialog" aria-modal="true" data-testid={testId} className="flex max-h-[88vh] flex-col rounded-md border border-line-strong bg-panel shadow-pop sm:max-h-[80vh]" style={{ width, maxWidth: '100%' }} onMouseDown={(e) => e.stopPropagation()}>
         <div className="flex items-start gap-3 border-b border-line px-4 py-3">
           <div className="min-w-0 flex-1">
             <div className="text-md font-semibold">{title}</div>
@@ -28,7 +28,7 @@ export function Dialog({ open, onClose, title, subtitle, children, footer, width
           </button>
         </div>
         <div className="min-h-0 flex-1 overflow-auto px-4 py-3">{children}</div>
-        {footer && <div className="flex items-center justify-end gap-2 border-t border-line px-4 py-2.5">{footer}</div>}
+        {footer && <div className="flex flex-wrap items-center justify-end gap-2 border-t border-line px-4 py-2.5">{footer}</div>}
       </div>
     </div>
   );

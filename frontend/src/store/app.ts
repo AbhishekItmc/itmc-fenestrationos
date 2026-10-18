@@ -98,9 +98,12 @@ export function useBackend(): Backend {
 
 export const hasStoredToken = () => !!getToken();
 
-export function canWrite(user: User | null, area: 'engineering' | 'project' | 'admin' | 'quote'): boolean {
+export function canWrite(user: User | null, area: 'engineering' | 'project' | 'admin' | 'quote' | 'production' | 'operate' | 'purchase'): boolean {
   if (!user) return false;
   const r = user.role;
+  if (area === 'production') return r === 'admin' || r === 'engineer';
+  if (area === 'operate') return r === 'admin' || r === 'engineer' || r === 'operator';
+  if (area === 'purchase') return r === 'admin' || r === 'engineer' || r === 'estimator';
   if (area === 'admin') return r === 'admin';
   if (area === 'engineering') return r === 'admin' || r === 'engineer';
   if (area === 'quote') return r === 'admin' || r === 'estimator';

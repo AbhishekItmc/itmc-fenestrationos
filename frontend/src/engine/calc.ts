@@ -6,6 +6,7 @@
 import type { BomLine, Catalogue, CalcResult, CatProfile, Elevation, GlassItem, Issue, ProfileCut, ProfileCutRole } from '../api/types';
 import { findAccessory, getGlassType, getPanelType, getProfile, getSeries } from './catalogue';
 import { validateCalc } from './calcValidator';
+import { runDesignChecks } from './checks';
 import {
   effectiveMullionProfileId,
   effectiveTransomProfileId,
@@ -33,6 +34,8 @@ interface Group {
 export function calculate(elev: Elevation, cat: Catalogue, ruleSetId: string | null = null): CalcResult {
   const catVersion = String(cat.catalogue_version ?? 'UNKNOWN');
   const issues: Issue[] = [...validateElevation(elev, cat, ruleSetId)];
+  // DEMO design checks (§8.3): warnings only, appended when the geometry is valid
+  if (!issues.some((i) => i.severity === 'error')) issues.push(...runDesignChecks(elev, cat, ruleSetId));
   const rs = resolveRuleSet(elev, cat, ruleSetId);
   if (rs === null && !issues.some((i) => ['RULE_SET_NOT_FOUND', 'SYSTEM_NOT_SET', 'SYSTEM_NOT_FOUND'].includes(i.code)))
     issues.push({ code: 'RULE_SET_NOT_FOUND', severity: 'error', message: 'No rule set available for this elevation', ref: 'rule_set' });

@@ -2,7 +2,7 @@
 from __future__ import annotations
 
 import re
-from datetime import datetime
+from datetime import date, datetime
 from typing import Any, Dict, List, Literal, Optional
 
 from pydantic import BaseModel, ConfigDict, Field, field_validator
@@ -10,7 +10,7 @@ from pydantic import BaseModel, ConfigDict, Field, field_validator
 from ..engines.models import (CalcResult, Cutting1DRequest, Cutting1DResult, Elevation as ElevationModel, Issue,
                               Nesting2DRequest, Nesting2DResult)
 
-Role = Literal["admin", "engineer", "estimator", "viewer"]
+Role = Literal["admin", "engineer", "estimator", "viewer", "operator"]
 ProjectStatus = Literal["enquiry", "design", "quoted", "won", "production", "closed"]
 _EMAIL = re.compile(r"^[^@\s]{1,64}@[^@\s]+\.[^@\s]{2,}$")
 
@@ -278,7 +278,7 @@ class FromCalcItem(BaseModel):
 
 # ---------------------------------------------------------------- inventory
 class InventoryIn(BaseModel):
-    kind: Literal["bar", "sheet"]
+    kind: Literal["bar", "sheet", "item"]
     material: Optional[str] = Field(default=None, max_length=100)
     profile_code: Optional[str] = Field(default=None, max_length=100)
     length: Optional[float] = Field(default=None, gt=0)
@@ -290,6 +290,7 @@ class InventoryIn(BaseModel):
     location: Optional[str] = Field(default=None, max_length=100)
     status: Literal["available", "reserved", "consumed"] = "available"
     notes: Optional[str] = Field(default=None, max_length=2000)
+    unit: Optional[Literal["pcs", "m", "m2"]] = Field(default=None, description="kind=item only")
 
 
 class InventoryUpdate(BaseModel):
@@ -317,6 +318,7 @@ class InventoryOut(ORM):
     status: str
     demo: bool
     notes: Optional[str] = None
+    unit: Optional[str] = None
     created_at: datetime
     updated_at: datetime
 
@@ -392,3 +394,169 @@ class ImportOut(BaseModel):
     stocks: List[Any] = []
     settings: Dict[str, Any] = {}
     issues: List[Issue] = []
+
+
+# ---------------------------------------------------------------- production (§8.1)
+OrderStatus = Literal["planned", "released", "in_progress", "done", "cancelled"]
+PartStatus = Literal["pending", "in_progress", "done", "blocked"]
+PartAction = Literal["start", "complete", "block", "unblock", "note"]
+
+
+class ProductionOrderCreate(BaseModel):
+    project_id: int
+    name: str = Field(min_length=1, max_length=200)
+    calc_run_ids: List[int] = Field(min_length=1, max_length=200)
+    due_date: Optional[date] = None
+    notes: Optional[str] = Field(default=None, max_length=5000)
+
+
+class ProductionOrderUpdate(BaseModel):
+    name: Optional[str] = Field(default=None, min_length=1, max_length=200)
+    status: Optional[OrderStatus] = None
+    due_date: Optional[date] = None
+    notes: Optional[str] = Field(default=None, max_length=5000)
+
+
+class PartCounts(BaseModel):
+    total: int = 0
+    pending: int = 0
+    in_progress: int = 0
+    done: int = 0
+    blocked: int = 0
+
+
+class ProductionOrderOut(ORM):
+    id: int
+    number: str
+    project_id: int
+    name: str
+    status: OrderStatus
+    calc_run_ids: List[int]
+    due_date: Optional[date] = None
+    notes: Optional[str] = None
+    provisional: bool = True
+    created_by: Optional[int] = None
+    created_at: datetime
+    updated_at: datetime
+    counts: PartCounts = PartCounts()
+
+
+class PartOut(ORM):
+    id: int
+    production_order_id: int
+    code: str
+    kind: Literal["profile", "glass", "panel"]
+    mark: str
+    description: str
+    item_code: Optional[str] = None
+    length: Optional[float] = None
+    width: Optional[float] = None
+    height: Optional[float] = None
+    angle_start: Optional[float] = None
+    angle_end: Optional[float] = None
+    calc_run_id: Optional[int] = None
+    elevation_id: Optional[int] = None
+    elevation_name: Optional[str] = None
+    field_key: Optional[str] = None
+    seq: int
+    route: List[str]
+    station_index: int
+    current_station: Optional[str] = None
+    status: PartStatus
+    updated_at: datetime
+
+
+class PartEventIn(BaseModel):
+    station: str = Field(min_length=1, max_length=20)
+    action: PartAction
+    note: Optional[str] = Field(default=None, max_length=2000)
+
+
+class PartEventOut(ORM):
+    id: int
+    part_id: int
+    station: str
+    action: PartAction
+    note: Optional[str] = None
+    user_id: Optional[int] = None
+    user_name: Optional[str] = None
+    ts: datetime
+
+
+class PartDetailOut(BaseModel):
+    part: PartOut
+    order: Dict[str, Any]
+    project: Dict[str, Any]
+    events: List[PartEventOut]
+
+
+class BoardStation(BaseModel):
+    id: str
+    label: str
+    pending: int = 0
+    in_progress: int = 0
+    done_here: int = 0
+    blocked: int = 0
+
+
+class BoardOut(BaseModel):
+    stations: List[BoardStation]
+    counts: PartCounts
+
+
+# ---------------------------------------------------------------- purchasing (§8.2)
+POStatus = Literal["draft", "sent", "received", "cancelled"]
+POCategory = Literal["profiles", "glass", "accessories", "mixed"]
+
+
+class PurchaseFromCalcIn(BaseModel):
+    calc_run_ids: List[int] = Field(min_length=1, max_length=200)
+    cutting_job_ids: Optional[List[int]] = Field(default=None, max_length=500)
+    split_by_category: bool = True
+
+
+class POLine(BaseModel):
+    item_type: str = Field(min_length=1, max_length=30)
+    item_id: Optional[str] = Field(default=None, max_length=100)
+    code: str = Field(min_length=1, max_length=100)
+    description: str = Field(default="", max_length=500)
+    unit: str = Field(min_length=1, max_length=10)
+    qty_required: float = Field(default=0.0, ge=0)
+    qty_in_stock: float = Field(default=0.0, ge=0)
+    qty_to_order: float = Field(ge=0)
+    unit_price: float = Field(default=0.0, ge=0)
+    amount: float = 0.0
+    stock_length: Optional[float] = Field(default=None, gt=0, description="profiles: bar length (mm)")
+    note: Optional[str] = Field(default=None, max_length=500)
+
+
+class PurchaseOrderUpdate(BaseModel):
+    supplier: Optional[str] = Field(default=None, min_length=1, max_length=200)
+    status: Optional[POStatus] = None
+    notes: Optional[str] = Field(default=None, max_length=5000)
+    lines: Optional[List[POLine]] = Field(default=None, max_length=1000)
+
+
+class PurchaseOrderOut(ORM):
+    id: int
+    number: str
+    project_id: int
+    supplier: str
+    category: POCategory
+    status: POStatus
+    currency: str
+    lines: List[Dict[str, Any]]
+    total: float
+    provisional: bool
+    calc_run_ids: List[int] = []
+    cutting_job_ids: List[int] = []
+    catalogue_version: Optional[str] = None
+    notes: Optional[str] = None
+    received_at: Optional[datetime] = None
+    created_by: Optional[int] = None
+    created_at: datetime
+    updated_at: datetime
+
+
+class DxfExportIn(BaseModel):
+    elevation: ElevationModel

@@ -73,7 +73,7 @@ class _Doc:
         self.meta = meta
         self.buf = io.BytesIO()
         self.pagesize = landscape(A4) if landscape_mode else A4
-        top = 30 * mm if meta.banners else 18 * mm
+        top = (22 + 8 * len(meta.banners)) * mm if meta.banners else 18 * mm
         self.doc = SimpleDocTemplate(self.buf, pagesize=self.pagesize, leftMargin=12 * mm, rightMargin=12 * mm,
                                      topMargin=top, bottomMargin=20 * mm, title=meta.title,
                                      author="ITMC FenestrationOS", subject=meta.validation_status,
@@ -399,4 +399,82 @@ def quote_pdf(q: Dict[str, Any], meta: ReportMeta, project: Dict[str, Any]) -> b
         story.append(Paragraph("Notes", H2))
         story.append(P(q["notes"], BODY))
     story += issues_block(q.get("issues") or [])
+    return doc.build(story)
+
+
+# --------------------------------------------------------------------------- production work order sheet
+def work_order_pdf(order: Dict[str, Any], parts: List[Dict[str, Any]], board: Dict[str, Any], meta: ReportMeta,
+                   project: Dict[str, Any], station_labels: Dict[str, str]) -> bytes:
+    from .labels import size_text
+    doc = _Doc(meta, landscape_mode=True)
+    W = doc.width
+    c = board["counts"]
+    story: List[Any] = [
+        Paragraph(f"Work order {escape(order['number'])} — {escape(order['name'])}", H2),
+        kv_table([("Project", f"{project.get('code')} — {project.get('name')}"), ("Status", order["status"]),
+                  ("Due date", str(order.get("due_date") or "-")),
+                  ("Based on calc runs", ", ".join(str(i) for i in order["calc_run_ids"])),
+                  ("Parts", f"{c['total']} total — {c['pending']} pending, {c['in_progress']} in progress, "
+                            f"{c['blocked']} blocked, {c['done']} done"),
+                  ("Notes", order.get("notes") or "-")], W),
+        Paragraph("Stations", H2)]
+    rows = [["Station", "Pending", "In progress", "Blocked", "Done here"]]
+    for s in board["stations"]:
+        rows.append([s["label"], s["pending"], s["in_progress"], s["blocked"], s["done_here"]])
+    story.append(table(rows, widths=[50 * mm, 25 * mm, 25 * mm, 25 * mm, 25 * mm]))
+    groups: Dict[str, List[Dict[str, Any]]] = {}
+    for p in parts:
+        groups.setdefault(p["current_station"] or "__done", []).append(p)
+    order_keys = [s["id"] for s in board["stations"] if s["id"] in groups] + \
+        [k for k in groups if k not in [s["id"] for s in board["stations"]] and k != "__done"] + \
+        (["__done"] if "__done" in groups else [])
+    for key in order_keys:
+        ps = groups[key]
+        title = "Done (all stations complete)" if key == "__done" else f"At station: {station_labels.get(key, key)}"
+        story.append(CondPageBreak(30 * mm))
+        story.append(Paragraph(f"{escape(title)} — {len(ps)} part(s)", H2))
+        rows = [["Code", "Mark", "Kind", "Description", "Item", "Size", "Elevation", "Status", "Route step"]]
+        for p in ps:
+            step = f"{min(p['station_index'] + 1, len(p['route']))}/{len(p['route'])}"
+            rows.append([p["code"], f"{p['mark']} #{p['seq']}", p["kind"], p["description"], p.get("item_code") or "",
+                         size_text(p), p.get("elevation_name") or "", p["status"], step])
+        story.append(table(rows, widths=[20 * mm, 18 * mm, 14 * mm, 72 * mm, 34 * mm, 34 * mm, 34 * mm, 18 * mm,
+                                         16 * mm]))
+    return doc.build(story)
+
+
+# --------------------------------------------------------------------------- purchase order
+def purchase_order_pdf(po: Dict[str, Any], meta: ReportMeta, project: Dict[str, Any]) -> bytes:
+    doc = _Doc(meta, landscape_mode=True)
+    W = doc.width
+    cur = po["currency"]
+    story: List[Any] = [
+        Paragraph(f"Purchase order {escape(po['number'])}", H2),
+        kv_table([("Project", f"{project.get('code')} — {project.get('name')}"), ("Site", project.get("site") or "-"),
+                  ("Supplier", po["supplier"]), ("Category", po["category"]), ("Status", po["status"]),
+                  ("Currency", cur), ("Based on calc runs", ", ".join(str(i) for i in po["calc_run_ids"]) or "-"),
+                  ("Cutting jobs", ", ".join(str(i) for i in po.get("cutting_job_ids") or []) or "- (bar estimate)"),
+                  ("Price basis", "Demo prices — not a commercial offer")], W),
+        Paragraph("Lines", H2)]
+    rows = [["#", "Type", "Code", "Description", "Unit", "Required", "In stock", "To order",
+             f"Unit price ({cur})", f"Amount ({cur})", "Note"]]
+    for ln in po["lines"]:
+        rows.append([ln.get("line_no", ""), ln["item_type"], ln["code"], ln.get("description", ""), ln["unit"],
+                     f"{ln.get('qty_required', 0):,.3f}".rstrip("0").rstrip("."),
+                     f"{ln.get('qty_in_stock', 0):,.3f}".rstrip("0").rstrip("."),
+                     f"{ln.get('qty_to_order', 0):,.3f}".rstrip("0").rstrip("."),
+                     f"{ln.get('unit_price', 0):,.2f}", f"{ln.get('amount', 0):,.2f}", ln.get("note") or ""])
+    story.append(table(rows, widths=[7 * mm, 15 * mm, 30 * mm, 55 * mm, 10 * mm, 17 * mm, 17 * mm, 17 * mm,
+                                     22 * mm, 24 * mm, 59 * mm]))
+    story.append(Spacer(1, 3 * mm))
+    story.append(table([["TOTAL (excl. taxes)", f"{po['total']:,.2f} {cur}"]], widths=[60 * mm, 50 * mm],
+                       header=False))
+    story.append(Spacer(1, 3 * mm))
+    story.append(Paragraph("<b>Demo prices — not a commercial offer.</b> Quantities derive from PROVISIONAL demo "
+                           "calculation rules and prices from the DEMO catalogue; bar quantities without a cutting "
+                           "job are estimates. Do not send to suppliers without engineering and commercial review.",
+                           BODY))
+    if po.get("notes"):
+        story.append(Paragraph("Notes", H2))
+        story.append(P(po["notes"], BODY))
     return doc.build(story)

@@ -500,7 +500,7 @@ export type CatalogueCollection =
 // ===========================================================================
 // C. API DTOs (REST contract §6)
 // ===========================================================================
-export type Role = 'admin' | 'engineer' | 'estimator' | 'viewer';
+export type Role = 'admin' | 'engineer' | 'estimator' | 'viewer' | 'operator';
 export type Id = number;
 
 export interface ApiErrorBody {
@@ -627,9 +627,13 @@ export interface NestingJob {
   created_at?: string;
 }
 
+export type InventoryKind = 'bar' | 'sheet' | 'item';
+
 export interface InventoryItem {
   id: Id;
-  kind: 'bar' | 'sheet';
+  /** `item` = counted accessories (pcs / m), added e.g. when a purchase order is received. */
+  kind: InventoryKind;
+  unit?: string | null;
   material?: string | null;
   profile_code?: string | null;
   length?: number | null;
@@ -694,4 +698,179 @@ export interface NestingImportResult {
   pieces: Piece2D[];
   sheets: Sheet2D[];
   issues: Issue[];
+}
+
+// ===========================================================================
+// D. v0.2 modules (ARCHITECTURE §8): production tracking, purchasing
+// ===========================================================================
+export type ProductionStatus = 'planned' | 'released' | 'in_progress' | 'done' | 'cancelled';
+export const PRODUCTION_STATUSES: ProductionStatus[] = ['planned', 'released', 'in_progress', 'done', 'cancelled'];
+export type PartKind = 'profile' | 'glass' | 'panel';
+export type PartStatus = 'pending' | 'in_progress' | 'done' | 'blocked';
+export type PartAction = 'start' | 'complete' | 'block' | 'unblock' | 'note';
+export type StationId = 'cutting' | 'machining' | 'assembly' | 'receiving' | 'glazing' | 'qc' | 'dispatch';
+
+export interface PartCounts {
+  total: number;
+  pending: number;
+  in_progress: number;
+  done: number;
+  blocked: number;
+}
+
+export interface ProductionOrder {
+  id: Id;
+  number: string;
+  project_id: Id;
+  name: string;
+  status: ProductionStatus;
+  calc_run_ids: Id[];
+  due_date?: string | null;
+  notes?: string | null;
+  provisional?: boolean;
+  created_by?: Id | string | null;
+  created_at?: string;
+  updated_at?: string;
+  counts: PartCounts;
+}
+
+export interface ProductionOrderInput {
+  project_id: Id;
+  name: string;
+  calc_run_ids: Id[];
+  due_date?: string | null;
+  notes?: string | null;
+}
+
+export interface ProductionOrderUpdate {
+  name?: string;
+  status?: ProductionStatus;
+  due_date?: string | null;
+  notes?: string | null;
+}
+
+export interface Part {
+  id: Id;
+  production_order_id: Id;
+  /** 8 chars from A–Z / 2–9 without O, I, 0, 1. */
+  code: string;
+  kind: PartKind;
+  mark: string;
+  description: string;
+  item_code: string;
+  length?: number | null;
+  width?: number | null;
+  height?: number | null;
+  angle_start?: number | null;
+  angle_end?: number | null;
+  calc_run_id?: Id | null;
+  elevation_id?: Id | null;
+  elevation_name?: string | null;
+  field_key?: string | null;
+  seq: number;
+  route: StationId[] | string[];
+  station_index: number;
+  current_station: string | null;
+  status: PartStatus;
+  updated_at?: string;
+}
+
+export interface PartEvent {
+  id: Id;
+  part_id: Id;
+  station: string;
+  action: PartAction;
+  note?: string | null;
+  user_id?: Id | null;
+  user_name?: string | null;
+  ts: string;
+}
+
+export interface PartEventInput {
+  station: string;
+  action: PartAction;
+  note?: string | null;
+}
+
+export interface PartFilter {
+  status?: PartStatus | '';
+  station?: string | '';
+  kind?: PartKind | '';
+}
+
+export interface BoardStation {
+  id: string;
+  label: string;
+  pending: number;
+  in_progress: number;
+  done_here: number;
+  blocked: number;
+}
+
+export interface ProductionBoard {
+  stations: BoardStation[];
+  counts: PartCounts;
+}
+
+export interface PartDetail {
+  part: Part;
+  order: { id: Id; number: string; name: string };
+  project: { id: Id; code: string; name: string };
+  events: PartEvent[];
+}
+
+export type LabelLayout = 'a4-24' | 'a4-8' | 'roll-62x29';
+
+export type PurchaseCategory = 'profiles' | 'glass' | 'accessories' | 'mixed';
+export type PurchaseStatus = 'draft' | 'sent' | 'received' | 'cancelled';
+
+export interface PurchaseOrderLine {
+  line_no?: number;
+  item_type: string;
+  item_id: string | null;
+  code: string;
+  description: string;
+  unit: string;
+  qty_required: number;
+  qty_in_stock: number;
+  qty_to_order: number;
+  unit_price: number;
+  amount: number;
+  /** profiles: bar length (mm) */
+  stock_length?: number | null;
+  note?: string | null;
+}
+
+export interface PurchaseOrder {
+  id: Id;
+  number: string;
+  project_id: Id;
+  supplier: string;
+  category: PurchaseCategory;
+  status: PurchaseStatus;
+  currency: string;
+  lines: PurchaseOrderLine[];
+  total: number;
+  provisional: boolean;
+  notes?: string | null;
+  calc_run_ids?: Id[];
+  cutting_job_ids?: Id[];
+  catalogue_version?: string | null;
+  received_at?: string | null;
+  created_by?: Id | string | null;
+  created_at?: string;
+  updated_at?: string;
+}
+
+export interface PurchaseFromCalcInput {
+  calc_run_ids: Id[];
+  cutting_job_ids?: Id[];
+  split_by_category?: boolean;
+}
+
+export interface PurchaseOrderUpdate {
+  supplier?: string;
+  status?: PurchaseStatus;
+  notes?: string | null;
+  lines?: PurchaseOrderLine[];
 }

@@ -16,7 +16,7 @@ import { EmptyState, ErrorBlock, LoadingBlock, PageHeader, Tabs } from '../../ui
 export default function InventoryPage() {
   const be = useBackend();
   const user = useApp((s) => s.user);
-  const [kind, setKind] = useState<'bar' | 'sheet'>('bar');
+  const [kind, setKind] = useState<'bar' | 'sheet' | 'item'>('bar');
   const [res, setRes] = useState<'all' | 'stock' | 'residual'>('all');
   const [status, setStatus] = useState<'available' | 'all'>('available');
   const { data, loading, error, reload } = useAsync(() => be.listInventory({ kind, residual: res === 'all' ? undefined : res === 'residual', status: status === 'all' ? undefined : status }), [be, kind, res, status]);
@@ -41,15 +41,15 @@ export default function InventoryPage() {
     <div className="flex h-full flex-col" data-testid="inventory-page">
       <PageHeader
         title="Inventory"
-        subtitle="Stock bars and sheets, plus reusable offcuts/residuals returned from optimisation jobs"
+        subtitle="Stock bars, sheets and counted items, plus reusable offcuts/residuals returned from optimisation jobs"
         actions={
-          <Button variant="solid" icon={<Plus className="h-3.5 w-3.5" />} onClick={() => setAdd(true)} disabled={!eng}>
+          <Button variant="solid" icon={<Plus className="h-3.5 w-3.5" />} onClick={() => setAdd(true)} disabled={!eng || kind === 'item'} tip={kind === 'item' ? 'Items are booked by receiving purchase orders' : undefined}>
             Add stock
           </Button>
         }
       >
-        <div className="mt-3 flex items-end gap-4">
-          <Tabs value={kind} onChange={setKind} tabs={[{ value: 'bar', label: 'Profile bars' }, { value: 'sheet', label: 'Sheets' }]} className="border-b-0" />
+        <div className="mt-3 flex flex-wrap items-end gap-x-4 gap-y-2">
+          <Tabs value={kind} onChange={setKind} tabs={[{ value: 'bar', label: 'Profile bars' }, { value: 'sheet', label: 'Sheets' }, { value: 'item', label: 'Items (pcs · m · m²)' }]} className="border-b-0" />
           <div className="mb-1 flex items-center gap-2">
             <Segmented value={res} onChange={setRes} options={[{ value: 'all', label: 'All' }, { value: 'stock', label: 'New stock' }, { value: 'residual', label: 'Residuals only' }]} testId="residual-filter" />
             <Segmented value={status} onChange={setStatus} options={[{ value: 'available', label: 'Available' }, { value: 'all', label: 'Incl. consumed' }]} />
@@ -69,7 +69,7 @@ export default function InventoryPage() {
               <tr>
                 <th>#</th>
                 <th>Material</th>
-                <th className="num">{kind === 'bar' ? 'Length' : 'W × H'}</th>
+                <th className="num">{kind === 'bar' ? 'Length' : kind === 'sheet' ? 'W × H' : 'Unit'}</th>
                 {kind === 'sheet' && <th className="num">Thk</th>}
                 <th className="num">Qty</th>
                 <th>Type</th>
@@ -85,7 +85,7 @@ export default function InventoryPage() {
                 <tr key={it.id}>
                   <td className="font-mono text-xs text-faint">INV-{it.id}</td>
                   <td className="font-mono text-xs">{it.material ?? it.profile_code ?? '—'}</td>
-                  <td className="num">{kind === 'bar' ? fmtMm(it.length ?? 0) : `${fmtMm(it.width ?? 0)} × ${fmtMm(it.height ?? 0)}`}</td>
+                  <td className="num">{kind === 'bar' ? fmtMm(it.length ?? 0) : kind === 'sheet' ? `${fmtMm(it.width ?? 0)} × ${fmtMm(it.height ?? 0)}` : it.unit === 'm2' ? 'm²' : (it.unit ?? '—')}</td>
                   {kind === 'sheet' && <td className="num">{it.thickness ?? '—'}</td>}
                   <td className="num">{it.quantity}</td>
                   <td>{it.is_residual ? <Chip tone="ok">residual</Chip> : <Chip>stock</Chip>}</td>
@@ -122,7 +122,7 @@ export default function InventoryPage() {
           <input className="input input-num w-32" type="number" min={1} max={consume?.quantity} value={qty} onChange={(e) => setQty(Math.max(1, Math.round(Number(e.target.value) || 1)))} />
         </Field>
       </Dialog>
-      <AddDialog open={add} kind={kind} onClose={() => setAdd(false)} onSaved={reload} />
+      {kind !== 'item' && <AddDialog open={add} kind={kind} onClose={() => setAdd(false)} onSaved={reload} />}
     </div>
   );
 }

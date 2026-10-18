@@ -35,16 +35,19 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { ApiError, errorMessage } from '../../api/client';
 import type { Elevation, FieldFill, FillType, Issue } from '../../api/types';
 import { glassTypesForSeries } from '../../engine/catalogue';
+import { runDesignChecks } from '../../engine/checks';
+import { designCheckTag } from '../../ui/DesignCheckTag';
+import { elevationToDxf } from '../../engine/dxf';
 import { moveMullion, moveTransom, parseElevationJson, parseFillKey, removeMullion, removeTransom, resolveFill, setFill, validateElevation } from '../../engine/elevation';
 import { downloadText, readFileText, safeFilename } from '../../lib/download';
 import { refreshElevations } from '../../layout/Shell';
+import { NARROW_QUERY, useMediaQuery } from '../../lib/useMediaQuery';
 import { useApp, useBackend } from '../../store/app';
 import { useStatus } from '../../store/status';
 import { toast } from '../../store/toast';
 import { Button } from '../../ui/Button';
 import { Dialog, Drawer } from '../../ui/Dialog';
 import { Segmented, Select, Toggle } from '../../ui/Field';
-import { InDevTag } from '../../ui/InDev';
 import { Menu } from '../../ui/Menu';
 import { EmptyState, IssueList, LoadingBlock } from '../../ui/Misc';
 import { CalcResultsView } from '../calc/CalcResultsView';
@@ -118,6 +121,7 @@ export function EditorPage() {
   const fileRef = useRef<HTMLInputElement>(null);
   const calc = useCalc((s) => s.last);
   const routeId = params.elevationId ? Number(params.elevationId) : null;
+  const narrow = useMediaQuery(NARROW_QUERY);
 
   // ---- load from route --------------------------------------------------------
   useEffect(() => {
@@ -147,7 +151,12 @@ export function EditorPage() {
   }, [routeId, be, nav, selectElevation, selectProject]);
 
   // ---- validation -------------------------------------------------------------
-  const issues = useMemo(() => (e ? validateElevation(e, cat) : []), [e, cat]);
+  // geometry/catalogue validation + DEMO design checks (§8.3; warnings only, skipped while errors exist)
+  const issues = useMemo(() => {
+    if (!e) return [];
+    const v = validateElevation(e, cat);
+    return v.some((i) => i.severity === 'error') ? v : [...v, ...runDesignChecks(e, cat)];
+  }, [e, cat]);
   const nErr = issues.filter((i) => i.severity === 'error').length;
   const nWarn = issues.filter((i) => i.severity === 'warning').length;
   useEffect(() => {
@@ -294,6 +303,20 @@ export function EditorPage() {
   };
   const svgEl = () => document.querySelector('[data-testid="cad-canvas"]') as SVGSVGElement | null;
 
+  const exportDxf = async () => {
+    const el = useEditor.getState().elevation;
+    if (!el) return;
+    let text: string;
+    try {
+      text = await be.exportDxf(el);
+    } catch (err) {
+      // server writer unavailable → same writer ported to TS (§8.4)
+      text = elevationToDxf(el, cat);
+      toast.info('DXF generated in the browser', `Server export unavailable: ${errorMessage(err)}`);
+    }
+    downloadText(text, `${safeFilename(el.name)}.dxf`, 'application/dxf');
+  };
+
   // ---- keyboard ------------------------------------------------------------------------
   useEffect(() => {
     const h = (ev: KeyboardEvent) => {
@@ -415,7 +438,7 @@ export function EditorPage() {
 
   // ---- render -----------------------------------------------------------------------
   const toolbar = (
-    <div className="flex h-10 shrink-0 items-center gap-0.5 border-b border-line bg-panel px-2" data-testid="editor-toolbar">
+    <div className="flex h-10 shrink-0 items-center gap-0.5 overflow-x-auto overflow-y-hidden border-b border-line bg-panel px-2" data-testid="editor-toolbar">
       {TOOLS.map((t) => (
         <ToolBtn key={t.id} active={ed.tool === t.id} onClick={() => ed.setTool(t.id)} tip={`${t.label}  (${t.key})`} testId={`tool-${t.id}`} disabled={!e}>
           {t.icon}
@@ -496,7 +519,7 @@ export function EditorPage() {
           { label: 'Elevation JSON', icon: <FileJson className="h-3.5 w-3.5" />, onClick: () => e && downloadText(JSON.stringify(e, null, 2), `${safeFilename(e.name)}.json`), testId: 'export-json' },
           { label: 'Drawing SVG', icon: <PenTool className="h-3.5 w-3.5" />, onClick: () => svgEl() && e && exportSvg(svgEl()!, e.name), testId: 'export-svg' },
           { label: 'Drawing PNG (2×)', icon: <Image className="h-3.5 w-3.5" />, onClick: () => svgEl() && e && void exportPng(svgEl()!, e.name).catch((err) => toast.error('PNG export failed', errorMessage(err))), testId: 'export-png' },
-          { label: 'DXF (CAD exchange)', icon: <FileDown className="h-3.5 w-3.5" />, disabled: true, hint: <InDevTag /> },
+          { label: 'DXF R12 (CAD exchange)', icon: <FileDown className="h-3.5 w-3.5" />, onClick: () => void exportDxf(), testId: 'export-dxf', hint: <span className="font-mono text-2xs text-faint">mm</span> },
         ]}
       />
       <Sep />
@@ -603,7 +626,7 @@ export function EditorPage() {
   else
     body = (
       <div className="flex min-h-0 flex-1">
-        <aside className="flex w-[244px] shrink-0 flex-col border-r border-line bg-panel">
+        <aside className={clsx('w-[244px] shrink-0 flex-col border-r border-line bg-panel', narrow ? 'hidden' : 'flex')}>
           <div className="panel-head h-8 text-xs">
             Structure
             <span className="ml-auto font-mono text-2xs font-normal text-faint">
@@ -618,11 +641,23 @@ export function EditorPage() {
             <span className={clsx('ml-auto font-mono text-2xs font-normal', nErr ? 'text-err' : nWarn ? 'text-warn' : 'text-ok')}>{nErr || nWarn ? `${nErr} err · ${nWarn} warn` : 'OK'}</span>
           </div>
           <div className="max-h-[38%] min-h-[96px] overflow-auto" data-testid="editor-issues">
-            <IssueList issues={issues} onPick={pickIssue} activeRef={ed.highlightRef} empty="No validation issues (demo rule set)" />
+            <IssueList
+              issues={issues}
+              onPick={pickIssue}
+              activeRef={ed.highlightRef}
+              empty="No validation issues (demo rule set)"
+              testId="editor-issue-list"
+              tag={designCheckTag}
+            />
           </div>
         </aside>
         <div className="relative min-w-0 flex-1">
           <CadCanvas issues={issues} />
+          {narrow && (
+            <div className="pointer-events-none absolute bottom-3 left-1/2 max-w-[calc(100%-24px)] -translate-x-1/2 rounded-sm border border-info/45 bg-panel/95 px-3 py-1 text-center text-xs text-info" data-testid="editor-small-screen">
+              Best on a larger screen — view and calculate here; edit on a tablet or desktop.
+            </div>
+          )}
           {e.top_shape?.type === 'arch' && (
             <div className="pointer-events-none absolute left-1/2 top-3 -translate-x-1/2 rounded-sm border border-prov/50 bg-[var(--banner-prov-bg)] px-3 py-1 text-xs font-medium text-prov" data-testid="arch-banner">
               Arch: geometry only — calculation not supported
@@ -639,7 +674,7 @@ export function EditorPage() {
             </button>
           )}
         </div>
-        <aside className="w-[292px] shrink-0 overflow-auto border-l border-line bg-panel">
+        <aside className={clsx('w-[292px] shrink-0 overflow-auto border-l border-line bg-panel', narrow && 'hidden')}>
           <PropertiesPanel />
         </aside>
       </div>

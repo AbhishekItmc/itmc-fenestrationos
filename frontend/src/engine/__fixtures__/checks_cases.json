@@ -1,0 +1,364 @@
+[
+ {
+  "name": "Clean grid",
+  "elevation": {
+   "id": null,
+   "name": "Clean grid",
+   "units": "mm",
+   "width": 4500.0,
+   "height": 3600.0,
+   "mullions": [
+    0.0,
+    1500.0,
+    3000.0,
+    4500.0
+   ],
+   "bays": [
+    {
+     "transoms": [
+      1800.0
+     ],
+     "transom_profile_id": null
+    },
+    {
+     "transoms": [
+      1800.0
+     ],
+     "transom_profile_id": null
+    },
+    {
+     "transoms": [
+      1800.0
+     ],
+     "transom_profile_id": null
+    }
+   ],
+   "fills": {},
+   "top_shape": {
+    "type": "flat"
+   },
+   "system_id": "ser-cw50",
+   "mullion_profile_id": null,
+   "transom_profile_id": null,
+   "colour_id": "col-ral7016",
+   "default_glass_type_id": "gl-dgu-24",
+   "anchor_levels": [
+    0.0,
+    3600.0
+   ],
+   "quantity": 1
+  },
+  "issues": []
+ },
+ {
+  "name": "Heavy wide pane",
+  "elevation": {
+   "id": null,
+   "name": "Heavy wide pane",
+   "units": "mm",
+   "width": 6000.0,
+   "height": 4000.0,
+   "mullions": [
+    0.0,
+    3000.0,
+    6000.0
+   ],
+   "bays": [
+    {
+     "transoms": [],
+     "transom_profile_id": null
+    },
+    {
+     "transoms": [],
+     "transom_profile_id": null
+    }
+   ],
+   "fills": {},
+   "top_shape": {
+    "type": "flat"
+   },
+   "system_id": "ser-cw50",
+   "mullion_profile_id": null,
+   "transom_profile_id": null,
+   "colour_id": null,
+   "default_glass_type_id": "gl-dgu-28",
+   "anchor_levels": [],
+   "quantity": 1
+  },
+  "issues": [
+   {
+    "code": "NO_COLOUR_SELECTED",
+    "severity": "warning",
+    "message": "No colour/finish selected for the elevation; colour surcharge and finish are not costed (demo threshold — requires engineering approval)",
+    "ref": "elevation:colour_id"
+   },
+   {
+    "code": "FIELD_AREA_HIGH",
+    "severity": "warning",
+    "message": "Field b1.f1 (3,000 x 4,000 mm axis): area 12.00 m² exceeds max_field_area_m2 4.5 m² (demo threshold — requires engineering approval)",
+    "ref": "bay:0/field:0"
+   },
+   {
+    "code": "GLASS_WEIGHT_HIGH",
+    "severity": "warning",
+    "message": "Field b1.f1 (3,000 x 4,000 mm axis): pane DEMO-GL-D28 2,980 x 3,980 mm weighs about 830 kg (demo 70 kg/m²), exceeds max_glass_weight_kg 250 kg (demo threshold — requires engineering approval)",
+    "ref": "bay:0/field:0"
+   },
+   {
+    "code": "FIELD_AREA_HIGH",
+    "severity": "warning",
+    "message": "Field b2.f1 (3,000 x 4,000 mm axis): area 12.00 m² exceeds max_field_area_m2 4.5 m² (demo threshold — requires engineering approval)",
+    "ref": "bay:1/field:0"
+   },
+   {
+    "code": "GLASS_WEIGHT_HIGH",
+    "severity": "warning",
+    "message": "Field b2.f1 (3,000 x 4,000 mm axis): pane DEMO-GL-D28 2,980 x 3,980 mm weighs about 830 kg (demo 70 kg/m²), exceeds max_glass_weight_kg 250 kg (demo threshold — requires engineering approval)",
+    "ref": "bay:1/field:0"
+   },
+   {
+    "code": "ANCHORS_MISSING",
+    "severity": "warning",
+    "message": "0 anchor level(s) defined, min_anchor_levels is 2; bracket quantities and mullion spans are unreliable (demo threshold — requires engineering approval)",
+    "ref": "elevation:anchor_levels"
+   }
+  ]
+ },
+ {
+  "name": "Slender fields",
+  "elevation": {
+   "id": null,
+   "name": "Slender fields",
+   "units": "mm",
+   "width": 3000.0,
+   "height": 4200.0,
+   "mullions": [
+    0.0,
+    400.0,
+    3000.0
+   ],
+   "bays": [
+    {
+     "transoms": [
+      2100.0
+     ],
+     "transom_profile_id": null
+    },
+    {
+     "transoms": [
+      2100.0
+     ],
+     "transom_profile_id": null
+    }
+   ],
+   "fills": {},
+   "top_shape": {
+    "type": "flat"
+   },
+   "system_id": "ser-cw50",
+   "mullion_profile_id": null,
+   "transom_profile_id": null,
+   "colour_id": "col-ral7016",
+   "default_glass_type_id": "gl-dgu-24",
+   "anchor_levels": [
+    4200.0
+   ],
+   "quantity": 1
+  },
+  "issues": [
+   {
+    "code": "FIELD_ASPECT_HIGH",
+    "severity": "warning",
+    "message": "Field b1.f1 (400 x 2,100 mm axis): aspect ratio 5.25 exceeds max_field_aspect_ratio 4 (demo threshold — requires engineering approval)",
+    "ref": "bay:0/field:0"
+   },
+   {
+    "code": "FIELD_ASPECT_HIGH",
+    "severity": "warning",
+    "message": "Field b1.f2 (400 x 2,100 mm axis): aspect ratio 5.25 exceeds max_field_aspect_ratio 4 (demo threshold — requires engineering approval)",
+    "ref": "bay:0/field:1"
+   },
+   {
+    "code": "FIELD_AREA_HIGH",
+    "severity": "warning",
+    "message": "Field b2.f1 (2,600 x 2,100 mm axis): area 5.46 m² exceeds max_field_area_m2 4.5 m² (demo threshold — requires engineering approval)",
+    "ref": "bay:1/field:0"
+   },
+   {
+    "code": "GLASS_WEIGHT_HIGH",
+    "severity": "warning",
+    "message": "Field b2.f1 (2,600 x 2,100 mm axis): pane DEMO-GL-D24 2,580 x 2,080 mm weighs about 322 kg (demo 60 kg/m²), exceeds max_glass_weight_kg 250 kg (demo threshold — requires engineering approval)",
+    "ref": "bay:1/field:0"
+   },
+   {
+    "code": "FIELD_AREA_HIGH",
+    "severity": "warning",
+    "message": "Field b2.f2 (2,600 x 2,100 mm axis): area 5.46 m² exceeds max_field_area_m2 4.5 m² (demo threshold — requires engineering approval)",
+    "ref": "bay:1/field:1"
+   },
+   {
+    "code": "GLASS_WEIGHT_HIGH",
+    "severity": "warning",
+    "message": "Field b2.f2 (2,600 x 2,100 mm axis): pane DEMO-GL-D24 2,580 x 2,080 mm weighs about 322 kg (demo 60 kg/m²), exceeds max_glass_weight_kg 250 kg (demo threshold — requires engineering approval)",
+    "ref": "bay:1/field:1"
+   },
+   {
+    "code": "ANCHORS_MISSING",
+    "severity": "warning",
+    "message": "1 anchor level(s) defined, min_anchor_levels is 2; bracket quantities and mullion spans are unreliable (demo threshold — requires engineering approval)",
+    "ref": "elevation:anchor_levels"
+   },
+   {
+    "code": "MULLION_SPAN_HIGH",
+    "severity": "warning",
+    "message": "Largest unsupported mullion span 4,200 mm (between anchor levels / framework ends) exceeds max_unsupported_mullion_span 4,000 mm (demo threshold — requires engineering approval)",
+    "ref": "elevation:anchor_levels"
+   }
+  ]
+ },
+ {
+  "name": "Tall unanchored — mixed fills",
+  "elevation": {
+   "id": null,
+   "name": "Tall unanchored — mixed fills",
+   "units": "mm",
+   "width": 3600.0,
+   "height": 9000.0,
+   "mullions": [
+    0.0,
+    1200.0,
+    2400.0,
+    3600.0
+   ],
+   "bays": [
+    {
+     "transoms": [
+      3000.0,
+      6000.0
+     ],
+     "transom_profile_id": null
+    },
+    {
+     "transoms": [
+      3000.0,
+      6000.0
+     ],
+     "transom_profile_id": null
+    },
+    {
+     "transoms": [
+      3000.0,
+      6000.0
+     ],
+     "transom_profile_id": null
+    }
+   ],
+   "fills": {
+    "b0-f0": {
+     "type": "spandrel",
+     "glass_type_id": "gl-spandrel-6",
+     "panel_type_id": null,
+     "note": null
+    },
+    "b1-f1": {
+     "type": "panel",
+     "glass_type_id": null,
+     "panel_type_id": "pnl-alu-3",
+     "note": null
+    },
+    "b2-f2": {
+     "type": "opening",
+     "glass_type_id": null,
+     "panel_type_id": null,
+     "note": null
+    },
+    "b2-f0": {
+     "type": "none",
+     "glass_type_id": null,
+     "panel_type_id": null,
+     "note": null
+    }
+   },
+   "top_shape": {
+    "type": "flat"
+   },
+   "system_id": "ser-cw50",
+   "mullion_profile_id": null,
+   "transom_profile_id": null,
+   "colour_id": "col-ral7016",
+   "default_glass_type_id": "gl-dgu-24",
+   "anchor_levels": [
+    0.0
+   ],
+   "quantity": 2
+  },
+  "issues": [
+   {
+    "code": "ANCHORS_MISSING",
+    "severity": "warning",
+    "message": "1 anchor level(s) defined, min_anchor_levels is 2; bracket quantities and mullion spans are unreliable (demo threshold — requires engineering approval)",
+    "ref": "elevation:anchor_levels"
+   },
+   {
+    "code": "MULLION_SPAN_HIGH",
+    "severity": "warning",
+    "message": "Largest unsupported mullion span 9,000 mm (between anchor levels / framework ends) exceeds max_unsupported_mullion_span 4,000 mm (demo threshold — requires engineering approval)",
+    "ref": "elevation:anchor_levels"
+   }
+  ]
+ },
+ {
+  "name": "Lobby — CW65 — ×2",
+  "elevation": {
+   "id": null,
+   "name": "Lobby — CW65 — ×2",
+   "units": "mm",
+   "width": 4800.0,
+   "height": 3600.0,
+   "mullions": [
+    0.0,
+    1400.0,
+    3400.0,
+    4800.0
+   ],
+   "bays": [
+    {
+     "transoms": [],
+     "transom_profile_id": null
+    },
+    {
+     "transoms": [
+      2700.0
+     ],
+     "transom_profile_id": null
+    },
+    {
+     "transoms": [],
+     "transom_profile_id": null
+    }
+   ],
+   "fills": {},
+   "top_shape": {
+    "type": "flat"
+   },
+   "system_id": "ser-cw65",
+   "mullion_profile_id": null,
+   "transom_profile_id": null,
+   "colour_id": "col-ano-nat",
+   "default_glass_type_id": "gl-dgu-28",
+   "anchor_levels": [
+    0.0,
+    3600.0
+   ],
+   "quantity": 1
+  },
+  "issues": [
+   {
+    "code": "GLASS_WEIGHT_HIGH",
+    "severity": "warning",
+    "message": "Field b2.f1 (2,000 x 2,700 mm axis): pane DEMO-GL-D28 1,965 x 2,665 mm weighs about 367 kg (demo 70 kg/m²), exceeds max_glass_weight_kg 350 kg (demo threshold — requires engineering approval)",
+    "ref": "bay:1/field:0"
+   }
+  ]
+ }
+]

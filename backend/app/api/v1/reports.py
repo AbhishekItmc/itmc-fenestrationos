@@ -2,17 +2,31 @@ from __future__ import annotations
 
 from typing import Literal
 
-from fastapi import APIRouter, Depends, Request
+from fastapi import APIRouter, Depends, Query, Request
 from fastapi.responses import Response
+from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from ...db import get_db
 from ...errors import APIError
-from ...models import CalcRun, CuttingJob, Elevation, NestingJob, Project, Quote, User
+from ...models import (
+    CalcRun,
+    CuttingJob,
+    Elevation,
+    NestingJob,
+    Part,
+    ProductionOrder,
+    Project,
+    PurchaseOrder,
+    Quote,
+    User,
+)
+from ...reports import labels as rlabels
 from ...reports import pdf as rpdf
 from ...reports import xlsx as rxlsx
 from ...reports.common import ReportMeta
 from ...security import ANY, require_roles
+from ...services import production as prod
 from ...services.audit import audit
 from ..deps import get_or_404
 
@@ -30,9 +44,11 @@ def _project_label(db: Session, project_id) -> str | None:
     return f"{p.code} — {p.name}" if p else None
 
 
-def _send(db, request, user, kind: str, obj_id: int, fmt: str, data: bytes, filename: str, meta: ReportMeta):
+def _send(db, request, user, kind: str, obj_id: int, fmt: str, data: bytes, filename: str, meta: ReportMeta,
+          extra: dict | None = None):
     audit(db, request, user, "report", kind, obj_id, {"format": fmt, "validation_status": meta.validation_status,
-                                                      "provisional": meta.provisional, "bytes": len(data)},
+                                                      "provisional": meta.provisional, "bytes": len(data),
+                                                      **(extra or {})},
           commit=True)
     return Response(data, media_type=PDF if fmt == "pdf" else XLSX,
                     headers={"Content-Disposition": f'attachment; filename="{filename}.{fmt}"',
@@ -113,3 +129,81 @@ def quote_report(quote_id: int, fmt: Fmt, request: Request, db: Session = Depend
             "customer_name": p.customer.name if p and p.customer else None} if p else {}
     data = rpdf.quote_pdf(qd, meta, proj) if fmt == "pdf" else rxlsx.quote_xlsx(qd, meta)
     return _send(db, request, user, "quote", q.id, fmt, data, f"quote_{q.number}", meta)
+
+
+# --------------------------------------------------------------------------- v0.2: production / purchasing
+PART_FIELDS = ("code", "kind", "mark", "seq", "description", "item_code", "length", "width", "height", "angle_start",
+               "angle_end", "elevation_name", "route", "station_index", "current_station", "status")
+
+
+def _order_ctx(db: Session, order_id: int):
+    o = get_or_404(db, ProductionOrder, order_id, "Production order")
+    p = db.get(Project, o.project_id)
+    parts = db.scalars(select(Part).where(Part.production_order_id == o.id).order_by(Part.id)).all()
+    return o, p, [{k: getattr(x, k) for k in PART_FIELDS} for x in parts]
+
+
+def _order_meta(db: Session, o: ProductionOrder, p: Project, title: str, user: User) -> ReportMeta:
+    runs = [db.get(CalcRun, i) for i in o.calc_run_ids]
+    runs = [r for r in runs if r]
+    status = "PROVISIONAL_DEMO_RULES" if o.provisional else "VALIDATED"
+    return ReportMeta(title=title, reference=f"Work order {o.number}", validation_status=status,
+                      engine_version=", ".join(sorted({r.engine_version for r in runs})) or "-",
+                      catalogue_version=", ".join(sorted({r.catalogue_version for r in runs})) or "-",
+                      rule_set=", ".join(sorted({f"{r.rule_set_id}@{r.rule_set_version}" for r in runs})) or "-",
+                      validator="n/a (production tracking)", provisional=o.provisional,
+                      project=f"{p.code} — {p.name}" if p else None, generated_by=user.email,
+                      extra=[("Calc runs", ", ".join(str(i) for i in o.calc_run_ids))])
+
+
+@router.get("/labels/{order_id:int}.pdf", summary="QR part labels (a4-24 | a4-8 | roll-62x29)")
+def labels_report(order_id: int, request: Request,
+                  layout: Literal["a4-24", "a4-8", "roll-62x29"] = Query("a4-24"),
+                  status: Literal["pending", "in_progress", "done", "blocked"] | None = None,
+                  station: str | None = None, kind: Literal["profile", "glass", "panel"] | None = None,
+                  db: Session = Depends(get_db), user: User = Depends(require_roles(*ANY))):
+    o, p, parts = _order_ctx(db, order_id)
+    parts = [x for x in parts if (status is None or x["status"] == status) and
+             (station is None or x["current_station"] == station) and (kind is None or x["kind"] == kind)]
+    base = request.app.state.settings.public_base_url
+    data = rlabels.labels_pdf(parts, {"project_code": p.code if p else "", "order_number": o.number,
+                                      "provisional": o.provisional}, layout, base)
+    meta = _order_meta(db, o, p, f"Part labels {o.number}", user)
+    resp = _send(db, request, user, "production_order_labels", o.id, "pdf", data, f"labels_{o.number}_{layout}",
+                 meta, {"layout": layout, "labels": len(parts)})
+    resp.headers["X-Label-Count"] = str(len(parts))
+    return resp
+
+
+@router.get("/production/{order_id:int}.pdf", summary="Work order sheet (parts by station)")
+def production_report(order_id: int, request: Request, db: Session = Depends(get_db),
+                      user: User = Depends(require_roles(*ANY))):
+    o, p, parts = _order_ctx(db, order_id)
+    meta = _order_meta(db, o, p, f"Work order {o.number}", user)
+    od = {"number": o.number, "name": o.name, "status": o.status, "due_date": o.due_date, "notes": o.notes,
+          "calc_run_ids": o.calc_run_ids}
+    data = rpdf.work_order_pdf(od, parts, prod.board(db, o.id), meta,
+                               {"code": p.code, "name": p.name} if p else {}, dict(prod.STATIONS))
+    return _send(db, request, user, "production_order", o.id, "pdf", data, f"work_order_{o.number}", meta)
+
+
+@router.get("/purchase-order/{po_id:int}.{fmt}", summary="Purchase order (demo prices — provisional)")
+def purchase_order_report(po_id: int, fmt: Fmt, request: Request, db: Session = Depends(get_db),
+                          user: User = Depends(require_roles(*ANY))):
+    po = get_or_404(db, PurchaseOrder, po_id, "Purchase order")
+    p = db.get(Project, po.project_id)
+    pd = {c: getattr(po, c) for c in ("number", "supplier", "category", "status", "currency", "lines", "total",
+                                      "calc_run_ids", "cutting_job_ids", "notes")}
+    runs = [r for r in (db.get(CalcRun, i) for i in po.calc_run_ids) if r]
+    meta = ReportMeta(title=f"Purchase order {po.number}", reference=f"Purchase order #{po.id}",
+                      validation_status="PROVISIONAL_DEMO_RULES",
+                      engine_version=", ".join(sorted({r.engine_version for r in runs})) or "-",
+                      catalogue_version=po.catalogue_version or "-",
+                      rule_set=", ".join(sorted({f"{r.rule_set_id}@{r.rule_set_version}" for r in runs})) or "-",
+                      validator="n/a (purchasing)", provisional=po.provisional,
+                      project=f"{p.code} — {p.name}" if p else None, generated_by=user.email,
+                      extra=[("Currency", po.currency), ("Price basis", "Demo prices — not a commercial offer")],
+                      notices=["Demo prices — not a commercial offer"])
+    proj = {"code": p.code, "name": p.name, "site": p.site} if p else {}
+    data = rpdf.purchase_order_pdf(pd, meta, proj) if fmt == "pdf" else rxlsx.purchase_order_xlsx(pd, meta)
+    return _send(db, request, user, "purchase_order", po.id, fmt, data, f"purchase_order_{po.number}", meta)

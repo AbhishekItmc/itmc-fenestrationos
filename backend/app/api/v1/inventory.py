@@ -18,7 +18,7 @@ router = APIRouter(prefix="/inventory", tags=["inventory"])
 
 
 @router.get("", response_model=List[InventoryOut])
-def list_inventory(kind: Optional[Literal["bar", "sheet"]] = None, material: Optional[str] = None,
+def list_inventory(kind: Optional[Literal["bar", "sheet", "item"]] = None, material: Optional[str] = None,
                    status: Optional[Literal["available", "reserved", "consumed"]] = None,
                    residual: Optional[bool] = None, limit: int = Query(500, ge=1, le=5000),
                    offset: int = Query(0, ge=0), db: Session = Depends(get_db),
@@ -41,7 +41,9 @@ def create_inventory(body: InventoryIn, request: Request, db: Session = Depends(
         raise APIError(422, "VALIDATION_ERROR", "Bar inventory requires 'length'")
     if body.kind == "sheet" and not (body.width and body.height):
         raise APIError(422, "VALIDATION_ERROR", "Sheet inventory requires 'width' and 'height'")
-    it = InventoryItem(**body.model_dump(), source_kind="manual", created_by=user.id)
+    if body.kind == "item" and not (body.material and body.unit):
+        raise APIError(422, "VALIDATION_ERROR", "Item inventory requires 'material' (item code) and 'unit'")
+    it =InventoryItem(**body.model_dump(), source_kind="manual", created_by=user.id)
     if it.kind == "bar" and not it.profile_code:
         it.profile_code = it.material
     db.add(it)
